@@ -1,0 +1,778 @@
+desc[mecc-ot]:
+
+name = The Oregon Trail
+icon = mecc-ot.png
+machine = pc
+osenv = windows 98
+
+config[mode-vga]:
+    condition = is_dos() && file_exists("$$(rootpath)\\OREGON.GXL");
+    title = Game Mode
+    option[main]:  name = Play Game; launch = "$(rootpath)\OREGON.EXE";
+    option[config]: name = Config Tool; launch = "$(rootpath)\SETUP.BAT";
+end
+
+config[display]:
+    condition = is_dos() && file_exists("$$(rootpath)\\LOGO.256");
+    title = Display Adapter
+    option[vga]: name = VGA; videohw = vga;
+    option[cga]: name = EGA; videohw = ega;
+    option[cga]: name = CGA; videohw = cga;
+end
+
+
+
+//
+// filesystem
+//
+mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+
+//
+// MS-DOS version 1.0;
+//
+game[pc-dos-en-1.0]:
+    name = MS-DOS, Version 1.0
+    anchorfile = OREGON.EXE
+    rootpath = C:\MECC\OREGON
+    launch = "$(rootpath)\OREGON.EXE"
+    osenv = dos
+    fixdivover = true
+    mips = 0.25
+    ramkb = 512
+    audiohw = sb16
+    
+    file[]: crc = 9744624b; size =      2646; name = BIT8X8.GFT
+    file[]: crc = 17cbdd92; size =      6253; name = CGA.BGI
+    file[]: crc = 8d5ddc60; size =        80; name = CONFIG.CLS
+    file[]: crc = 059776c9; size =     14586; name = DIALOGS.REC
+    file[]: crc = fc32442e; size =      5720; name = GAMES.REC
+    file[]: crc = ba37bca2; size =       180; name = HISCORES.REC
+    file[]: crc = d6964121; size =        53; name = HMS306.ITM
+    file[]: crc = 91f3791d; size =     17464; name = INSTALL.EXE
+    file[]: crc = 2b3a3066; size =         9; name = JOYCAL.REC
+    file[]: crc = a4b9b676; size =      4729; name = LOGO.004
+    file[]: crc = 45f8455c; size =      7286; name = LOGO.256
+    file[]: crc = 7279a5d0; size =     79322; name = OREGON.EXE
+    file[]: crc = 925e7ee3; size =    189831; name = OTCGA.PCL
+    file[]: crc = 70fe5b5c; size =    321139; name = OTMCGA.PCL
+    file[]: crc = bed724cb; size =       906; name = PAL.256
+    file[]: crc = d7d34154; size =      2867; name = SONGS.TXT
+    file[]: crc = 1f2b7739; size =       110; name = TOMB.REC
+    file[]: crc = 55f0b0ba; size =      3289; name = VGA256.BGI
+    
+end
+
+//
+// MS-DOS version 2.1;
+//
+game[pc-dos-en-2.1]:
+    name = MS-DOS, Version 2.1
+    anchorfile = OREGON.EXE
+    rootpath = C:\MECC\OREGON
+    launch = "$(rootpath)\OREGON.EXE"
+    osenv = dos
+    fixdivover = true
+    mips = 0.25
+    ramkb = 512
+    audiohw = sb16
+    
+    file[]: crc = 9744624b; size =      2646; name = BIT8X8.GFT
+    file[]: crc = 17cbdd92; size =      6253; name = CGA.BGI
+    file[]: crc = c849b074; size =        92; name = CONFIG.CLS
+    file[]: crc = 132cbecf; size =     14586; name = DIALOGS.REC
+    file[]: crc = c9a1ceba; size =       180; name = HISCORES.REC
+    file[]: crc = 7924c36b; size =        55; name = I-306MS.ITM
+    file[]: crc = 726ae6e1; size =     21264; name = INSTALL.EXE
+    file[]: crc = 2b3a3066; size =         9; name = JOYCAL.REC
+    file[]: crc = 0114b557; size =      1562; name = LOGO.004
+    file[]: crc = 984eec6e; size =      2117; name = LOGO.256
+    file[]: crc = cd87ab6d; size =     81896; name = OREGON.EXE
+    file[]: crc = 925e7ee3; size =    189831; name = OTCGA.PCL
+    file[]: crc = 70fe5b5c; size =    321139; name = OTMCGA.PCL
+    file[]: crc = bed724cb; size =       906; name = PAL.256
+    file[]: crc = edcef045; size =       350; name = PRODUCT.PF
+    file[]: crc = c6f81fca; size =      1177; name = READ.ME
+    file[]: crc = 76c038bc; size =        48; name = SMPROGRM.LST
+    file[]: crc = d7d34154; size =      2867; name = SONGS.TXT
+    file[]: crc = 3997f78c; size =        46; name = TENDIR.CFG
+    file[]: crc = 2df4f398; size =       815; name = TNINSTAL.BAT
+    file[]: crc = 07faad1f; size =       110; name = TOMB.REC
+    file[]: crc = 55f0b0ba; size =      3289; name = VGA256.BGI
+    
+end
+
+//
+// MS-DOS version 3.0;
+//
+game[pc-dos-en-3.0]:
+    name = MS-DOS, Version 3.0
+    anchorfile = OREGON.EXE
+    rootpath = C:\MECC\OREGON
+    launch = "$(rootpath)\OREGON.EXE"
+    osenv = dos
+    fixdivover = true
+    mips = $(MIPS_386SX_20)
+    ramkb = 1024
+    videohw = svga
+    audiohw = adlib
+    
+    file[]: crc = 93779685; size =     14693; name = ADLIB.ADV
+    file[]: crc = 2f780ee5; size =      3088; name = ADLIB.COM
+    file[]: crc = afd5b296; size =      2720; name = IBMSND.COM
+    file[]: crc = 6c318683; size =      5248; name = MIDPAK.AD
+    file[]: crc = a07eedcf; size =     12722; name = MIDPAK.COM
+    file[]: crc = a8610592; size =    278480; name = OREGON.EXE
+    file[]: crc = daea0169; size =   3692734; name = OREGON.GXL
+    file[]: crc = b35b73ee; size =      8306; name = PCSPKR.ADV
+    file[]: crc = 8cac09cd; size =       352; name = PRODUCT.PF
+    file[]: crc = 27fe88fb; size =      2813; name = README
+    file[]: crc = 0b6a2202; size =     14743; name = SBFM.ADV
+    file[]: crc = bc1d539b; size =      3776; name = SBLASTER.COM
+    file[]: crc = be8cd983; size =        65; name = SETUP.BAT
+    
+end
+
+//
+// Oregon Trail for Windows, Version 1.1 - OT2 25th
+//
+game[pc-win-en-1.1-ot225]:
+    name = The Oregon Trail for Windows, Version 1.1 - Oregon Trail II 25th Anniversary Edition
+    anchorfile = oregon.exe
+    osenv = windows 3.11.002
+    audiohw = gmidi
+    winres = 800x600x16
+    launch = "$(rootpath)\OREGON.EXE"
+    rootpath = C:\MECC\OTWIN
+    
+    file[]: crc = 8812e3a6; size =      2016; name = BURY.MID
+    file[]: crc = ed51393b; size =      3831; name = DIRGE.MID
+    file[]: crc = 21cdf8f8; size =      7061; name = LAND1.MID
+    file[]: crc = 1cdfacdd; size =      4066; name = LAND10.MID
+    file[]: crc = a313f812; size =      5485; name = LAND11.MID
+    file[]: crc = cd16b779; size =      7430; name = LAND12.MID
+    file[]: crc = 29bcf095; size =      4329; name = LAND13.MID
+    file[]: crc = 9783f3dd; size =      7182; name = LAND14.MID
+    file[]: crc = 9c728340; size =      3497; name = LAND15.MID
+    file[]: crc = d281bd33; size =      6154; name = LAND16.MID
+    file[]: crc = ac119128; size =      5664; name = LAND17.MID
+    file[]: crc = e1ede4f7; size =      4525; name = LAND18.MID
+    file[]: crc = 92d96b04; size =      6140; name = LAND2.MID
+    file[]: crc = 1ba8c7e1; size =      7865; name = LAND3.MID
+    file[]: crc = 745e6bf4; size =      7685; name = LAND4.MID
+    file[]: crc = 207a7184; size =      6214; name = LAND5.MID
+    file[]: crc = 6f1d1817; size =      7176; name = LAND6.MID
+    file[]: crc = 9a84d3d7; size =      8286; name = LAND7.MID
+    file[]: crc = 7d3978dd; size =      4147; name = LAND8.MID
+    file[]: crc = 75d03cb4; size =      6223; name = LAND9.MID
+    file[]: crc = 442359d9; size =      1491; name = LOGO.MID
+    file[]: crc = 9d928a72; size =   4099088; name = OREGON.EXE
+    file[]: crc = b46e3949; size =    735856; name = OREGON.HLP
+    file[]: crc = a79b1409; size =   7449088; name = OREGONSP.DLL
+    file[]: crc = 9b608c9f; size =       350; name = PRODUCT.PF
+    file[]: crc = 1900b4b0; size =     18194; name = THEME.MID
+end
+
+//
+// Oregon Trail for Windows, Version 1.0
+//
+game[pc-win-en-1.0]:
+    name = The Oregon Trail for Windows, Version 1.0
+    anchorfile = oregonsp.dll
+    osenv = windows 3.11.002
+    audiohw = gmidi
+    winres = 800x600x16
+    launch = "$(rootpath)\OREGON.EXE"
+    rootpath = C:\MECC\OTWIN
+    
+    file[]: crc = dc9fc8e0; size =   1491662; name = BLUP.M
+    file[]: crc = 75290309; size =    285000; name = CRSSINGW.M
+    file[]: crc = a36605ab; size =    606536; name = DEATHSNG.M
+    file[]: crc = d6bbcc3d; size =   1192520; name = DEATHSNG.S
+    file[]: crc = 2fc4d629; size =    748408; name = DIRGE.M
+    file[]: crc = be3aebe6; size =   1496772; name = DIRGE.S
+    file[]: crc = 3ff5aebb; size =    431404; name = GB1.M
+    file[]: crc = 5b5d58eb; size =    476032; name = GB10.M
+    file[]: crc = a4fae869; size =    548928; name = GB11.M
+    file[]: crc = f1add745; size =    570028; name = GB12.M
+    file[]: crc = f678c151; size =    563756; name = GB13.M
+    file[]: crc = 3c28f901; size =    533932; name = GB14.M
+    file[]: crc = 3ae0e80b; size =    546220; name = GB15.M
+    file[]: crc = 43cf90c5; size =    643372; name = GB16.M
+    file[]: crc = ee0ea07b; size =    510508; name = GB17.M
+    file[]: crc = 724c06af; size =    522924; name = GB18.M
+    file[]: crc = 8f65c5b9; size =    506924; name = GB19.M
+    file[]: crc = bf54da57; size =    709676; name = GB2.M
+    file[]: crc = 416928db; size =    591404; name = GB20.M
+    file[]: crc = ec00c3de; size =    585870; name = GB21.M
+    file[]: crc = 917abcec; size =    396332; name = GB22.M
+    file[]: crc = e51f5255; size =    496458; name = GB23.M
+    file[]: crc = 0bd42b74; size =    508460; name = GB24.M
+    file[]: crc = e2f5f2cd; size =    518060; name = GB25.M
+    file[]: crc = ef323e77; size =    577068; name = GB26.M
+    file[]: crc = f554023b; size =    544980; name = GB27.M
+    file[]: crc = f5a399ca; size =    591404; name = GB28.M
+    file[]: crc = f1e5da1d; size =    528044; name = GB29.M
+    file[]: crc = e28739f7; size =    626284; name = GB3.M
+    file[]: crc = b05759ea; size =    598832; name = GB30.M
+    file[]: crc = ead81845; size =    575020; name = GB31.M
+    file[]: crc = 90144f10; size =    462252; name = GB32.M
+    file[]: crc = ec50d808; size =    524784; name = GB33.M
+    file[]: crc = 110794fe; size =    486828; name = GB34.M
+    file[]: crc = 6d28a6bb; size =    427052; name = GB35.M
+    file[]: crc = f5b63ccb; size =    554796; name = GB36.M
+    file[]: crc = ca470044; size =    636972; name = GB37.M
+    file[]: crc = 075f0cc4; size =    485420; name = GB38.M
+    file[]: crc = 1c84e0d2; size =    472236; name = GB39.M
+    file[]: crc = 25313723; size =    645676; name = GB4.M
+    file[]: crc = 9c95210b; size =    557612; name = GB40.M
+    file[]: crc = 62899158; size =    468140; name = GB41.M
+    file[]: crc = 34d3dab4; size =    459052; name = GB42.M
+    file[]: crc = 8f9980ba; size =    573484; name = GB43.M
+    file[]: crc = 0f3baff2; size =    309804; name = GB44.M
+    file[]: crc = 54fb8eea; size =    543276; name = GB45.M
+    file[]: crc = e0968ba2; size =    561748; name = GB46.M
+    file[]: crc = b31326f9; size =    506156; name = GB47.M
+    file[]: crc = 623c3790; size =    493484; name = GB48.M
+    file[]: crc = 49e5cfa8; size =    506220; name = GB49.M
+    file[]: crc = 349ee22b; size =    496172; name = GB5.M
+    file[]: crc = 4d862446; size =    476204; name = GB50.M
+    file[]: crc = cca7bd8c; size =    509894; name = GB51.M
+    file[]: crc = 093e82f0; size =    477804; name = GB52.M
+    file[]: crc = 5f26d0e1; size =    463660; name = GB53.M
+    file[]: crc = 7125920b; size =    489516; name = GB54.M
+    file[]: crc = 558953a3; size =    499748; name = GB55.M
+    file[]: crc = 8ca84d80; size =    435160; name = GB56.M
+    file[]: crc = 14383346; size =    382764; name = GB57.M
+    file[]: crc = 5ac8aeb7; size =    430636; name = GB58.M
+    file[]: crc = 881b7bf8; size =    537456; name = GB59.M
+    file[]: crc = 67e83420; size =    563756; name = GB6.M
+    file[]: crc = 71a7bd3c; size =    521744; name = GB60.M
+    file[]: crc = fbe74b42; size =    472620; name = GB61.M
+    file[]: crc = fd926f92; size =    494572; name = GB62.M
+    file[]: crc = 12713a5f; size =    457260; name = GB63.M
+    file[]: crc = 77b8482e; size =    470060; name = GB64.M
+    file[]: crc = 8278a6b0; size =    489516; name = GB65.M
+    file[]: crc = f88065a7; size =    608834; name = GB66.M
+    file[]: crc = ec96b14e; size =    465680; name = GB67.M
+    file[]: crc = 48d9f7dc; size =    350252; name = GB68.M
+    file[]: crc = 6dc49c19; size =    401110; name = GB69.M
+    file[]: crc = 54807202; size =    485214; name = GB7.M
+    file[]: crc = 3ac31f84; size =    473996; name = GB70.M
+    file[]: crc = 06f4432f; size =    742700; name = GB71.M
+    file[]: crc = 4270a0d2; size =    549676; name = GB72.M
+    file[]: crc = ab529afe; size =    387830; name = GB73.M
+    file[]: crc = 5411cf19; size =    506456; name = GB8.M
+    file[]: crc = e44b1930; size =    561452; name = GB9.M
+    file[]: crc = 3026a23a; size =      5673; name = GRUELING.MID
+    file[]: crc = 96920199; size =    344108; name = L10TLK1.M
+    file[]: crc = a4722f55; size =    362668; name = L10TLK2.M
+    file[]: crc = c80ab919; size =    402540; name = L10TLK3.M
+    file[]: crc = 461572af; size =    312364; name = L11TLK1.M
+    file[]: crc = 08fbb321; size =    373292; name = L11TLK2.M
+    file[]: crc = da5d6a92; size =    376108; name = L11TLK3.M
+    file[]: crc = 1b97bbe3; size =    362540; name = L12TLK1.M
+    file[]: crc = 4a6a3fab; size =    333474; name = L12TLK2.M
+    file[]: crc = fbc5dcdf; size =    392842; name = L12TLK3.M
+    file[]: crc = ed11b217; size =    350252; name = L13TLK1.M
+    file[]: crc = 78dc3af6; size =    374828; name = L13TLK2.M
+    file[]: crc = 185bfbe2; size =    354348; name = L13TLK3.M
+    file[]: crc = 4c492f21; size =    284716; name = L14TLK1.M
+    file[]: crc = ff894fc1; size =    364802; name = L14TLK2.M
+    file[]: crc = 77c8b42c; size =    370034; name = L14TLK3.M
+    file[]: crc = 72e99cf5; size =    399404; name = L15TLK1.M
+    file[]: crc = 52775ee0; size =    407596; name = L15TLK2.M
+    file[]: crc = 2a918657; size =    373198; name = L15TLK3.M
+    file[]: crc = 58638d8b; size =    407240; name = L16TLK1.M
+    file[]: crc = 80ac42a2; size =    424198; name = L16TLK2.M
+    file[]: crc = edbd98c4; size =    449580; name = L16TLK3.M
+    file[]: crc = 5145a048; size =    383276; name = L17TLK1.M
+    file[]: crc = 33482a34; size =    415020; name = L17TLK2.M
+    file[]: crc = d87f6f57; size =    405168; name = L17TLK3.M
+    file[]: crc = 655fb599; size =    260908; name = L18TLK1.M
+    file[]: crc = 1867f936; size =    329772; name = L18TLK2.M
+    file[]: crc = d3d2e6c2; size =    320426; name = L18TLK3.M
+    file[]: crc = 42f971bb; size =    287484; name = L1TLK1.M
+    file[]: crc = 8f024239; size =    355370; name = L1TLK2.M
+    file[]: crc = ad92a1d2; size =    324652; name = L1TLK3.M
+    file[]: crc = 1075cb95; size =    340772; name = L2TLK1.M
+    file[]: crc = f11b7c50; size =    328214; name = L2TLK2.M
+    file[]: crc = ccd1b0b4; size =    318508; name = L2TLK3.M
+    file[]: crc = ffbcf1e8; size =    395614; name = L3TLK1.M
+    file[]: crc = 10c4d935; size =    376876; name = L3TLK2.M
+    file[]: crc = 845dbbf3; size =    290860; name = L3TLK3.M
+    file[]: crc = 5e0924de; size =    266284; name = L4TLK1.M
+    file[]: crc = cbc7e0eb; size =    391468; name = L4TLK2.M
+    file[]: crc = 3ed53a66; size =    410668; name = L4TLK3.M
+    file[]: crc = 5212e9ff; size =    413440; name = L5TLK1.M
+    file[]: crc = 6fd90d07; size =    296074; name = L5TLK2.M
+    file[]: crc = 0b772fa7; size =    322798; name = L5TLK3.M
+    file[]: crc = feff2495; size =    271404; name = L6TLK1.M
+    file[]: crc = a578db91; size =    317484; name = L6TLK2.M
+    file[]: crc = 1af8a60f; size =    399690; name = L6TLK3.M
+    file[]: crc = 55a62a2b; size =    402422; name = L7TLK1.M
+    file[]: crc = dc3cf77b; size =    400652; name = L7TLK2.M
+    file[]: crc = fa4dbb68; size =    357722; name = L7TLK3.M
+    file[]: crc = 4db6e2fc; size =    379352; name = L8TLK1.M
+    file[]: crc = a9ecaa95; size =    393260; name = L8TLK2.M
+    file[]: crc = 3827ddbf; size =    372268; name = L8TLK3.M
+    file[]: crc = f56acfc5; size =    456748; name = L9TLK1.M
+    file[]: crc = 3fd6772f; size =    261852; name = L9TLK2.M
+    file[]: crc = 48b4ad6a; size =    373006; name = L9TLK3.M
+    file[]: crc = bbd5779a; size =    913580; name = LAND1.M
+    file[]: crc = 07fa5aaf; size =   1838406; name = LAND1.S
+    file[]: crc = 14ace6f2; size =    882368; name = LAND10.M
+    file[]: crc = 3b6d3958; size =   1811798; name = LAND10.S
+    file[]: crc = 9e9b642f; size =    820804; name = LAND11.M
+    file[]: crc = b2b29fa8; size =   1610774; name = LAND11.S
+    file[]: crc = 5413b7bd; size =   1017986; name = LAND12.M
+    file[]: crc = 5d037f9d; size =   1958324; name = LAND12.S
+    file[]: crc = 6abbd848; size =    953312; name = LAND13.M
+    file[]: crc = 62431b6c; size =   3663062; name = LAND13.S
+    file[]: crc = b3507634; size =    968826; name = LAND14.M
+    file[]: crc = 3fffdcf2; size =   1873430; name = LAND14.S
+    file[]: crc = 68fd5e97; size =    921312; name = LAND15.M
+    file[]: crc = c11043b7; size =   1786596; name = LAND15.S
+    file[]: crc = 39e77a61; size =   1115180; name = LAND16.M
+    file[]: crc = 851f930c; size =   2262854; name = LAND16.S
+    file[]: crc = 937b80cb; size =    466988; name = LAND17.M
+    file[]: crc = 90b0651e; size =   1863750; name = LAND17.S
+    file[]: crc = 85f5400d; size =    441928; name = LAND18.M
+    file[]: crc = cab0f875; size =    867014; name = LAND18.S
+    file[]: crc = 8b3f8e11; size =   1183824; name = LAND2.M
+    file[]: crc = fac91e5c; size =   2321678; name = LAND2.S
+    file[]: crc = 8a909cb1; size =   1044830; name = LAND3.M
+    file[]: crc = 86222a80; size =   2058950; name = LAND3.S
+    file[]: crc = e9dc1f62; size =    378668; name = LAND4.M
+    file[]: crc = 7c9c262c; size =   1477830; name = LAND4.S
+    file[]: crc = a78f8a14; size =   1323156; name = LAND5.M
+    file[]: crc = f0c350f2; size =   2603318; name = LAND5.S
+    file[]: crc = 159586aa; size =   1013944; name = LAND6.M
+    file[]: crc = 8721e918; size =   1971782; name = LAND6.S
+    file[]: crc = e2894ae2; size =   1373314; name = LAND7.M
+    file[]: crc = 5196db6b; size =   2908358; name = LAND7.S
+    file[]: crc = 1d783442; size =    688542; name = LAND8.M
+    file[]: crc = 46eff645; size =   1358598; name = LAND8.S
+    file[]: crc = e8b16bb2; size =    808492; name = LAND9.M
+    file[]: crc = f662f6db; size =   1650598; name = LAND9.S
+    file[]: crc = 595edbda; size =    605734; name = LEAVING.M
+    file[]: crc = 21d0b29c; size =   1211422; name = LEAVING.S
+    file[]: crc = e62bb1e4; size =     87302; name = LOGO.M
+    file[]: crc = 37049ca6; size =    914108; name = MATTHELP.M
+    file[]: crc = a4d1a96e; size =   1828170; name = MATTHELP.S
+    file[]: crc = 9d928a72; size =   4099088; name = OREGON.EXE
+    file[]: crc = b46e3949; size =    735856; name = OREGON.HLP
+    file[]: crc = fc2f0168; size =  23676416; name = OREGONSP.DLL
+    file[]: crc = e002d8d5; size =      3708; name = STEADY.MID
+    file[]: crc = 8c9cc295; size =      6789; name = STREN.MID
+    file[]: crc = 5ef28465; size =   2175020; name = THEME.M
+    file[]: crc = 161ca184; size =   4402684; name = THEME.S
+    file[]: crc = 508c9f06; size =    940138; name = WELCOME.M
+    file[]: crc = a2c8699f; size =   1880232; name = WELCOME.S
+    file[]: crc = 06759978; size =   1423760; name = WTRRUSH.M
+end
+
+//
+// Oregon Trail for Windows, Version 1.1
+//
+game[pc-win-en-1.1]:
+    name = The Oregon Trail for Windows, Version 1.1
+    anchorfile = oregon.exe
+    osenv = windows 3.11.002
+    audiohw = gmidi
+    winres = 800x600x16
+    launch = "$(rootpath)\OREGON.EXE"
+    rootpath = C:\MECC\OTWIN
+    
+    file[]: crc = dc9fc8e0; size =   1491662; name = BLUP.M
+    file[]: crc = 75290309; size =    285000; name = CRSSINGW.M
+    file[]: crc = a36605ab; size =    606536; name = DEATHSNG.M
+    file[]: crc = d6bbcc3d; size =   1192520; name = DEATHSNG.S
+    file[]: crc = 2fc4d629; size =    748408; name = DIRGE.M
+    file[]: crc = be3aebe6; size =   1496772; name = DIRGE.S
+    file[]: crc = 3ff5aebb; size =    431404; name = GB1.M
+    file[]: crc = 5b5d58eb; size =    476032; name = GB10.M
+    file[]: crc = a4fae869; size =    548928; name = GB11.M
+    file[]: crc = f1add745; size =    570028; name = GB12.M
+    file[]: crc = f678c151; size =    563756; name = GB13.M
+    file[]: crc = 3c28f901; size =    533932; name = GB14.M
+    file[]: crc = 3ae0e80b; size =    546220; name = GB15.M
+    file[]: crc = 43cf90c5; size =    643372; name = GB16.M
+    file[]: crc = ee0ea07b; size =    510508; name = GB17.M
+    file[]: crc = 724c06af; size =    522924; name = GB18.M
+    file[]: crc = 8f65c5b9; size =    506924; name = GB19.M
+    file[]: crc = bf54da57; size =    709676; name = GB2.M
+    file[]: crc = 416928db; size =    591404; name = GB20.M
+    file[]: crc = ec00c3de; size =    585870; name = GB21.M
+    file[]: crc = 917abcec; size =    396332; name = GB22.M
+    file[]: crc = e51f5255; size =    496458; name = GB23.M
+    file[]: crc = 0bd42b74; size =    508460; name = GB24.M
+    file[]: crc = e2f5f2cd; size =    518060; name = GB25.M
+    file[]: crc = ef323e77; size =    577068; name = GB26.M
+    file[]: crc = f554023b; size =    544980; name = GB27.M
+    file[]: crc = f5a399ca; size =    591404; name = GB28.M
+    file[]: crc = f1e5da1d; size =    528044; name = GB29.M
+    file[]: crc = e28739f7; size =    626284; name = GB3.M
+    file[]: crc = b05759ea; size =    598832; name = GB30.M
+    file[]: crc = ead81845; size =    575020; name = GB31.M
+    file[]: crc = 90144f10; size =    462252; name = GB32.M
+    file[]: crc = ec50d808; size =    524784; name = GB33.M
+    file[]: crc = 110794fe; size =    486828; name = GB34.M
+    file[]: crc = 6d28a6bb; size =    427052; name = GB35.M
+    file[]: crc = f5b63ccb; size =    554796; name = GB36.M
+    file[]: crc = ca470044; size =    636972; name = GB37.M
+    file[]: crc = 075f0cc4; size =    485420; name = GB38.M
+    file[]: crc = 1c84e0d2; size =    472236; name = GB39.M
+    file[]: crc = 25313723; size =    645676; name = GB4.M
+    file[]: crc = 9c95210b; size =    557612; name = GB40.M
+    file[]: crc = 62899158; size =    468140; name = GB41.M
+    file[]: crc = 34d3dab4; size =    459052; name = GB42.M
+    file[]: crc = 8f9980ba; size =    573484; name = GB43.M
+    file[]: crc = 0f3baff2; size =    309804; name = GB44.M
+    file[]: crc = 54fb8eea; size =    543276; name = GB45.M
+    file[]: crc = e0968ba2; size =    561748; name = GB46.M
+    file[]: crc = b31326f9; size =    506156; name = GB47.M
+    file[]: crc = 623c3790; size =    493484; name = GB48.M
+    file[]: crc = 49e5cfa8; size =    506220; name = GB49.M
+    file[]: crc = 349ee22b; size =    496172; name = GB5.M
+    file[]: crc = 4d862446; size =    476204; name = GB50.M
+    file[]: crc = cca7bd8c; size =    509894; name = GB51.M
+    file[]: crc = 093e82f0; size =    477804; name = GB52.M
+    file[]: crc = 5f26d0e1; size =    463660; name = GB53.M
+    file[]: crc = 7125920b; size =    489516; name = GB54.M
+    file[]: crc = 558953a3; size =    499748; name = GB55.M
+    file[]: crc = 8ca84d80; size =    435160; name = GB56.M
+    file[]: crc = 14383346; size =    382764; name = GB57.M
+    file[]: crc = 5ac8aeb7; size =    430636; name = GB58.M
+    file[]: crc = 881b7bf8; size =    537456; name = GB59.M
+    file[]: crc = 67e83420; size =    563756; name = GB6.M
+    file[]: crc = 71a7bd3c; size =    521744; name = GB60.M
+    file[]: crc = fbe74b42; size =    472620; name = GB61.M
+    file[]: crc = fd926f92; size =    494572; name = GB62.M
+    file[]: crc = 12713a5f; size =    457260; name = GB63.M
+    file[]: crc = 77b8482e; size =    470060; name = GB64.M
+    file[]: crc = 8278a6b0; size =    489516; name = GB65.M
+    file[]: crc = f88065a7; size =    608834; name = GB66.M
+    file[]: crc = ec96b14e; size =    465680; name = GB67.M
+    file[]: crc = 48d9f7dc; size =    350252; name = GB68.M
+    file[]: crc = 6dc49c19; size =    401110; name = GB69.M
+    file[]: crc = 54807202; size =    485214; name = GB7.M
+    file[]: crc = 3ac31f84; size =    473996; name = GB70.M
+    file[]: crc = 06f4432f; size =    742700; name = GB71.M
+    file[]: crc = 4270a0d2; size =    549676; name = GB72.M
+    file[]: crc = ab529afe; size =    387830; name = GB73.M
+    file[]: crc = 5411cf19; size =    506456; name = GB8.M
+    file[]: crc = e44b1930; size =    561452; name = GB9.M
+    file[]: crc = 3026a23a; size =      5673; name = GRUELING.MID
+    file[]: crc = 96920199; size =    344108; name = L10TLK1.M
+    file[]: crc = a4722f55; size =    362668; name = L10TLK2.M
+    file[]: crc = c80ab919; size =    402540; name = L10TLK3.M
+    file[]: crc = 461572af; size =    312364; name = L11TLK1.M
+    file[]: crc = 08fbb321; size =    373292; name = L11TLK2.M
+    file[]: crc = da5d6a92; size =    376108; name = L11TLK3.M
+    file[]: crc = 1b97bbe3; size =    362540; name = L12TLK1.M
+    file[]: crc = 4a6a3fab; size =    333474; name = L12TLK2.M
+    file[]: crc = fbc5dcdf; size =    392842; name = L12TLK3.M
+    file[]: crc = ed11b217; size =    350252; name = L13TLK1.M
+    file[]: crc = 78dc3af6; size =    374828; name = L13TLK2.M
+    file[]: crc = 185bfbe2; size =    354348; name = L13TLK3.M
+    file[]: crc = 4c492f21; size =    284716; name = L14TLK1.M
+    file[]: crc = ff894fc1; size =    364802; name = L14TLK2.M
+    file[]: crc = 77c8b42c; size =    370034; name = L14TLK3.M
+    file[]: crc = 72e99cf5; size =    399404; name = L15TLK1.M
+    file[]: crc = 52775ee0; size =    407596; name = L15TLK2.M
+    file[]: crc = 2a918657; size =    373198; name = L15TLK3.M
+    file[]: crc = 58638d8b; size =    407240; name = L16TLK1.M
+    file[]: crc = 80ac42a2; size =    424198; name = L16TLK2.M
+    file[]: crc = edbd98c4; size =    449580; name = L16TLK3.M
+    file[]: crc = 5145a048; size =    383276; name = L17TLK1.M
+    file[]: crc = 33482a34; size =    415020; name = L17TLK2.M
+    file[]: crc = d87f6f57; size =    405168; name = L17TLK3.M
+    file[]: crc = 655fb599; size =    260908; name = L18TLK1.M
+    file[]: crc = 1867f936; size =    329772; name = L18TLK2.M
+    file[]: crc = d3d2e6c2; size =    320426; name = L18TLK3.M
+    file[]: crc = 42f971bb; size =    287484; name = L1TLK1.M
+    file[]: crc = 8f024239; size =    355370; name = L1TLK2.M
+    file[]: crc = ad92a1d2; size =    324652; name = L1TLK3.M
+    file[]: crc = 1075cb95; size =    340772; name = L2TLK1.M
+    file[]: crc = f11b7c50; size =    328214; name = L2TLK2.M
+    file[]: crc = ccd1b0b4; size =    318508; name = L2TLK3.M
+    file[]: crc = ffbcf1e8; size =    395614; name = L3TLK1.M
+    file[]: crc = 10c4d935; size =    376876; name = L3TLK2.M
+    file[]: crc = 845dbbf3; size =    290860; name = L3TLK3.M
+    file[]: crc = 5e0924de; size =    266284; name = L4TLK1.M
+    file[]: crc = cbc7e0eb; size =    391468; name = L4TLK2.M
+    file[]: crc = 3ed53a66; size =    410668; name = L4TLK3.M
+    file[]: crc = 5212e9ff; size =    413440; name = L5TLK1.M
+    file[]: crc = 6fd90d07; size =    296074; name = L5TLK2.M
+    file[]: crc = 0b772fa7; size =    322798; name = L5TLK3.M
+    file[]: crc = feff2495; size =    271404; name = L6TLK1.M
+    file[]: crc = a578db91; size =    317484; name = L6TLK2.M
+    file[]: crc = 1af8a60f; size =    399690; name = L6TLK3.M
+    file[]: crc = 55a62a2b; size =    402422; name = L7TLK1.M
+    file[]: crc = dc3cf77b; size =    400652; name = L7TLK2.M
+    file[]: crc = fa4dbb68; size =    357722; name = L7TLK3.M
+    file[]: crc = 4db6e2fc; size =    379352; name = L8TLK1.M
+    file[]: crc = a9ecaa95; size =    393260; name = L8TLK2.M
+    file[]: crc = 3827ddbf; size =    372268; name = L8TLK3.M
+    file[]: crc = f56acfc5; size =    456748; name = L9TLK1.M
+    file[]: crc = 3fd6772f; size =    261852; name = L9TLK2.M
+    file[]: crc = 48b4ad6a; size =    373006; name = L9TLK3.M
+    file[]: crc = bbd5779a; size =    913580; name = LAND1.M
+    file[]: crc = 07fa5aaf; size =   1838406; name = LAND1.S
+    file[]: crc = 14ace6f2; size =    882368; name = LAND10.M
+    file[]: crc = 3b6d3958; size =   1811798; name = LAND10.S
+    file[]: crc = 9e9b642f; size =    820804; name = LAND11.M
+    file[]: crc = b2b29fa8; size =   1610774; name = LAND11.S
+    file[]: crc = 5413b7bd; size =   1017986; name = LAND12.M
+    file[]: crc = 5d037f9d; size =   1958324; name = LAND12.S
+    file[]: crc = 6abbd848; size =    953312; name = LAND13.M
+    file[]: crc = 62431b6c; size =   3663062; name = LAND13.S
+    file[]: crc = b3507634; size =    968826; name = LAND14.M
+    file[]: crc = 3fffdcf2; size =   1873430; name = LAND14.S
+    file[]: crc = 68fd5e97; size =    921312; name = LAND15.M
+    file[]: crc = c11043b7; size =   1786596; name = LAND15.S
+    file[]: crc = 39e77a61; size =   1115180; name = LAND16.M
+    file[]: crc = 851f930c; size =   2262854; name = LAND16.S
+    file[]: crc = 937b80cb; size =    466988; name = LAND17.M
+    file[]: crc = 90b0651e; size =   1863750; name = LAND17.S
+    file[]: crc = 85f5400d; size =    441928; name = LAND18.M
+    file[]: crc = cab0f875; size =    867014; name = LAND18.S
+    file[]: crc = 8b3f8e11; size =   1183824; name = LAND2.M
+    file[]: crc = fac91e5c; size =   2321678; name = LAND2.S
+    file[]: crc = 8a909cb1; size =   1044830; name = LAND3.M
+    file[]: crc = 86222a80; size =   2058950; name = LAND3.S
+    file[]: crc = e9dc1f62; size =    378668; name = LAND4.M
+    file[]: crc = 7c9c262c; size =   1477830; name = LAND4.S
+    file[]: crc = a78f8a14; size =   1323156; name = LAND5.M
+    file[]: crc = f0c350f2; size =   2603318; name = LAND5.S
+    file[]: crc = 159586aa; size =   1013944; name = LAND6.M
+    file[]: crc = 8721e918; size =   1971782; name = LAND6.S
+    file[]: crc = e2894ae2; size =   1373314; name = LAND7.M
+    file[]: crc = 5196db6b; size =   2908358; name = LAND7.S
+    file[]: crc = 1d783442; size =    688542; name = LAND8.M
+    file[]: crc = 46eff645; size =   1358598; name = LAND8.S
+    file[]: crc = e8b16bb2; size =    808492; name = LAND9.M
+    file[]: crc = f662f6db; size =   1650598; name = LAND9.S
+    file[]: crc = 595edbda; size =    605734; name = LEAVING.M
+    file[]: crc = 21d0b29c; size =   1211422; name = LEAVING.S
+    file[]: crc = e62bb1e4; size =     87302; name = LOGO.M
+    file[]: crc = 37049ca6; size =    914108; name = MATTHELP.M
+    file[]: crc = a4d1a96e; size =   1828170; name = MATTHELP.S
+    file[]: crc = 022b322d; size =   4624766; name = OREGON.EXE
+    file[]: crc = b46e3949; size =    735856; name = OREGON.HLP
+    file[]: crc = fc2f0168; size =  23676416; name = OREGONSP.DLL
+    file[]: crc = e002d8d5; size =      3708; name = STEADY.MID
+    file[]: crc = 8c9cc295; size =      6789; name = STREN.MID
+    file[]: crc = 5ef28465; size =   2175020; name = THEME.M
+    file[]: crc = 161ca184; size =   4402684; name = THEME.S
+    file[]: crc = 508c9f06; size =    940138; name = WELCOME.M
+    file[]: crc = a2c8699f; size =   1880232; name = WELCOME.S
+    file[]: crc = 06759978; size =   1423760; name = WTRRUSH.M
+end
+
+//
+// Oregon Trail for Windows, Version 1.2
+//
+game[pc-win-en-1.2]:
+    name = The Oregon Trail for Windows, Version 1.2
+    anchorfile = oregon32.exe
+    osenv = windows 98
+    audiohw = gmidi
+    winres = 800x600x16
+    launch = "$(rootpath)\OREGON32.EXE"
+    rootpath = C:\MECC\OTWIN32
+    
+    file[]: crc = dc9fc8e0; size =   1491662; name = BLUP.M
+    file[]: crc = 75290309; size =    285000; name = CRSSINGW.M
+    file[]: crc = a36605ab; size =    606536; name = DEATHSNG.M
+    file[]: crc = d6bbcc3d; size =   1192520; name = DEATHSNG.S
+    file[]: crc = 2fc4d629; size =    748408; name = DIRGE.M
+    file[]: crc = be3aebe6; size =   1496772; name = DIRGE.S
+    file[]: crc = 3ff5aebb; size =    431404; name = GB1.M
+    file[]: crc = 5b5d58eb; size =    476032; name = GB10.M
+    file[]: crc = a4fae869; size =    548928; name = GB11.M
+    file[]: crc = f1add745; size =    570028; name = GB12.M
+    file[]: crc = f678c151; size =    563756; name = GB13.M
+    file[]: crc = 3c28f901; size =    533932; name = GB14.M
+    file[]: crc = 3ae0e80b; size =    546220; name = GB15.M
+    file[]: crc = 43cf90c5; size =    643372; name = GB16.M
+    file[]: crc = ee0ea07b; size =    510508; name = GB17.M
+    file[]: crc = 724c06af; size =    522924; name = GB18.M
+    file[]: crc = 8f65c5b9; size =    506924; name = GB19.M
+    file[]: crc = bf54da57; size =    709676; name = GB2.M
+    file[]: crc = 416928db; size =    591404; name = GB20.M
+    file[]: crc = ec00c3de; size =    585870; name = GB21.M
+    file[]: crc = 917abcec; size =    396332; name = GB22.M
+    file[]: crc = e51f5255; size =    496458; name = GB23.M
+    file[]: crc = 0bd42b74; size =    508460; name = GB24.M
+    file[]: crc = e2f5f2cd; size =    518060; name = GB25.M
+    file[]: crc = ef323e77; size =    577068; name = GB26.M
+    file[]: crc = f554023b; size =    544980; name = GB27.M
+    file[]: crc = f5a399ca; size =    591404; name = GB28.M
+    file[]: crc = f1e5da1d; size =    528044; name = GB29.M
+    file[]: crc = e28739f7; size =    626284; name = GB3.M
+    file[]: crc = b05759ea; size =    598832; name = GB30.M
+    file[]: crc = ead81845; size =    575020; name = GB31.M
+    file[]: crc = 90144f10; size =    462252; name = GB32.M
+    file[]: crc = ec50d808; size =    524784; name = GB33.M
+    file[]: crc = 110794fe; size =    486828; name = GB34.M
+    file[]: crc = 6d28a6bb; size =    427052; name = GB35.M
+    file[]: crc = f5b63ccb; size =    554796; name = GB36.M
+    file[]: crc = ca470044; size =    636972; name = GB37.M
+    file[]: crc = 075f0cc4; size =    485420; name = GB38.M
+    file[]: crc = 1c84e0d2; size =    472236; name = GB39.M
+    file[]: crc = 25313723; size =    645676; name = GB4.M
+    file[]: crc = 9c95210b; size =    557612; name = GB40.M
+    file[]: crc = 62899158; size =    468140; name = GB41.M
+    file[]: crc = 34d3dab4; size =    459052; name = GB42.M
+    file[]: crc = 8f9980ba; size =    573484; name = GB43.M
+    file[]: crc = 0f3baff2; size =    309804; name = GB44.M
+    file[]: crc = 54fb8eea; size =    543276; name = GB45.M
+    file[]: crc = e0968ba2; size =    561748; name = GB46.M
+    file[]: crc = b31326f9; size =    506156; name = GB47.M
+    file[]: crc = 623c3790; size =    493484; name = GB48.M
+    file[]: crc = 49e5cfa8; size =    506220; name = GB49.M
+    file[]: crc = 349ee22b; size =    496172; name = GB5.M
+    file[]: crc = 4d862446; size =    476204; name = GB50.M
+    file[]: crc = cca7bd8c; size =    509894; name = GB51.M
+    file[]: crc = 093e82f0; size =    477804; name = GB52.M
+    file[]: crc = 5f26d0e1; size =    463660; name = GB53.M
+    file[]: crc = 7125920b; size =    489516; name = GB54.M
+    file[]: crc = 558953a3; size =    499748; name = GB55.M
+    file[]: crc = 8ca84d80; size =    435160; name = GB56.M
+    file[]: crc = 14383346; size =    382764; name = GB57.M
+    file[]: crc = 5ac8aeb7; size =    430636; name = GB58.M
+    file[]: crc = 881b7bf8; size =    537456; name = GB59.M
+    file[]: crc = 67e83420; size =    563756; name = GB6.M
+    file[]: crc = 71a7bd3c; size =    521744; name = GB60.M
+    file[]: crc = fbe74b42; size =    472620; name = GB61.M
+    file[]: crc = fd926f92; size =    494572; name = GB62.M
+    file[]: crc = 12713a5f; size =    457260; name = GB63.M
+    file[]: crc = 77b8482e; size =    470060; name = GB64.M
+    file[]: crc = 8278a6b0; size =    489516; name = GB65.M
+    file[]: crc = f88065a7; size =    608834; name = GB66.M
+    file[]: crc = ec96b14e; size =    465680; name = GB67.M
+    file[]: crc = 48d9f7dc; size =    350252; name = GB68.M
+    file[]: crc = 6dc49c19; size =    401110; name = GB69.M
+    file[]: crc = 54807202; size =    485214; name = GB7.M
+    file[]: crc = 3ac31f84; size =    473996; name = GB70.M
+    file[]: crc = 06f4432f; size =    742700; name = GB71.M
+    file[]: crc = 4270a0d2; size =    549676; name = GB72.M
+    file[]: crc = ab529afe; size =    387830; name = GB73.M
+    file[]: crc = 5411cf19; size =    506456; name = GB8.M
+    file[]: crc = e44b1930; size =    561452; name = GB9.M
+    file[]: crc = 3026a23a; size =      5673; name = GRUELING.MID
+    file[]: crc = 96920199; size =    344108; name = L10TLK1.M
+    file[]: crc = a4722f55; size =    362668; name = L10TLK2.M
+    file[]: crc = c80ab919; size =    402540; name = L10TLK3.M
+    file[]: crc = 461572af; size =    312364; name = L11TLK1.M
+    file[]: crc = 08fbb321; size =    373292; name = L11TLK2.M
+    file[]: crc = da5d6a92; size =    376108; name = L11TLK3.M
+    file[]: crc = 1b97bbe3; size =    362540; name = L12TLK1.M
+    file[]: crc = 4a6a3fab; size =    333474; name = L12TLK2.M
+    file[]: crc = fbc5dcdf; size =    392842; name = L12TLK3.M
+    file[]: crc = ed11b217; size =    350252; name = L13TLK1.M
+    file[]: crc = 78dc3af6; size =    374828; name = L13TLK2.M
+    file[]: crc = 185bfbe2; size =    354348; name = L13TLK3.M
+    file[]: crc = 4c492f21; size =    284716; name = L14TLK1.M
+    file[]: crc = ff894fc1; size =    364802; name = L14TLK2.M
+    file[]: crc = 77c8b42c; size =    370034; name = L14TLK3.M
+    file[]: crc = 72e99cf5; size =    399404; name = L15TLK1.M
+    file[]: crc = 52775ee0; size =    407596; name = L15TLK2.M
+    file[]: crc = 2a918657; size =    373198; name = L15TLK3.M
+    file[]: crc = 58638d8b; size =    407240; name = L16TLK1.M
+    file[]: crc = 80ac42a2; size =    424198; name = L16TLK2.M
+    file[]: crc = edbd98c4; size =    449580; name = L16TLK3.M
+    file[]: crc = 5145a048; size =    383276; name = L17TLK1.M
+    file[]: crc = 33482a34; size =    415020; name = L17TLK2.M
+    file[]: crc = d87f6f57; size =    405168; name = L17TLK3.M
+    file[]: crc = 655fb599; size =    260908; name = L18TLK1.M
+    file[]: crc = 1867f936; size =    329772; name = L18TLK2.M
+    file[]: crc = d3d2e6c2; size =    320426; name = L18TLK3.M
+    file[]: crc = 42f971bb; size =    287484; name = L1TLK1.M
+    file[]: crc = 8f024239; size =    355370; name = L1TLK2.M
+    file[]: crc = ad92a1d2; size =    324652; name = L1TLK3.M
+    file[]: crc = 1075cb95; size =    340772; name = L2TLK1.M
+    file[]: crc = f11b7c50; size =    328214; name = L2TLK2.M
+    file[]: crc = ccd1b0b4; size =    318508; name = L2TLK3.M
+    file[]: crc = ffbcf1e8; size =    395614; name = L3TLK1.M
+    file[]: crc = 10c4d935; size =    376876; name = L3TLK2.M
+    file[]: crc = 845dbbf3; size =    290860; name = L3TLK3.M
+    file[]: crc = 5e0924de; size =    266284; name = L4TLK1.M
+    file[]: crc = cbc7e0eb; size =    391468; name = L4TLK2.M
+    file[]: crc = 3ed53a66; size =    410668; name = L4TLK3.M
+    file[]: crc = 5212e9ff; size =    413440; name = L5TLK1.M
+    file[]: crc = 6fd90d07; size =    296074; name = L5TLK2.M
+    file[]: crc = 0b772fa7; size =    322798; name = L5TLK3.M
+    file[]: crc = feff2495; size =    271404; name = L6TLK1.M
+    file[]: crc = a578db91; size =    317484; name = L6TLK2.M
+    file[]: crc = 1af8a60f; size =    399690; name = L6TLK3.M
+    file[]: crc = 55a62a2b; size =    402422; name = L7TLK1.M
+    file[]: crc = dc3cf77b; size =    400652; name = L7TLK2.M
+    file[]: crc = fa4dbb68; size =    357722; name = L7TLK3.M
+    file[]: crc = 4db6e2fc; size =    379352; name = L8TLK1.M
+    file[]: crc = a9ecaa95; size =    393260; name = L8TLK2.M
+    file[]: crc = 3827ddbf; size =    372268; name = L8TLK3.M
+    file[]: crc = f56acfc5; size =    456748; name = L9TLK1.M
+    file[]: crc = 3fd6772f; size =    261852; name = L9TLK2.M
+    file[]: crc = 48b4ad6a; size =    373006; name = L9TLK3.M
+    file[]: crc = bbd5779a; size =    913580; name = LAND1.M
+    file[]: crc = 07fa5aaf; size =   1838406; name = LAND1.S
+    file[]: crc = 14ace6f2; size =    882368; name = LAND10.M
+    file[]: crc = 3b6d3958; size =   1811798; name = LAND10.S
+    file[]: crc = 9e9b642f; size =    820804; name = LAND11.M
+    file[]: crc = b2b29fa8; size =   1610774; name = LAND11.S
+    file[]: crc = 5413b7bd; size =   1017986; name = LAND12.M
+    file[]: crc = 5d037f9d; size =   1958324; name = LAND12.S
+    file[]: crc = 6abbd848; size =    953312; name = LAND13.M
+    file[]: crc = 62431b6c; size =   3663062; name = LAND13.S
+    file[]: crc = b3507634; size =    968826; name = LAND14.M
+    file[]: crc = 3fffdcf2; size =   1873430; name = LAND14.S
+    file[]: crc = 68fd5e97; size =    921312; name = LAND15.M
+    file[]: crc = c11043b7; size =   1786596; name = LAND15.S
+    file[]: crc = 39e77a61; size =   1115180; name = LAND16.M
+    file[]: crc = 851f930c; size =   2262854; name = LAND16.S
+    file[]: crc = 937b80cb; size =    466988; name = LAND17.M
+    file[]: crc = 90b0651e; size =   1863750; name = LAND17.S
+    file[]: crc = 85f5400d; size =    441928; name = LAND18.M
+    file[]: crc = cab0f875; size =    867014; name = LAND18.S
+    file[]: crc = 8b3f8e11; size =   1183824; name = LAND2.M
+    file[]: crc = fac91e5c; size =   2321678; name = LAND2.S
+    file[]: crc = 8a909cb1; size =   1044830; name = LAND3.M
+    file[]: crc = 86222a80; size =   2058950; name = LAND3.S
+    file[]: crc = e9dc1f62; size =    378668; name = LAND4.M
+    file[]: crc = 7c9c262c; size =   1477830; name = LAND4.S
+    file[]: crc = a78f8a14; size =   1323156; name = LAND5.M
+    file[]: crc = f0c350f2; size =   2603318; name = LAND5.S
+    file[]: crc = 159586aa; size =   1013944; name = LAND6.M
+    file[]: crc = 8721e918; size =   1971782; name = LAND6.S
+    file[]: crc = e2894ae2; size =   1373314; name = LAND7.M
+    file[]: crc = 5196db6b; size =   2908358; name = LAND7.S
+    file[]: crc = 1d783442; size =    688542; name = LAND8.M
+    file[]: crc = 46eff645; size =   1358598; name = LAND8.S
+    file[]: crc = e8b16bb2; size =    808492; name = LAND9.M
+    file[]: crc = f662f6db; size =   1650598; name = LAND9.S
+    file[]: crc = 595edbda; size =    605734; name = LEAVING.M
+    file[]: crc = 21d0b29c; size =   1211422; name = LEAVING.S
+    file[]: crc = e62bb1e4; size =     87302; name = LOGO.M
+    file[]: crc = 37049ca6; size =    914108; name = MATTHELP.M
+    file[]: crc = a4d1a96e; size =   1828170; name = MATTHELP.S
+    file[]: crc = b46e3949; size =    735856; name = OREGON.HLP
+    file[]: crc = a8557523; size =        43; name = OREGON.INI
+    file[]: crc = 07f7042f; size =  23601152; name = OREGON32.DLL
+    file[]: crc = 46b22667; size =   3994624; name = OREGON32.EXE
+    file[]: crc = af59bd8b; size =      1078; name = OTCD.ICO
+    file[]: crc = 59d3cee1; size =      1078; name = OTWIN.ICO
+    file[]: crc = e002d8d5; size =      3708; name = STEADY.MID
+    file[]: crc = 8c9cc295; size =      6789; name = STREN.MID
+    file[]: crc = 5ef28465; size =   2175020; name = THEME.M
+    file[]: crc = 161ca184; size =   4402684; name = THEME.S
+    file[]: crc = 508c9f06; size =    940138; name = WELCOME.M
+    file[]: crc = a2c8699f; size =   1880232; name = WELCOME.S
+    file[]: crc = 06759978; size =   1423760; name = WTRRUSH.M
+
+
+end
+
+end

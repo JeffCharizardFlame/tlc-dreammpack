@@ -1,0 +1,375 @@
+desc[tlc-rrtoddler]:
+
+name = Reader Rabbit's Toddler
+icon = tlc-rrtoddler.png
+machine = pc
+rootpath = C:\TLCWIN\RRT
+launch = "$(rootpath)\RRTW32.EXE"
+osenv = windows 98
+audiohw = gmidi
+winres = 640x480x8
+
+//
+// filesystem
+//
+mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD
+
+mount[cdw]: vpath = D:\; srcpath = ram
+
+//
+// initialization script
+//
+script[cd-init]:
+	code = [[[$(CRLF)
+	    // set the volume label on the CD
+        drive_set_label("D", "$$(CDLABEL)");
+        file_save("$$(rootpath)\\RRTW32.INI", "$$(RRTW32_CONTENTS)");
+    ]]]
+end
+
+//
+// English (US) CD, Version 1.03
+//
+game[pc-cd-en-us-1.03]:
+    name = English (US) CD, Version 1.03
+    anchorfile = RRTW32.EXE
+    anchordepth = 1
+    file[]: crc = bd1d5b06; size =   9762415; name = EDATA_HD.DF
+    file[]: crc = 3c403f1b; size =    227433; name = RRTW32.EXE
+    file[]: crc = d8bd604e; size =     71680; name = SMACKW32.DLL
+    file[]: crc = 5ec6317c; size =  32336109; name = CD\RRT\DATA\EDATA_CD.DF
+    file[]: crc = 326cf71d; size =   1298896; name = CD\RRT\DATA\MOVIES\CLOSING\END.SMK
+    file[]: crc = 2208dd5c; size =    926224; name = CD\RRT\DATA\MOVIES\CLOSING\MAINEXIT.SMK
+    file[]: crc = d675ec8f; size =    319208; name = CD\RRT\DATA\MOVIES\COLORING\BOATAN.SMK
+    file[]: crc = 7943093b; size =   1025296; name = CD\RRT\DATA\MOVIES\COLORING\BTRFLYAN.SMK
+    file[]: crc = 513e36bf; size =    339132; name = CD\RRT\DATA\MOVIES\COLORING\CAR.SMK
+    file[]: crc = 09fc95b7; size =    850412; name = CD\RRT\DATA\MOVIES\COLORING\DINOAN.SMK
+    file[]: crc = 04eafbb4; size =    985816; name = CD\RRT\DATA\MOVIES\COLORING\FISHAN.SMK
+    file[]: crc = 807ee883; size =    243140; name = CD\RRT\DATA\MOVIES\COLORING\HOUSEAN.SMK
+    file[]: crc = c5095150; size =    386316; name = CD\RRT\DATA\MOVIES\COLORING\LETTERAN.SMK
+    file[]: crc = 02019895; size =    386600; name = CD\RRT\DATA\MOVIES\COLORING\NUMBERAN.SMK
+    file[]: crc = ebcd2438; size =   1072496; name = CD\RRT\DATA\MOVIES\COLORING\PONYAN.SMK
+    file[]: crc = 45bd0687; size =    181180; name = CD\RRT\DATA\MOVIES\COLORING\SEALAN.SMK
+    file[]: crc = a76d319d; size =    501264; name = CD\RRT\DATA\MOVIES\COLORING\WINDMAN.SMK
+    file[]: crc = 13ae169d; size =    235932; name = CD\RRT\DATA\MOVIES\MAINMENU\BUBMAT.SMK
+    file[]: crc = a016cc4b; size =    228420; name = CD\RRT\DATA\MOVIES\MAINMENU\COLORMAT.SMK
+    file[]: crc = 9d85ff54; size =    258504; name = CD\RRT\DATA\MOVIES\MAINMENU\FINGMAT.SMK
+    file[]: crc = c2ec275f; size =    213272; name = CD\RRT\DATA\MOVIES\MAINMENU\MENUMAT.SMK
+    file[]: crc = 7fd67600; size =    252028; name = CD\RRT\DATA\MOVIES\MAINMENU\MUSICMAT.SMK
+    file[]: crc = 14e45216; size =    219788; name = CD\RRT\DATA\MOVIES\MAINMENU\PUZZMAT.SMK
+    file[]: crc = 5a1e8cf1; size =    231388; name = CD\RRT\DATA\MOVIES\MAINMENU\SAFMAT.SMK
+    file[]: crc = 31296ec7; size =    261836; name = CD\RRT\DATA\MOVIES\MAINMENU\THREEMAT.SMK
+    file[]: crc = 7271cb21; size =    257948; name = CD\RRT\DATA\MOVIES\MAINMENU\WHEREMAT.SMK
+    file[]: crc = 958c4eed; size =   3600388; name = CD\RRT\DATA\MOVIES\OPENING\OPENA_F.SMK
+    file[]: crc = 95addf52; size =   2671656; name = CD\RRT\DATA\MOVIES\OPENING\OPENA_S.SMK
+    file[]: crc = e9c7ce1f; size =   4615644; name = CD\RRT\DATA\MOVIES\OPENING\OPENB_F.SMK
+    file[]: crc = edebb534; size =   3161968; name = CD\RRT\DATA\MOVIES\OPENING\OPENB_S.SMK
+    file[]: crc = 3915e11c; size =   1244680; name = CD\RRT\DATA\MOVIES\OPENING\TLCIN_F.SMK
+    file[]: crc = 87a742d4; size =    997188; name = CD\RRT\DATA\MOVIES\OPENING\TLCIN_S.SMK
+    file[]: crc = ff2cf621; size =   2349760; name = CD\RRT\DATA\MOVIES\THEATER\BLUE.SMK
+    file[]: crc = 0bcb8dd8; size =   1596372; name = CD\RRT\DATA\MOVIES\THEATER\BLUE8.SMK
+    file[]: crc = 8e46e6bf; size =   2347692; name = CD\RRT\DATA\MOVIES\THEATER\CLAP.SMK
+    file[]: crc = ec4125fc; size =   1637636; name = CD\RRT\DATA\MOVIES\THEATER\CLAP8.SMK
+    file[]: crc = eda5a940; size =   3971608; name = CD\RRT\DATA\MOVIES\THEATER\EENCY.SMK
+    file[]: crc = 8eb2622e; size =   2529500; name = CD\RRT\DATA\MOVIES\THEATER\EENCY8.SMK
+    file[]: crc = a491cb93; size =   2435656; name = CD\RRT\DATA\MOVIES\THEATER\HICK.SMK
+    file[]: crc = fa17c541; size =   1698232; name = CD\RRT\DATA\MOVIES\THEATER\HICK8.SMK
+    file[]: crc = 71836fef; size =   2711520; name = CD\RRT\DATA\MOVIES\THEATER\PEEP.SMK
+    file[]: crc = ba5e23c6; size =   1657308; name = CD\RRT\DATA\MOVIES\THEATER\PEEP8.SMK
+    file[]: crc = 8d14f77e; size =   3229920; name = CD\RRT\DATA\MOVIES\THEATER\TEAPOT.SMK
+    file[]: crc = bb71e68a; size =   2042472; name = CD\RRT\DATA\MOVIES\THEATER\TEAPOT8.SMK
+    file[]: crc = caae6ee2; size =   3229820; name = CD\RRT\DATA\MOVIES\THEATER\THUMB.SMK
+    file[]: crc = 99056cee; size =   2106328; name = CD\RRT\DATA\MOVIES\THEATER\THUMB8.SMK
+    file[]: crc = 6c1fd5a8; size =   3923136; name = CD\RRT\DATA\MOVIES\THEATER\TWINKLE.SMK
+    file[]: crc = 44633b23; size =   2358712; name = CD\RRT\DATA\MOVIES\THEATER\TWINKLE8.SMK
+    
+    CDLABEL = RRTWINCD
+    RRTW32_CONTENTS = [[[$(CRLF)
+; Reader Rabbit's Toddler 
+[Hardware]
+CDDrive=D:\RRT\DATA
+
+[Dialog]
+ResolutionDialog=0
+]]]
+end
+
+//
+// English (US) CD, Version 2.0
+//
+game[pc-cd-en-us-2.0]:
+    name = English (US) CD, Version 2.0
+    anchorfile = RRTW32.EXE
+    anchordepth = 1
+    
+    file[]: crc = fedde4b4; size =  11442238; name = EDATA_HD.DF
+    file[]: crc = fad4aeef; size =   1119893; name = RRTW32.EXE
+    file[]: crc = a7c793d8; size =     12778; name = RRTW32.INI
+    file[]: crc = d8bd604e; size =     71680; name = SMACKW32.DLL
+    file[]: crc = da5a7ebc; size =  41188391; name = CD\RRT\DATA\EDATA_CD.DF
+    file[]: crc = 326cf71d; size =   1298896; name = CD\RRT\DATA\MOVIES\CLOSING\END.SMK
+    file[]: crc = e718c4a9; size =    932236; name = CD\RRT\DATA\MOVIES\CLOSING\MAINEXIT.SMK
+    file[]: crc = d675ec8f; size =    319208; name = CD\RRT\DATA\MOVIES\COLORING\BOATAN.SMK
+    file[]: crc = 7943093b; size =   1025296; name = CD\RRT\DATA\MOVIES\COLORING\BTRFLYAN.SMK
+    file[]: crc = 513e36bf; size =    339132; name = CD\RRT\DATA\MOVIES\COLORING\CAR.SMK
+    file[]: crc = 09fc95b7; size =    850412; name = CD\RRT\DATA\MOVIES\COLORING\DINOAN.SMK
+    file[]: crc = 04eafbb4; size =    985816; name = CD\RRT\DATA\MOVIES\COLORING\FISHAN.SMK
+    file[]: crc = 807ee883; size =    243140; name = CD\RRT\DATA\MOVIES\COLORING\HOUSEAN.SMK
+    file[]: crc = c5095150; size =    386316; name = CD\RRT\DATA\MOVIES\COLORING\LETTERAN.SMK
+    file[]: crc = 02019895; size =    386600; name = CD\RRT\DATA\MOVIES\COLORING\NUMBERAN.SMK
+    file[]: crc = ebcd2438; size =   1072496; name = CD\RRT\DATA\MOVIES\COLORING\PONYAN.SMK
+    file[]: crc = 60413ec4; size =    253228; name = CD\RRT\DATA\MOVIES\COLORING\PRSNL.SMK
+    file[]: crc = 45bd0687; size =    181180; name = CD\RRT\DATA\MOVIES\COLORING\SEALAN.SMK
+    file[]: crc = a76d319d; size =    501264; name = CD\RRT\DATA\MOVIES\COLORING\WINDMAN.SMK
+    file[]: crc = 0a555c2a; size =    242136; name = CD\RRT\DATA\MOVIES\MAINMENU\BUBMAT.SMK
+    file[]: crc = 39777833; size =    233840; name = CD\RRT\DATA\MOVIES\MAINMENU\COLORMAT.SMK
+    file[]: crc = 4531621c; size =    264184; name = CD\RRT\DATA\MOVIES\MAINMENU\FINGMAT.SMK
+    file[]: crc = 69626235; size =    231132; name = CD\RRT\DATA\MOVIES\MAINMENU\MENUMAT.SMK
+    file[]: crc = 5d73ba99; size =    285968; name = CD\RRT\DATA\MOVIES\MAINMENU\MUSICMAT.SMK
+    file[]: crc = 251851d7; size =    226084; name = CD\RRT\DATA\MOVIES\MAINMENU\PUZZMAT.SMK
+    file[]: crc = 04ce3e69; size =    238316; name = CD\RRT\DATA\MOVIES\MAINMENU\SAFMAT.SMK
+    file[]: crc = 6e2dd9ef; size =    269900; name = CD\RRT\DATA\MOVIES\MAINMENU\THREEMAT.SMK
+    file[]: crc = 30aaae00; size =    279420; name = CD\RRT\DATA\MOVIES\MAINMENU\TRAINMAT.SMK
+    file[]: crc = 63557f00; size =    291536; name = CD\RRT\DATA\MOVIES\MAINMENU\WHEREMAT.SMK
+    file[]: crc = 912a64d3; size =   3599896; name = CD\RRT\DATA\MOVIES\OPENING\OPENA_F.SMK
+    file[]: crc = 97a2a329; size =   2625684; name = CD\RRT\DATA\MOVIES\OPENING\OPENA_S.SMK
+    file[]: crc = 9cfba0eb; size =   4625988; name = CD\RRT\DATA\MOVIES\OPENING\OPENB_F.SMK
+    file[]: crc = 9cfba0eb; size =   4625988; name = CD\RRT\DATA\MOVIES\OPENING\OPENB_S.SMK
+    file[]: crc = 22b1ae3b; size =   1022452; name = CD\RRT\DATA\MOVIES\OPENING\TLCIN_F.SMK
+    file[]: crc = 2ef66089; size =   1021796; name = CD\RRT\DATA\MOVIES\OPENING\TLCIN_S.SMK
+    file[]: crc = ff2cf621; size =   2349760; name = CD\RRT\DATA\MOVIES\THEATER\BLUE.SMK
+    file[]: crc = 0bcb8dd8; size =   1596372; name = CD\RRT\DATA\MOVIES\THEATER\BLUE8.SMK
+    file[]: crc = 8e46e6bf; size =   2347692; name = CD\RRT\DATA\MOVIES\THEATER\CLAP.SMK
+    file[]: crc = ec4125fc; size =   1637636; name = CD\RRT\DATA\MOVIES\THEATER\CLAP8.SMK
+    file[]: crc = eda5a940; size =   3971608; name = CD\RRT\DATA\MOVIES\THEATER\EENCY.SMK
+    file[]: crc = 8eb2622e; size =   2529500; name = CD\RRT\DATA\MOVIES\THEATER\EENCY8.SMK
+    file[]: crc = a491cb93; size =   2435656; name = CD\RRT\DATA\MOVIES\THEATER\HICK.SMK
+    file[]: crc = fa17c541; size =   1698232; name = CD\RRT\DATA\MOVIES\THEATER\HICK8.SMK
+    file[]: crc = 71836fef; size =   2711520; name = CD\RRT\DATA\MOVIES\THEATER\PEEP.SMK
+    file[]: crc = ba5e23c6; size =   1657308; name = CD\RRT\DATA\MOVIES\THEATER\PEEP8.SMK
+    file[]: crc = 8d14f77e; size =   3229920; name = CD\RRT\DATA\MOVIES\THEATER\TEAPOT.SMK
+    file[]: crc = bb71e68a; size =   2042472; name = CD\RRT\DATA\MOVIES\THEATER\TEAPOT8.SMK
+    file[]: crc = caae6ee2; size =   3229820; name = CD\RRT\DATA\MOVIES\THEATER\THUMB.SMK
+    file[]: crc = 99056cee; size =   2106328; name = CD\RRT\DATA\MOVIES\THEATER\THUMB8.SMK
+    file[]: crc = 6c1fd5a8; size =   3923136; name = CD\RRT\DATA\MOVIES\THEATER\TWINKLE.SMK
+    file[]: crc = 44633b23; size =   2358712; name = CD\RRT\DATA\MOVIES\THEATER\TWINKLE8.SMK
+
+    
+    CDLABEL = RR_Toddler
+    RRTW32_CONTENTS = ""
+end
+
+//
+// English (UK) CD, Version 1.02
+//
+game[pc-cd-en-uk-1.02]:
+    name = English (UK) CD, Version 1.02
+    anchorfile = RRTW32.EXE
+    anchordepth = 1
+
+    file[]: crc = ee24a214; size =   9956365; name = EDATA_HD.DF
+    file[]: crc = cfb1d136; size =    227577; name = RRTW32.EXE
+    file[]: crc = d8bd604e; size =     71680; name = SMACKW32.DLL
+    file[]: crc = f41842af; size =  32166527; name = CD\RRT\DATA\EDATA_CD.DF
+    file[]: crc = fc880824; size =   1286396; name = CD\RRT\DATA\MOVIES\CLOSING\END.SMK
+    file[]: crc = 938bcff2; size =    927460; name = CD\RRT\DATA\MOVIES\CLOSING\MAINEXIT.SMK
+    file[]: crc = ed39dbb5; size =    313244; name = CD\RRT\DATA\MOVIES\COLORING\BOATAN.SMK
+    file[]: crc = c3c762dc; size =   1012964; name = CD\RRT\DATA\MOVIES\COLORING\BTRFLYAN.SMK
+    file[]: crc = 513e36bf; size =    339132; name = CD\RRT\DATA\MOVIES\COLORING\CAR.SMK
+    file[]: crc = 09fc95b7; size =    850412; name = CD\RRT\DATA\MOVIES\COLORING\DINOAN.SMK
+    file[]: crc = c5efbadb; size =   1189012; name = CD\RRT\DATA\MOVIES\COLORING\FISHAN.SMK
+    file[]: crc = 807ee883; size =    243140; name = CD\RRT\DATA\MOVIES\COLORING\HOUSEAN.SMK
+    file[]: crc = 00596330; size =    336528; name = CD\RRT\DATA\MOVIES\COLORING\LETTERAN.SMK
+    file[]: crc = 2142190a; size =    375712; name = CD\RRT\DATA\MOVIES\COLORING\NUMBERAN.SMK
+    file[]: crc = ebcd2438; size =   1072496; name = CD\RRT\DATA\MOVIES\COLORING\PONYAN.SMK
+    file[]: crc = 45bd0687; size =    181180; name = CD\RRT\DATA\MOVIES\COLORING\SEALAN.SMK
+    file[]: crc = a76d319d; size =    501264; name = CD\RRT\DATA\MOVIES\COLORING\WINDMAN.SMK
+    file[]: crc = 13ae169d; size =    235932; name = CD\RRT\DATA\MOVIES\MAINMENU\BUBMAT.SMK
+    file[]: crc = a016cc4b; size =    228420; name = CD\RRT\DATA\MOVIES\MAINMENU\COLORMAT.SMK
+    file[]: crc = 9d85ff54; size =    258504; name = CD\RRT\DATA\MOVIES\MAINMENU\FINGMAT.SMK
+    file[]: crc = c2ec275f; size =    213272; name = CD\RRT\DATA\MOVIES\MAINMENU\MENUMAT.SMK
+    file[]: crc = 7fd67600; size =    252028; name = CD\RRT\DATA\MOVIES\MAINMENU\MUSICMAT.SMK
+    file[]: crc = 14e45216; size =    219788; name = CD\RRT\DATA\MOVIES\MAINMENU\PUZZMAT.SMK
+    file[]: crc = 5a1e8cf1; size =    231388; name = CD\RRT\DATA\MOVIES\MAINMENU\SAFMAT.SMK
+    file[]: crc = 31296ec7; size =    261836; name = CD\RRT\DATA\MOVIES\MAINMENU\THREEMAT.SMK
+    file[]: crc = 7271cb21; size =    257948; name = CD\RRT\DATA\MOVIES\MAINMENU\WHEREMAT.SMK
+    file[]: crc = ddde4daa; size =   3582292; name = CD\RRT\DATA\MOVIES\OPENING\OPENA_F.SMK
+    file[]: crc = 87c23d6b; size =   2653560; name = CD\RRT\DATA\MOVIES\OPENING\OPENA_S.SMK
+    file[]: crc = 7ace7fa0; size =   4584736; name = CD\RRT\DATA\MOVIES\OPENING\OPENB_F.SMK
+    file[]: crc = 7cd892bc; size =   3131060; name = CD\RRT\DATA\MOVIES\OPENING\OPENB_S.SMK
+    file[]: crc = ff47c866; size =   1206080; name = CD\RRT\DATA\MOVIES\OPENING\TLCIN_F.SMK
+    file[]: crc = 4213f00c; size =    934776; name = CD\RRT\DATA\MOVIES\OPENING\TLCIN_S.SMK
+    file[]: crc = f775ef67; size =   2352404; name = CD\RRT\DATA\MOVIES\THEATER\BLUE.SMK
+    file[]: crc = f04c6eca; size =   1598556; name = CD\RRT\DATA\MOVIES\THEATER\BLUE8.SMK
+    file[]: crc = b57343bd; size =   2327972; name = CD\RRT\DATA\MOVIES\THEATER\CLAP.SMK
+    file[]: crc = 424e1a7f; size =   1619184; name = CD\RRT\DATA\MOVIES\THEATER\CLAP8.SMK
+    file[]: crc = 7f93feb0; size =   3966204; name = CD\RRT\DATA\MOVIES\THEATER\EENCY.SMK
+    file[]: crc = b82f403b; size =   2524232; name = CD\RRT\DATA\MOVIES\THEATER\EENCY8.SMK
+    file[]: crc = 36cc1ed3; size =   2458680; name = CD\RRT\DATA\MOVIES\THEATER\HICK.SMK
+    file[]: crc = 4de78d0a; size =   1721032; name = CD\RRT\DATA\MOVIES\THEATER\HICK8.SMK
+    file[]: crc = 75a24f16; size =   2714300; name = CD\RRT\DATA\MOVIES\THEATER\PEEP.SMK
+    file[]: crc = f7991798; size =   1660928; name = CD\RRT\DATA\MOVIES\THEATER\PEEP8.SMK
+    file[]: crc = e39a4bb1; size =   3235140; name = CD\RRT\DATA\MOVIES\THEATER\TEAPOT.SMK
+    file[]: crc = 8af837ff; size =   2047700; name = CD\RRT\DATA\MOVIES\THEATER\TEAPOT8.SMK
+    file[]: crc = bb5828e1; size =   3260492; name = CD\RRT\DATA\MOVIES\THEATER\THUMB.SMK
+    file[]: crc = b7c1777e; size =   2136644; name = CD\RRT\DATA\MOVIES\THEATER\THUMB8.SMK
+    file[]: crc = e83e8cf3; size =   3927076; name = CD\RRT\DATA\MOVIES\THEATER\TWINKLE.SMK
+    file[]: crc = 4572c4fc; size =   2362596; name = CD\RRT\DATA\MOVIES\THEATER\TWINKLE8.SMK
+    
+    CDLABEL = RRTWINCD
+    RRTW32_CONTENTS = [[[$(CRLF)
+; Reader Rabbit's Toddler 
+[Hardware]
+CDDrive=D:\RRT\DATA
+
+[Dialog]
+ResolutionDialog=0
+]]]
+end
+
+//
+// Spanish CD, Version 1.02
+//
+game[pc-cd-es-1.02]:
+    name = Spanish CD, Version 1.02
+    anchorfile = RRTW32.EXE
+    anchordepth = 1
+
+    file[]: crc = c83fa792; size =   9976176; name = EDATA_HD.DF
+    file[]: crc = bf2547b9; size =    228089; name = RRTW32.EXE
+    file[]: crc = d8bd604e; size =     71680; name = SMACKW32.DLL
+    file[]: crc = e05e1b70; size =  33689061; name = CD\RRT\DATA\EDATA_CD.DF
+    file[]: crc = 91b3c1f9; size =   1288592; name = CD\RRT\DATA\MOVIES\CLOSING\END.SMK
+    file[]: crc = d6f4898e; size =    927548; name = CD\RRT\DATA\MOVIES\CLOSING\MAINEXIT.SMK
+    file[]: crc = b2578c3d; size =    330640; name = CD\RRT\DATA\MOVIES\COLORING\BOATAN.SMK
+    file[]: crc = 47451c87; size =   1238316; name = CD\RRT\DATA\MOVIES\COLORING\BTRFLYAN.SMK
+    file[]: crc = 513e36bf; size =    339132; name = CD\RRT\DATA\MOVIES\COLORING\CAR.SMK
+    file[]: crc = 09fc95b7; size =    850412; name = CD\RRT\DATA\MOVIES\COLORING\DINOAN.SMK
+    file[]: crc = c23f9109; size =   1150100; name = CD\RRT\DATA\MOVIES\COLORING\FISHAN.SMK
+    file[]: crc = 807ee883; size =    243140; name = CD\RRT\DATA\MOVIES\COLORING\HOUSEAN.SMK
+    file[]: crc = 070dbd4e; size =    387280; name = CD\RRT\DATA\MOVIES\COLORING\LETTERAN.SMK
+    file[]: crc = daf75d6b; size =    383804; name = CD\RRT\DATA\MOVIES\COLORING\NUMBERAN.SMK
+    file[]: crc = ebcd2438; size =   1072496; name = CD\RRT\DATA\MOVIES\COLORING\PONYAN.SMK
+    file[]: crc = 45bd0687; size =    181180; name = CD\RRT\DATA\MOVIES\COLORING\SEALAN.SMK
+    file[]: crc = a76d319d; size =    501264; name = CD\RRT\DATA\MOVIES\COLORING\WINDMAN.SMK
+    file[]: crc = 13ae169d; size =    235932; name = CD\RRT\DATA\MOVIES\MAINMENU\BUBMAT.SMK
+    file[]: crc = a016cc4b; size =    228420; name = CD\RRT\DATA\MOVIES\MAINMENU\COLORMAT.SMK
+    file[]: crc = 9d85ff54; size =    258504; name = CD\RRT\DATA\MOVIES\MAINMENU\FINGMAT.SMK
+    file[]: crc = c2ec275f; size =    213272; name = CD\RRT\DATA\MOVIES\MAINMENU\MENUMAT.SMK
+    file[]: crc = 7fd67600; size =    252028; name = CD\RRT\DATA\MOVIES\MAINMENU\MUSICMAT.SMK
+    file[]: crc = 14e45216; size =    219788; name = CD\RRT\DATA\MOVIES\MAINMENU\PUZZMAT.SMK
+    file[]: crc = 5a1e8cf1; size =    231388; name = CD\RRT\DATA\MOVIES\MAINMENU\SAFMAT.SMK
+    file[]: crc = 31296ec7; size =    261836; name = CD\RRT\DATA\MOVIES\MAINMENU\THREEMAT.SMK
+    file[]: crc = 7271cb21; size =    257948; name = CD\RRT\DATA\MOVIES\MAINMENU\WHEREMAT.SMK
+    file[]: crc = bda000ba; size =   3566976; name = CD\RRT\DATA\MOVIES\OPENING\OPENA_F.SMK
+    file[]: crc = 3ae03a79; size =   2638244; name = CD\RRT\DATA\MOVIES\OPENING\OPENA_S.SMK
+    file[]: crc = d1442541; size =   4659816; name = CD\RRT\DATA\MOVIES\OPENING\OPENB_F.SMK
+    file[]: crc = d1442541; size =   4659816; name = CD\RRT\DATA\MOVIES\OPENING\OPENB_S.SMK
+    file[]: crc = 4da26d29; size =   1546572; name = CD\RRT\DATA\MOVIES\OPENING\TLCIN_F.SMK
+    file[]: crc = 0d1ab611; size =    983752; name = CD\RRT\DATA\MOVIES\OPENING\TLCIN_S.SMK
+    file[]: crc = cb2ead68; size =   2379080; name = CD\RRT\DATA\MOVIES\THEATER\BLUE.SMK
+    file[]: crc = 04b053c1; size =   1624596; name = CD\RRT\DATA\MOVIES\THEATER\BLUE8.SMK
+    file[]: crc = 575a8310; size =   2361964; name = CD\RRT\DATA\MOVIES\THEATER\CLAP.SMK
+    file[]: crc = c1f14a71; size =   1654308; name = CD\RRT\DATA\MOVIES\THEATER\CLAP8.SMK
+    file[]: crc = e591d64a; size =   3991288; name = CD\RRT\DATA\MOVIES\THEATER\EENCY.SMK
+    file[]: crc = d19b91a4; size =   2549132; name = CD\RRT\DATA\MOVIES\THEATER\EENCY8.SMK
+    file[]: crc = 9de1bc11; size =   2441864; name = CD\RRT\DATA\MOVIES\THEATER\HICK.SMK
+    file[]: crc = 8684f4c5; size =   1704132; name = CD\RRT\DATA\MOVIES\THEATER\HICK8.SMK
+    file[]: crc = 94767742; size =   2740404; name = CD\RRT\DATA\MOVIES\THEATER\PEEP.SMK
+    file[]: crc = e5b5ba93; size =   1685200; name = CD\RRT\DATA\MOVIES\THEATER\PEEP8.SMK
+    file[]: crc = 1f632427; size =   3249168; name = CD\RRT\DATA\MOVIES\THEATER\TEAPOT.SMK
+    file[]: crc = 60bc467b; size =   2061120; name = CD\RRT\DATA\MOVIES\THEATER\TEAPOT8.SMK
+    file[]: crc = d722047a; size =   3264244; name = CD\RRT\DATA\MOVIES\THEATER\THUMB.SMK
+    file[]: crc = b23f9ea3; size =   2140452; name = CD\RRT\DATA\MOVIES\THEATER\THUMB8.SMK
+    file[]: crc = bf7e478e; size =   3899604; name = CD\RRT\DATA\MOVIES\THEATER\TWINKLE.SMK
+    file[]: crc = ddc7687c; size =   2336504; name = CD\RRT\DATA\MOVIES\THEATER\TWINKLE8.SMK
+
+    
+    CDLABEL = PPCD
+    RRTW32_CONTENTS = [[[$(CRLF)
+; Reader Rabbit's Toddler 
+[Hardware]
+CDDrive=D:\RRT\DATA
+
+[Dialog]
+ResolutionDialog=0
+]]]
+end
+
+//
+// Japanese CD
+//
+game[pc-cd-jp]:
+    name = Japanese CD
+    locale = ja-jp
+    rootpath = C:\Program Files\SOURCENEXT\RRBABY
+    anchorfile = RRTW32.EXE
+    anchordepth = 4
+
+    file[]: crc = 48b900d9; size =   9697230; name = EDATA_HD.DF
+    file[]: crc = 1d1c9903; size =    225939; name = RRTW32.EXE
+    file[]: crc = d8bd604e; size =     71680; name = SMACKW32.DLL
+    file[]: crc = 7331d901; size =  45293115; name = CD\SETUP\program files\SOURCENEXT\RRBABY\DATA\EDATA_CD.DF
+    file[]: crc = 115f99c8; size =   1587084; name = CD\SETUP\program files\SOURCENEXT\RRBABY\DATA\MOVIES\CLOSING\END.SMK
+    file[]: crc = 1fe06182; size =   1089164; name = CD\SETUP\program files\SOURCENEXT\RRBABY\DATA\MOVIES\CLOSING\MAINEXIT.SMK
+    file[]: crc = 6ff54afa; size =    579308; name = CD\SETUP\program files\SOURCENEXT\RRBABY\DATA\MOVIES\COLORING\BOATAN.SMK
+    file[]: crc = 7a742c4b; size =   1397148; name = CD\SETUP\program files\SOURCENEXT\RRBABY\DATA\MOVIES\COLORING\BTRFLYAN.SMK
+    file[]: crc = 513e36bf; size =    339132; name = CD\SETUP\program files\SOURCENEXT\RRBABY\DATA\MOVIES\COLORING\CAR.SMK
+    file[]: crc = d03eb0aa; size =    236176; name = CD\SETUP\program files\SOURCENEXT\RRBABY\DATA\MOVIES\COLORING\DARUMA.SMK
+    file[]: crc = 09fc95b7; size =    850412; name = CD\SETUP\program files\SOURCENEXT\RRBABY\DATA\MOVIES\COLORING\DINOAN.SMK
+    file[]: crc = f5356dcd; size =   1228820; name = CD\SETUP\program files\SOURCENEXT\RRBABY\DATA\MOVIES\COLORING\FISHAN.SMK
+    file[]: crc = 807ee883; size =    243140; name = CD\SETUP\program files\SOURCENEXT\RRBABY\DATA\MOVIES\COLORING\HOUSEAN.SMK
+    file[]: crc = 58536d3b; size =   1405328; name = CD\SETUP\program files\SOURCENEXT\RRBABY\DATA\MOVIES\COLORING\KOI.SMK
+    file[]: crc = c5095150; size =    386316; name = CD\SETUP\program files\SOURCENEXT\RRBABY\DATA\MOVIES\COLORING\LETTERAN.SMK
+    file[]: crc = 02019895; size =    386600; name = CD\SETUP\program files\SOURCENEXT\RRBABY\DATA\MOVIES\COLORING\NUMBERAN.SMK
+    file[]: crc = ebcd2438; size =   1072496; name = CD\SETUP\program files\SOURCENEXT\RRBABY\DATA\MOVIES\COLORING\PONYAN.SMK
+    file[]: crc = 45bd0687; size =    181180; name = CD\SETUP\program files\SOURCENEXT\RRBABY\DATA\MOVIES\COLORING\SEALAN.SMK
+    file[]: crc = 251aed56; size =    271612; name = CD\SETUP\program files\SOURCENEXT\RRBABY\DATA\MOVIES\COLORING\TEAPOT.SMK
+    file[]: crc = 9ca06029; size =    886576; name = CD\SETUP\program files\SOURCENEXT\RRBABY\DATA\MOVIES\COLORING\TOKEI.SMK
+    file[]: crc = a76d319d; size =    501264; name = CD\SETUP\program files\SOURCENEXT\RRBABY\DATA\MOVIES\COLORING\WINDMAN.SMK
+    file[]: crc = 13ae169d; size =    235932; name = CD\SETUP\program files\SOURCENEXT\RRBABY\DATA\MOVIES\MAINMENU\BUBMAT.SMK
+    file[]: crc = a016cc4b; size =    228420; name = CD\SETUP\program files\SOURCENEXT\RRBABY\DATA\MOVIES\MAINMENU\COLORMAT.SMK
+    file[]: crc = 9d85ff54; size =    258504; name = CD\SETUP\program files\SOURCENEXT\RRBABY\DATA\MOVIES\MAINMENU\FINGMAT.SMK
+    file[]: crc = c2ec275f; size =    213272; name = CD\SETUP\program files\SOURCENEXT\RRBABY\DATA\MOVIES\MAINMENU\MENUMAT.SMK
+    file[]: crc = 7fd67600; size =    252028; name = CD\SETUP\program files\SOURCENEXT\RRBABY\DATA\MOVIES\MAINMENU\MUSICMAT.SMK
+    file[]: crc = 14e45216; size =    219788; name = CD\SETUP\program files\SOURCENEXT\RRBABY\DATA\MOVIES\MAINMENU\PUZZMAT.SMK
+    file[]: crc = 5a1e8cf1; size =    231388; name = CD\SETUP\program files\SOURCENEXT\RRBABY\DATA\MOVIES\MAINMENU\SAFMAT.SMK
+    file[]: crc = 31296ec7; size =    261836; name = CD\SETUP\program files\SOURCENEXT\RRBABY\DATA\MOVIES\MAINMENU\THREEMAT.SMK
+    file[]: crc = 7271cb21; size =    257948; name = CD\SETUP\program files\SOURCENEXT\RRBABY\DATA\MOVIES\MAINMENU\WHEREMAT.SMK
+    file[]: crc = b4d680b3; size =   4146100; name = CD\SETUP\program files\SOURCENEXT\RRBABY\DATA\MOVIES\OPENING\OPENA_F.SMK
+    file[]: crc = 4b22329a; size =   3217368; name = CD\SETUP\program files\SOURCENEXT\RRBABY\DATA\MOVIES\OPENING\OPENA_S.SMK
+    file[]: crc = 729553ed; size =   5506156; name = CD\SETUP\program files\SOURCENEXT\RRBABY\DATA\MOVIES\OPENING\OPENB_F.SMK
+    file[]: crc = 63e3bdb4; size =   4052480; name = CD\SETUP\program files\SOURCENEXT\RRBABY\DATA\MOVIES\OPENING\OPENB_S.SMK
+    file[]: crc = 48a94529; size =   1245256; name = CD\SETUP\program files\SOURCENEXT\RRBABY\DATA\MOVIES\OPENING\TLCIN_F.SMK
+    file[]: crc = 3100d796; size =    872024; name = CD\SETUP\program files\SOURCENEXT\RRBABY\DATA\MOVIES\OPENING\TLCIN_S.SMK
+    file[]: crc = befd2d3d; size =   2400972; name = CD\SETUP\program files\SOURCENEXT\RRBABY\DATA\MOVIES\THEATER\BLUE.SMK
+    file[]: crc = 4d432c85; size =   1646608; name = CD\SETUP\program files\SOURCENEXT\RRBABY\DATA\MOVIES\THEATER\BLUE8.SMK
+    file[]: crc = 35801cc3; size =   2364792; name = CD\SETUP\program files\SOURCENEXT\RRBABY\DATA\MOVIES\THEATER\CLAP.SMK
+    file[]: crc = 36438d26; size =   1655480; name = CD\SETUP\program files\SOURCENEXT\RRBABY\DATA\MOVIES\THEATER\CLAP8.SMK
+    file[]: crc = 687f17d4; size =   4054852; name = CD\SETUP\program files\SOURCENEXT\RRBABY\DATA\MOVIES\THEATER\EENCY.SMK
+    file[]: crc = 7ac6f094; size =   2611684; name = CD\SETUP\program files\SOURCENEXT\RRBABY\DATA\MOVIES\THEATER\EENCY8.SMK
+    file[]: crc = 26c7b780; size =   2492384; name = CD\SETUP\program files\SOURCENEXT\RRBABY\DATA\MOVIES\THEATER\HICK.SMK
+    file[]: crc = 009a4857; size =   1753064; name = CD\SETUP\program files\SOURCENEXT\RRBABY\DATA\MOVIES\THEATER\HICK8.SMK
+    file[]: crc = bbd0352a; size =   2756788; name = CD\SETUP\program files\SOURCENEXT\RRBABY\DATA\MOVIES\THEATER\PEEP.SMK
+    file[]: crc = b5d5ec9e; size =   1701556; name = CD\SETUP\program files\SOURCENEXT\RRBABY\DATA\MOVIES\THEATER\PEEP8.SMK
+    file[]: crc = 4ce63928; size =   3279320; name = CD\SETUP\program files\SOURCENEXT\RRBABY\DATA\MOVIES\THEATER\TEAPOT.SMK
+    file[]: crc = 697f6cab; size =   2090500; name = CD\SETUP\program files\SOURCENEXT\RRBABY\DATA\MOVIES\THEATER\TEAPOT8.SMK
+    file[]: crc = af1dcbc8; size =   3305656; name = CD\SETUP\program files\SOURCENEXT\RRBABY\DATA\MOVIES\THEATER\THUMB.SMK
+    file[]: crc = f88dbc82; size =   2180700; name = CD\SETUP\program files\SOURCENEXT\RRBABY\DATA\MOVIES\THEATER\THUMB8.SMK
+    file[]: crc = bd0f1a74; size =   3949956; name = CD\SETUP\program files\SOURCENEXT\RRBABY\DATA\MOVIES\THEATER\TWINKLE.SMK
+    file[]: crc = ffa7e405; size =   2384284; name = CD\SETUP\program files\SOURCENEXT\RRBABY\DATA\MOVIES\THEATER\TWINKLE8.SMK
+    
+    CDLABEL = RRBABYCD
+    RRTW32_CONTENTS = [[[$(CRLF)
+; Reader Rabbit's Toddler 
+[Hardware]
+CDDrive=D:\Setup\Program Files\SourceNext\RRBABY\DATA
+
+[Dialog]
+ResolutionDialog=0
+]]]
+end
+
+end

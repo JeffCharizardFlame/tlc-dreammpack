@@ -1,0 +1,125 @@
+desc[tlc-midnight]:
+
+name = Super Solvers: Midnight Rescue
+icon = tlc-midnight.png
+machine = pc
+launch = ""
+osenv = windows 3.11.002
+
+
+config[display]:
+    condition = is_dos()
+    title = Display Adapter
+    option[ega]: name = EGA; videohw = ega;
+    option[cga]: name = CGA; videohw = cga;
+    option[herc]: name = Hercules; videohw = hercules;
+	
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD; condition = is_windows()
+
+mount[cdw]: vpath = D:\; srcpath = ram
+
+//
+// initialization script
+//
+script[cd-init]:
+    condition = is_windows()
+	code = [[[$(CRLF)
+	    // set the volume label on the CD
+        drive_set_label("D", "$$(CDLABEL)");
+        file_save("$$(rootpath)\\SSRWINCD.INI", "$$(SSRWINCD_CONTENTS)");
+    ]]]
+end
+
+//
+// English Windows
+//
+game[pc-win-en]:
+    name = English Windows
+    anchorfile = SSRWINCD.EXE
+    anchordepth = 2
+    
+    file[]: crc = 798aa5d0; size =     32544; name = SSR.FON
+    file[]: crc = 6a1816ed; size =     18536; name = SSRWINCD.DAT
+    file[]: crc = 4d8a49a8; size =    425488; name = SSRWINCD.EXE
+    file[]: crc = d2ed4482; size =       766; name = SSRWINCD.ICO
+    file[]: crc = cca5bf70; size =  14509204; name = CD\FB1.DAT
+    file[]: crc = 78958e48; size =  14058132; name = CD\FB2.DAT
+    file[]: crc = 179c8811; size =    310932; name = CD\SFX.DAT
+    file[]: crc = d4e49c3f; size =  11849364; name = CD\SPEECH.DAT
+    file[]: crc = 798aa5d0; size =     32544; name = CD\SSR.FON
+    file[]: crc = a74fadd5; size =   4753044; name = CD\SSR1.DAT
+    file[]: crc = 9a2535d0; size =     18536; name = CD\SSRWINCD.DAT
+    file[]: crc = 4d8a49a8; size =    425488; name = CD\SSRWINCD.EXE
+    file[]: crc = 3dd4b914; size =        46; name = CD\SSRWINCD.INI
+    file[]: crc = 3dd60552; size =    132318; name = CD\TASK.RSC
+    file[]: crc = 0074e7f7; size =       356; name = CD\MIDI\BENTER.MID
+    file[]: crc = 0289674d; size =       675; name = CD\MIDI\BMIDNITE.MID
+    file[]: crc = 9a05ca00; size =      2206; name = CD\MIDI\BROOMS.MID
+    file[]: crc = 733620a4; size =       772; name = CD\MIDI\BSIGNIN.MID
+    file[]: crc = 9f4e2942; size =      2667; name = CD\MIDI\BTHEME.MID
+    file[]: crc = 2158cc69; size =       378; name = CD\MIDI\BTRNSFRM.MID
+    file[]: crc = 44b6d638; size =      1620; name = CD\MIDI\BVICTORY.MID
+    file[]: crc = 35a60bfe; size =       376; name = CD\MIDI\EENTER.MID
+    file[]: crc = 10b2fff4; size =       751; name = CD\MIDI\EMIDNITE.MID
+    file[]: crc = 35a11432; size =      2884; name = CD\MIDI\EROOMS.MID
+    file[]: crc = 526f3176; size =       826; name = CD\MIDI\ESIGNIN.MID
+    file[]: crc = 649f54ad; size =      2958; name = CD\MIDI\ETHEME.MID
+    file[]: crc = 2158cc69; size =       378; name = CD\MIDI\ETRNSFRM.MID
+    file[]: crc = 5f0df666; size =      1828; name = CD\MIDI\EVICTORY.MID
+    file[]: crc = 44b6d638; size =      1620; name = CD\MIDI\VICTORY.MID
+
+    
+    rootpath = C:\TLCWIN\SSRWINCD
+    launch = "$(rootpath)\SSRWINCD.EXE"
+    audiohw = gmidi
+    winres = 640x480x8
+    CDLABEL = SSRWINCD
+    SSRWINCD_CONTENTS =  [[[$(CRLF)
+[Midnight Rescue! CD]
+wavemix=1
+graphics=3
+CDDrive=D:\SSRWINCD\
+
+]]]
+end
+
+//
+// English MS-DOS
+//
+game[pc-dos-en]:
+    name = English MS-DOS
+    osenv = dos
+    fixdivover = true
+    mips = $(MIPS_386DX_33)
+    ramkb = 2048
+    audiohw = sb16
+    anchorfile = SSR.EXE
+    
+    file[]: crc = 3caf1306; size =     27191; name = CLOSE.GRA
+    file[]: crc = a4b8aad8; size =     54195; name = DATTRIB.GRA
+    file[]: crc = 790d2e8f; size =      3428; name = DMENUS.GRA
+    file[]: crc = 10efe27a; size =     30436; name = DOPEN.GRA
+    file[]: crc = 9c9ee5eb; size =     60289; name = DSSR.GRA
+    file[]: crc = eaf2d2c5; size =    157463; name = FASTLOAD.GRA
+    file[]: crc = bdf3ef47; size =      5809; name = HELP.DAT
+    file[]: crc = 4ae6d05c; size =      4294; name = SSR.CGA
+    file[]: crc = 8c303377; size =     53176; name = SSR.DAT
+    file[]: crc = e3fcb9b8; size =    110505; name = SSR.EXE
+    file[]: crc = 7d8367b5; size =      3504; name = SSR.TGA
+    file[]: crc = c3d2cd1a; size =    134076; name = TASK.RSC
+    
+    rootpath = C:\TLC\SSR
+    launch = "$(rootpath)\ssr.exe"
+    CDLABEL = ""
+    SSRWINCD_CONTENTS = ""
+    
+end
+
+end

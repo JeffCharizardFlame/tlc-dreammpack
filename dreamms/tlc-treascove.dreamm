@@ -1,0 +1,215 @@
+desc[tlc-treascove]:
+
+name = Super Seekers: Treasure Cove!
+icon = tlc-treascove.png
+machine = pc
+osenv = windows 98
+launch = ""
+audiohw = gmidi
+winres = 640x480x8
+VER11 = 0
+VER20 = 0
+
+config[ossel]:
+    condition = is_windows() 
+    title = OS Select
+    option[win31]: name = Windows 3.1; launch = "$(rootpath)\tcvwin.exe"; osenv = windows 3.11.002;
+    option[win9x]: name = Windows 9x; launch = "$(rootpath)\tcvwin32.exe"; osenv = windows 98;
+	
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD; condition = is_windows()
+
+mount[cdw]: vpath = D:\; srcpath = ram
+
+//
+// initialization script
+//
+script[cd-init]:
+    condition = is_windows()
+	code = [[[$(CRLF)
+	    // set the volume label on the CD
+        drive_set_label("D", "$$(CDLABEL)");
+        file_save("$$(rootpath)\\TCVWIN.INI", "$$(TCVWIN_CONTENTS)"); condition = !$(VER11);
+        file_save("$$(rootpath)\\TCVCD.INI", "$$(TCVCD_CONTENTS)"); condition = !$(VER20);
+        file_save("C:\\WINDOWS\\TLCAPPS.INI", "$$(TLCAPPS16_CONTENTS)"); condition = is_windows("windows 3.11.002");
+        file_save("C:\\WINDOWS\\TLCAPPS.INI", "$$(TLCAPPS32_CONTENTS)"); condition = is_windows("windows 98");
+    ]]]
+end
+
+//
+// English MS-DOS
+//
+game[pc-dos-en]:
+    name = English MS-DOS
+    anchorfile = COVE.EXE
+    osenv = dos
+    fixdivover = true
+    mips = $(MIPS_386SX_20)
+    ramkb = 1024
+    audiohw = sb16
+    rootpath = C:\TLC\SSTC
+    launch = "$(rootpath)\COVE.EXE"
+
+    file[]: crc = 6c46081f; size =    156928; name = COVE.EXE
+    file[]: crc = 20277038; size =     13018; name = INSTALL.EXE
+    file[]: crc = 57f507da; size =       858; name = README.TFF
+    file[]: crc = 9fcf4fed; size =    148347; name = TC000.DAT
+    file[]: crc = 07ca2507; size =    266438; name = TC001.DAT
+    file[]: crc = 9d185d65; size =    342322; name = TC002.DAT
+    file[]: crc = 5cf3e7a8; size =    342939; name = TC003.DAT
+    file[]: crc = 980dc6ac; size =     13188; name = TC004.DAT
+    file[]: crc = 21846dd2; size =       766; name = TCV.ICO
+    
+    CDLABEL = ""
+    TCVWIN_CONTENTS = ""
+    TCVCD_CONTENTS = ""
+    TLCAPPS16_CONTENTS = ""
+    TLCAPPS32_CONTENTS = ""
+end
+
+//
+// English Windows, version 1.1
+//
+game[pc-win-en-11]:
+    name = English Windows version 1.1
+    anchorfile = TCVWIN.EXE
+    anchordepth = 1
+    rootpath = C:\TLCWIN\TCVCD
+    
+    file[]: crc = cbc75259; size =    230912; name = TCVWIN.EXE
+    file[]: crc = 4531607b; size =    196608; name = TCVWIN32.EXE
+    file[]: crc = 21846dd2; size =       766; name = TCVWINCD.ICO
+    file[]: crc = fcd07a54; size =  14355984; name = CD\TCVWINCD\TC2SOUND.DLL
+    file[]: crc = 96a523d5; size =  14053392; name = CD\TCVWINCD\TC3SOUND.DLL
+    file[]: crc = c467f57d; size =   2181136; name = CD\TCVWINCD\TC4SOUND.DLL
+    file[]: crc = c1fdd3e7; size =  13243408; name = CD\TCVWINCD\TC5SOUND.DLL
+    file[]: crc = bca2304f; size =  12467216; name = CD\TCVWINCD\TC6SOUND.DLL
+    file[]: crc = 01075556; size =    723472; name = CD\TCVWINCD\TCV.DLL
+    file[]: crc = cbbf4d7c; size =   6614032; name = CD\TCVWINCD\TCV16.DLL
+    file[]: crc = 3f7219d9; size =   5386256; name = CD\TCVWINCD\TCV256.DLL
+    file[]: crc = e4ae04cd; size =  14863376; name = CD\TCVWINCD\TCVSOUND.DLL
+    file[]: crc = cbc75259; size =    230912; name = CD\TCVWINCD\TCVWIN.EXE
+    file[]: crc = c566ed02; size =        67; name = CD\TCVWINCD\TCVWIN.INI
+    file[]: crc = 4531607b; size =    196608; name = CD\TCVWINCD\TCVWIN32.EXE
+    file[]: crc = 21846dd2; size =       766; name = CD\TCVWINCD\TCVWINCD.ICO
+    file[]: crc = c423c177; size =      3875; name = CD\TCVWINCD\SOUNDS\BCAVE.MID
+    file[]: crc = 0abee0a3; size =      2426; name = CD\TCVWINCD\SOUNDS\BCHARIOT.MID
+    file[]: crc = 26bc0a8d; size =     10548; name = CD\TCVWINCD\SOUNDS\BCIRCUS1.MID
+    file[]: crc = b6ca6c68; size =      8628; name = CD\TCVWINCD\SOUNDS\BCIRCUS2.MID
+    file[]: crc = 1666e8d4; size =      6034; name = CD\TCVWINCD\SOUNDS\BCLOSING.MID
+    file[]: crc = 38a4646f; size =      4154; name = CD\TCVWINCD\SOUNDS\BFINALE.MID
+    file[]: crc = e3ed0ca7; size =      8629; name = CD\TCVWINCD\SOUNDS\BINTRO.MID
+    file[]: crc = 54699cf3; size =      1479; name = CD\TCVWINCD\SOUNDS\BMOUTH.MID
+    file[]: crc = 6aa9904f; size =     10065; name = CD\TCVWINCD\SOUNDS\BPLAYAR1.MID
+    file[]: crc = b1551d3e; size =     10592; name = CD\TCVWINCD\SOUNDS\BPLAYAR2.MID
+    file[]: crc = e9a10220; size =     11194; name = CD\TCVWINCD\SOUNDS\BPLAYAR3.MID
+    file[]: crc = 308504f7; size =      8396; name = CD\TCVWINCD\SOUNDS\BSHARKPK.MID
+    file[]: crc = a37ead6d; size =      1527; name = CD\TCVWINCD\SOUNDS\BSPOOKY.MID
+    file[]: crc = 52e2c593; size =      3892; name = CD\TCVWINCD\SOUNDS\ECAVE.MID
+    file[]: crc = 9b7eceea; size =      2469; name = CD\TCVWINCD\SOUNDS\ECHARIOT.MID
+    file[]: crc = 7422db4b; size =     10733; name = CD\TCVWINCD\SOUNDS\ECIRCUS1.MID
+    file[]: crc = b011a9c2; size =     15328; name = CD\TCVWINCD\SOUNDS\ECIRCUS2.MID
+    file[]: crc = 8534b32f; size =      9629; name = CD\TCVWINCD\SOUNDS\ECLOSING.MID
+    file[]: crc = d38095e9; size =      4444; name = CD\TCVWINCD\SOUNDS\EFINALE.MID
+    file[]: crc = 4f212410; size =      8629; name = CD\TCVWINCD\SOUNDS\EINTRO.MID
+    file[]: crc = 22b6c6ce; size =      1479; name = CD\TCVWINCD\SOUNDS\EMOUTH.MID
+    file[]: crc = fbd42059; size =     10060; name = CD\TCVWINCD\SOUNDS\EPLAYAR1.MID
+    file[]: crc = 880da86f; size =     10818; name = CD\TCVWINCD\SOUNDS\EPLAYAR2.MID
+    file[]: crc = 0e8eb293; size =     14035; name = CD\TCVWINCD\SOUNDS\EPLAYAR3.MID
+    file[]: crc = 2a036f86; size =     10887; name = CD\TCVWINCD\SOUNDS\ESHARKPK.MID
+    file[]: crc = 942ed121; size =      2292; name = CD\TCVWINCD\SOUNDS\ESPOOKY.MID
+    
+    CDLABEL = TCVCD
+    VER11 = 1
+    TCVWIN_CONTENTS = [[[$(CRLF)
+[TCVWIN]
+Win40VersionNum=858
+CheckSound=TRUE
+CheckDisplay=TRUE
+CDDrive=D:\TCVWINCD\
+]]]
+    TCVCD_CONTENTS = ""
+    TLCAPPS16_CONTENTS = [[[$(CRLF)
+[Treasure Cove! CD]
+Path=$(rootpath)\TCVWIN.exe
+]]]
+    TLCAPPS32_CONTENTS = [[[$(CRLF)
+[Treasure Cove! CD]
+Path=$(rootpath)\TCVWIN32.exe
+]]]
+end
+
+//
+// English Windows, version 2.0
+//
+game[pc-win-en-20]:
+    name = English Windows version 2.0
+    anchorfile = TCVWIN.EXE
+    rootpath = C:\TLCWIN\TCVCD
+    
+    file[]: crc = f56060f7; size =   2095950; name = TC4SOUND.TLD
+    file[]: crc = 8f130765; size =    352142; name = TCV.TLD
+    file[]: crc = e3bc8518; size =   4396802; name = TCV256H.TLD
+    file[]: crc = aebb274a; size =    236048; name = TCVWIN.EXE
+    file[]: crc = 101b3d2b; size =    199200; name = TCVWIN32.EXE
+    file[]: crc = a894449f; size =       766; name = TCVWINCD.ICO
+    file[]: crc = 5ff88a45; size =  14190421; name = CD\DATA\TC2SOUND.TLD
+    file[]: crc = 2c80f004; size =  27097201; name = CD\DATA\TC3SOUND.TLD
+    file[]: crc = ba20fc62; size =  13092098; name = CD\DATA\TC5SOUND.TLD
+    file[]: crc = c3cfcaa0; size =  12313020; name = CD\DATA\TC6SOUND.TLD
+    file[]: crc = f4add192; size =  22538012; name = CD\DATA\TCV256.TLD
+    file[]: crc = e95634c6; size =  14706804; name = CD\DATA\TCVSOUND.TLD
+    file[]: crc = c423c177; size =      3875; name = SOUNDS\BCAVE.MID
+    file[]: crc = 0abee0a3; size =      2426; name = SOUNDS\BCHARIOT.MID
+    file[]: crc = 26bc0a8d; size =     10548; name = SOUNDS\BCIRCUS1.MID
+    file[]: crc = b6ca6c68; size =      8628; name = SOUNDS\BCIRCUS2.MID
+    file[]: crc = 1666e8d4; size =      6034; name = SOUNDS\BCLOSING.MID
+    file[]: crc = 38a4646f; size =      4154; name = SOUNDS\BFINALE.MID
+    file[]: crc = e3ed0ca7; size =      8629; name = SOUNDS\BINTRO.MID
+    file[]: crc = 54699cf3; size =      1479; name = SOUNDS\BMOUTH.MID
+    file[]: crc = 6aa9904f; size =     10065; name = SOUNDS\BPLAYAR1.MID
+    file[]: crc = b1551d3e; size =     10592; name = SOUNDS\BPLAYAR2.MID
+    file[]: crc = e9a10220; size =     11194; name = SOUNDS\BPLAYAR3.MID
+    file[]: crc = 308504f7; size =      8396; name = SOUNDS\BSHARKPK.MID
+    file[]: crc = a37ead6d; size =      1527; name = SOUNDS\BSPOOKY.MID
+    file[]: crc = 52e2c593; size =      3892; name = SOUNDS\ECAVE.MID
+    file[]: crc = 9b7eceea; size =      2469; name = SOUNDS\ECHARIOT.MID
+    file[]: crc = 7422db4b; size =     10733; name = SOUNDS\ECIRCUS1.MID
+    file[]: crc = b011a9c2; size =     15328; name = SOUNDS\ECIRCUS2.MID
+    file[]: crc = 8534b32f; size =      9629; name = SOUNDS\ECLOSING.MID
+    file[]: crc = d38095e9; size =      4444; name = SOUNDS\EFINALE.MID
+    file[]: crc = 4f212410; size =      8629; name = SOUNDS\EINTRO.MID
+    file[]: crc = 22b6c6ce; size =      1479; name = SOUNDS\EMOUTH.MID
+    file[]: crc = fbd42059; size =     10060; name = SOUNDS\EPLAYAR1.MID
+    file[]: crc = 880da86f; size =     10818; name = SOUNDS\EPLAYAR2.MID
+    file[]: crc = 0e8eb293; size =     14035; name = SOUNDS\EPLAYAR3.MID
+    file[]: crc = 2a036f86; size =     10887; name = SOUNDS\ESHARKPK.MID
+    file[]: crc = 942ed121; size =      2292; name = SOUNDS\ESPOOKY.MID
+    file[]: crc = 632b5677; size =       138; name = SOUNDS\MIDISOFT.INI
+    
+    CDLABEL = TCVCD
+    VER20 = 1
+    TCVWIN_CONTENTS = ""
+    TCVCD_CONTENTS = [[[$(CRLF)
+[TCVCD]
+CDDrive=D:\
+Win40VersionNum=858
+CheckDisplay=TRUE
+]]]
+    TLCAPPS16_CONTENTS = [[[$(CRLF)
+[Treasure Cove!]
+Path=$(rootpath)\TCVWIN.exe
+]]]
+    TLCAPPS32_CONTENTS = [[[$(CRLF)
+[Treasure Cove!]
+Path=$(rootpath)\TCVWIN32.exe
+]]]
+end
+
+end

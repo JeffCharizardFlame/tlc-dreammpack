@@ -1,0 +1,50 @@
+desc[tlc-writerrabbit]:
+
+name = Writer Rabbit
+icon = tlc-writerrabbit.png
+machine = pc
+rootpath = C:\TLC\WR
+launch = $(rootpath)\WR.EXE
+osenv = dos
+fixdivover = true
+mips = $(MIPS_286_10)
+ramkb = 512
+videohw = ega
+audiohw = speaker
+
+//
+// filesystem
+//
+mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+
+//
+// English MS-DOS
+//
+game[pc-dos-en]:
+    name = English MS-DOS
+    anchorfile = WR.EXE
+    file[]: crc = 1f27527f; size =         4; name = CONFIG.FIG
+    file[]: crc = d202ef8d; size =         1; name = HER.DAT
+    file[]: crc = d2499480; size =         5; name = HERC.BAT
+    file[]: crc = 50621556; size =     20367; name = INSTALL.EXE
+    file[]: crc = b74b9a7d; size =      5760; name = LEVEL1
+    file[]: crc = 670c1fdf; size =      6144; name = LEVEL2
+    file[]: crc = 843e0181; size =      6016; name = LEVEL3
+    file[]: crc = 3146e9b4; size =         2; name = RABBIT.BAT
+    file[]: crc = 6576eb08; size =      2816; name = RABFONT
+    file[]: crc = 7b060dc4; size =      6528; name = SCC.CMP
+    file[]: crc = f43a6c61; size =      5888; name = SCG3.CMP
+    file[]: crc = 51bf9c3e; size =      6656; name = SCM.CMP
+    file[]: crc = bdfa3a80; size =      2688; name = SCS.CMP
+    file[]: crc = 97592681; size =      6016; name = SCT.CMP
+    file[]: crc = d7e677a1; size =      2304; name = SCW.CMP
+    file[]: crc = 7f5ae540; size =      1101; name = SETUP.EXE
+    file[]: crc = 5ba8d644; size =       608; name = STORIES.IND
+    file[]: crc = 02d02ece; size =     28572; name = STORIES.REL
+    file[]: crc = 0f824fa3; size =    122242; name = WR.EXE
+    file[]: crc = 21b90194; size =       640; name = WRSHAPE.IND
+    file[]: crc = d26b1c52; size =     30976; name = WRSHAPE.REL
+end
+
+end

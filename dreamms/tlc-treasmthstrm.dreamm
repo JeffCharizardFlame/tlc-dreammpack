@@ -1,0 +1,438 @@
+desc[tlc-treasmthstrm]:
+
+name = Super Seekers: Treasure MathStorm!
+icon = tlc-treasmthstrm.png
+machine = pc
+osenv = windows 98
+launch = ""
+audiohw = gmidi
+
+
+//
+// filesystem
+//
+mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+
+//
+// English MS-DOS;
+//
+game[pc-dos-en]:
+    name = English MS-DOS
+    osenv = dos
+    fixdivover = true
+    mips = $(MIPS_386SX_20)
+    ramkb = 1024
+    rootpath = C:\TLC\TMS
+    videohw = svga
+    audiohw = sb16
+    anchorfile = tmprog.exe
+    
+    file[]: crc = b8dfd26b; size =     38298; name = tm000.dat
+    file[]: crc = 54bd2835; size =    317123; name = tm001.dat
+    file[]: crc = a908aa2f; size =    257848; name = tm002.dat
+    file[]: crc = afdb8974; size =      7334; name = tmhelp.txt
+    file[]: crc = 2f88f494; size =      5826; name = tmhint.txt
+    file[]: crc = 687a816c; size =    151716; name = tmprog.exe
+    file[]: crc = b78683d1; size =      4418; name = tmusers.dat
+    
+    launch = "$(rootpath)\tmprog.exe"
+    
+
+end
+
+//
+// English Windows, version 1.0
+//
+game[pc-win-en-us-1.0]:
+    name = English (US) Windows version 1.0
+    anchorfile = TMSWINCD.EXE
+    anchordepth = 1
+    osenv = windows 3.11.002
+    winres = 640x480x8
+    rootpath = C:\TLCWIN\TMSWINCD
+    launch = "$(rootpath)\TMSWINCD.EXE"
+    
+    file[]: crc = 7920d6f6; size =       317; name = CCAVE.MID
+    file[]: crc = 860eb4eb; size =      1334; name = CHUTE2.MID
+    file[]: crc = d9634b6b; size =      5483; name = CLOSE.MID
+    file[]: crc = 4cd8c330; size =      1470; name = CLUB.MID
+    file[]: crc = 7a9772c0; size =     29536; name = DIB.DRV
+    file[]: crc = ba42a436; size =       318; name = ECCAVE.MID
+    file[]: crc = 3d7b289b; size =      1379; name = ECHUTE2.MID
+    file[]: crc = 9f25e168; size =      5484; name = ECLOSE.MID
+    file[]: crc = b14ff648; size =      1639; name = ECLUB.MID
+    file[]: crc = 4ad33708; size =      6544; name = EFILL.MID
+    file[]: crc = 6506db0f; size =       697; name = EGOLDR.MID
+    file[]: crc = 8e589afa; size =     17224; name = ELEV1.MID
+    file[]: crc = 888ec57f; size =     27875; name = ELEV2.MID
+    file[]: crc = 4306d9da; size =     30586; name = ELEV3.MID
+    file[]: crc = ed0abb28; size =       753; name = ELICGATE.MID
+    file[]: crc = 2be1d135; size =      3102; name = EOPEN.MID
+    file[]: crc = 1fec062b; size =       313; name = ESTORE.MID
+    file[]: crc = c25cbca7; size =       417; name = ETIMET.MID
+    file[]: crc = cac9ad56; size =       273; name = EWRDCC.MID
+    file[]: crc = 84812c7c; size =       279; name = EWRDGR.MID
+    file[]: crc = b96e7c12; size =       272; name = EWRDTT.MID
+    file[]: crc = 65cc0407; size =      6159; name = FILL.MID
+    file[]: crc = d519c7d8; size =       683; name = GOLDR.MID
+    file[]: crc = 9143fa87; size =     13735; name = LEV1.MID
+    file[]: crc = 81bc1885; size =     26206; name = LEV2.MID
+    file[]: crc = fed2b341; size =     29061; name = LEV3.MID
+    file[]: crc = 068e0d34; size =       588; name = LICGATE.MID
+    file[]: crc = 4132a914; size =      2462; name = OPEN.MID
+    file[]: crc = 52e5f7cf; size =       312; name = STORE.MID
+    file[]: crc = 58f3ad97; size =       289; name = TIMET.MID
+    file[]: crc = fe7a4d67; size =     43340; name = TMS.HLP
+    file[]: crc = 244a5706; size =  13086720; name = TMSRES.DLL
+    file[]: crc = 049c0a0c; size =  13396480; name = TMSRES2.DLL
+    file[]: crc = 534ab261; size =  85112562; name = TMSSOUND.DLL
+    file[]: crc = 0b5589a0; size =   8876544; name = TMSWINCD.EXE
+    file[]: crc = 4e69c3c9; size =       265; name = WRDCC.MID
+    file[]: crc = a35be86c; size =       272; name = WRDGR.MID
+    file[]: crc = 7b99151e; size =       266; name = WRDTT.MID
+
+end
+
+//
+// English (UK) Windows, version 1.1
+//
+game[pc-win-en-uk-1.1]:
+    name = English (UK) Windows version 1.1
+    anchorfile = TMSWINCD.EXE
+    anchordepth = 1
+    osenv = windows 3.11.002
+    winres = 640x480x8
+    rootpath = C:\TLCWIN\TMSWINCD
+    launch = "$(rootpath)\TMSWINCD.EXE"
+    
+    file[]: crc = 7920d6f6; size =       317; name = CCAVE.MID
+    file[]: crc = 860eb4eb; size =      1334; name = CHUTE2.MID
+    file[]: crc = d9634b6b; size =      5483; name = CLOSE.MID
+    file[]: crc = 4cd8c330; size =      1470; name = CLUB.MID
+    file[]: crc = 7a9772c0; size =     29536; name = DIB.DRV
+    file[]: crc = ba42a436; size =       318; name = ECCAVE.MID
+    file[]: crc = 3d7b289b; size =      1379; name = ECHUTE2.MID
+    file[]: crc = 9f25e168; size =      5484; name = ECLOSE.MID
+    file[]: crc = b14ff648; size =      1639; name = ECLUB.MID
+    file[]: crc = 4ad33708; size =      6544; name = EFILL.MID
+    file[]: crc = 6506db0f; size =       697; name = EGOLDR.MID
+    file[]: crc = 8e589afa; size =     17224; name = ELEV1.MID
+    file[]: crc = 888ec57f; size =     27875; name = ELEV2.MID
+    file[]: crc = 4306d9da; size =     30586; name = ELEV3.MID
+    file[]: crc = ed0abb28; size =       753; name = ELICGATE.MID
+    file[]: crc = 2be1d135; size =      3102; name = EOPEN.MID
+    file[]: crc = 1fec062b; size =       313; name = ESTORE.MID
+    file[]: crc = c25cbca7; size =       417; name = ETIMET.MID
+    file[]: crc = cac9ad56; size =       273; name = EWRDCC.MID
+    file[]: crc = 84812c7c; size =       279; name = EWRDGR.MID
+    file[]: crc = b96e7c12; size =       272; name = EWRDTT.MID
+    file[]: crc = 65cc0407; size =      6159; name = FILL.MID
+    file[]: crc = d519c7d8; size =       683; name = GOLDR.MID
+    file[]: crc = 9143fa87; size =     13735; name = LEV1.MID
+    file[]: crc = 81bc1885; size =     26206; name = LEV2.MID
+    file[]: crc = fed2b341; size =     29061; name = LEV3.MID
+    file[]: crc = 068e0d34; size =       588; name = LICGATE.MID
+    file[]: crc = 4132a914; size =      2462; name = OPEN.MID
+    file[]: crc = 52e5f7cf; size =       312; name = STORE.MID
+    file[]: crc = 58f3ad97; size =       289; name = TIMET.MID
+    file[]: crc = ae4c5ce0; size =     45083; name = TMS.HLP
+    file[]: crc = 07f2d9bd; size =   9797120; name = TMSRES.DLL
+    file[]: crc = 49bef47b; size =      1024; name = TMSRES.LIB
+    file[]: crc = d9bec7d4; size =  15031808; name = TMSRES2.DLL
+    file[]: crc = 5419743e; size =      1024; name = TMSRES2.LIB
+    file[]: crc = 534ab261; size =  85112562; name = TMSSOUND.DLL
+    file[]: crc = 5cd7083e; size =  10442752; name = TMSWINCD.EXE
+    file[]: crc = 4df6d0a6; size =       766; name = TMSWINCD.ICO
+    file[]: crc = 4e69c3c9; size =       265; name = WRDCC.MID
+    file[]: crc = a35be86c; size =       272; name = WRDGR.MID
+    file[]: crc = 7b99151e; size =       266; name = WRDTT.MID
+
+end
+
+//
+// Swedish Windows, version 1.0
+//
+game[pc-win-sv-1.1]:
+    name = Swedish Windows version 1.1
+    anchorfile = TMSWINCD.EXE
+    anchordepth = 1
+    osenv = windows 3.11.002
+    winres = 640x480x8
+    rootpath = C:\TLCWIN\TMSWINCD
+    launch = "$(rootpath)\TMSWINCD.EXE"
+    
+    file[]: crc = 7920d6f6; size =       317; name = CCAVE.MID
+    file[]: crc = 860eb4eb; size =      1334; name = CHUTE2.MID
+    file[]: crc = d9634b6b; size =      5483; name = CLOSE.MID
+    file[]: crc = 4cd8c330; size =      1470; name = CLUB.MID
+    file[]: crc = 7a9772c0; size =     29536; name = DIB.DRV
+    file[]: crc = ba42a436; size =       318; name = ECCAVE.MID
+    file[]: crc = 3d7b289b; size =      1379; name = ECHUTE2.MID
+    file[]: crc = 9f25e168; size =      5484; name = ECLOSE.MID
+    file[]: crc = b14ff648; size =      1639; name = ECLUB.MID
+    file[]: crc = 4ad33708; size =      6544; name = EFILL.MID
+    file[]: crc = 6506db0f; size =       697; name = EGOLDR.MID
+    file[]: crc = 8e589afa; size =     17224; name = ELEV1.MID
+    file[]: crc = 888ec57f; size =     27875; name = ELEV2.MID
+    file[]: crc = 4306d9da; size =     30586; name = ELEV3.MID
+    file[]: crc = ed0abb28; size =       753; name = ELICGATE.MID
+    file[]: crc = 2be1d135; size =      3102; name = EOPEN.MID
+    file[]: crc = 1fec062b; size =       313; name = ESTORE.MID
+    file[]: crc = c25cbca7; size =       417; name = ETIMET.MID
+    file[]: crc = cac9ad56; size =       273; name = EWRDCC.MID
+    file[]: crc = 84812c7c; size =       279; name = EWRDGR.MID
+    file[]: crc = b96e7c12; size =       272; name = EWRDTT.MID
+    file[]: crc = 65cc0407; size =      6159; name = FILL.MID
+    file[]: crc = d519c7d8; size =       683; name = GOLDR.MID
+    file[]: crc = 9143fa87; size =     13735; name = LEV1.MID
+    file[]: crc = 81bc1885; size =     26206; name = LEV2.MID
+    file[]: crc = fed2b341; size =     29061; name = LEV3.MID
+    file[]: crc = 068e0d34; size =       588; name = LICGATE.MID
+    file[]: crc = 4132a914; size =      2462; name = OPEN.MID
+    file[]: crc = 52e5f7cf; size =       312; name = STORE.MID
+    file[]: crc = 58f3ad97; size =       289; name = TIMET.MID
+    file[]: crc = e971d332; size =      8628; name = tms.GID
+    file[]: crc = 140b5261; size =     44557; name = TMS.HLP
+    file[]: crc = 507d2118; size =   9781248; name = TMSRES.DLL
+    file[]: crc = 43449a0c; size =  13279232; name = TMSRES2.DLL
+    file[]: crc = 534ab261; size =  85112562; name = TMSSOUND.DLL
+    file[]: crc = 756e700a; size =  10379776; name = Tmswincd.exe
+    file[]: crc = 4e69c3c9; size =       265; name = WRDCC.MID
+    file[]: crc = a35be86c; size =       272; name = WRDGR.MID
+    file[]: crc = 7b99151e; size =       266; name = WRDTT.MID
+
+end
+
+//
+// Finnish Windows, version 1.1
+//
+game[pc-win-fi-1.1]:
+    name = Finnish Windows version 1.1
+    anchorfile = TMSWINCD.EXE
+    anchordepth = 1
+    osenv = windows 3.11.002
+    winres = 640x480x8
+    rootpath = C:\TLCWIN\TMSWINCD
+    launch = "$(rootpath)\TMSWINCD.EXE"
+    
+    file[]: crc = 7920d6f6; size =       317; name = CCAVE.MID
+    file[]: crc = 860eb4eb; size =      1334; name = CHUTE2.MID
+    file[]: crc = d9634b6b; size =      5483; name = CLOSE.MID
+    file[]: crc = 4cd8c330; size =      1470; name = CLUB.MID
+    file[]: crc = 7a9772c0; size =     29536; name = DIB.DRV
+    file[]: crc = ba42a436; size =       318; name = ECCAVE.MID
+    file[]: crc = 3d7b289b; size =      1379; name = ECHUTE2.MID
+    file[]: crc = 9f25e168; size =      5484; name = ECLOSE.MID
+    file[]: crc = b14ff648; size =      1639; name = ECLUB.MID
+    file[]: crc = 4ad33708; size =      6544; name = EFILL.MID
+    file[]: crc = 6506db0f; size =       697; name = EGOLDR.MID
+    file[]: crc = 8e589afa; size =     17224; name = ELEV1.MID
+    file[]: crc = 888ec57f; size =     27875; name = ELEV2.MID
+    file[]: crc = 4306d9da; size =     30586; name = ELEV3.MID
+    file[]: crc = ed0abb28; size =       753; name = ELICGATE.MID
+    file[]: crc = 2be1d135; size =      3102; name = EOPEN.MID
+    file[]: crc = 1fec062b; size =       313; name = ESTORE.MID
+    file[]: crc = c25cbca7; size =       417; name = ETIMET.MID
+    file[]: crc = cac9ad56; size =       273; name = EWRDCC.MID
+    file[]: crc = 84812c7c; size =       279; name = EWRDGR.MID
+    file[]: crc = b96e7c12; size =       272; name = EWRDTT.MID
+    file[]: crc = 65cc0407; size =      6159; name = FILL.MID
+    file[]: crc = d519c7d8; size =       683; name = GOLDR.MID
+    file[]: crc = 9143fa87; size =     13735; name = LEV1.MID
+    file[]: crc = 81bc1885; size =     26206; name = LEV2.MID
+    file[]: crc = fed2b341; size =     29061; name = LEV3.MID
+    file[]: crc = 068e0d34; size =       588; name = LICGATE.MID
+    file[]: crc = 4132a914; size =      2462; name = OPEN.MID
+    file[]: crc = 52e5f7cf; size =       312; name = STORE.MID
+    file[]: crc = 58f3ad97; size =       289; name = TIMET.MID
+    file[]: crc = 6ed57c50; size =      8628; name = tms.gid
+    file[]: crc = 596e557a; size =     45970; name = TMS.HLP
+    file[]: crc = e31fc1d9; size =  14299648; name = TMSRES.DLL
+    file[]: crc = 1eac3d6b; size =  14467584; name = TMSRES2.DLL
+    file[]: crc = 534ab261; size =  85112562; name = TMSSOUND.DLL
+    file[]: crc = 353371bf; size =  10380800; name = Tmswincd.exe
+    file[]: crc = 4e69c3c9; size =       265; name = WRDCC.MID
+    file[]: crc = a35be86c; size =       272; name = WRDGR.MID
+    file[]: crc = 7b99151e; size =       266; name = WRDTT.MID
+
+end
+
+//
+// Spanish Windows, version 1.1
+//
+game[pc-win-es-1.1]:
+    name = Spanish Windows version 1.1
+    anchorfile = TMSWINCD.EXE
+    anchordepth = 1
+    osenv = windows 3.11.002
+    winres = 640x480x8
+    rootpath = C:\TLCWIN\TMSWINCD
+    launch = "$(rootpath)\TMSWINCD.EXE"
+    
+    file[]: crc = 7920d6f6; size =       317; name = CCAVE.MID
+    file[]: crc = 860eb4eb; size =      1334; name = CHUTE2.MID
+    file[]: crc = d9634b6b; size =      5483; name = CLOSE.MID
+    file[]: crc = 4cd8c330; size =      1470; name = CLUB.MID
+    file[]: crc = 7a9772c0; size =     29536; name = DIB.DRV
+    file[]: crc = ba42a436; size =       318; name = ECCAVE.MID
+    file[]: crc = 3d7b289b; size =      1379; name = ECHUTE2.MID
+    file[]: crc = 9f25e168; size =      5484; name = ECLOSE.MID
+    file[]: crc = b14ff648; size =      1639; name = ECLUB.MID
+    file[]: crc = 4ad33708; size =      6544; name = EFILL.MID
+    file[]: crc = 6506db0f; size =       697; name = EGOLDR.MID
+    file[]: crc = 8e589afa; size =     17224; name = ELEV1.MID
+    file[]: crc = 888ec57f; size =     27875; name = ELEV2.MID
+    file[]: crc = 4306d9da; size =     30586; name = ELEV3.MID
+    file[]: crc = ed0abb28; size =       753; name = ELICGATE.MID
+    file[]: crc = 2be1d135; size =      3102; name = EOPEN.MID
+    file[]: crc = 1fec062b; size =       313; name = ESTORE.MID
+    file[]: crc = c25cbca7; size =       417; name = ETIMET.MID
+    file[]: crc = cac9ad56; size =       273; name = EWRDCC.MID
+    file[]: crc = 84812c7c; size =       279; name = EWRDGR.MID
+    file[]: crc = b96e7c12; size =       272; name = EWRDTT.MID
+    file[]: crc = 65cc0407; size =      6159; name = FILL.MID
+    file[]: crc = d519c7d8; size =       683; name = GOLDR.MID
+    file[]: crc = 9143fa87; size =     13735; name = LEV1.MID
+    file[]: crc = 81bc1885; size =     26206; name = LEV2.MID
+    file[]: crc = fed2b341; size =     29061; name = LEV3.MID
+    file[]: crc = 068e0d34; size =       588; name = LICGATE.MID
+    file[]: crc = 4132a914; size =      2462; name = OPEN.MID
+    file[]: crc = 52e5f7cf; size =       312; name = STORE.MID
+    file[]: crc = fd6f9efe; size =       683; name = TDCONFIG.TDW
+    file[]: crc = 58dcb9ae; size =        32; name = TDW.TRW
+    file[]: crc = 58f3ad97; size =       289; name = TIMET.MID
+    file[]: crc = 7eed10c2; size =      8628; name = TMS.GID
+    file[]: crc = 5a600ed6; size =     54884; name = TMS.HLP
+    file[]: crc = 12d96502; size =      4791; name = TMSPLAY.DAT
+    file[]: crc = b746c259; size =  13954560; name = TMSRES.DLL
+    file[]: crc = 49bef47b; size =      1024; name = TMSRES.LIB
+    file[]: crc = 1f244a27; size =  13644288; name = TMSRES2.DLL
+    file[]: crc = 5419743e; size =      1024; name = TMSRES2.LIB
+    file[]: crc = 534ab261; size =  85112562; name = TMSSOUND.DLL
+    file[]: crc = 42e7aa6c; size =  10384896; name = TMSWINCD.EXE
+    file[]: crc = 4df6d0a6; size =       766; name = TMSWINCD.ICO
+    file[]: crc = 4e69c3c9; size =       265; name = WRDCC.MID
+    file[]: crc = a35be86c; size =       272; name = WRDGR.MID
+    file[]: crc = 7b99151e; size =       266; name = WRDTT.MID
+
+end
+
+//
+// Traditional Chinese Windows, version 1.1
+//
+game[pc-win-zh-tw-1.1]:
+    name = Traditional Chinese Windows version 1.1
+    anchorfile = TMSWINCD.EXE
+    anchordepth = 1
+    locale = zh-tw
+    osenv = windows 3.11.002
+    winres = 640x480x8
+    rootpath = C:\TLCWIN\TMSWINCD
+    launch = "$(rootpath)\TMSWINCD.EXE"
+    
+    file[]: crc = 7920d6f6; size =       317; name = CCAVE.MID
+    file[]: crc = 860eb4eb; size =      1334; name = CHUTE2.MID
+    file[]: crc = d9634b6b; size =      5483; name = CLOSE.MID
+    file[]: crc = 4cd8c330; size =      1470; name = CLUB.MID
+    file[]: crc = 7a9772c0; size =     29536; name = DIB.DRV
+    file[]: crc = ba42a436; size =       318; name = ECCAVE.MID
+    file[]: crc = 3d7b289b; size =      1379; name = ECHUTE2.MID
+    file[]: crc = 9f25e168; size =      5484; name = ECLOSE.MID
+    file[]: crc = b14ff648; size =      1639; name = ECLUB.MID
+    file[]: crc = 4ad33708; size =      6544; name = EFILL.MID
+    file[]: crc = 6506db0f; size =       697; name = EGOLDR.MID
+    file[]: crc = 8e589afa; size =     17224; name = ELEV1.MID
+    file[]: crc = 888ec57f; size =     27875; name = ELEV2.MID
+    file[]: crc = 4306d9da; size =     30586; name = ELEV3.MID
+    file[]: crc = ed0abb28; size =       753; name = ELICGATE.MID
+    file[]: crc = 2be1d135; size =      3102; name = EOPEN.MID
+    file[]: crc = 1fec062b; size =       313; name = ESTORE.MID
+    file[]: crc = c25cbca7; size =       417; name = ETIMET.MID
+    file[]: crc = cac9ad56; size =       273; name = EWRDCC.MID
+    file[]: crc = 84812c7c; size =       279; name = EWRDGR.MID
+    file[]: crc = b96e7c12; size =       272; name = EWRDTT.MID
+    file[]: crc = 65cc0407; size =      6159; name = FILL.MID
+    file[]: crc = d519c7d8; size =       683; name = GOLDR.MID
+    file[]: crc = 9143fa87; size =     13735; name = LEV1.MID
+    file[]: crc = 81bc1885; size =     26206; name = LEV2.MID
+    file[]: crc = fed2b341; size =     29061; name = LEV3.MID
+    file[]: crc = 068e0d34; size =       588; name = LICGATE.MID
+    file[]: crc = 4132a914; size =      2462; name = OPEN.MID
+    file[]: crc = 52e5f7cf; size =       312; name = STORE.MID
+    file[]: crc = 58f3ad97; size =       289; name = TIMET.MID
+    file[]: crc = 4ad7bd92; size =      8628; name = TMS.GID
+    file[]: crc = 73a3eedf; size =     43107; name = TMS.HLP
+    file[]: crc = 4673ab0f; size =      9143; name = TMSPLAY.DAT
+    file[]: crc = cc064316; size =  13841408; name = TMSRES.DLL
+    file[]: crc = 49bef47b; size =      1024; name = TMSRES.LIB
+    file[]: crc = f425817a; size =  15002112; name = TMSRES2.DLL
+    file[]: crc = 5419743e; size =      1024; name = TMSRES2.LIB
+    file[]: crc = b0a030e7; size =  14985728; name = TMSRES2.OLD
+    file[]: crc = 6b25defe; size =  85112562; name = TMSSOUND.DLL
+    file[]: crc = e837e588; size =  10375680; name = TMSWINCD.EXE
+    file[]: crc = 4df6d0a6; size =       766; name = TMSWINCD.ICO
+    file[]: crc = 4e69c3c9; size =       265; name = WRDCC.MID
+    file[]: crc = a35be86c; size =       272; name = WRDGR.MID
+    file[]: crc = 7b99151e; size =       266; name = WRDTT.MID
+
+end
+
+//
+// Dutch Windows, version 1.1
+//
+game[pc-win-nl-1.1]:
+    name = Dutch Windows version 1.1
+    anchorfile = TMSWINCD.EXE
+    anchordepth = 1
+    osenv = windows 3.11.002
+    winres = 640x480x8
+    rootpath = C:\TLCWIN\TMSWINCD
+    launch = "$(rootpath)\TMSWINCD.EXE"
+    
+    file[]: crc = 7920d6f6; size =       317; name = CCAVE.MID
+    file[]: crc = 860eb4eb; size =      1334; name = CHUTE2.MID
+    file[]: crc = d9634b6b; size =      5483; name = CLOSE.MID
+    file[]: crc = 4cd8c330; size =      1470; name = CLUB.MID
+    file[]: crc = 7a9772c0; size =     29536; name = DIB.DRV
+    file[]: crc = ba42a436; size =       318; name = ECCAVE.MID
+    file[]: crc = 3d7b289b; size =      1379; name = ECHUTE2.MID
+    file[]: crc = 9f25e168; size =      5484; name = ECLOSE.MID
+    file[]: crc = b14ff648; size =      1639; name = ECLUB.MID
+    file[]: crc = 4ad33708; size =      6544; name = EFILL.MID
+    file[]: crc = 6506db0f; size =       697; name = EGOLDR.MID
+    file[]: crc = 8e589afa; size =     17224; name = ELEV1.MID
+    file[]: crc = 888ec57f; size =     27875; name = ELEV2.MID
+    file[]: crc = 4306d9da; size =     30586; name = ELEV3.MID
+    file[]: crc = ed0abb28; size =       753; name = ELICGATE.MID
+    file[]: crc = 2be1d135; size =      3102; name = EOPEN.MID
+    file[]: crc = 1fec062b; size =       313; name = ESTORE.MID
+    file[]: crc = c25cbca7; size =       417; name = ETIMET.MID
+    file[]: crc = cac9ad56; size =       273; name = EWRDCC.MID
+    file[]: crc = 84812c7c; size =       279; name = EWRDGR.MID
+    file[]: crc = b96e7c12; size =       272; name = EWRDTT.MID
+    file[]: crc = 65cc0407; size =      6159; name = FILL.MID
+    file[]: crc = d519c7d8; size =       683; name = GOLDR.MID
+    file[]: crc = 9143fa87; size =     13735; name = LEV1.MID
+    file[]: crc = 81bc1885; size =     26206; name = LEV2.MID
+    file[]: crc = fed2b341; size =     29061; name = LEV3.MID
+    file[]: crc = 068e0d34; size =       588; name = LICGATE.MID
+    file[]: crc = 4132a914; size =      2462; name = OPEN.MID
+    file[]: crc = 52e5f7cf; size =       312; name = STORE.MID
+    file[]: crc = 58f3ad97; size =       289; name = TIMET.MID
+    file[]: crc = 3d05873c; size =     53269; name = TMS.HLP
+    file[]: crc = a8eabbda; size =      8599; name = TMSPLAY.DAT
+    file[]: crc = fce87adc; size =  12876288; name = TMSRES.DLL
+    file[]: crc = 49bef47b; size =      1024; name = TMSRES.LIB
+    file[]: crc = 42b702a5; size =  14615040; name = TMSRES2.DLL
+    file[]: crc = 5419743e; size =      1024; name = TMSRES2.LIB
+    file[]: crc = 534ab261; size =  85112562; name = TMSSOUND.DLL
+    file[]: crc = d1f54dc4; size =  10012160; name = TMSWINCD.EXE
+    file[]: crc = 4df6d0a6; size =       766; name = TMSWINCD.ICO
+    file[]: crc = 4e69c3c9; size =       265; name = WRDCC.MID
+    file[]: crc = a35be86c; size =       272; name = WRDGR.MID
+    file[]: crc = 7b99151e; size =       266; name = WRDTT.MID
+
+end
+
+end

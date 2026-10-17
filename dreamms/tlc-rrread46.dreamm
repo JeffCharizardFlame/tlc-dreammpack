@@ -1,0 +1,196 @@
+desc[tlc-rrread46]:
+
+name = Reader Rabbit's Reading Ages 4-6 / Reader Rabbit's Interactive Reading Journey
+icon = tlc-rrread46.png
+machine = pc
+rootpath = C:\TLCWIN\RRREAD46
+launch = ""
+osenv = windows 98
+winres = 640x480x8
+
+config[ossel]:
+    condition = file_exists("$$(rootpath)\\read4616.exe") && file_exists("$$(rootpath)\\read4632.exe");
+    title = OS Select
+    option[win31]: name = Windows 3.1; launch = "$(rootpath)\read4616.exe"; osenv = windows 3.11.002;
+    option[win9x]: name = Windows 9x; launch = "$(rootpath)\read4632.exe"; osenv = windows 98;
+	
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD
+
+mount[cdw]: vpath = D:\; srcpath = ram
+
+//
+// initialization script
+//
+script[cd-init]:
+	code = [[[$(CRLF)
+	    // set the volume label on the CD
+        drive_set_label("D", "$$(CDLABEL)");
+        file_save("$$(rootpath)\\RRIRJ.INI", "$$(RRIRJ_CONTENTS)");
+        file_save("C:\\WINDOWS\\TLCAPPS.INI", "$$(TLCAPPS16_CONTENTS)"); condition = is_windows("windows 3.11.002");
+        file_save("C:\\WINDOWS\\TLCAPPS.INI", "$$(TLCAPPS32_CONTENTS)"); condition = is_windows("windows 98");
+    ]]]
+end
+
+//
+// English (US) CD, Version 2.0
+//
+game[pc-cd-en-2.0]:
+    name = English (US) CD, Version 2.0
+    anchorfile = READ4616.EXE
+    file[]: crc = 8636e5e9; size =    298496; name = READ4616.EXE
+    file[]: crc = 494b2520; size =    229376; name = READ4632.EXE
+    file[]: crc = a36f6a67; size =  26731008; name = CD\IRJ1DATA\IRJ1AO.DAT
+    file[]: crc = 1d885279; size =  11812352; name = CD\IRJ1DATA\IRJ1POEM.DAT
+    file[]: crc = a5d9af09; size =  32499712; name = CD\IRJ1DATA\IRJ1SND.DAT
+    file[]: crc = 9365fbb5; size =   5148672; name = CD\IRJ1DATA\IRJ1U1.DAT
+    file[]: crc = 5a0c9509; size =   6360064; name = CD\IRJ1DATA\IRJ1U2.DAT
+    file[]: crc = b5f76a38; size =   7045120; name = CD\IRJ1DATA\IRJ1U3.DAT
+    file[]: crc = 1eaf0377; size =   7885824; name = CD\IRJ1DATA\IRJ1U4.DAT
+    file[]: crc = 6ce01e79; size =   9113088; name = CD\IRJ1DATA\IRJ1U5.DAT
+    
+    CDLABEL = RRREAD46
+    RRIRJ_CONTENTS =  [[[$(CRLF)
+[Reader Rabbit's Reading Ages 4-6]
+CDDrive=D:\
+]]]
+    TLCAPPS16_CONTENTS = [[[$(CRLF)
+[Reader Rabbit's Reading Ages 4-6]
+Path=$(rootpath)\read4616.exe
+]]]
+    TLCAPPS32_CONTENTS = [[[$(CRLF)
+[Reader Rabbit's Reading Ages 4-6]
+Path=$(rootpath)\read4632.exe
+]]]
+end
+
+//
+// English (US) CD, Personalized Reading 4-6 (1999)
+//
+game[pc-cd-en-3.0]:
+    name = English (US) CD, Version 3.0
+    anchorfile = RRIRJW32.EXE
+    anchordepth = 3
+    rootpath = C:\Program Files\The Learning Company\Reader Rabbit Reading Ages 4-6
+    launch = "$(rootpath)\rrirjw32.exe"
+    
+    file[]: crc = 0a66f142; size =    579072; name = Assessment.exe
+    file[]: crc = 3d2b27ee; size =      3028; name = PLSDescriptor.txt
+    file[]: crc = ab5c1e0c; size =    290816; name = rrirjw32.exe
+    file[]: crc = 58e65373; size =   1788224; name = SamMisc.rsc
+    file[]: crc = 17f71c4f; size =    100864; name = SMACKW32.DLL
+    file[]: crc = d1bba929; size =    194560; name = CD\Install\PLS\PLUGIN\IRJ1.pls
+    file[]: crc = 00000000; size =         0; name = CD\Install\TLC\378474.cd1
+    file[]: crc = 69bbfcd4; size =    415644; name = CD\IRJ1RSC\adaptin.smk
+    file[]: crc = d44f5295; size =     71060; name = CD\IRJ1RSC\ADPTOUT.SMK
+    file[]: crc = 5667c8f3; size =   1493580; name = CD\IRJ1RSC\IRJTITLE.SMK
+    file[]: crc = f61f6614; size =    152596; name = CD\IRJ1RSC\TLCLOGO.SMK
+    file[]: crc = 0387d4d1; size =   4754432; name = CD\IRJ1RSC\AUDIO\AntBand.rsc
+    file[]: crc = 8ea89915; size =   4047616; name = CD\IRJ1RSC\AUDIO\BOOKSFX.rsc
+    file[]: crc = 394ace34; size =   2491904; name = CD\IRJ1RSC\AUDIO\FunFish.rsc
+    file[]: crc = 003fd4d3; size =   5125376; name = CD\IRJ1RSC\AUDIO\HELPTEXT.rsc
+    file[]: crc = 00f62f03; size =   1794112; name = CD\IRJ1RSC\AUDIO\MitMess.rsc
+    file[]: crc = 4110a3c5; size =   5155584; name = CD\IRJ1RSC\AUDIO\Moviesfx.rsc
+    file[]: crc = 462f6a94; size =   2265216; name = CD\IRJ1RSC\AUDIO\NanNest.rsc
+    file[]: crc = b4794875; size =   4470528; name = CD\IRJ1RSC\AUDIO\RRpoem.rsc
+    file[]: crc = 26ccb55b; size =   5358592; name = CD\IRJ1RSC\AUDIO\RRSpeech.rsc
+    file[]: crc = db0f0e46; size =  11209216; name = CD\IRJ1RSC\AUDIO\scenesfx.rsc
+    file[]: crc = e218b1fb; size =   6074880; name = CD\IRJ1RSC\AUDIO\wordbook.rsc
+    file[]: crc = ae309517; size =    427936; name = CD\IRJ1RSC\BOOK\Book01.rsc
+    file[]: crc = 8a648c3e; size =    488608; name = CD\IRJ1RSC\BOOK\Book02.rsc
+    file[]: crc = fd950809; size =    599744; name = CD\IRJ1RSC\BOOK\Book03.rsc
+    file[]: crc = 796b12d5; size =    539040; name = CD\IRJ1RSC\BOOK\Book04.rsc
+    file[]: crc = 0a4c678d; size =    889120; name = CD\IRJ1RSC\BOOK\Book05.rsc
+    file[]: crc = 3c851591; size =    683264; name = CD\IRJ1RSC\BOOK\Book06.rsc
+    file[]: crc = 82c1392c; size =    711872; name = CD\IRJ1RSC\BOOK\Book07.rsc
+    file[]: crc = 3c99a63c; size =    773280; name = CD\IRJ1RSC\BOOK\Book08.rsc
+    file[]: crc = a1c5d3b7; size =    805440; name = CD\IRJ1RSC\BOOK\Book09.rsc
+    file[]: crc = 3850b4c4; size =    833152; name = CD\IRJ1RSC\BOOK\Book10.rsc
+    file[]: crc = d7361870; size =    608160; name = CD\IRJ1RSC\BOOK\Book11.rsc
+    file[]: crc = 7642e39d; size =    741312; name = CD\IRJ1RSC\BOOK\Book12.rsc
+    file[]: crc = 092f299e; size =    736416; name = CD\IRJ1RSC\BOOK\Book13.rsc
+    file[]: crc = f745933d; size =    733568; name = CD\IRJ1RSC\BOOK\Book14.rsc
+    file[]: crc = 3f9ca5e0; size =    997600; name = CD\IRJ1RSC\BOOK\Book15.rsc
+    file[]: crc = 10319d04; size =    850848; name = CD\IRJ1RSC\BOOK\Book16.rsc
+    file[]: crc = 048acf33; size =    711424; name = CD\IRJ1RSC\BOOK\Book17.rsc
+    file[]: crc = fc6e87a1; size =    748256; name = CD\IRJ1RSC\BOOK\Book18.rsc
+    file[]: crc = 58a36523; size =    694560; name = CD\IRJ1RSC\BOOK\Book19.rsc
+    file[]: crc = 97166f2e; size =    836032; name = CD\IRJ1RSC\BOOK\Book20.rsc
+    file[]: crc = 6366a34a; size =    984768; name = CD\IRJ1RSC\BOOK\Book21.rsc
+    file[]: crc = a1a66979; size =    863104; name = CD\IRJ1RSC\BOOK\Book22.rsc
+    file[]: crc = bee47e14; size =   1120192; name = CD\IRJ1RSC\BOOK\Book23.rsc
+    file[]: crc = 5c44846c; size =    991008; name = CD\IRJ1RSC\BOOK\Book24.rsc
+    file[]: crc = e02c1e71; size =    870304; name = CD\IRJ1RSC\BOOK\Book25.rsc
+    file[]: crc = f8f9fbec; size =    727456; name = CD\IRJ1RSC\BOOK\Book26.rsc
+    file[]: crc = bd09d1d3; size =    885440; name = CD\IRJ1RSC\BOOK\Book27.rsc
+    file[]: crc = c7e958f4; size =    965056; name = CD\IRJ1RSC\BOOK\Book28.rsc
+    file[]: crc = ae246450; size =    911040; name = CD\IRJ1RSC\BOOK\Book29.rsc
+    file[]: crc = 279cce7b; size =   1243328; name = CD\IRJ1RSC\BOOK\Book30.rsc
+    file[]: crc = 66185458; size =   1250240; name = CD\IRJ1RSC\BOOK\Book31.rsc
+    file[]: crc = b330497f; size =    995904; name = CD\IRJ1RSC\BOOK\Book32.rsc
+    file[]: crc = 3af92eee; size =    967424; name = CD\IRJ1RSC\BOOK\Book33.rsc
+    file[]: crc = 8d47578c; size =    981088; name = CD\IRJ1RSC\BOOK\Book34.rsc
+    file[]: crc = 75ea875d; size =    829792; name = CD\IRJ1RSC\BOOK\Book35.rsc
+    file[]: crc = b2b39591; size =   1237504; name = CD\IRJ1RSC\BOOK\Book36.rsc
+    file[]: crc = abf0b6b0; size =   1022016; name = CD\IRJ1RSC\BOOK\Book37.rsc
+    file[]: crc = ac875e4a; size =   1124800; name = CD\IRJ1RSC\BOOK\Book38.rsc
+    file[]: crc = 308e4dfc; size =   1006976; name = CD\IRJ1RSC\BOOK\Book39.rsc
+    file[]: crc = 4cbd2665; size =    908512; name = CD\IRJ1RSC\BOOK\Book40.rsc
+    file[]: crc = 97b50165; size =    920768; name = CD\IRJ1RSC\BOOK\Book41.rsc
+    file[]: crc = 74012403; size =   1097856; name = CD\IRJ1RSC\BOOK\Book42.rsc
+    file[]: crc = a57a6346; size =   1174080; name = CD\IRJ1RSC\BOOK\Book43.rsc
+    file[]: crc = a4e74ebc; size =   1215488; name = CD\IRJ1RSC\BOOK\Book44.rsc
+    file[]: crc = e4a16d68; size =   1656000; name = CD\IRJ1RSC\BOOK\Book45.rsc
+    file[]: crc = a1c063ab; size =   1364160; name = CD\IRJ1RSC\BOOK\Book46.rsc
+    file[]: crc = 2112eb73; size =   1324736; name = CD\IRJ1RSC\BOOK\Book47.rsc
+    file[]: crc = 5489566f; size =   1555712; name = CD\IRJ1RSC\BOOK\Book48.rsc
+    file[]: crc = db66ac48; size =   1257856; name = CD\IRJ1RSC\BOOK\Book49.rsc
+    file[]: crc = bf26342c; size =   1510208; name = CD\IRJ1RSC\BOOK\Book50.rsc
+    file[]: crc = 80aa7cbf; size =   1750912; name = CD\IRJ1RSC\BOOK\Book51.rsc
+    file[]: crc = 47149f36; size =   1522688; name = CD\IRJ1RSC\BOOK\Book52.rsc
+    file[]: crc = b33dee5b; size =   1447040; name = CD\IRJ1RSC\BOOK\Book53.rsc
+    file[]: crc = 9d26a756; size =   1348800; name = CD\IRJ1RSC\BOOK\Book54.rsc
+    file[]: crc = e1699489; size =   1818624; name = CD\IRJ1RSC\BOOK\Book55.rsc
+    file[]: crc = 5804e081; size =   1457984; name = CD\IRJ1RSC\BOOK\Book56.rsc
+    file[]: crc = 82d5277a; size =   1371072; name = CD\IRJ1RSC\BOOK\Book57.rsc
+    file[]: crc = ab81cfbc; size =   1530560; name = CD\IRJ1RSC\BOOK\Book58.rsc
+    file[]: crc = 4b17417a; size =   1414720; name = CD\IRJ1RSC\BOOK\Book59.rsc
+    file[]: crc = d5a93f66; size =   1620480; name = CD\IRJ1RSC\BOOK\Book60.rsc
+    file[]: crc = c7faa8f4; size =   1559104; name = CD\IRJ1RSC\BOOK\Book61.rsc
+    file[]: crc = 772de3ad; size =   1665792; name = CD\IRJ1RSC\BOOK\Book62.rsc
+    file[]: crc = 16a4a86f; size =   1843904; name = CD\IRJ1RSC\BOOK\Book63.rsc
+    file[]: crc = 6668cbb8; size =   1610880; name = CD\IRJ1RSC\BOOK\Book64.rsc
+    file[]: crc = 3d8f46d2; size =    395328; name = CD\IRJ1RSC\GRAPHICS\BENAO.rsc
+    file[]: crc = 77395c2a; size =   4145920; name = CD\IRJ1RSC\GRAPHICS\bookpict.rsc
+    file[]: crc = b4bf64b8; size =   3955456; name = CD\IRJ1RSC\GRAPHICS\FISHAO.rsc
+    file[]: crc = 6c96b024; size =   2837504; name = CD\IRJ1RSC\GRAPHICS\MITAO.rsc
+    file[]: crc = 1c28797e; size =   4301056; name = CD\IRJ1RSC\GRAPHICS\Movies.rsc
+    file[]: crc = 481ce518; size =    672576; name = CD\IRJ1RSC\GRAPHICS\NANAO.rsc
+    file[]: crc = 44df6826; size =   1788224; name = CD\IRJ1RSC\GRAPHICS\SamMisc.rsc
+    file[]: crc = 6292ed00; size =   8367104; name = CD\IRJ1RSC\GRAPHICS\SCENESAO.rsc
+    file[]: crc = 69bbfcd4; size =    415644; name = CD\PRsc\adaptin.smk
+    file[]: crc = 06373793; size =   3203840; name = CD\PRsc\IRJ1PAA.rsc
+    file[]: crc = a40591ad; size =   3371776; name = CD\PRsc\IRJ1PAZ.rsc
+    file[]: crc = 74548264; size =      3192; name = CD\PScripts\exit.mps
+    file[]: crc = 821aed04; size =       750; name = CD\PScripts\mthRacer.mps
+    file[]: crc = 4a8439db; size =     25004; name = CD\PScripts\PSIGNIN.MPS
+    file[]: crc = aa538fb9; size =      3617; name = CD\PScripts\rconfirm.mps
+    file[]: crc = e72ea7df; size =      1368; name = CD\PScripts\start.mps
+    file[]: crc = c3b2b294; size =      1693; name = CD\PScripts\welcome.mps
+    
+    CDLABEL = RRReading46
+    RRIRJ_CONTENTS =  [[[$(CRLF)
+[Reader Rabbit Personalize Reading Ages 4-6]
+CDDrive=D:\
+]]]
+    TLCAPPS16_CONTENTS = ""
+    TLCAPPS32_CONTENTS = ""
+end
+
+end

@@ -1,0 +1,1597 @@
+desc[tlc-cluefinders6th]:
+
+name = The ClueFinders 6th Grade Adventures: Empire of the Plant People
+icon = tlc-cluefinders6th.png
+machine = pc
+launch = "$(rootpath)\CF6.exe"
+osenv = windows 98
+winres = 800x600x8
+
+//
+// filesystem
+//
+mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD
+
+mount[cdw]: vpath = D:\; srcpath = ram
+
+//
+// initialization script
+//
+script[cd-init]:
+	code = [[[$(CRLF)
+        drive_set_label("D", "$$(CDLABEL)");
+        file_save("$$(rootpath)\\CF6.INI", "$$(CF6_CONTENTS)");
+    ]]]
+end
+
+script[registry-init]:
+    code = [[[$(CRLF)
+        winregistry_import_raw("$$(REGISTRY)");
+    ]]]
+end
+
+//
+// English (US), Version 1.0
+//
+game[pc-cd-en-us-1.0]:
+    name = English (US) CD, Version 1.0
+    anchorfile = CF6.exe
+    anchordepth = 3
+    rootpath = C:\Program Files\The Learning Company\The ClueFinders 6th Grade Adventures
+    
+    file[]: crc = 8310dee0; size =    679936; name = CF6.exe
+    file[]: crc = 7ee52196; size =       766; name = CF6.ICO
+    file[]: crc = d80c0066; size =        86; name = CF6.ini
+    file[]: crc = c50d49d1; size =      2612; name = PLSDescriptor.txt
+    file[]: crc = bb071b07; size =   1159168; name = PreAssess.exe
+    file[]: crc = efcebe32; size =     96256; name = SMACKW32.DLL
+    file[]: crc = 0ee069ce; size =    443032; name = Movies\LOpen1.smk
+    file[]: crc = 3351111b; size =    419400; name = Movies\LOpen2.smk
+    file[]: crc = e6235926; size =    419432; name = Movies\LOpen3.smk
+    file[]: crc = 37d0fb1e; size =      5632; name = plugin\pplug.pls
+    file[]: crc = af1ac80c; size =    144896; name = RSC\BP.rsc
+    file[]: crc = 98eb2fd0; size =   1026048; name = RSC\ClifC1.rsc
+    file[]: crc = d73fd5b8; size =   1012224; name = RSC\ClifC2.rsc
+    file[]: crc = 85f56a95; size =     13760; name = RSC\ClifData.rsc
+    file[]: crc = e7a197ec; size =     39424; name = RSC\ClifSfx2.rsc
+    file[]: crc = af7b3280; size =   1098240; name = RSC\ClifSpch1.rsc
+    file[]: crc = b7751218; size =    376320; name = RSC\ClifSpch2.rsc
+    file[]: crc = 3963311a; size =   2223616; name = RSC\Clueh.rsc
+    file[]: crc = e631b255; size =    153600; name = RSC\Com.rsc
+    file[]: crc = 22802061; size =    121344; name = RSC\Epatext.rsc
+    file[]: crc = 0d9cb0d0; size =     85504; name = RSC\GROWDATA.rsc
+    file[]: crc = 3bb1cb2e; size =     35904; name = RSC\GROWTEXT.rsc
+    file[]: crc = f9a1150c; size =    538112; name = RSC\Help.rsc
+    file[]: crc = 8aeffb9b; size =   1382912; name = RSC\KOh.rsc
+    file[]: crc = eddcae6b; size =    104448; name = RSC\lockdata.rsc
+    file[]: crc = bf15359d; size =    530432; name = RSC\Locki.rsc
+    file[]: crc = a8432eeb; size =   1476096; name = RSC\LT.rsc
+    file[]: crc = 3af8790d; size =     73280; name = RSC\LTRef.rsc
+    file[]: crc = 26d33710; size =     50688; name = RSC\Nest2.rsc
+    file[]: crc = db5fd890; size =     35968; name = RSC\NestData.rsc
+    file[]: crc = 4757a709; size =    783872; name = RSC\NestSpch1.rsc
+    file[]: crc = 8432a282; size =    153600; name = RSC\NestSpch2.rsc
+    file[]: crc = 25b0bcef; size =    384512; name = RSC\NestSpch3.rsc
+    file[]: crc = aa04d14f; size =    261632; name = RSC\NestSpch4.rsc
+    file[]: crc = 6999947d; size =    766976; name = RSC\NestSpch5.rsc
+    file[]: crc = 1fffdfd8; size =    906752; name = RSC\NestSpch6.rsc
+    file[]: crc = 7d929034; size =   2442240; name = RSC\Step.rsc
+    file[]: crc = 0567eff4; size =     44544; name = RSC\STEPDATA.rsc
+    file[]: crc = 1f50185f; size =    832512; name = RSC\Trth.rsc
+    file[]: crc = d598ec63; size =     23093; name = Scripts\KOData1.txt
+    file[]: crc = 15f7984f; size =     16677; name = Scripts\KOData2.txt
+    file[]: crc = a16de657; size =     17293; name = Scripts\KOData3.txt
+    file[]: crc = 00756b60; size =     22172; name = Scripts\KOData4.txt
+    file[]: crc = 4270f174; size =     20004; name = Scripts\PlantData.txt
+    
+    file[]: crc = a7df6bdb; size =   1753232; name = CD\Data\Movies\BrdgWalkBG1.smk
+    file[]: crc = e9afd8c6; size =   1755400; name = CD\Data\Movies\BrdgWalkBG2.smk
+    file[]: crc = 0ee069ce; size =    443032; name = CD\Data\Movies\LOpen1.smk
+    file[]: crc = 3351111b; size =    419400; name = CD\Data\Movies\LOpen2.smk
+    file[]: crc = e6235926; size =    419432; name = CD\Data\Movies\LOpen3.smk
+    file[]: crc = 35ce3050; size =    426088; name = CD\Data\Movies\LOpen4.smk
+    file[]: crc = 4ff4c4ef; size =    417716; name = CD\Data\Movies\LOpen5.smk
+    file[]: crc = 2527083e; size =    417948; name = CD\Data\Movies\LOpen6.smk
+    file[]: crc = 0e2b6c7c; size =    428628; name = CD\Data\Movies\MvAdapt.smk
+    file[]: crc = 33b86a68; size =  13767384; name = CD\Data\Movies\MvBClue1.smk
+    file[]: crc = 1e4f9702; size =   3840716; name = CD\Data\Movies\MVBClue2.smk
+    file[]: crc = 03aac63b; size =   5510352; name = CD\Data\Movies\MVBClue3.smk
+    file[]: crc = eb17673e; size =   4244584; name = CD\Data\Movies\MVBClue4.smk
+    file[]: crc = 429cb34c; size =   2751252; name = CD\Data\Movies\MVBClue5.smk
+    file[]: crc = aa9748d3; size =  24439756; name = CD\Data\Movies\MVCClue1.smk
+    file[]: crc = 2e5a7c06; size =   2993816; name = CD\Data\Movies\MVCClue2.smk
+    file[]: crc = b8b5134f; size =   4213088; name = CD\Data\Movies\MVCClue3.smk
+    file[]: crc = 20323e00; size =  22803856; name = CD\Data\Movies\MvClose1.smk
+    file[]: crc = 3e1edebd; size =    173856; name = CD\Data\Movies\MVComet.smk
+    file[]: crc = d44f5295; size =     71060; name = CD\Data\Movies\MVFade.smk
+    file[]: crc = 43fe0e90; size =   4073664; name = CD\Data\Movies\MVNest.smk
+    file[]: crc = 088a94dd; size =  20665812; name = CD\Data\Movies\MVOpen1.smk
+    file[]: crc = b9f987c6; size =  16123916; name = CD\Data\Movies\MVOpen2.smk
+    file[]: crc = b936faab; size =    288472; name = CD\Data\Movies\MVTitle.smk
+    file[]: crc = bcef73ba; size =   3246424; name = CD\Data\Movies\WalkInPos1a.smk
+    file[]: crc = 2fa16aac; size =   3254112; name = CD\Data\Movies\WalkInPos1b.smk
+    file[]: crc = 8e1c1c21; size =   3182112; name = CD\Data\Movies\WalkInPos2a.smk
+    file[]: crc = 3704f170; size =   3170780; name = CD\Data\Movies\WalkInPos2b.smk
+    file[]: crc = 312ea7d7; size =   3212104; name = CD\Data\Movies\WalkInPos3a.smk
+    file[]: crc = b6d226c6; size =   3158008; name = CD\Data\Movies\WalkInPos3b.smk
+    file[]: crc = 6e4bd5bd; size =   3177992; name = CD\Data\Movies\WalkInPos4a.smk
+    file[]: crc = 16268700; size =   3170300; name = CD\Data\Movies\WalkInPos4b.smk
+    file[]: crc = 2ef2906b; size =   3283864; name = CD\Data\Movies\WalkInPos5a.smk
+    file[]: crc = 83c1c867; size =   3327844; name = CD\Data\Movies\WalkInPos5b.smk
+    file[]: crc = 6e4bd5bd; size =   3177992; name = CD\Data\Movies\WalkInPos6a.smk
+    file[]: crc = 16268700; size =   3170300; name = CD\Data\Movies\WalkInPos6b.smk
+    file[]: crc = 312ea7d7; size =   3212104; name = CD\Data\Movies\WalkInPos7a.smk
+    file[]: crc = b6d226c6; size =   3158008; name = CD\Data\Movies\WalkInPos7b.smk
+    file[]: crc = 8e1c1c21; size =   3182112; name = CD\Data\Movies\WalkInPos8a.smk
+    file[]: crc = 3704f170; size =   3170780; name = CD\Data\Movies\WalkInPos8b.smk
+    file[]: crc = 8ec8314b; size =    601600; name = CD\Data\RSC\ALabTunz.rsc
+    file[]: crc = 96c9c3e6; size =   6765568; name = CD\Data\RSC\BLabTunz.rsc
+    file[]: crc = af1ac80c; size =    144896; name = CD\Data\RSC\BP.rsc
+    file[]: crc = 1dde2f21; size =   6377984; name = CD\Data\RSC\BPSpch.rsc
+    file[]: crc = ab090ead; size =   1316864; name = CD\Data\RSC\Brdg.rsc
+    file[]: crc = ac5b2933; size =   1053696; name = CD\Data\RSC\BrdgI.rsc
+    file[]: crc = 24ec5cbc; size =   6026752; name = CD\Data\RSC\BrdgSpch.rsc
+    file[]: crc = 2b1e7d37; size =   2198528; name = CD\Data\RSC\CLabTunz.rsc
+    file[]: crc = fabea3d4; size =   1867264; name = CD\Data\RSC\Clif.rsc
+    file[]: crc = 98eb2fd0; size =   1026048; name = CD\Data\RSC\ClifC1.rsc
+    file[]: crc = d73fd5b8; size =   1012224; name = CD\Data\RSC\ClifC2.rsc
+    file[]: crc = 85f56a95; size =     13760; name = CD\Data\RSC\ClifData.rsc
+    file[]: crc = e7a197ec; size =     39424; name = CD\Data\RSC\ClifSfx2.rsc
+    file[]: crc = 2413a4e3; size =  12353024; name = CD\Data\RSC\ClifSpch.rsc
+    file[]: crc = af7b3280; size =   1098240; name = CD\Data\RSC\ClifSpch1.rsc
+    file[]: crc = b7751218; size =    376320; name = CD\Data\RSC\ClifSpch2.rsc
+    file[]: crc = 3963311a; size =   2223616; name = CD\Data\RSC\Clueh.rsc
+    file[]: crc = e631b255; size =    153600; name = CD\Data\RSC\Com.rsc
+    file[]: crc = b4e38fa7; size =    309760; name = CD\Data\RSC\ComPA.rsc
+    file[]: crc = 732ae8f3; size =    870912; name = CD\Data\RSC\ComSpch.rsc
+    file[]: crc = 295d56ce; size =    479232; name = CD\Data\RSC\CS1.rsc
+    file[]: crc = 858c54c8; size =     60928; name = CD\Data\RSC\CS1o1.rsc
+    file[]: crc = 994a6c57; size =     61952; name = CD\Data\RSC\CS1o2.rsc
+    file[]: crc = 4d0f2ddb; size =    228352; name = CD\Data\RSC\CS1Pre.rsc
+    file[]: crc = f1a2dbe8; size =   3848192; name = CD\Data\RSC\CS1Spch.rsc
+    file[]: crc = a5138cd5; size =    426496; name = CD\Data\RSC\CS2.rsc
+    file[]: crc = 70704137; size =     61440; name = CD\Data\RSC\CS2o1.rsc
+    file[]: crc = b57c526f; size =     69120; name = CD\Data\RSC\CS2o2.rsc
+    file[]: crc = ceef83c6; size =    218624; name = CD\Data\RSC\CS2Pre.rsc
+    file[]: crc = d0acf1a1; size =   2702336; name = CD\Data\RSC\CS2Spch.rsc
+    file[]: crc = ec5122ff; size =    431616; name = CD\Data\RSC\CS3.rsc
+    file[]: crc = 72de7a56; size =     58880; name = CD\Data\RSC\CS3o1.rsc
+    file[]: crc = ce4dd511; size =     59904; name = CD\Data\RSC\CS3o2.rsc
+    file[]: crc = 54c53050; size =     64000; name = CD\Data\RSC\CS3o3.rsc
+    file[]: crc = ccf5ace6; size =    211456; name = CD\Data\RSC\CS3Pre.rsc
+    file[]: crc = cf18a3bf; size =   3462656; name = CD\Data\RSC\CS3Spch.rsc
+    file[]: crc = e0dcccd8; size =    451584; name = CD\Data\RSC\CS4.rsc
+    file[]: crc = 2e398b6d; size =     60928; name = CD\Data\RSC\CS4o1.rsc
+    file[]: crc = 15ec6ec3; size =     61952; name = CD\Data\RSC\CS4o3.rsc
+    file[]: crc = f8e98d50; size =     65536; name = CD\Data\RSC\CS4o4.rsc
+    file[]: crc = c12381e2; size =    461312; name = CD\Data\RSC\CS4Pre.rsc
+    file[]: crc = 8b901d48; size =    100352; name = CD\Data\RSC\CS4s1p.rsc
+    file[]: crc = 181f0aa3; size =    100352; name = CD\Data\RSC\CS4s2p.rsc
+    file[]: crc = 7ef0697c; size =    100352; name = CD\Data\RSC\CS4s3p.rsc
+    file[]: crc = c403ecdb; size =   3698176; name = CD\Data\RSC\CS4Spch.rsc
+    file[]: crc = 6331966c; size =   2202624; name = CD\Data\RSC\EPA.rsc
+    file[]: crc = 0f5bda0e; size =   1690624; name = CD\Data\RSC\EPAI.rsc
+    file[]: crc = e41fc7b1; size =   8808960; name = CD\Data\RSC\EPASpch.rsc
+    file[]: crc = 22802061; size =    121344; name = CD\Data\RSC\Epatext.rsc
+    file[]: crc = eb25217b; size =   3111936; name = CD\Data\RSC\Grow.rsc
+    file[]: crc = 0d9cb0d0; size =     85504; name = CD\Data\RSC\GROWDATA.rsc
+    file[]: crc = 18e35312; size =   1815040; name = CD\Data\RSC\GrowI.rsc
+    file[]: crc = d1a314ed; size =  10868736; name = CD\Data\RSC\GrowSpch.rsc
+    file[]: crc = 3bb1cb2e; size =     35904; name = CD\Data\RSC\GROWTEXT.rsc
+    file[]: crc = f9a1150c; size =    538112; name = CD\Data\RSC\Help.rsc
+    file[]: crc = 491bedfa; size =   1625600; name = CD\Data\RSC\KO.rsc
+    file[]: crc = 4fa87dc4; size =    113664; name = CD\Data\RSC\KO1Pre.rsc
+    file[]: crc = 935961a6; size =    112640; name = CD\Data\RSC\KO2Pre.rsc
+    file[]: crc = 8aeffb9b; size =   1382912; name = CD\Data\RSC\KOh.rsc
+    file[]: crc = d9b50a66; size =     75776; name = CD\Data\RSC\KOo1.rsc
+    file[]: crc = fba7ed1a; size =     75264; name = CD\Data\RSC\KOo2.rsc
+    file[]: crc = dcf2c574; size =     76800; name = CD\Data\RSC\KOo3.rsc
+    file[]: crc = 1f4e499c; size =    512512; name = CD\Data\RSC\KOPre.rsc
+    file[]: crc = d535b92b; size =   8305152; name = CD\Data\RSC\KOSpch.rsc
+    file[]: crc = 8ca41bb2; size =   2945536; name = CD\Data\RSC\Lock.rsc
+    file[]: crc = eddcae6b; size =    104448; name = CD\Data\RSC\lockdata.rsc
+    file[]: crc = bf15359d; size =    530432; name = CD\Data\RSC\Locki.rsc
+    file[]: crc = 26eaba9f; size =    196608; name = CD\Data\RSC\LockScn1.rsc
+    file[]: crc = 6f64a907; size =    200704; name = CD\Data\RSC\LockScn2.rsc
+    file[]: crc = bf9dbf29; size =    255488; name = CD\Data\RSC\LockScn3.rsc
+    file[]: crc = 20e17136; size =    212992; name = CD\Data\RSC\LockScn4.rsc
+    file[]: crc = 311fbfcb; size =    172544; name = CD\Data\RSC\LockScn5.rsc
+    file[]: crc = 15fec310; size =    172032; name = CD\Data\RSC\LockScn6.rsc
+    file[]: crc = 06f31aa2; size =    169984; name = CD\Data\RSC\LockSfx.rsc
+    file[]: crc = 867d80ed; size =   4261376; name = CD\Data\RSC\LockSpch.rsc
+    file[]: crc = 261c273f; size =    138752; name = CD\Data\RSC\LockV1.rsc
+    file[]: crc = 90bb595b; size =    138240; name = CD\Data\RSC\LockV2.rsc
+    file[]: crc = cf942a9c; size =    110080; name = CD\Data\RSC\LockV3.rsc
+    file[]: crc = fcd263b2; size =    136704; name = CD\Data\RSC\LockV4.rsc
+    file[]: crc = b7f0b164; size =    131072; name = CD\Data\RSC\LockV5.rsc
+    file[]: crc = b9128559; size =    132096; name = CD\Data\RSC\LockV6.rsc
+    file[]: crc = a8432eeb; size =   1476096; name = CD\Data\RSC\LT.rsc
+    file[]: crc = 3af8790d; size =     73280; name = CD\Data\RSC\LTRef.rsc
+    file[]: crc = 42831f37; size =   1191936; name = CD\Data\RSC\LTSpch.rsc
+    file[]: crc = 7072f63b; size =   2107392; name = CD\Data\RSC\Nest.rsc
+    file[]: crc = 26d33710; size =     50688; name = CD\Data\RSC\Nest2.rsc
+    file[]: crc = f7440b77; size =     97792; name = CD\Data\RSC\Nest3.rsc
+    file[]: crc = db5fd890; size =     35968; name = CD\Data\RSC\NestData.rsc
+    file[]: crc = 5d5081cd; size =   7965696; name = CD\Data\RSC\NESTSpch.rsc
+    file[]: crc = 4757a709; size =    783872; name = CD\Data\RSC\NestSpch1.rsc
+    file[]: crc = 8432a282; size =    153600; name = CD\Data\RSC\NestSpch2.rsc
+    file[]: crc = 25b0bcef; size =    384512; name = CD\Data\RSC\NestSpch3.rsc
+    file[]: crc = aa04d14f; size =    261632; name = CD\Data\RSC\NestSpch4.rsc
+    file[]: crc = 6999947d; size =    766976; name = CD\Data\RSC\NestSpch5.rsc
+    file[]: crc = 1fffdfd8; size =    906752; name = CD\Data\RSC\NestSpch6.rsc
+    file[]: crc = de9b1474; size =    315904; name = CD\Data\RSC\SI.rsc
+    file[]: crc = 2239e266; size =    249856; name = CD\Data\RSC\SISpch.rsc
+    file[]: crc = 20fa177b; size =    478208; name = CD\Data\RSC\SITunz.rsc
+    file[]: crc = 7d929034; size =   2442240; name = CD\Data\RSC\Step.rsc
+    file[]: crc = 0567eff4; size =     44544; name = CD\Data\RSC\STEPDATA.rsc
+    file[]: crc = 78371778; size =    670208; name = CD\Data\RSC\Stepi.rsc
+    file[]: crc = 3606ad90; size =    248832; name = CD\Data\RSC\StepSfx.rsc
+    file[]: crc = 5e575ca1; size =   4171776; name = CD\Data\RSC\StepSpch.rsc
+    file[]: crc = 5272b06d; size =   2193920; name = CD\Data\RSC\Trt.rsc
+    file[]: crc = 1f50185f; size =    832512; name = CD\Data\RSC\Trth.rsc
+    file[]: crc = 53c7c06b; size =     41984; name = CD\Data\RSC\Trto1.rsc
+    file[]: crc = 19407dba; size =     41472; name = CD\Data\RSC\Trto2.rsc
+    file[]: crc = 16c011c6; size =    592384; name = CD\Data\RSC\TrtPre.rsc
+    file[]: crc = 7bcd9d87; size =  12506112; name = CD\Data\RSC\TrtSpch.rsc
+    file[]: crc = 757af802; size =     89088; name = CD\Data\RSC\TrtWFull.rsc
+    file[]: crc = 6160b8bd; size =    252416; name = CD\Data\RSC\TrtWIn.rsc
+    file[]: crc = d96e19dc; size =    272896; name = CD\Data\RSC\TrtWOut.rsc
+    file[]: crc = 77a0b36c; size =     91702; name = CD\Data\Scripts\bridge.mps
+    file[]: crc = 35120d52; size =    108374; name = CD\Data\Scripts\cliffs.mps
+    file[]: crc = de535b67; size =     80971; name = CD\Data\Scripts\Clue1.mps
+    file[]: crc = fb4d9620; size =     78124; name = CD\Data\Scripts\Clue2.mps
+    file[]: crc = ab11c52f; size =     79528; name = CD\Data\Scripts\Clue3.mps
+    file[]: crc = 82368a91; size =     82702; name = CD\Data\Scripts\Clue4.mps
+    file[]: crc = 033720d0; size =    101698; name = CD\Data\Scripts\door.mps
+    file[]: crc = 6118d649; size =    115164; name = CD\Data\Scripts\epa.mps
+    file[]: crc = 16658703; size =    138366; name = CD\Data\Scripts\growth.mps
+    file[]: crc = 0d20fb71; size =    149400; name = CD\Data\Scripts\KO.mps
+    file[]: crc = d598ec63; size =     23093; name = CD\Data\Scripts\KOData1.txt
+    file[]: crc = 15f7984f; size =     16677; name = CD\Data\Scripts\KOData2.txt
+    file[]: crc = a16de657; size =     17293; name = CD\Data\Scripts\KOData3.txt
+    file[]: crc = 00756b60; size =     22172; name = CD\Data\Scripts\KOData4.txt
+    file[]: crc = 7d4d39e3; size =      9398; name = CD\Data\Scripts\main.mps
+    file[]: crc = ff2e6fbc; size =    126526; name = CD\Data\Scripts\NEST.mps
+    file[]: crc = c1e1466b; size =    132814; name = CD\Data\Scripts\Plant.mps
+    file[]: crc = 4270f174; size =     20004; name = CD\Data\Scripts\PlantData.txt
+    file[]: crc = d7718d78; size =     63654; name = CD\Data\Scripts\signin.mps
+    file[]: crc = 508317d7; size =     12117; name = CD\Data\Scripts\StartUp.mps
+    file[]: crc = a766fde0; size =     83379; name = CD\Data\Scripts\Steps.mps
+    file[]: crc = e9fead0b; size =    266292; name = CD\INSTALL\PLS\Plugin\CF6th.pls
+    file[]: crc = d964792e; size =   2275341; name = CD\INSTALL\PLS\Preasses\Prsc\ASIX.RSC
+    file[]: crc = ab21c145; size =   3154445; name = CD\INSTALL\PLS\Preasses\Prsc\SIX.RSC
+    file[]: crc = df25bca7; size =      2131; name = CD\INSTALL\PLS\Preasses\PSCRIPTS\CONSTANT.INC
+    file[]: crc = 77e398bb; size =       623; name = CD\INSTALL\PLS\Preasses\PSCRIPTS\EXIT.MPS
+    file[]: crc = 315fcc9b; size =      2169; name = CD\INSTALL\PLS\Preasses\PSCRIPTS\MTHRACER.INC
+    file[]: crc = 5e8e8c34; size =       941; name = CD\INSTALL\PLS\Preasses\PSCRIPTS\MTHRACER.MPS
+    file[]: crc = a4da71ec; size =       218; name = CD\INSTALL\PLS\Preasses\PSCRIPTS\RCONFIRM.MPS
+    file[]: crc = 062ae1b0; size =      2046; name = CD\INSTALL\PLS\Preasses\PSCRIPTS\WS_FTP.LOG
+    file[]: crc = fa45e323; size =  12239848; name = CD\INSTALL\PLS\SlideShw\abouta.smk
+    file[]: crc = 00000000; size =         0; name = CD\INSTALL\TLC\CFS744AE.CD
+    
+    CDLABEL = CFsixth
+    CF6_CONTENTS = [[[$(CRLF)
+[ClueFinders 6th Grade - CD]
+CDDrive=D:\DATA\
+UseDirectDraw=1
+DisplayFullScreen=1
+]]]
+    REGISTRY = [[[$(CRLF)
+REGEDIT4
+
+[HKEY_LOCAL_MACHINE\Software\The Learning Company\The ClueFinders 6th Grade Adventures]
+
+[HKEY_LOCAL_MACHINE\Software\The Learning Company\The ClueFinders 6th Grade Adventures\1.0]
+
+[HKEY_LOCAL_MACHINE\Software\The Learning Company\The ClueFinders 6th Grade Adventures\DataFile]
+@="$$(rootpath)\\USERS\\CF6.DAT"
+
+[HKEY_LOCAL_MACHINE\Software\The Learning Company\The ClueFinders 6th Grade Adventures\PreassesExe]
+@="$$(rootpath)\\PreAssess.exe"
+
+[HKEY_LOCAL_MACHINE\Software\The Learning Company\The ClueFinders 6th Grade Adventures\PreassesDir]
+@="D:\\Install\\Pls\\Preasses"
+
+[HKEY_LOCAL_MACHINE\Software\The Learning Company\The ClueFinders 6th Grade Adventures\InstalledFile]
+@="$$(rootpath)\\CF6.EXE"
+
+[HKEY_LOCAL_MACHINE\Software\The Learning Company\The ClueFinders 6th Grade Adventures\Version]
+@="1.0"
+
+[HKEY_LOCAL_MACHINE\Software\The Learning Company\The ClueFinders 6th Grade Adventures\MainExe]
+@="$$(rootpath)\\CF6.EXE"
+
+[HKEY_LOCAL_MACHINE\Software\The Learning Company\The ClueFinders 6th Grade Adventures\InstalledPath]
+@="$$(rootpath)"
+
+
+
+]]]
+
+end
+
+//
+// English (US), Kid Pix Deluxe 3 Bundle
+//
+game[pc-cd-en-us-kp3]:
+    name = English (US) CD, Kid Pix Deluxe 3 Bundle
+    anchorfile = CF6.exe
+    anchordepth = 3
+    rootpath = C:\Program Files\The Learning Company\ClueFinders 6th Grade Adventures
+    
+    file[]: crc = 9d48c344; size =    663552; name = CF6.EXE
+    file[]: crc = efcebe32; size =     96256; name = SMACKW32.DLL
+    file[]: crc = 9e79a190; size =    516643; name = User's Guide.pdf
+    file[]: crc = 0ee069ce; size =    443032; name = Movies\LOpen1.smk
+    file[]: crc = 3351111b; size =    419400; name = Movies\LOpen2.smk
+    file[]: crc = e6235926; size =    419432; name = Movies\LOpen3.smk
+    file[]: crc = af1ac80c; size =    144896; name = RSC\BP.rsc
+    file[]: crc = 98eb2fd0; size =   1026048; name = RSC\ClifC1.rsc
+    file[]: crc = d73fd5b8; size =   1012224; name = RSC\ClifC2.rsc
+    file[]: crc = 85f56a95; size =     13760; name = RSC\ClifData.rsc
+    file[]: crc = e7a197ec; size =     39424; name = RSC\ClifSfx2.rsc
+    file[]: crc = af7b3280; size =   1098240; name = RSC\ClifSpch1.rsc
+    file[]: crc = b7751218; size =    376320; name = RSC\ClifSpch2.rsc
+    file[]: crc = 3963311a; size =   2223616; name = RSC\Clueh.rsc
+    file[]: crc = e631b255; size =    153600; name = RSC\Com.rsc
+    file[]: crc = 22802061; size =    121344; name = RSC\Epatext.rsc
+    file[]: crc = 0d9cb0d0; size =     85504; name = RSC\GROWDATA.rsc
+    file[]: crc = 3bb1cb2e; size =     35904; name = RSC\GROWTEXT.rsc
+    file[]: crc = f9a1150c; size =    538112; name = RSC\Help.rsc
+    file[]: crc = 8aeffb9b; size =   1382912; name = RSC\KOh.rsc
+    file[]: crc = eddcae6b; size =    104448; name = RSC\lockdata.rsc
+    file[]: crc = bf15359d; size =    530432; name = RSC\Locki.rsc
+    file[]: crc = a8432eeb; size =   1476096; name = RSC\LT.rsc
+    file[]: crc = 3af8790d; size =     73280; name = RSC\LTRef.rsc
+    file[]: crc = 26d33710; size =     50688; name = RSC\Nest2.rsc
+    file[]: crc = db5fd890; size =     35968; name = RSC\NestData.rsc
+    file[]: crc = 4757a709; size =    783872; name = RSC\NestSpch1.rsc
+    file[]: crc = 8432a282; size =    153600; name = RSC\NestSpch2.rsc
+    file[]: crc = 25b0bcef; size =    384512; name = RSC\NestSpch3.rsc
+    file[]: crc = aa04d14f; size =    261632; name = RSC\NestSpch4.rsc
+    file[]: crc = 6999947d; size =    766976; name = RSC\NestSpch5.rsc
+    file[]: crc = 1fffdfd8; size =    906752; name = RSC\NestSpch6.rsc
+    file[]: crc = 7d929034; size =   2442240; name = RSC\Step.rsc
+    file[]: crc = 0567eff4; size =     44544; name = RSC\STEPDATA.rsc
+    file[]: crc = 1f50185f; size =    832512; name = RSC\Trth.rsc
+    file[]: crc = d598ec63; size =     23093; name = Scripts\KOData1.txt
+    file[]: crc = 15f7984f; size =     16677; name = Scripts\KOData2.txt
+    file[]: crc = a16de657; size =     17293; name = Scripts\KOData3.txt
+    file[]: crc = 00756b60; size =     22172; name = Scripts\KOData4.txt
+    file[]: crc = 4270f174; size =     20004; name = Scripts\PlantData.txt
+    
+        file[]: crc = a7df6bdb; size =   1753232; name = CD\Data\Movies\BrdgWalkBG1.smk
+    file[]: crc = e9afd8c6; size =   1755400; name = CD\Data\Movies\BrdgWalkBG2.smk
+    file[]: crc = 0ee069ce; size =    443032; name = CD\Data\Movies\LOpen1.smk
+    file[]: crc = 3351111b; size =    419400; name = CD\Data\Movies\LOpen2.smk
+    file[]: crc = e6235926; size =    419432; name = CD\Data\Movies\LOpen3.smk
+    file[]: crc = 35ce3050; size =    426088; name = CD\Data\Movies\LOpen4.smk
+    file[]: crc = 4ff4c4ef; size =    417716; name = CD\Data\Movies\LOpen5.smk
+    file[]: crc = 2527083e; size =    417948; name = CD\Data\Movies\LOpen6.smk
+    file[]: crc = b35f5162; size =    465504; name = CD\Data\Movies\MVAdapt.smk
+    file[]: crc = 33b86a68; size =  13767384; name = CD\Data\Movies\MvBClue1.smk
+    file[]: crc = 1e4f9702; size =   3840716; name = CD\Data\Movies\MVBClue2.smk
+    file[]: crc = 03aac63b; size =   5510352; name = CD\Data\Movies\MVBClue3.smk
+    file[]: crc = eb17673e; size =   4244584; name = CD\Data\Movies\MVBClue4.smk
+    file[]: crc = 429cb34c; size =   2751252; name = CD\Data\Movies\MVBClue5.smk
+    file[]: crc = aa9748d3; size =  24439756; name = CD\Data\Movies\MVCClue1.smk
+    file[]: crc = 2e5a7c06; size =   2993816; name = CD\Data\Movies\MVCClue2.smk
+    file[]: crc = b8b5134f; size =   4213088; name = CD\Data\Movies\MVCClue3.smk
+    file[]: crc = 20323e00; size =  22803856; name = CD\Data\Movies\MvClose1.smk
+    file[]: crc = 27e5db57; size =      1284; name = CD\Data\Movies\mvcomet.smk
+    file[]: crc = d44f5295; size =     71060; name = CD\Data\Movies\MVFade.smk
+    file[]: crc = 43fe0e90; size =   4073664; name = CD\Data\Movies\MVNest.smk
+    file[]: crc = 088a94dd; size =  20665812; name = CD\Data\Movies\MVOpen1.smk
+    file[]: crc = b9f987c6; size =  16123916; name = CD\Data\Movies\MVOpen2.smk
+    file[]: crc = b936faab; size =    288472; name = CD\Data\Movies\MVTitle.smk
+    file[]: crc = bcef73ba; size =   3246424; name = CD\Data\Movies\WalkInPos1a.smk
+    file[]: crc = 2fa16aac; size =   3254112; name = CD\Data\Movies\WalkInPos1b.smk
+    file[]: crc = 8e1c1c21; size =   3182112; name = CD\Data\Movies\WalkInPos2a.smk
+    file[]: crc = 3704f170; size =   3170780; name = CD\Data\Movies\WalkInPos2b.smk
+    file[]: crc = 312ea7d7; size =   3212104; name = CD\Data\Movies\WalkInPos3a.smk
+    file[]: crc = b6d226c6; size =   3158008; name = CD\Data\Movies\WalkInPos3b.smk
+    file[]: crc = 6e4bd5bd; size =   3177992; name = CD\Data\Movies\WalkInPos4a.smk
+    file[]: crc = 16268700; size =   3170300; name = CD\Data\Movies\WalkInPos4b.smk
+    file[]: crc = 2ef2906b; size =   3283864; name = CD\Data\Movies\WalkInPos5a.smk
+    file[]: crc = 83c1c867; size =   3327844; name = CD\Data\Movies\WalkInPos5b.smk
+    file[]: crc = 6e4bd5bd; size =   3177992; name = CD\Data\Movies\WalkInPos6a.smk
+    file[]: crc = 16268700; size =   3170300; name = CD\Data\Movies\WalkInPos6b.smk
+    file[]: crc = 312ea7d7; size =   3212104; name = CD\Data\Movies\WalkInPos7a.smk
+    file[]: crc = b6d226c6; size =   3158008; name = CD\Data\Movies\WalkInPos7b.smk
+    file[]: crc = 8e1c1c21; size =   3182112; name = CD\Data\Movies\WalkInPos8a.smk
+    file[]: crc = 3704f170; size =   3170780; name = CD\Data\Movies\WalkInPos8b.smk
+    file[]: crc = 8ec8314b; size =    601600; name = CD\Data\RSC\ALabTunz.rsc
+    file[]: crc = 96c9c3e6; size =   6765568; name = CD\Data\RSC\BLabTunz.rsc
+    file[]: crc = af1ac80c; size =    144896; name = CD\Data\RSC\BP.rsc
+    file[]: crc = 1dde2f21; size =   6377984; name = CD\Data\RSC\BPSpch.rsc
+    file[]: crc = ab090ead; size =   1316864; name = CD\Data\RSC\Brdg.rsc
+    file[]: crc = ac5b2933; size =   1053696; name = CD\Data\RSC\BrdgI.rsc
+    file[]: crc = 24ec5cbc; size =   6026752; name = CD\Data\RSC\BrdgSpch.rsc
+    file[]: crc = 2b1e7d37; size =   2198528; name = CD\Data\RSC\CLabTunz.rsc
+    file[]: crc = fabea3d4; size =   1867264; name = CD\Data\RSC\Clif.rsc
+    file[]: crc = 98eb2fd0; size =   1026048; name = CD\Data\RSC\ClifC1.rsc
+    file[]: crc = d73fd5b8; size =   1012224; name = CD\Data\RSC\ClifC2.rsc
+    file[]: crc = 85f56a95; size =     13760; name = CD\Data\RSC\ClifData.rsc
+    file[]: crc = e7a197ec; size =     39424; name = CD\Data\RSC\ClifSfx2.rsc
+    file[]: crc = 2413a4e3; size =  12353024; name = CD\Data\RSC\ClifSpch.rsc
+    file[]: crc = af7b3280; size =   1098240; name = CD\Data\RSC\ClifSpch1.rsc
+    file[]: crc = b7751218; size =    376320; name = CD\Data\RSC\ClifSpch2.rsc
+    file[]: crc = 3963311a; size =   2223616; name = CD\Data\RSC\Clueh.rsc
+    file[]: crc = e631b255; size =    153600; name = CD\Data\RSC\Com.rsc
+    file[]: crc = b4e38fa7; size =    309760; name = CD\Data\RSC\ComPA.rsc
+    file[]: crc = 732ae8f3; size =    870912; name = CD\Data\RSC\ComSpch.rsc
+    file[]: crc = 295d56ce; size =    479232; name = CD\Data\RSC\CS1.rsc
+    file[]: crc = 858c54c8; size =     60928; name = CD\Data\RSC\CS1o1.rsc
+    file[]: crc = 994a6c57; size =     61952; name = CD\Data\RSC\CS1o2.rsc
+    file[]: crc = 4d0f2ddb; size =    228352; name = CD\Data\RSC\CS1Pre.rsc
+    file[]: crc = f1a2dbe8; size =   3848192; name = CD\Data\RSC\CS1Spch.rsc
+    file[]: crc = a5138cd5; size =    426496; name = CD\Data\RSC\CS2.rsc
+    file[]: crc = 70704137; size =     61440; name = CD\Data\RSC\CS2o1.rsc
+    file[]: crc = b57c526f; size =     69120; name = CD\Data\RSC\CS2o2.rsc
+    file[]: crc = ceef83c6; size =    218624; name = CD\Data\RSC\CS2Pre.rsc
+    file[]: crc = d0acf1a1; size =   2702336; name = CD\Data\RSC\CS2Spch.rsc
+    file[]: crc = ec5122ff; size =    431616; name = CD\Data\RSC\CS3.rsc
+    file[]: crc = 72de7a56; size =     58880; name = CD\Data\RSC\CS3o1.rsc
+    file[]: crc = ce4dd511; size =     59904; name = CD\Data\RSC\CS3o2.rsc
+    file[]: crc = 54c53050; size =     64000; name = CD\Data\RSC\CS3o3.rsc
+    file[]: crc = ccf5ace6; size =    211456; name = CD\Data\RSC\CS3Pre.rsc
+    file[]: crc = cf18a3bf; size =   3462656; name = CD\Data\RSC\CS3Spch.rsc
+    file[]: crc = e0dcccd8; size =    451584; name = CD\Data\RSC\CS4.rsc
+    file[]: crc = 2e398b6d; size =     60928; name = CD\Data\RSC\CS4o1.rsc
+    file[]: crc = 15ec6ec3; size =     61952; name = CD\Data\RSC\CS4o3.rsc
+    file[]: crc = f8e98d50; size =     65536; name = CD\Data\RSC\CS4o4.rsc
+    file[]: crc = c12381e2; size =    461312; name = CD\Data\RSC\CS4Pre.rsc
+    file[]: crc = 8b901d48; size =    100352; name = CD\Data\RSC\CS4s1p.rsc
+    file[]: crc = 181f0aa3; size =    100352; name = CD\Data\RSC\CS4s2p.rsc
+    file[]: crc = 7ef0697c; size =    100352; name = CD\Data\RSC\CS4s3p.rsc
+    file[]: crc = c403ecdb; size =   3698176; name = CD\Data\RSC\CS4Spch.rsc
+    file[]: crc = 6331966c; size =   2202624; name = CD\Data\RSC\EPA.rsc
+    file[]: crc = 0f5bda0e; size =   1690624; name = CD\Data\RSC\EPAI.rsc
+    file[]: crc = e41fc7b1; size =   8808960; name = CD\Data\RSC\EPASpch.rsc
+    file[]: crc = 22802061; size =    121344; name = CD\Data\RSC\Epatext.rsc
+    file[]: crc = eb25217b; size =   3111936; name = CD\Data\RSC\Grow.rsc
+    file[]: crc = 0d9cb0d0; size =     85504; name = CD\Data\RSC\GROWDATA.rsc
+    file[]: crc = 18e35312; size =   1815040; name = CD\Data\RSC\GrowI.rsc
+    file[]: crc = d1a314ed; size =  10868736; name = CD\Data\RSC\GrowSpch.rsc
+    file[]: crc = 3bb1cb2e; size =     35904; name = CD\Data\RSC\GROWTEXT.rsc
+    file[]: crc = f9a1150c; size =    538112; name = CD\Data\RSC\Help.rsc
+    file[]: crc = 491bedfa; size =   1625600; name = CD\Data\RSC\KO.rsc
+    file[]: crc = 4fa87dc4; size =    113664; name = CD\Data\RSC\KO1Pre.rsc
+    file[]: crc = 935961a6; size =    112640; name = CD\Data\RSC\KO2Pre.rsc
+    file[]: crc = 8aeffb9b; size =   1382912; name = CD\Data\RSC\KOh.rsc
+    file[]: crc = d9b50a66; size =     75776; name = CD\Data\RSC\KOo1.rsc
+    file[]: crc = fba7ed1a; size =     75264; name = CD\Data\RSC\KOo2.rsc
+    file[]: crc = dcf2c574; size =     76800; name = CD\Data\RSC\KOo3.rsc
+    file[]: crc = 1f4e499c; size =    512512; name = CD\Data\RSC\KOPre.rsc
+    file[]: crc = d535b92b; size =   8305152; name = CD\Data\RSC\KOSpch.rsc
+    file[]: crc = 8ca41bb2; size =   2945536; name = CD\Data\RSC\Lock.rsc
+    file[]: crc = eddcae6b; size =    104448; name = CD\Data\RSC\lockdata.rsc
+    file[]: crc = bf15359d; size =    530432; name = CD\Data\RSC\Locki.rsc
+    file[]: crc = 26eaba9f; size =    196608; name = CD\Data\RSC\LockScn1.rsc
+    file[]: crc = 6f64a907; size =    200704; name = CD\Data\RSC\LockScn2.rsc
+    file[]: crc = bf9dbf29; size =    255488; name = CD\Data\RSC\LockScn3.rsc
+    file[]: crc = 20e17136; size =    212992; name = CD\Data\RSC\LockScn4.rsc
+    file[]: crc = 311fbfcb; size =    172544; name = CD\Data\RSC\LockScn5.rsc
+    file[]: crc = 15fec310; size =    172032; name = CD\Data\RSC\LockScn6.rsc
+    file[]: crc = 06f31aa2; size =    169984; name = CD\Data\RSC\LockSfx.rsc
+    file[]: crc = 867d80ed; size =   4261376; name = CD\Data\RSC\LockSpch.rsc
+    file[]: crc = 261c273f; size =    138752; name = CD\Data\RSC\LockV1.rsc
+    file[]: crc = 90bb595b; size =    138240; name = CD\Data\RSC\LockV2.rsc
+    file[]: crc = cf942a9c; size =    110080; name = CD\Data\RSC\LockV3.rsc
+    file[]: crc = fcd263b2; size =    136704; name = CD\Data\RSC\LockV4.rsc
+    file[]: crc = b7f0b164; size =    131072; name = CD\Data\RSC\LockV5.rsc
+    file[]: crc = b9128559; size =    132096; name = CD\Data\RSC\LockV6.rsc
+    file[]: crc = a8432eeb; size =   1476096; name = CD\Data\RSC\LT.rsc
+    file[]: crc = 3af8790d; size =     73280; name = CD\Data\RSC\LTRef.rsc
+    file[]: crc = 42831f37; size =   1191936; name = CD\Data\RSC\LTSpch.rsc
+    file[]: crc = 7072f63b; size =   2107392; name = CD\Data\RSC\Nest.rsc
+    file[]: crc = 26d33710; size =     50688; name = CD\Data\RSC\Nest2.rsc
+    file[]: crc = f7440b77; size =     97792; name = CD\Data\RSC\Nest3.rsc
+    file[]: crc = db5fd890; size =     35968; name = CD\Data\RSC\NestData.rsc
+    file[]: crc = 5d5081cd; size =   7965696; name = CD\Data\RSC\NESTSpch.rsc
+    file[]: crc = 4757a709; size =    783872; name = CD\Data\RSC\NestSpch1.rsc
+    file[]: crc = 8432a282; size =    153600; name = CD\Data\RSC\NestSpch2.rsc
+    file[]: crc = 25b0bcef; size =    384512; name = CD\Data\RSC\NestSpch3.rsc
+    file[]: crc = aa04d14f; size =    261632; name = CD\Data\RSC\NestSpch4.rsc
+    file[]: crc = 6999947d; size =    766976; name = CD\Data\RSC\NestSpch5.rsc
+    file[]: crc = 1fffdfd8; size =    906752; name = CD\Data\RSC\NestSpch6.rsc
+    file[]: crc = de9b1474; size =    315904; name = CD\Data\RSC\SI.rsc
+    file[]: crc = 2239e266; size =    249856; name = CD\Data\RSC\SISpch.rsc
+    file[]: crc = 20fa177b; size =    478208; name = CD\Data\RSC\SITunz.rsc
+    file[]: crc = 7d929034; size =   2442240; name = CD\Data\RSC\Step.rsc
+    file[]: crc = 0567eff4; size =     44544; name = CD\Data\RSC\STEPDATA.rsc
+    file[]: crc = 78371778; size =    670208; name = CD\Data\RSC\Stepi.rsc
+    file[]: crc = 3606ad90; size =    248832; name = CD\Data\RSC\StepSfx.rsc
+    file[]: crc = 5e575ca1; size =   4171776; name = CD\Data\RSC\StepSpch.rsc
+    file[]: crc = 5272b06d; size =   2193920; name = CD\Data\RSC\Trt.rsc
+    file[]: crc = 1f50185f; size =    832512; name = CD\Data\RSC\Trth.rsc
+    file[]: crc = 53c7c06b; size =     41984; name = CD\Data\RSC\Trto1.rsc
+    file[]: crc = 19407dba; size =     41472; name = CD\Data\RSC\Trto2.rsc
+    file[]: crc = 16c011c6; size =    592384; name = CD\Data\RSC\TrtPre.rsc
+    file[]: crc = 7bcd9d87; size =  12506112; name = CD\Data\RSC\TrtSpch.rsc
+    file[]: crc = 757af802; size =     89088; name = CD\Data\RSC\TrtWFull.rsc
+    file[]: crc = 6160b8bd; size =    252416; name = CD\Data\RSC\TrtWIn.rsc
+    file[]: crc = d96e19dc; size =    272896; name = CD\Data\RSC\TrtWOut.rsc
+    file[]: crc = 77a0b36c; size =     91702; name = CD\Data\Scripts\bridge.mps
+    file[]: crc = 35120d52; size =    108374; name = CD\Data\Scripts\cliffs.mps
+    file[]: crc = de535b67; size =     80971; name = CD\Data\Scripts\Clue1.mps
+    file[]: crc = fb4d9620; size =     78124; name = CD\Data\Scripts\Clue2.mps
+    file[]: crc = ab11c52f; size =     79528; name = CD\Data\Scripts\Clue3.mps
+    file[]: crc = 82368a91; size =     82702; name = CD\Data\Scripts\Clue4.mps
+    file[]: crc = 033720d0; size =    101698; name = CD\Data\Scripts\door.mps
+    file[]: crc = 6118d649; size =    115164; name = CD\Data\Scripts\epa.mps
+    file[]: crc = 16658703; size =    138366; name = CD\Data\Scripts\growth.mps
+    file[]: crc = 0d20fb71; size =    149400; name = CD\Data\Scripts\KO.mps
+    file[]: crc = d598ec63; size =     23093; name = CD\Data\Scripts\KOData1.txt
+    file[]: crc = 15f7984f; size =     16677; name = CD\Data\Scripts\KOData2.txt
+    file[]: crc = a16de657; size =     17293; name = CD\Data\Scripts\KOData3.txt
+    file[]: crc = 00756b60; size =     22172; name = CD\Data\Scripts\KOData4.txt
+    file[]: crc = 7d4d39e3; size =      9398; name = CD\Data\Scripts\main.mps
+    file[]: crc = ff2e6fbc; size =    126526; name = CD\Data\Scripts\NEST.mps
+    file[]: crc = c1e1466b; size =    132814; name = CD\Data\Scripts\Plant.mps
+    file[]: crc = 4270f174; size =     20004; name = CD\Data\Scripts\PlantData.txt
+    file[]: crc = d7718d78; size =     63654; name = CD\Data\Scripts\signin.mps
+    file[]: crc = 508317d7; size =     12117; name = CD\Data\Scripts\StartUp.mps
+    file[]: crc = a766fde0; size =     83379; name = CD\Data\Scripts\Steps.mps
+    file[]: crc = 62af5967; size =        40; name = CD\TLC\381576-CD1
+    
+    CDLABEL = "Clue Finders 6th"
+    CF6_CONTENTS = [[[$(CRLF)
+[ClueFinders 6th Grade - CD]
+CDDrive=D:\DATA\
+UseDirectDraw=1
+DisplayFullScreen=1
+]]]
+    REGISTRY = [[[$(CRLF)
+REGEDIT4
+
+[HKEY_LOCAL_MACHINE\Software\The Learning Company\The ClueFinders 6th Grade Adventures]
+
+[HKEY_LOCAL_MACHINE\Software\The Learning Company\The ClueFinders 6th Grade Adventures\1.0]
+
+[HKEY_LOCAL_MACHINE\Software\The Learning Company\The ClueFinders 6th Grade Adventures\DataFile]
+@="$$(rootpath)\\USERS\\CF6.DAT"
+
+[HKEY_LOCAL_MACHINE\Software\The Learning Company\The ClueFinders 6th Grade Adventures\InstalledFile]
+@="$$(rootpath)\\CF6.EXE"
+
+[HKEY_LOCAL_MACHINE\Software\The Learning Company\The ClueFinders 6th Grade Adventures\Version]
+@="1.0"
+
+[HKEY_LOCAL_MACHINE\Software\The Learning Company\The ClueFinders 6th Grade Adventures\MainExe]
+@="$$(rootpath)\\CF6.EXE"
+
+[HKEY_LOCAL_MACHINE\Software\The Learning Company\The ClueFinders 6th Grade Adventures\InstalledPath]
+@="$$(rootpath)"
+
+
+
+]]]
+
+end
+
+//
+// French, Version 1.1
+//
+game[pc-cd-fr-1.1]:
+    name = French CD, Version 1.1
+    anchorfile = CF6.exe
+    anchordepth = 3
+    rootpath = C:\Program Files\Mindscape\Le Club des TrouveTout, Les plantes carnivores
+    
+    file[]: crc = 9d48c344; size =    663552; name = CF6.EXE
+    file[]: crc = 7ee52196; size =       766; name = CF6.ICO
+    file[]: crc = efcebe32; size =     96256; name = SMACKW32.DLL
+    file[]: crc = 0ee069ce; size =    443032; name = Movies\LOpen1.smk
+    file[]: crc = 3351111b; size =    419400; name = Movies\LOpen2.smk
+    file[]: crc = e6235926; size =    419432; name = Movies\LOpen3.smk
+    file[]: crc = af1ac80c; size =    144896; name = RSC\BP.RSC
+    file[]: crc = 98eb2fd0; size =   1026048; name = RSC\ClifC1.rsc
+    file[]: crc = d73fd5b8; size =   1012224; name = RSC\ClifC2.rsc
+    file[]: crc = eeca9523; size =     14848; name = RSC\ClifData.rsc
+    file[]: crc = e7a197ec; size =     39424; name = RSC\ClifSfx2.rsc
+    file[]: crc = 5ec519ec; size =    977920; name = RSC\ClifSpch1.rsc
+    file[]: crc = 14e7860f; size =    361472; name = RSC\ClifSpch2.rsc
+    file[]: crc = 3963311a; size =   2223616; name = RSC\Clueh.rsc
+    file[]: crc = 76c0d1ef; size =    180224; name = RSC\Com.rsc
+    file[]: crc = 8869b982; size =    326144; name = RSC\Epatext.rsc
+    file[]: crc = a65ba02a; size =     85504; name = RSC\GROWDATA.RSC
+    file[]: crc = 7f314f0f; size =     85504; name = RSC\GROWTEXT.RSC
+    file[]: crc = f9a1150c; size =    538112; name = RSC\Help.rsc
+    file[]: crc = 8aeffb9b; size =   1382912; name = RSC\KOh.rsc
+    file[]: crc = 5d4bdb72; size =    187392; name = RSC\LOCKDATA.RSC
+    file[]: crc = 14f50bd8; size =    484352; name = RSC\Locki.rsc
+    file[]: crc = 52aadc6d; size =   1860096; name = RSC\LT.RSC
+    file[]: crc = f51a1a45; size =    154624; name = RSC\LTRef.rsc
+    file[]: crc = 26d33710; size =     50688; name = RSC\Nest2.rsc
+    file[]: crc = 74465ec6; size =     48672; name = RSC\NestData.rsc
+    file[]: crc = f5b14477; size =    795648; name = RSC\NestSpch1.rsc
+    file[]: crc = 53503689; size =    194560; name = RSC\NestSpch2.rsc
+    file[]: crc = 07a1bdbc; size =    258048; name = RSC\NestSpch3.rsc
+    file[]: crc = 4a58696d; size =    242688; name = RSC\NestSpch4.rsc
+    file[]: crc = 1e49511e; size =    761344; name = RSC\NestSpch5.rsc
+    file[]: crc = 992aeac7; size =    933888; name = RSC\NestSpch6.rsc
+    file[]: crc = f92946b0; size =   2442240; name = RSC\Step.rsc
+    file[]: crc = f76cfddc; size =     46592; name = RSC\STEPDATA.RSC
+    file[]: crc = bd56f8fd; size =    832512; name = RSC\Trth.rsc
+    file[]: crc = 65eb2e17; size =     24109; name = Scripts\KOData1.txt
+    file[]: crc = c1fe21eb; size =     17529; name = Scripts\KOData2.txt
+    file[]: crc = b719dbfe; size =     18073; name = Scripts\KOData3.txt
+    file[]: crc = c43c9136; size =     23069; name = Scripts\KOData4.txt
+    file[]: crc = 67fa96b6; size =     18780; name = Scripts\PlantData.txt
+    
+    file[]: crc = a7df6bdb; size =   1753232; name = CD\Data\Movies\BrdgWalkBG1.smk
+    file[]: crc = e9afd8c6; size =   1755400; name = CD\Data\Movies\BrdgWalkBG2.smk
+    file[]: crc = 0ee069ce; size =    443032; name = CD\Data\Movies\LOpen1.smk
+    file[]: crc = 3351111b; size =    419400; name = CD\Data\Movies\LOpen2.smk
+    file[]: crc = e6235926; size =    419432; name = CD\Data\Movies\LOpen3.smk
+    file[]: crc = 35ce3050; size =    426088; name = CD\Data\Movies\LOpen4.smk
+    file[]: crc = 4ff4c4ef; size =    417716; name = CD\Data\Movies\LOpen5.smk
+    file[]: crc = 2527083e; size =    417948; name = CD\Data\Movies\LOpen6.smk
+    file[]: crc = 54d2a512; size =       580; name = CD\Data\Movies\MvAdapt.smk
+    file[]: crc = b021c8bd; size =  13842596; name = CD\Data\Movies\MvBClue1.smk
+    file[]: crc = db799cec; size =   3971072; name = CD\Data\Movies\MVBClue2.smk
+    file[]: crc = f301dc56; size =   5626628; name = CD\Data\Movies\MVBClue3.smk
+    file[]: crc = f269384e; size =   4380216; name = CD\Data\Movies\MVBClue4.smk
+    file[]: crc = f65e2af8; size =   2828772; name = CD\Data\Movies\MVBClue5.smk
+    file[]: crc = ed460b45; size =  25428440; name = CD\Data\Movies\MVCClue1.smk
+    file[]: crc = 0fa8c272; size =   3104212; name = CD\Data\Movies\MVCClue2.smk
+    file[]: crc = 106553a8; size =   4365224; name = CD\Data\Movies\MVCClue3.smk
+    file[]: crc = d6855bf7; size =  23610116; name = CD\Data\Movies\MvClose1.smk
+    file[]: crc = 29445941; size =   1059600; name = CD\Data\Movies\MVComet.SMK
+    file[]: crc = 54d2a512; size =       580; name = CD\Data\Movies\MvFade.smk
+    file[]: crc = 95f62c05; size =   4163132; name = CD\Data\Movies\MVNest.smk
+    file[]: crc = 08bb4d6e; size =  21040436; name = CD\Data\Movies\MVOpen1.smk
+    file[]: crc = 67e55a7b; size =  16482104; name = CD\Data\Movies\MVOpen2.smk
+    file[]: crc = 6b43aa05; size =    286176; name = CD\Data\Movies\MVTitle.smk
+    file[]: crc = bcef73ba; size =   3246424; name = CD\Data\Movies\WalkInPos1a.smk
+    file[]: crc = 2fa16aac; size =   3254112; name = CD\Data\Movies\WalkInPos1b.smk
+    file[]: crc = 8e1c1c21; size =   3182112; name = CD\Data\Movies\WalkInPos2a.smk
+    file[]: crc = 3704f170; size =   3170780; name = CD\Data\Movies\WalkInPos2b.smk
+    file[]: crc = 312ea7d7; size =   3212104; name = CD\Data\Movies\WalkInPos3a.smk
+    file[]: crc = b6d226c6; size =   3158008; name = CD\Data\Movies\WalkInPos3b.smk
+    file[]: crc = 6e4bd5bd; size =   3177992; name = CD\Data\Movies\WalkInPos4a.smk
+    file[]: crc = 16268700; size =   3170300; name = CD\Data\Movies\WalkInPos4b.smk
+    file[]: crc = 2ef2906b; size =   3283864; name = CD\Data\Movies\WalkInPos5a.smk
+    file[]: crc = 83c1c867; size =   3327844; name = CD\Data\Movies\WalkInPos5b.smk
+    file[]: crc = 6e4bd5bd; size =   3177992; name = CD\Data\Movies\WalkInPos6a.smk
+    file[]: crc = 16268700; size =   3170300; name = CD\Data\Movies\WalkInPos6b.smk
+    file[]: crc = 312ea7d7; size =   3212104; name = CD\Data\Movies\WalkInPos7a.smk
+    file[]: crc = b6d226c6; size =   3158008; name = CD\Data\Movies\WalkInPos7b.smk
+    file[]: crc = 8e1c1c21; size =   3182112; name = CD\Data\Movies\WalkInPos8a.smk
+    file[]: crc = 3704f170; size =   3170780; name = CD\Data\Movies\WalkInPos8b.smk
+    file[]: crc = 8ec8314b; size =    601600; name = CD\Data\RSC\ALabTunz.rsc
+    file[]: crc = 96c9c3e6; size =   6765568; name = CD\Data\RSC\BLabTunz.rsc
+    file[]: crc = af1ac80c; size =    144896; name = CD\Data\RSC\BP.rsc
+    file[]: crc = 1dde2f21; size =   6377984; name = CD\Data\RSC\BPSpch.rsc
+    file[]: crc = 8a964c0e; size =   1316352; name = CD\Data\RSC\Brdg.rsc
+    file[]: crc = 8a2abc9c; size =   1110016; name = CD\Data\RSC\BrdgI.rsc
+    file[]: crc = 86bd10be; size =   6399488; name = CD\Data\RSC\BrdgSpch.rsc
+    file[]: crc = 2b1e7d37; size =   2198528; name = CD\Data\RSC\CLabTunz.rsc
+    file[]: crc = 73ec0bc2; size =   1867264; name = CD\Data\RSC\Clif.rsc
+    file[]: crc = 98eb2fd0; size =   1026048; name = CD\Data\RSC\ClifC1.rsc
+    file[]: crc = d73fd5b8; size =   1012224; name = CD\Data\RSC\ClifC2.rsc
+    file[]: crc = eeca9523; size =     14848; name = CD\Data\RSC\ClifData.rsc
+    file[]: crc = e7a197ec; size =     39424; name = CD\Data\RSC\ClifSfx2.rsc
+    file[]: crc = b0ab716c; size =  12217856; name = CD\Data\RSC\ClifSpch.rsc
+    file[]: crc = 5ec519ec; size =    977920; name = CD\Data\RSC\ClifSpch1.rsc
+    file[]: crc = 14e7860f; size =    361472; name = CD\Data\RSC\ClifSpch2.rsc
+    file[]: crc = 3963311a; size =   2223616; name = CD\Data\RSC\Clueh.rsc
+    file[]: crc = 76c0d1ef; size =    180224; name = CD\Data\RSC\Com.rsc
+    file[]: crc = b4e38fa7; size =    309760; name = CD\Data\RSC\ComPA.rsc
+    file[]: crc = 64603aee; size =    905216; name = CD\Data\RSC\ComSpch.rsc
+    file[]: crc = 295d56ce; size =    479232; name = CD\Data\RSC\CS1.rsc
+    file[]: crc = 858c54c8; size =     60928; name = CD\Data\RSC\CS1o1.rsc
+    file[]: crc = 994a6c57; size =     61952; name = CD\Data\RSC\CS1o2.rsc
+    file[]: crc = 1088a791; size =    228352; name = CD\Data\RSC\CS1Pre.rsc
+    file[]: crc = 445fe435; size =   3340288; name = CD\Data\RSC\CS1Spch.rsc
+    file[]: crc = a5138cd5; size =    426496; name = CD\Data\RSC\CS2.rsc
+    file[]: crc = 70704137; size =     61440; name = CD\Data\RSC\CS2o1.rsc
+    file[]: crc = b57c526f; size =     69120; name = CD\Data\RSC\CS2o2.rsc
+    file[]: crc = 1a7aef74; size =    218624; name = CD\Data\RSC\CS2Pre.rsc
+    file[]: crc = ffc8a869; size =   2359808; name = CD\Data\RSC\CS2Spch.rsc
+    file[]: crc = ec5122ff; size =    431616; name = CD\Data\RSC\CS3.rsc
+    file[]: crc = 72de7a56; size =     58880; name = CD\Data\RSC\CS3o1.rsc
+    file[]: crc = ce4dd511; size =     59904; name = CD\Data\RSC\CS3o2.rsc
+    file[]: crc = 54c53050; size =     64000; name = CD\Data\RSC\CS3o3.rsc
+    file[]: crc = f9fdd1e5; size =    211456; name = CD\Data\RSC\CS3Pre.rsc
+    file[]: crc = 1f08f3e7; size =   2947584; name = CD\Data\RSC\CS3Spch.rsc
+    file[]: crc = e0dcccd8; size =    451584; name = CD\Data\RSC\CS4.rsc
+    file[]: crc = 2e398b6d; size =     60928; name = CD\Data\RSC\CS4o1.rsc
+    file[]: crc = 15ec6ec3; size =     61952; name = CD\Data\RSC\CS4o3.rsc
+    file[]: crc = f8e98d50; size =     65536; name = CD\Data\RSC\CS4o4.rsc
+    file[]: crc = 567aa76f; size =    461824; name = CD\Data\RSC\CS4Pre.rsc
+    file[]: crc = 8b901d48; size =    100352; name = CD\Data\RSC\CS4s1p.rsc
+    file[]: crc = 181f0aa3; size =    100352; name = CD\Data\RSC\CS4s2p.rsc
+    file[]: crc = 7ef0697c; size =    100352; name = CD\Data\RSC\CS4s3p.rsc
+    file[]: crc = c53c4352; size =   3531264; name = CD\Data\RSC\CS4Spch.rsc
+    file[]: crc = 17c01f66; size =   2202624; name = CD\Data\RSC\EPA.rsc
+    file[]: crc = f43ddcd8; size =   1747968; name = CD\Data\RSC\EPAI.rsc
+    file[]: crc = 9b614c9b; size =   8559616; name = CD\Data\RSC\EPASpch.rsc
+    file[]: crc = 8869b982; size =    326144; name = CD\Data\RSC\Epatext.rsc
+    file[]: crc = 1760b432; size =   3116544; name = CD\Data\RSC\Grow.rsc
+    file[]: crc = a65ba02a; size =     85504; name = CD\Data\RSC\GROWDATA.rsc
+    file[]: crc = ce8c73e0; size =   1949184; name = CD\Data\RSC\GrowI.rsc
+    file[]: crc = 816d22de; size =  11205632; name = CD\Data\RSC\GrowSpch.rsc
+    file[]: crc = 7f314f0f; size =     85504; name = CD\Data\RSC\GROWTEXT.rsc
+    file[]: crc = f9a1150c; size =    538112; name = CD\Data\RSC\Help.rsc
+    file[]: crc = 24a7cf25; size =   1615872; name = CD\Data\RSC\KO.rsc
+    file[]: crc = 4fa87dc4; size =    113664; name = CD\Data\RSC\KO1Pre.rsc
+    file[]: crc = 935961a6; size =    112640; name = CD\Data\RSC\KO2Pre.rsc
+    file[]: crc = 8aeffb9b; size =   1382912; name = CD\Data\RSC\KOh.rsc
+    file[]: crc = d9b50a66; size =     75776; name = CD\Data\RSC\KOo1.rsc
+    file[]: crc = fba7ed1a; size =     75264; name = CD\Data\RSC\KOo2.rsc
+    file[]: crc = dcf2c574; size =     76800; name = CD\Data\RSC\KOo3.rsc
+    file[]: crc = 1b902c64; size =    519168; name = CD\Data\RSC\KOPre.rsc
+    file[]: crc = 24fa6714; size =   8475136; name = CD\Data\RSC\KOSpch.rsc
+    file[]: crc = 060e2f35; size =   3331072; name = CD\Data\RSC\Lock.rsc
+    file[]: crc = 5d4bdb72; size =    187392; name = CD\Data\RSC\lockdata.rsc
+    file[]: crc = 14f50bd8; size =    484352; name = CD\Data\RSC\LockI.rsc
+    file[]: crc = 26eaba9f; size =    196608; name = CD\Data\RSC\LockScn1.rsc
+    file[]: crc = 6f64a907; size =    200704; name = CD\Data\RSC\LockScn2.rsc
+    file[]: crc = bf9dbf29; size =    255488; name = CD\Data\RSC\LockScn3.rsc
+    file[]: crc = 20e17136; size =    212992; name = CD\Data\RSC\LockScn4.rsc
+    file[]: crc = 311fbfcb; size =    172544; name = CD\Data\RSC\LockScn5.rsc
+    file[]: crc = 15fec310; size =    172032; name = CD\Data\RSC\LockScn6.rsc
+    file[]: crc = 06f31aa2; size =    169984; name = CD\Data\RSC\LockSfx.rsc
+    file[]: crc = 262ee55d; size =   4118528; name = CD\Data\RSC\LockSpch.rsc
+    file[]: crc = 261c273f; size =    138752; name = CD\Data\RSC\LockV1.rsc
+    file[]: crc = 90bb595b; size =    138240; name = CD\Data\RSC\LockV2.rsc
+    file[]: crc = cf942a9c; size =    110080; name = CD\Data\RSC\LockV3.rsc
+    file[]: crc = fcd263b2; size =    136704; name = CD\Data\RSC\LockV4.rsc
+    file[]: crc = b7f0b164; size =    131072; name = CD\Data\RSC\LockV5.rsc
+    file[]: crc = b9128559; size =    132096; name = CD\Data\RSC\LockV6.rsc
+    file[]: crc = 52aadc6d; size =   1860096; name = CD\Data\RSC\LT.rsc
+    file[]: crc = f51a1a45; size =    154624; name = CD\Data\RSC\LTRef.rsc
+    file[]: crc = b538fc87; size =   1148416; name = CD\Data\RSC\LTSpch.rsc
+    file[]: crc = 7072f63b; size =   2107392; name = CD\Data\RSC\Nest.rsc
+    file[]: crc = 26d33710; size =     50688; name = CD\Data\RSC\Nest2.rsc
+    file[]: crc = f7440b77; size =     97792; name = CD\Data\RSC\Nest3.rsc
+    file[]: crc = 74465ec6; size =     48672; name = CD\Data\RSC\NestData.rsc
+    file[]: crc = 491f12df; size =   7690752; name = CD\Data\RSC\NestSpch.rsc
+    file[]: crc = f5b14477; size =    795648; name = CD\Data\RSC\NestSpch1.rsc
+    file[]: crc = 53503689; size =    194560; name = CD\Data\RSC\NestSpch2.rsc
+    file[]: crc = 07a1bdbc; size =    258048; name = CD\Data\RSC\NestSpch3.rsc
+    file[]: crc = 4a58696d; size =    242688; name = CD\Data\RSC\NestSpch4.rsc
+    file[]: crc = 1e49511e; size =    761344; name = CD\Data\RSC\NestSpch5.rsc
+    file[]: crc = 992aeac7; size =    933888; name = CD\Data\RSC\NestSpch6.rsc
+    file[]: crc = 2a10b06c; size =    312320; name = CD\Data\RSC\SI.rsc
+    file[]: crc = 7ac181be; size =    218112; name = CD\Data\RSC\SISpch.rsc
+    file[]: crc = 20fa177b; size =    478208; name = CD\Data\RSC\SITunz.rsc
+    file[]: crc = f92946b0; size =   2442240; name = CD\Data\RSC\Step.rsc
+    file[]: crc = f76cfddc; size =     46592; name = CD\Data\RSC\STEPDATA.rsc
+    file[]: crc = e35d6d8d; size =    555520; name = CD\Data\RSC\StepI.rsc
+    file[]: crc = 3606ad90; size =    248832; name = CD\Data\RSC\StepSfx.rsc
+    file[]: crc = ee5c4f81; size =   3827200; name = CD\Data\RSC\StepSpch.rsc
+    file[]: crc = 5272b06d; size =   2193920; name = CD\Data\RSC\Trt.rsc
+    file[]: crc = bd56f8fd; size =    832512; name = CD\Data\RSC\Trth.rsc
+    file[]: crc = 53c7c06b; size =     41984; name = CD\Data\RSC\Trto1.rsc
+    file[]: crc = 19407dba; size =     41472; name = CD\Data\RSC\Trto2.rsc
+    file[]: crc = 40a35222; size =    592896; name = CD\Data\RSC\TrtPre.rsc
+    file[]: crc = 5c3af8a6; size =  12843008; name = CD\Data\RSC\TrtSpch.rsc
+    file[]: crc = db07cd20; size =     89600; name = CD\Data\RSC\TrtWFull.rsc
+    file[]: crc = be65f481; size =    254464; name = CD\Data\RSC\TrtWIn.rsc
+    file[]: crc = edb03ea2; size =    273920; name = CD\Data\RSC\TrtWOut.rsc
+    file[]: crc = 8ba35939; size =     92829; name = CD\Data\Scripts\bridge.mps
+    file[]: crc = 6067a907; size =    108961; name = CD\Data\Scripts\cliffs.mps
+    file[]: crc = 79b07c6b; size =     81088; name = CD\Data\Scripts\Clue1.mps
+    file[]: crc = a2f0c1c5; size =     78241; name = CD\Data\Scripts\Clue2.mps
+    file[]: crc = ab11c52f; size =     79528; name = CD\Data\Scripts\Clue3.mps
+    file[]: crc = a02cc54a; size =     82819; name = CD\Data\Scripts\Clue4.mps
+    file[]: crc = 0604c2ea; size =     25045; name = CD\Data\Scripts\DATASET.MPS
+    file[]: crc = 19671b8c; size =    101859; name = CD\Data\Scripts\door.mps
+    file[]: crc = 6b07fc58; size =    116248; name = CD\Data\Scripts\epa.mps
+    file[]: crc = 309ddd87; size =    138436; name = CD\Data\Scripts\growth.mps
+    file[]: crc = cb0ad814; size =    155231; name = CD\Data\Scripts\KO.mps
+    file[]: crc = 65eb2e17; size =     24109; name = CD\Data\Scripts\KOData1.txt
+    file[]: crc = c1fe21eb; size =     17529; name = CD\Data\Scripts\KOData2.txt
+    file[]: crc = b719dbfe; size =     18073; name = CD\Data\Scripts\KOData3.txt
+    file[]: crc = c43c9136; size =     23069; name = CD\Data\Scripts\KOData4.txt
+    file[]: crc = f90cd440; size =      9376; name = CD\Data\Scripts\main.mps
+    file[]: crc = daffe716; size =    126761; name = CD\Data\Scripts\NEST.mps
+    file[]: crc = ecdbffba; size =    132965; name = CD\Data\Scripts\Plant.mps
+    file[]: crc = 67fa96b6; size =     18780; name = CD\Data\Scripts\PlantData.txt
+    file[]: crc = 6bb31cdf; size =     63984; name = CD\Data\Scripts\signin.mps
+    file[]: crc = a6a9a30b; size =     12095; name = CD\Data\Scripts\StartUp.mps
+    file[]: crc = a713477e; size =     83496; name = CD\Data\Scripts\Steps.mps
+    file[]: crc = 00000000; size =         0; name = CD\INSTALL\TLC\379538.cd1
+    
+    CDLABEL = CTT6E
+    CF6_CONTENTS = [[[$(CRLF)
+[ClueFinders 6th Grade - CD]
+CDDrive=D:\DATA\
+UseDirectDraw=1
+DisplayFullScreen=1
+]]]
+    REGISTRY = [[[$(CRLF)
+REGEDIT4
+
+[HKEY_LOCAL_MACHINE\Software\The Learning Company\The ClueFinders 6th Grade Adventures]
+
+[HKEY_LOCAL_MACHINE\Software\The Learning Company\The ClueFinders 6th Grade Adventures\1.0]
+
+[HKEY_LOCAL_MACHINE\Software\The Learning Company\The ClueFinders 6th Grade Adventures\DataFile]
+@="$$(rootpath)\\USERS\\CF6.DAT"
+
+[HKEY_LOCAL_MACHINE\Software\The Learning Company\The ClueFinders 6th Grade Adventures\InstalledFile]
+@="$$(rootpath)\\CF6.EXE"
+
+[HKEY_LOCAL_MACHINE\Software\The Learning Company\The ClueFinders 6th Grade Adventures\Version]
+@="1.0"
+
+[HKEY_LOCAL_MACHINE\Software\The Learning Company\The ClueFinders 6th Grade Adventures\MainExe]
+@="$$(rootpath)\\CF6.EXE"
+
+[HKEY_LOCAL_MACHINE\Software\The Learning Company\The ClueFinders 6th Grade Adventures\InstalledPath]
+@="$$(rootpath)"
+
+
+
+]]]
+
+end
+
+//
+// Spanish, Version 1.1
+//
+game[pc-cd-es-1.1]:
+    name = Spanish CD, Version 1.1
+    anchorfile = CF6.exe
+    anchordepth = 3
+    rootpath = C:\Program Files\Mindscape\Las aventuras de 6° grado de Los pequeños exploradores
+    
+    file[]: crc = afc93dfd; size =    663552; name = CF6.EXE
+    file[]: crc = 7ee52196; size =       766; name = CF6.ICO
+    file[]: crc = efcebe32; size =     96256; name = SMACKW32.DLL
+    file[]: crc = 0ee069ce; size =    443032; name = Movies\LOpen1.smk
+    file[]: crc = 3351111b; size =    419400; name = Movies\LOpen2.smk
+    file[]: crc = e6235926; size =    419432; name = Movies\LOpen3.smk
+    file[]: crc = af1ac80c; size =    144896; name = RSC\BP.rsc
+    file[]: crc = 98eb2fd0; size =   1026048; name = RSC\ClifC1.rsc
+    file[]: crc = d73fd5b8; size =   1012224; name = RSC\ClifC2.rsc
+    file[]: crc = 499d7bfa; size =     18432; name = RSC\ClifData.rsc
+    file[]: crc = e7a197ec; size =     39424; name = RSC\ClifSfx2.rsc
+    file[]: crc = 8339d5f3; size =   1442816; name = RSC\ClifSpch1.rsc
+    file[]: crc = ebf9a966; size =    469504; name = RSC\ClifSpch2.rsc
+    file[]: crc = 3963311a; size =   2223616; name = RSC\Clueh.rsc
+    file[]: crc = 0a0f0477; size =    157184; name = RSC\Com.rsc
+    file[]: crc = 6816839f; size =    194048; name = RSC\Epatext.rsc
+    file[]: crc = 7cb1e43d; size =     85504; name = RSC\GROWDATA.rsc
+    file[]: crc = 3d2dbc64; size =     57344; name = RSC\GROWTEXT.rsc
+    file[]: crc = f9a1150c; size =    538112; name = RSC\Help.rsc
+    file[]: crc = 8aeffb9b; size =   1382912; name = RSC\KOh.rsc
+    file[]: crc = ad4e5944; size =    101888; name = RSC\lockdata.rsc
+    file[]: crc = 5de05d10; size =    467968; name = RSC\Locki.rsc
+    file[]: crc = 3b7a6143; size =   1765376; name = RSC\LT.rsc
+    file[]: crc = b04a2e96; size =    119296; name = RSC\LTRef.rsc
+    file[]: crc = 26d33710; size =     50688; name = RSC\Nest2.rsc
+    file[]: crc = 2924d3c0; size =     53248; name = RSC\NestData.rsc
+    file[]: crc = c63e173a; size =    945152; name = RSC\NestSpch1.rsc
+    file[]: crc = 446e8178; size =    155648; name = RSC\NestSpch2.rsc
+    file[]: crc = 496216da; size =    461824; name = RSC\NestSpch3.rsc
+    file[]: crc = 830be8af; size =    308224; name = RSC\NestSpch4.rsc
+    file[]: crc = 8c266187; size =   1031168; name = RSC\NestSpch5.rsc
+    file[]: crc = 94cc5515; size =   1297920; name = RSC\NestSpch6.rsc
+    file[]: crc = 9e8cd238; size =   2442240; name = RSC\Step.rsc
+    file[]: crc = 0c9dd6f1; size =     88064; name = RSC\STEPDATA.rsc
+    file[]: crc = 76d3c71c; size =    833536; name = RSC\Trth.rsc
+    file[]: crc = d598ec63; size =     23093; name = Scripts\KOData1.txt
+    file[]: crc = 15f7984f; size =     16677; name = Scripts\KOData2.txt
+    file[]: crc = a16de657; size =     17293; name = Scripts\KOData3.txt
+    file[]: crc = 00756b60; size =     22172; name = Scripts\KOData4.txt
+    file[]: crc = 4270f174; size =     20004; name = Scripts\PLANTDAT.TXT
+    file[]: crc = 1e6425f4; size =     19983; name = Scripts\PlantData.txt
+    
+    file[]: crc = a7df6bdb; size =   1753232; name = CD\Data\Movies\BrdgWalkBG1.smk
+    file[]: crc = e9afd8c6; size =   1755400; name = CD\Data\Movies\BrdgWalkBG2.smk
+    file[]: crc = 0ee069ce; size =    443032; name = CD\Data\Movies\LOpen1.smk
+    file[]: crc = 3351111b; size =    419400; name = CD\Data\Movies\LOpen2.smk
+    file[]: crc = e6235926; size =    419432; name = CD\Data\Movies\LOpen3.smk
+    file[]: crc = 35ce3050; size =    426088; name = CD\Data\Movies\LOpen4.smk
+    file[]: crc = 4ff4c4ef; size =    417716; name = CD\Data\Movies\LOpen5.smk
+    file[]: crc = 2527083e; size =    417948; name = CD\Data\Movies\LOpen6.smk
+    file[]: crc = 54d2a512; size =       580; name = CD\Data\Movies\MVAdapt.smk
+    file[]: crc = b50d1d39; size =  14122064; name = CD\Data\Movies\MvBClue1.smk
+    file[]: crc = dbf53440; size =   4064408; name = CD\Data\Movies\MVBClue2.smk
+    file[]: crc = 5e98f882; size =   5664868; name = CD\Data\Movies\MVBClue3.smk
+    file[]: crc = 37e3ddb6; size =   4460252; name = CD\Data\Movies\MVBClue4.smk
+    file[]: crc = 336dd7bf; size =   2923640; name = CD\Data\Movies\MVBClue5.smk
+    file[]: crc = 06862e72; size =  25269880; name = CD\Data\Movies\MVCClue1.smk
+    file[]: crc = 39ecc5e0; size =   3165612; name = CD\Data\Movies\MVCClue2.smk
+    file[]: crc = 9912dbf7; size =   4484068; name = CD\Data\Movies\MVCClue3.smk
+    file[]: crc = bc468585; size =  23456652; name = CD\Data\Movies\MvClose1.smk
+    file[]: crc = 29445941; size =   1059600; name = CD\Data\Movies\mvcomet.smk
+    file[]: crc = 54d2a512; size =       580; name = CD\Data\Movies\MVFade.smk
+    file[]: crc = 261fcd6a; size =   4162952; name = CD\Data\Movies\MVNest.smk
+    file[]: crc = 25736010; size =  20983396; name = CD\Data\Movies\MVOpen1.smk
+    file[]: crc = 59752e42; size =  16344940; name = CD\Data\Movies\MVOpen2.smk
+    file[]: crc = fb30bcfd; size =    300576; name = CD\Data\Movies\MVTitle.smk
+    file[]: crc = bcef73ba; size =   3246424; name = CD\Data\Movies\WalkInPos1a.smk
+    file[]: crc = 2fa16aac; size =   3254112; name = CD\Data\Movies\WalkInPos1b.smk
+    file[]: crc = 8e1c1c21; size =   3182112; name = CD\Data\Movies\WalkInPos2a.smk
+    file[]: crc = 3704f170; size =   3170780; name = CD\Data\Movies\WalkInPos2b.smk
+    file[]: crc = 312ea7d7; size =   3212104; name = CD\Data\Movies\WalkInPos3a.smk
+    file[]: crc = b6d226c6; size =   3158008; name = CD\Data\Movies\WalkInPos3b.smk
+    file[]: crc = 6e4bd5bd; size =   3177992; name = CD\Data\Movies\WalkInPos4a.smk
+    file[]: crc = 16268700; size =   3170300; name = CD\Data\Movies\WalkInPos4b.smk
+    file[]: crc = 2ef2906b; size =   3283864; name = CD\Data\Movies\WalkInPos5a.smk
+    file[]: crc = 83c1c867; size =   3327844; name = CD\Data\Movies\WalkInPos5b.smk
+    file[]: crc = 6e4bd5bd; size =   3177992; name = CD\Data\Movies\WalkInPos6a.smk
+    file[]: crc = 16268700; size =   3170300; name = CD\Data\Movies\WalkInPos6b.smk
+    file[]: crc = 312ea7d7; size =   3212104; name = CD\Data\Movies\WalkInPos7a.smk
+    file[]: crc = b6d226c6; size =   3158008; name = CD\Data\Movies\WalkInPos7b.smk
+    file[]: crc = 8e1c1c21; size =   3182112; name = CD\Data\Movies\WalkInPos8a.smk
+    file[]: crc = 3704f170; size =   3170780; name = CD\Data\Movies\WalkInPos8b.smk
+    file[]: crc = 8ec8314b; size =    601600; name = CD\Data\RSC\ALabTunz.rsc
+    file[]: crc = 96c9c3e6; size =   6765568; name = CD\Data\RSC\BLabTunz.rsc
+    file[]: crc = af1ac80c; size =    144896; name = CD\Data\RSC\BP.rsc
+    file[]: crc = 1dde2f21; size =   6377984; name = CD\Data\RSC\BPSpch.rsc
+    file[]: crc = d7bc435f; size =   1316864; name = CD\Data\RSC\Brdg.rsc
+    file[]: crc = f2897ce2; size =   1370112; name = CD\Data\RSC\BrdgI.rsc
+    file[]: crc = 92781560; size =   8029184; name = CD\Data\RSC\BrdgSpch.rsc
+    file[]: crc = 2b1e7d37; size =   2198528; name = CD\Data\RSC\CLabTunz.rsc
+    file[]: crc = b941cea7; size =   1868288; name = CD\Data\RSC\Clif.rsc
+    file[]: crc = 98eb2fd0; size =   1026048; name = CD\Data\RSC\ClifC1.rsc
+    file[]: crc = d73fd5b8; size =   1012224; name = CD\Data\RSC\ClifC2.rsc
+    file[]: crc = 616cf726; size =     18432; name = CD\Data\RSC\ClifData.rsc
+    file[]: crc = e7a197ec; size =     39424; name = CD\Data\RSC\ClifSfx2.rsc
+    file[]: crc = 8339d5f3; size =   1442816; name = CD\Data\RSC\ClifSpc1.rsc
+    file[]: crc = ebf9a966; size =    469504; name = CD\Data\RSC\ClifSpc2.rsc
+    file[]: crc = cd807252; size =  15861248; name = CD\Data\RSC\ClifSpch.rsc
+    file[]: crc = 8339d5f3; size =   1442816; name = CD\Data\RSC\ClifSpch1.rsc
+    file[]: crc = ebf9a966; size =    469504; name = CD\Data\RSC\ClifSpch2.rsc
+    file[]: crc = 3963311a; size =   2223616; name = CD\Data\RSC\Clueh.rsc
+    file[]: crc = 0a0f0477; size =    157184; name = CD\Data\RSC\Com.rsc
+    file[]: crc = b4e38fa7; size =    309760; name = CD\Data\RSC\ComPA.rsc
+    file[]: crc = b4e38fa7; size =    309760; name = CD\Data\RSC\ComPlayAgain.rsc
+    file[]: crc = 871dd490; size =    973312; name = CD\Data\RSC\ComSpch.rsc
+    file[]: crc = 295d56ce; size =    479232; name = CD\Data\RSC\CS1.rsc
+    file[]: crc = 858c54c8; size =     60928; name = CD\Data\RSC\CS1o1.rsc
+    file[]: crc = 994a6c57; size =     61952; name = CD\Data\RSC\CS1o2.rsc
+    file[]: crc = 20881625; size =    228352; name = CD\Data\RSC\CS1Pre.rsc
+    file[]: crc = 0a053445; size =   4878848; name = CD\Data\RSC\CS1Spch.rsc
+    file[]: crc = a5138cd5; size =    426496; name = CD\Data\RSC\CS2.rsc
+    file[]: crc = 70704137; size =     61440; name = CD\Data\RSC\CS2o1.rsc
+    file[]: crc = b57c526f; size =     69120; name = CD\Data\RSC\CS2o2.rsc
+    file[]: crc = 7b1027d5; size =    218624; name = CD\Data\RSC\CS2Pre.rsc
+    file[]: crc = accb6e15; size =   2941952; name = CD\Data\RSC\CS2Spch.rsc
+    file[]: crc = ec5122ff; size =    431616; name = CD\Data\RSC\CS3.rsc
+    file[]: crc = 72de7a56; size =     58880; name = CD\Data\RSC\CS3o1.rsc
+    file[]: crc = ce4dd511; size =     59904; name = CD\Data\RSC\CS3o2.rsc
+    file[]: crc = 54c53050; size =     64000; name = CD\Data\RSC\CS3o3.rsc
+    file[]: crc = 7f385918; size =    211456; name = CD\Data\RSC\CS3Pre.rsc
+    file[]: crc = 39eecad3; size =   3891200; name = CD\Data\RSC\CS3Spch.rsc
+    file[]: crc = e0dcccd8; size =    451584; name = CD\Data\RSC\CS4.rsc
+    file[]: crc = 2e398b6d; size =     60928; name = CD\Data\RSC\CS4o1.rsc
+    file[]: crc = 15ec6ec3; size =     61952; name = CD\Data\RSC\CS4o3.rsc
+    file[]: crc = f8e98d50; size =     65536; name = CD\Data\RSC\CS4o4.rsc
+    file[]: crc = 190752fd; size =    461312; name = CD\Data\RSC\CS4Pre.rsc
+    file[]: crc = 8b901d48; size =    100352; name = CD\Data\RSC\CS4s1p.rsc
+    file[]: crc = 181f0aa3; size =    100352; name = CD\Data\RSC\CS4s2p.rsc
+    file[]: crc = 7ef0697c; size =    100352; name = CD\Data\RSC\CS4s3p.rsc
+    file[]: crc = 89a900d3; size =   4211200; name = CD\Data\RSC\CS4Spch.rsc
+    file[]: crc = 516a16fa; size =   2206720; name = CD\Data\RSC\EPA.rsc
+    file[]: crc = 43b3f46e; size =   2325504; name = CD\Data\RSC\EPAI.rsc
+    file[]: crc = 6a75b07a; size =  11821056; name = CD\Data\RSC\EPASpch.rsc
+    file[]: crc = 6816839f; size =    194048; name = CD\Data\RSC\Epatext.rsc
+    file[]: crc = 2a44bc04; size =   3118080; name = CD\Data\RSC\Grow.rsc
+    file[]: crc = 7cb1e43d; size =     85504; name = CD\Data\RSC\GROWDATA.rsc
+    file[]: crc = 0d751ccd; size =   2221568; name = CD\Data\RSC\GrowI.rsc
+    file[]: crc = 3f49028a; size =  14050816; name = CD\Data\RSC\GrowSpch.rsc
+    file[]: crc = 3d2dbc64; size =     57344; name = CD\Data\RSC\GROWTEXT.rsc
+    file[]: crc = f9a1150c; size =    538112; name = CD\Data\RSC\Help.rsc
+    file[]: crc = 720feb18; size =   1648128; name = CD\Data\RSC\KO.rsc
+    file[]: crc = 4fa87dc4; size =    113664; name = CD\Data\RSC\KO1Pre.rsc
+    file[]: crc = 935961a6; size =    112640; name = CD\Data\RSC\KO2Pre.rsc
+    file[]: crc = 8aeffb9b; size =   1382912; name = CD\Data\RSC\KOh.rsc
+    file[]: crc = d9b50a66; size =     75776; name = CD\Data\RSC\KOo1.rsc
+    file[]: crc = fba7ed1a; size =     75264; name = CD\Data\RSC\KOo2.rsc
+    file[]: crc = dcf2c574; size =     76800; name = CD\Data\RSC\KOo3.rsc
+    file[]: crc = 75f39009; size =    534528; name = CD\Data\RSC\KOPre.rsc
+    file[]: crc = c2928889; size =  10250752; name = CD\Data\RSC\KOSpch.rsc
+    file[]: crc = 88128816; size =   2963456; name = CD\Data\RSC\Lock.rsc
+    file[]: crc = ad4e5944; size =    101888; name = CD\Data\RSC\lockdata.rsc
+    file[]: crc = bf15359d; size =    530432; name = CD\Data\RSC\Locki.rsc
+    file[]: crc = 26eaba9f; size =    196608; name = CD\Data\RSC\LockScn1.rsc
+    file[]: crc = 6f64a907; size =    200704; name = CD\Data\RSC\LockScn2.rsc
+    file[]: crc = bf9dbf29; size =    255488; name = CD\Data\RSC\LockScn3.rsc
+    file[]: crc = 20e17136; size =    212992; name = CD\Data\RSC\LockScn4.rsc
+    file[]: crc = 311fbfcb; size =    172544; name = CD\Data\RSC\LockScn5.rsc
+    file[]: crc = 15fec310; size =    172032; name = CD\Data\RSC\LockScn6.rsc
+    file[]: crc = 06f31aa2; size =    169984; name = CD\Data\RSC\LockSfx.rsc
+    file[]: crc = 33f0ae62; size =   6124544; name = CD\Data\RSC\LockSpch.rsc
+    file[]: crc = 261c273f; size =    138752; name = CD\Data\RSC\LockV1.rsc
+    file[]: crc = 90bb595b; size =    138240; name = CD\Data\RSC\LockV2.rsc
+    file[]: crc = cf942a9c; size =    110080; name = CD\Data\RSC\LockV3.rsc
+    file[]: crc = fcd263b2; size =    136704; name = CD\Data\RSC\LockV4.rsc
+    file[]: crc = b7f0b164; size =    131072; name = CD\Data\RSC\LockV5.rsc
+    file[]: crc = b9128559; size =    132096; name = CD\Data\RSC\LockV6.rsc
+    file[]: crc = 3b7a6143; size =   1765376; name = CD\Data\RSC\LT.rsc
+    file[]: crc = b04a2e96; size =    119296; name = CD\Data\RSC\LTRef.rsc
+    file[]: crc = 14802b20; size =   1790464; name = CD\Data\RSC\LTSpch.rsc
+    file[]: crc = 7072f63b; size =   2107392; name = CD\Data\RSC\Nest.rsc
+    file[]: crc = 26d33710; size =     50688; name = CD\Data\RSC\Nest2.rsc
+    file[]: crc = f7440b77; size =     97792; name = CD\Data\RSC\Nest3.rsc
+    file[]: crc = 2924d3c0; size =     53248; name = CD\Data\RSC\NestData.rsc
+    file[]: crc = c63e173a; size =    945152; name = CD\Data\RSC\NESTSPC1.RSC
+    file[]: crc = 446e8178; size =    155648; name = CD\Data\RSC\NestSpc2.rsc
+    file[]: crc = 496216da; size =    461824; name = CD\Data\RSC\NESTSPC3.RSC
+    file[]: crc = 830be8af; size =    308224; name = CD\Data\RSC\NESTSPC4.RSC
+    file[]: crc = 8c266187; size =   1031168; name = CD\Data\RSC\NESTSPC5.RSC
+    file[]: crc = 94cc5515; size =   1297920; name = CD\Data\RSC\NESTSPC6.RSC
+    file[]: crc = 025106cf; size =   9810432; name = CD\Data\RSC\NESTSpch.rsc
+    file[]: crc = c63e173a; size =    945152; name = CD\Data\RSC\NestSpch1.rsc
+    file[]: crc = 446e8178; size =    155648; name = CD\Data\RSC\NestSpch2.rsc
+    file[]: crc = 496216da; size =    461824; name = CD\Data\RSC\NestSpch3.rsc
+    file[]: crc = 830be8af; size =    308224; name = CD\Data\RSC\NestSpch4.rsc
+    file[]: crc = 8c266187; size =   1031168; name = CD\Data\RSC\NestSpch5.rsc
+    file[]: crc = 94cc5515; size =   1297920; name = CD\Data\RSC\NestSpch6.rsc
+    file[]: crc = d1feb335; size =    318976; name = CD\Data\RSC\SI.rsc
+    file[]: crc = 585d1fd3; size =    333312; name = CD\Data\RSC\SISpch.rsc
+    file[]: crc = 20fa177b; size =    478208; name = CD\Data\RSC\SITunz.rsc
+    file[]: crc = 9e8cd238; size =   2442240; name = CD\Data\RSC\Step.rsc
+    file[]: crc = 0c9dd6f1; size =     88064; name = CD\Data\RSC\STEPDATA.rsc
+    file[]: crc = fa0a2e73; size =    850432; name = CD\Data\RSC\Stepi.rsc
+    file[]: crc = 3606ad90; size =    248832; name = CD\Data\RSC\StepSfx.rsc
+    file[]: crc = 294ff897; size =   5471232; name = CD\Data\RSC\StepSpch.rsc
+    file[]: crc = 5272b06d; size =   2193920; name = CD\Data\RSC\Trt.rsc
+    file[]: crc = 76d3c71c; size =    833536; name = CD\Data\RSC\Trth.rsc
+    file[]: crc = 53c7c06b; size =     41984; name = CD\Data\RSC\Trto1.rsc
+    file[]: crc = 19407dba; size =     41472; name = CD\Data\RSC\Trto2.rsc
+    file[]: crc = bb767356; size =    598528; name = CD\Data\RSC\TrtPre.rsc
+    file[]: crc = 7d63efe2; size =  15734784; name = CD\Data\RSC\TrtSpch.rsc
+    file[]: crc = cef8883e; size =     90112; name = CD\Data\RSC\TrtWFull.rsc
+    file[]: crc = 39c03b81; size =    271872; name = CD\Data\RSC\TrtWIn.rsc
+    file[]: crc = b202aad8; size =    275968; name = CD\Data\RSC\TrtWOut.rsc
+    file[]: crc = 53e135ef; size =     91750; name = CD\Data\Scripts\bridge.mps
+    file[]: crc = a9b4ec18; size =    108518; name = CD\Data\Scripts\cliffs.mps
+    file[]: crc = 381f7f86; size =     80894; name = CD\Data\Scripts\Clue1.mps
+    file[]: crc = 615471f7; size =     78047; name = CD\Data\Scripts\Clue2.mps
+    file[]: crc = 37ccf093; size =     79451; name = CD\Data\Scripts\Clue3.mps
+    file[]: crc = 5f71e9b9; size =     82625; name = CD\Data\Scripts\Clue4.mps
+    file[]: crc = c46ae381; size =     25107; name = CD\Data\Scripts\dataset.mps
+    file[]: crc = 78656886; size =    101621; name = CD\Data\Scripts\door.mps
+    file[]: crc = c17c3821; size =    116284; name = CD\Data\Scripts\epa.mps
+    file[]: crc = 0bd96a46; size =    138558; name = CD\Data\Scripts\growth.mps
+    file[]: crc = 9183d7d9; size =    149323; name = CD\Data\Scripts\KO.mps
+    file[]: crc = d598ec63; size =     23093; name = CD\Data\Scripts\KOData1.txt
+    file[]: crc = 15f7984f; size =     16677; name = CD\Data\Scripts\KOData2.txt
+    file[]: crc = a16de657; size =     17293; name = CD\Data\Scripts\KOData3.txt
+    file[]: crc = 00756b60; size =     22172; name = CD\Data\Scripts\KOData4.txt
+    file[]: crc = ce56133e; size =      9449; name = CD\Data\Scripts\main.mps
+    file[]: crc = 2547a672; size =    126449; name = CD\Data\Scripts\NEST.mps
+    file[]: crc = be3d49c1; size =    132736; name = CD\Data\Scripts\Plant.mps
+    file[]: crc = 4270f174; size =     20004; name = CD\Data\Scripts\PLANTDAT.TXT
+    file[]: crc = 67577787; size =     19968; name = CD\Data\Scripts\PlantData.txt
+    file[]: crc = e4795cae; size =       211; name = CD\Data\Scripts\Readme.txt
+    file[]: crc = 29c1f791; size =     63803; name = CD\Data\Scripts\signin.mps
+    file[]: crc = 6e25ba59; size =     12157; name = CD\Data\Scripts\StartUp.mps
+    file[]: crc = c45740cd; size =     83302; name = CD\Data\Scripts\Steps.mps
+    file[]: crc = 00000000; size =         0; name = CD\INSTALL\TLC\379538.cd1
+    
+    CDLABEL = "LPE 6 Grado"
+    CF6_CONTENTS = [[[$(CRLF)
+[ClueFinders 6th Grade - CD]
+CDDrive=D:\DATA\
+UseDirectDraw=1
+DisplayFullScreen=1
+]]]
+    REGISTRY = [[[$(CRLF)
+REGEDIT4
+
+[HKEY_LOCAL_MACHINE\Software\The Learning Company\The ClueFinders 6th Grade Adventures]
+
+[HKEY_LOCAL_MACHINE\Software\The Learning Company\The ClueFinders 6th Grade Adventures\1.1]
+
+[HKEY_LOCAL_MACHINE\Software\The Learning Company\The ClueFinders 6th Grade Adventures\DataFile]
+@="$$(rootpath)\\USERS\\CF6.DAT"
+
+[HKEY_LOCAL_MACHINE\Software\The Learning Company\The ClueFinders 6th Grade Adventures\InstalledFile]
+@="$$(rootpath)\\CF6.EXE"
+
+[HKEY_LOCAL_MACHINE\Software\The Learning Company\The ClueFinders 6th Grade Adventures\Version]
+@="1.1"
+
+[HKEY_LOCAL_MACHINE\Software\The Learning Company\The ClueFinders 6th Grade Adventures\MainExe]
+@="$$(rootpath)\\CF6.EXE"
+
+[HKEY_LOCAL_MACHINE\Software\The Learning Company\The ClueFinders 6th Grade Adventures\InstalledPath]
+@="$$(rootpath)"
+
+
+
+]]]
+
+end
+
+//
+// Dutch, Version 1.01
+//
+game[pc-cd-nl-1.01]:
+    name = Dutch CD, Version 1.01
+    anchorfile = CF6.exe
+    anchordepth = 3
+    rootpath = C:\Program Files\TLC Domus\Junior Detectives Groep 8 Avonturen
+    
+    file[]: crc = 1a6a462c; size =    663552; name = CF6.exe
+    file[]: crc = 7ee52196; size =       766; name = CF6.ICO
+    file[]: crc = efcebe32; size =     96256; name = SMACKW32.DLL
+    file[]: crc = 0ee069ce; size =    443032; name = Movies\LOpen1.smk
+    file[]: crc = 3351111b; size =    419400; name = Movies\LOpen2.smk
+    file[]: crc = e6235926; size =    419432; name = Movies\LOpen3.smk
+    file[]: crc = af1ac80c; size =    144896; name = RSC\BP.rsc
+    file[]: crc = 98eb2fd0; size =   1026048; name = RSC\ClifC1.rsc
+    file[]: crc = d73fd5b8; size =   1012224; name = RSC\ClifC2.rsc
+    file[]: crc = df790733; size =     15872; name = RSC\ClifData.rsc
+    file[]: crc = e7a197ec; size =     39424; name = RSC\ClifSfx2.rsc
+    file[]: crc = ca9cc74d; size =   1165824; name = RSC\ClifSpch1.rsc
+    file[]: crc = ae8f8602; size =    411136; name = RSC\ClifSpch2.rsc
+    file[]: crc = 3963311a; size =   2223616; name = RSC\Clueh.rsc
+    file[]: crc = e3a631b3; size =    123904; name = RSC\Com.rsc
+    file[]: crc = c0ef30bc; size =    187392; name = RSC\Epatext.rsc
+    file[]: crc = 61430681; size =     85504; name = RSC\GROWDATA.rsc
+    file[]: crc = 7eee391a; size =     52736; name = RSC\GROWTEXT.rsc
+    file[]: crc = f9a1150c; size =    538112; name = RSC\Help.rsc
+    file[]: crc = 8aeffb9b; size =   1382912; name = RSC\KOh.rsc
+    file[]: crc = eae02e23; size =    104960; name = RSC\lockdata.rsc
+    file[]: crc = 20a21a9f; size =    573952; name = RSC\LockI.rsc
+    file[]: crc = e518165e; size =   1643520; name = RSC\LT.rsc
+    file[]: crc = f97f2c32; size =    102400; name = RSC\LTRef.rsc
+    file[]: crc = 26d33710; size =     50688; name = RSC\Nest2.rsc
+    file[]: crc = 43365c57; size =     62464; name = RSC\NestData.rsc
+    file[]: crc = 962a09cc; size =    775168; name = RSC\NestSpch1.rsc
+    file[]: crc = b666d30c; size =    152064; name = RSC\NestSpch2.rsc
+    file[]: crc = 2427fa8f; size =    392704; name = RSC\NestSpch3.rsc
+    file[]: crc = b861e9c3; size =    230400; name = RSC\NestSpch4.rsc
+    file[]: crc = d6336403; size =    753152; name = RSC\NestSpch5.rsc
+    file[]: crc = 5b1491c0; size =    889856; name = RSC\NestSpch6.rsc
+    file[]: crc = ea7e433a; size =   2442240; name = RSC\Step.rsc
+    file[]: crc = 650dbb9c; size =     44032; name = RSC\STEPDATA.rsc
+    file[]: crc = dc7593c8; size =    898560; name = RSC\Trth.rsc
+    file[]: crc = f89d9efa; size =     23093; name = Scripts\KOData1.txt
+    file[]: crc = 0fbd14b4; size =     16677; name = Scripts\KOData2.txt
+    file[]: crc = 0b589798; size =     17293; name = Scripts\KOData3.txt
+    file[]: crc = 4f5c9407; size =     22172; name = Scripts\KOData4.txt
+    file[]: crc = 7dd728f4; size =     18693; name = Scripts\PlantData.txt
+    
+    file[]: crc = a7df6bdb; size =   1753232; name = CD\Data\Movies\BrdgWalkBG1.smk
+    file[]: crc = e9afd8c6; size =   1755400; name = CD\Data\Movies\BrdgWalkBG2.smk
+    file[]: crc = 0ee069ce; size =    443032; name = CD\Data\Movies\LOpen1.smk
+    file[]: crc = 3351111b; size =    419400; name = CD\Data\Movies\LOpen2.smk
+    file[]: crc = e6235926; size =    419432; name = CD\Data\Movies\LOpen3.smk
+    file[]: crc = 35ce3050; size =    426088; name = CD\Data\Movies\LOpen4.smk
+    file[]: crc = 4ff4c4ef; size =    417716; name = CD\Data\Movies\LOpen5.smk
+    file[]: crc = 2527083e; size =    417948; name = CD\Data\Movies\LOpen6.smk
+    file[]: crc = 4f07bcc4; size =    213984; name = CD\Data\Movies\MVAdapt.smk
+    file[]: crc = 84435e91; size =  13909216; name = CD\Data\Movies\MvBClue1.smk
+    file[]: crc = c9d7ae41; size =   3989584; name = CD\Data\Movies\MVBClue2.smk
+    file[]: crc = 1b12e520; size =   5653356; name = CD\Data\Movies\MVBClue3.smk
+    file[]: crc = 66744faa; size =   4391144; name = CD\Data\Movies\MVBClue4.smk
+    file[]: crc = 211a94d0; size =   2850864; name = CD\Data\Movies\MVBClue5.smk
+    file[]: crc = 37e50490; size =  25289104; name = CD\Data\Movies\MVCClue1.smk
+    file[]: crc = 08a4b038; size =   3132472; name = CD\Data\Movies\MVCClue2.smk
+    file[]: crc = 1a83cbba; size =   4377624; name = CD\Data\Movies\MVCClue3.smk
+    file[]: crc = 07babf55; size =  23579712; name = CD\Data\Movies\MvClose1.smk
+    file[]: crc = c7cfc936; size =     10796; name = CD\Data\Movies\Mvcomet.smk
+    file[]: crc = 54d2a512; size =       580; name = CD\Data\Movies\MvFade.smk
+    file[]: crc = b9b92569; size =   4153792; name = CD\Data\Movies\MVNest.smk
+    file[]: crc = e8d43643; size =  21003172; name = CD\Data\Movies\MVOpen1.smk
+    file[]: crc = bf14b89e; size =  16546652; name = CD\Data\Movies\MVOpen2.smk
+    file[]: crc = d8e99458; size =    533380; name = CD\Data\Movies\MVTitle.smk
+    file[]: crc = bcef73ba; size =   3246424; name = CD\Data\Movies\WalkInPos1a.smk
+    file[]: crc = 2fa16aac; size =   3254112; name = CD\Data\Movies\WalkInPos1b.smk
+    file[]: crc = 8e1c1c21; size =   3182112; name = CD\Data\Movies\WalkInPos2a.smk
+    file[]: crc = 3704f170; size =   3170780; name = CD\Data\Movies\WalkInPos2b.smk
+    file[]: crc = 312ea7d7; size =   3212104; name = CD\Data\Movies\WalkInPos3a.smk
+    file[]: crc = b6d226c6; size =   3158008; name = CD\Data\Movies\WalkInPos3b.smk
+    file[]: crc = 6e4bd5bd; size =   3177992; name = CD\Data\Movies\WalkInPos4a.smk
+    file[]: crc = 16268700; size =   3170300; name = CD\Data\Movies\WalkInPos4b.smk
+    file[]: crc = 2ef2906b; size =   3283864; name = CD\Data\Movies\WalkInPos5a.smk
+    file[]: crc = 83c1c867; size =   3327844; name = CD\Data\Movies\WalkInPos5b.smk
+    file[]: crc = 6e4bd5bd; size =   3177992; name = CD\Data\Movies\WalkInPos6a.smk
+    file[]: crc = 16268700; size =   3170300; name = CD\Data\Movies\WalkInPos6b.smk
+    file[]: crc = 312ea7d7; size =   3212104; name = CD\Data\Movies\WalkInPos7a.smk
+    file[]: crc = b6d226c6; size =   3158008; name = CD\Data\Movies\WalkInPos7b.smk
+    file[]: crc = 8e1c1c21; size =   3182112; name = CD\Data\Movies\WalkInPos8a.smk
+    file[]: crc = 3704f170; size =   3170780; name = CD\Data\Movies\WalkInPos8b.smk
+    file[]: crc = 8ec8314b; size =    601600; name = CD\Data\RSC\ALabTunz.rsc
+    file[]: crc = 96c9c3e6; size =   6765568; name = CD\Data\RSC\BLabTunz.rsc
+    file[]: crc = af1ac80c; size =    144896; name = CD\Data\RSC\BP.rsc
+    file[]: crc = 1dde2f21; size =   6377984; name = CD\Data\RSC\BPSpch.rsc
+    file[]: crc = 129a8e4d; size =   1316352; name = CD\Data\RSC\Brdg.rsc
+    file[]: crc = 0d11601a; size =   1072640; name = CD\Data\RSC\BrdgI.rsc
+    file[]: crc = d854c9e9; size =   7676928; name = CD\Data\RSC\BrdgSpch.rsc
+    file[]: crc = 2b1e7d37; size =   2198528; name = CD\Data\RSC\CLabTunz.rsc
+    file[]: crc = 0d1bfa97; size =   1867776; name = CD\Data\RSC\Clif.rsc
+    file[]: crc = 98eb2fd0; size =   1026048; name = CD\Data\RSC\ClifC1.rsc
+    file[]: crc = d73fd5b8; size =   1012224; name = CD\Data\RSC\ClifC2.rsc
+    file[]: crc = df790733; size =     15872; name = CD\Data\RSC\ClifData.rsc
+    file[]: crc = e7a197ec; size =     39424; name = CD\Data\RSC\ClifSfx2.rsc
+    file[]: crc = 882d8c6d; size =  12029952; name = CD\Data\RSC\ClifSpch.rsc
+    file[]: crc = ca9cc74d; size =   1165824; name = CD\Data\RSC\ClifSpch1.rsc
+    file[]: crc = ae8f8602; size =    411136; name = CD\Data\RSC\ClifSpch2.rsc
+    file[]: crc = 3963311a; size =   2223616; name = CD\Data\RSC\Clueh.rsc
+    file[]: crc = e3a631b3; size =    123904; name = CD\Data\RSC\Com.rsc
+    file[]: crc = b4e38fa7; size =    309760; name = CD\Data\RSC\ComPA.rsc
+    file[]: crc = c7d614fa; size =    760320; name = CD\Data\RSC\ComSpch.rsc
+    file[]: crc = 295d56ce; size =    479232; name = CD\Data\RSC\CS1.rsc
+    file[]: crc = 858c54c8; size =     60928; name = CD\Data\RSC\CS1o1.rsc
+    file[]: crc = 994a6c57; size =     61952; name = CD\Data\RSC\CS1o2.rsc
+    file[]: crc = e6a45269; size =    228352; name = CD\Data\RSC\CS1Pre.rsc
+    file[]: crc = 78d78ca7; size =   3776512; name = CD\Data\RSC\CS1Spch.rsc
+    file[]: crc = a5138cd5; size =    426496; name = CD\Data\RSC\CS2.rsc
+    file[]: crc = 70704137; size =     61440; name = CD\Data\RSC\CS2o1.rsc
+    file[]: crc = b57c526f; size =     69120; name = CD\Data\RSC\CS2o2.rsc
+    file[]: crc = 352126ce; size =    218624; name = CD\Data\RSC\CS2Pre.rsc
+    file[]: crc = 6eca1aa0; size =   2541056; name = CD\Data\RSC\CS2Spch.rsc
+    file[]: crc = ec5122ff; size =    431616; name = CD\Data\RSC\CS3.rsc
+    file[]: crc = 72de7a56; size =     58880; name = CD\Data\RSC\CS3o1.rsc
+    file[]: crc = ce4dd511; size =     59904; name = CD\Data\RSC\CS3o2.rsc
+    file[]: crc = 54c53050; size =     64000; name = CD\Data\RSC\CS3o3.rsc
+    file[]: crc = c705fa53; size =    211456; name = CD\Data\RSC\CS3Pre.rsc
+    file[]: crc = b727c0d5; size =   3183616; name = CD\Data\RSC\CS3Spch.rsc
+    file[]: crc = e0dcccd8; size =    451584; name = CD\Data\RSC\CS4.rsc
+    file[]: crc = 2e398b6d; size =     60928; name = CD\Data\RSC\CS4o1.rsc
+    file[]: crc = 15ec6ec3; size =     61952; name = CD\Data\RSC\CS4o3.rsc
+    file[]: crc = f8e98d50; size =     65536; name = CD\Data\RSC\CS4o4.rsc
+    file[]: crc = be3c045d; size =    461312; name = CD\Data\RSC\CS4Pre.rsc
+    file[]: crc = 8b901d48; size =    100352; name = CD\Data\RSC\CS4s1p.rsc
+    file[]: crc = 181f0aa3; size =    100352; name = CD\Data\RSC\CS4s2p.rsc
+    file[]: crc = 7ef0697c; size =    100352; name = CD\Data\RSC\CS4s3p.rsc
+    file[]: crc = 5d992c7b; size =   3573760; name = CD\Data\RSC\CS4Spch.rsc
+    file[]: crc = 04178884; size =   2202624; name = CD\Data\RSC\EPA.rsc
+    file[]: crc = 865e839e; size =   1932288; name = CD\Data\RSC\EPAI.rsc
+    file[]: crc = b6403e56; size =  11672576; name = CD\Data\RSC\EPASpch.rsc
+    file[]: crc = c0ef30bc; size =    187392; name = CD\Data\RSC\Epatext.rsc
+    file[]: crc = ea3150b4; size =   3120640; name = CD\Data\RSC\Grow.rsc
+    file[]: crc = 61430681; size =     85504; name = CD\Data\RSC\GROWDATA.rsc
+    file[]: crc = 9e42c6ee; size =   1938944; name = CD\Data\RSC\GrowI.rsc
+    file[]: crc = 87eeee2a; size =  13488640; name = CD\Data\RSC\GrowSpch.rsc
+    file[]: crc = 7eee391a; size =     52736; name = CD\Data\RSC\GROWTEXT.rsc
+    file[]: crc = f9a1150c; size =    538112; name = CD\Data\RSC\Help.rsc
+    file[]: crc = de847d2f; size =   1647616; name = CD\Data\RSC\KO.rsc
+    file[]: crc = 4fa87dc4; size =    113664; name = CD\Data\RSC\KO1Pre.rsc
+    file[]: crc = 935961a6; size =    112640; name = CD\Data\RSC\KO2Pre.rsc
+    file[]: crc = 8aeffb9b; size =   1382912; name = CD\Data\RSC\KOh.rsc
+    file[]: crc = d9b50a66; size =     75776; name = CD\Data\RSC\KOo1.rsc
+    file[]: crc = fba7ed1a; size =     75264; name = CD\Data\RSC\KOo2.rsc
+    file[]: crc = dcf2c574; size =     76800; name = CD\Data\RSC\KOo3.rsc
+    file[]: crc = b98d83a2; size =    529408; name = CD\Data\RSC\KOPre.rsc
+    file[]: crc = 25224868; size =   8751104; name = CD\Data\RSC\KOSpch.rsc
+    file[]: crc = c4a3f29c; size =   2928128; name = CD\Data\RSC\Lock.rsc
+    file[]: crc = eae02e23; size =    104960; name = CD\Data\RSC\lockdata.rsc
+    file[]: crc = 20a21a9f; size =    573952; name = CD\Data\RSC\LockI.rsc
+    file[]: crc = 26eaba9f; size =    196608; name = CD\Data\RSC\LockScn1.rsc
+    file[]: crc = 6f64a907; size =    200704; name = CD\Data\RSC\LockScn2.rsc
+    file[]: crc = bf9dbf29; size =    255488; name = CD\Data\RSC\LockScn3.rsc
+    file[]: crc = 20e17136; size =    212992; name = CD\Data\RSC\LockScn4.rsc
+    file[]: crc = 311fbfcb; size =    172544; name = CD\Data\RSC\LockScn5.rsc
+    file[]: crc = 15fec310; size =    172032; name = CD\Data\RSC\LockScn6.rsc
+    file[]: crc = 06f31aa2; size =    169984; name = CD\Data\RSC\LockSfx.rsc
+    file[]: crc = 1b6ba577; size =   4753408; name = CD\Data\RSC\LockSpch.rsc
+    file[]: crc = 261c273f; size =    138752; name = CD\Data\RSC\LockV1.rsc
+    file[]: crc = 90bb595b; size =    138240; name = CD\Data\RSC\LockV2.rsc
+    file[]: crc = cf942a9c; size =    110080; name = CD\Data\RSC\LockV3.rsc
+    file[]: crc = fcd263b2; size =    136704; name = CD\Data\RSC\LockV4.rsc
+    file[]: crc = b7f0b164; size =    131072; name = CD\Data\RSC\LockV5.rsc
+    file[]: crc = b9128559; size =    132096; name = CD\Data\RSC\LockV6.rsc
+    file[]: crc = e518165e; size =   1643520; name = CD\Data\RSC\LT.rsc
+    file[]: crc = f97f2c32; size =    102400; name = CD\Data\RSC\LTRef.rsc
+    file[]: crc = a64cda82; size =   1350656; name = CD\Data\RSC\LTSpch.rsc
+    file[]: crc = 7072f63b; size =   2107392; name = CD\Data\RSC\Nest.rsc
+    file[]: crc = 26d33710; size =     50688; name = CD\Data\RSC\Nest2.rsc
+    file[]: crc = f7440b77; size =     97792; name = CD\Data\RSC\Nest3.rsc
+    file[]: crc = 43365c57; size =     62464; name = CD\Data\RSC\NestData.rsc
+    file[]: crc = f37ecb8c; size =   7896576; name = CD\Data\RSC\NESTSpch.rsc
+    file[]: crc = 962a09cc; size =    775168; name = CD\Data\RSC\NestSpch1.rsc
+    file[]: crc = b666d30c; size =    152064; name = CD\Data\RSC\NestSpch2.rsc
+    file[]: crc = 2427fa8f; size =    392704; name = CD\Data\RSC\NestSpch3.rsc
+    file[]: crc = b861e9c3; size =    230400; name = CD\Data\RSC\NestSpch4.rsc
+    file[]: crc = d6336403; size =    753152; name = CD\Data\RSC\NestSpch5.rsc
+    file[]: crc = 5b1491c0; size =    889856; name = CD\Data\RSC\NestSpch6.rsc
+    file[]: crc = a12b35e1; size =    315392; name = CD\Data\RSC\SI.rsc
+    file[]: crc = c087c11c; size =    233984; name = CD\Data\RSC\SISpch.rsc
+    file[]: crc = 20fa177b; size =    478208; name = CD\Data\RSC\SITunz.rsc
+    file[]: crc = ea7e433a; size =   2442240; name = CD\Data\RSC\Step.rsc
+    file[]: crc = 650dbb9c; size =     44032; name = CD\Data\RSC\STEPDATA.rsc
+    file[]: crc = 69ac8673; size =    623616; name = CD\Data\RSC\StepI.rsc
+    file[]: crc = 3606ad90; size =    248832; name = CD\Data\RSC\StepSfx.rsc
+    file[]: crc = 2470330e; size =   4500992; name = CD\Data\RSC\StepSpch.rsc
+    file[]: crc = 5272b06d; size =   2193920; name = CD\Data\RSC\Trt.rsc
+    file[]: crc = dc7593c8; size =    898560; name = CD\Data\RSC\Trth.rsc
+    file[]: crc = 53c7c06b; size =     41984; name = CD\Data\RSC\Trto1.rsc
+    file[]: crc = 19407dba; size =     41472; name = CD\Data\RSC\Trto2.rsc
+    file[]: crc = c35df9db; size =    636928; name = CD\Data\RSC\TrtPre.rsc
+    file[]: crc = a9e5d38a; size =  13660160; name = CD\Data\RSC\TrtSpch.rsc
+    file[]: crc = 09420c01; size =     89088; name = CD\Data\RSC\TrtWFull.rsc
+    file[]: crc = 874009a6; size =    253440; name = CD\Data\RSC\TrtWIn.rsc
+    file[]: crc = f42493bd; size =    277504; name = CD\Data\RSC\TrtWOut.rsc
+    file[]: crc = 58893ac5; size =     90951; name = CD\Data\Scripts\bridge.mps
+    file[]: crc = acd04d3a; size =      4081; name = CD\Data\Scripts\ClifData.inc
+    file[]: crc = 924f9b3c; size =    108537; name = CD\Data\Scripts\cliffs.mps
+    file[]: crc = bd8cb4f3; size =     81029; name = CD\Data\Scripts\Clue1.mps
+    file[]: crc = 2f24e26f; size =     78182; name = CD\Data\Scripts\Clue2.mps
+    file[]: crc = 9484833b; size =     79586; name = CD\Data\Scripts\Clue3.mps
+    file[]: crc = 04d1641d; size =     82760; name = CD\Data\Scripts\Clue4.mps
+    file[]: crc = 228a0a0f; size =     25017; name = CD\Data\Scripts\dataset.mps
+    file[]: crc = 7bed696b; size =    101886; name = CD\Data\Scripts\door.mps
+    file[]: crc = bef7cf79; size =    115371; name = CD\Data\Scripts\EPA.mps
+    file[]: crc = b8f3dca8; size =    138419; name = CD\Data\Scripts\growth.mps
+    file[]: crc = 4dc16559; size =    154920; name = CD\Data\Scripts\KO.mps
+    file[]: crc = f89d9efa; size =     23093; name = CD\Data\Scripts\KOData1.txt
+    file[]: crc = 0fbd14b4; size =     16677; name = CD\Data\Scripts\KOData2.txt
+    file[]: crc = 0b589798; size =     17293; name = CD\Data\Scripts\KOData3.txt
+    file[]: crc = 4f5c9407; size =     22172; name = CD\Data\Scripts\KOData4.txt
+    file[]: crc = 05f25e20; size =      9348; name = CD\Data\Scripts\main.mps
+    file[]: crc = 9c59fa79; size =    126584; name = CD\Data\Scripts\NEST.mps
+    file[]: crc = 54b0f5a7; size =    132907; name = CD\Data\Scripts\Plant.mps
+    file[]: crc = 7dd728f4; size =     18693; name = CD\Data\Scripts\PlantData.txt
+    file[]: crc = cb785ba7; size =     63887; name = CD\Data\Scripts\signin.mps
+    file[]: crc = ade970da; size =     12067; name = CD\Data\Scripts\StartUp.mps
+    file[]: crc = f1fb8e5e; size =     83437; name = CD\Data\Scripts\Steps.mps
+    file[]: crc = 00000000; size =         0; name = CD\INSTALL\TLC\CFS744AE.CD
+    
+    CDLABEL = "JD_Groep8"
+    CF6_CONTENTS = [[[$(CRLF)
+[ClueFinders 6th Grade - CD]
+CDDrive=D:\DATA\
+UseDirectDraw=1
+DisplayFullScreen=1
+]]]
+    REGISTRY = [[[$(CRLF)
+REGEDIT4
+
+[HKEY_LOCAL_MACHINE\Software\The Learning Company\The ClueFinders 6th Grade Adventures]
+
+[HKEY_LOCAL_MACHINE\Software\The Learning Company\The ClueFinders 6th Grade Adventures\1.01]
+
+[HKEY_LOCAL_MACHINE\Software\The Learning Company\The ClueFinders 6th Grade Adventures\DataFile]
+@="$$(rootpath)\\USERS\\CF6.DAT"
+
+[HKEY_LOCAL_MACHINE\Software\The Learning Company\The ClueFinders 6th Grade Adventures\InstalledFile]
+@="$$(rootpath)\\CF6.EXE"
+
+[HKEY_LOCAL_MACHINE\Software\The Learning Company\The ClueFinders 6th Grade Adventures\Version]
+@="1.01"
+
+[HKEY_LOCAL_MACHINE\Software\The Learning Company\The ClueFinders 6th Grade Adventures\MainExe]
+@="$$(rootpath)\\CF6.EXE"
+
+[HKEY_LOCAL_MACHINE\Software\The Learning Company\The ClueFinders 6th Grade Adventures\InstalledPath]
+@="$$(rootpath)"
+
+
+
+]]]
+
+end
+
+//
+// Brazilian Portuguese, Version 1.0
+//
+game[pc-cd-pt-br-1.0]:
+    name = Brazilian Portuguese CD, Version 1.0
+    anchorfile = CF6.exe
+    anchordepth = 3
+    rootpath = C:\Program Files\The Learning Company\The ClueFinders 6th Grade Adventures
+    
+    file[]: crc = 402be90f; size =    663552; name = CF6.exe
+    file[]: crc = efcebe32; size =     96256; name = Smackw32.dll
+    file[]: crc = a7df6bdb; size =   1753232; name = CD\Data\MOVIES\BrdgWalkBG1.smk
+    file[]: crc = e9afd8c6; size =   1755400; name = CD\Data\MOVIES\BrdgWalkBG2.smk
+    file[]: crc = 0ee069ce; size =    443032; name = CD\Data\MOVIES\LOpen1.smk
+    file[]: crc = 3351111b; size =    419400; name = CD\Data\MOVIES\LOpen2.smk
+    file[]: crc = e6235926; size =    419432; name = CD\Data\MOVIES\LOpen3.smk
+    file[]: crc = 35ce3050; size =    426088; name = CD\Data\MOVIES\LOpen4.smk
+    file[]: crc = 4ff4c4ef; size =    417716; name = CD\Data\MOVIES\LOpen5.smk
+    file[]: crc = 2527083e; size =    417948; name = CD\Data\MOVIES\LOpen6.smk
+    file[]: crc = 54d2a512; size =       580; name = CD\Data\MOVIES\MvAdapt.smk
+    file[]: crc = cdea4459; size =  14069860; name = CD\Data\MOVIES\MvBClue1.smk
+    file[]: crc = a077645f; size =   4045304; name = CD\Data\MOVIES\MVBClue2.smk
+    file[]: crc = b46db8af; size =   5672028; name = CD\Data\MOVIES\MVBClue3.smk
+    file[]: crc = f5895b34; size =   4476340; name = CD\Data\MOVIES\MVBClue4.smk
+    file[]: crc = 94be9287; size =   2912232; name = CD\Data\MOVIES\MVBClue5.smk
+    file[]: crc = 5f4d97de; size =  25462316; name = CD\Data\MOVIES\MVCClue1.smk
+    file[]: crc = 9bcd4978; size =   3099680; name = CD\Data\MOVIES\MVCClue2.smk
+    file[]: crc = e591146c; size =   4421432; name = CD\Data\MOVIES\MVCClue3.smk
+    file[]: crc = ef51558e; size =  23416628; name = CD\Data\MOVIES\MvClose1.smk
+    file[]: crc = 3e1edebd; size =    173856; name = CD\Data\MOVIES\MVComet.smk
+    file[]: crc = 54d2a512; size =       580; name = CD\Data\MOVIES\MvFade.smk
+    file[]: crc = 7c26d429; size =   4245284; name = CD\Data\MOVIES\MVNest.smk
+    file[]: crc = bcbd4b79; size =  20992564; name = CD\Data\MOVIES\MVOpen1.smk
+    file[]: crc = 654cc319; size =  16623692; name = CD\Data\MOVIES\MVOpen2.smk
+    file[]: crc = 8f6652b4; size =   3421030; name = CD\Data\MOVIES\MVTitle.qtw
+    file[]: crc = 118ea05e; size =    525788; name = CD\Data\MOVIES\MVTitle.smk
+    file[]: crc = b936faab; size =    288472; name = CD\Data\MOVIES\MVTitleEN.smk
+    file[]: crc = bcef73ba; size =   3246424; name = CD\Data\MOVIES\WalkInPos1a.smk
+    file[]: crc = 2fa16aac; size =   3254112; name = CD\Data\MOVIES\WalkInPos1b.smk
+    file[]: crc = 8e1c1c21; size =   3182112; name = CD\Data\MOVIES\WalkInPos2a.smk
+    file[]: crc = 3704f170; size =   3170780; name = CD\Data\MOVIES\WalkInPos2b.smk
+    file[]: crc = 312ea7d7; size =   3212104; name = CD\Data\MOVIES\WalkInPos3a.smk
+    file[]: crc = b6d226c6; size =   3158008; name = CD\Data\MOVIES\WalkInPos3b.smk
+    file[]: crc = 6e4bd5bd; size =   3177992; name = CD\Data\MOVIES\WalkInPos4a.smk
+    file[]: crc = 16268700; size =   3170300; name = CD\Data\MOVIES\WalkInPos4b.smk
+    file[]: crc = 2ef2906b; size =   3283864; name = CD\Data\MOVIES\WalkInPos5a.smk
+    file[]: crc = 83c1c867; size =   3327844; name = CD\Data\MOVIES\WalkInPos5b.smk
+    file[]: crc = 6e4bd5bd; size =   3177992; name = CD\Data\MOVIES\WalkInPos6a.smk
+    file[]: crc = 16268700; size =   3170300; name = CD\Data\MOVIES\WalkInPos6b.smk
+    file[]: crc = 312ea7d7; size =   3212104; name = CD\Data\MOVIES\WalkInPos7a.smk
+    file[]: crc = b6d226c6; size =   3158008; name = CD\Data\MOVIES\WalkInPos7b.smk
+    file[]: crc = 8e1c1c21; size =   3182112; name = CD\Data\MOVIES\WalkInPos8a.smk
+    file[]: crc = 3704f170; size =   3170780; name = CD\Data\MOVIES\WalkInPos8b.smk
+    file[]: crc = 8ec8314b; size =    601600; name = CD\Data\RSC\ALabTunz.rsc
+    file[]: crc = 96c9c3e6; size =   6765568; name = CD\Data\RSC\BLabTunz.rsc
+    file[]: crc = af1ac80c; size =    144896; name = CD\Data\RSC\BP.rsc
+    file[]: crc = 1dde2f21; size =   6377984; name = CD\Data\RSC\BPSpch.rsc
+    file[]: crc = 6e86b519; size =   1316864; name = CD\Data\RSC\Brdg.rsc
+    file[]: crc = 25714088; size =   1119744; name = CD\Data\RSC\BrdgI.rsc
+    file[]: crc = 3c00a029; size =   6963200; name = CD\Data\RSC\BrdgSpch.rsc
+    file[]: crc = 2b1e7d37; size =   2198528; name = CD\Data\RSC\CLabTunz.rsc
+    file[]: crc = 210f8b3e; size =   1876992; name = CD\Data\RSC\Clif.rsc
+    file[]: crc = 98eb2fd0; size =   1026048; name = CD\Data\RSC\ClifC1.rsc
+    file[]: crc = d73fd5b8; size =   1012224; name = CD\Data\RSC\ClifC2.rsc
+    file[]: crc = abf8ec1d; size =     14336; name = CD\Data\RSC\ClifData.rsc
+    file[]: crc = e7a197ec; size =     39424; name = CD\Data\RSC\ClifSfx2.rsc
+    file[]: crc = 40e21468; size =  13741568; name = CD\Data\RSC\ClifSpch.rsc
+    file[]: crc = d1179743; size =   1414144; name = CD\Data\RSC\ClifSpch1.rsc
+    file[]: crc = fe606ab1; size =    471040; name = CD\Data\RSC\ClifSpch2.rsc
+    file[]: crc = 3963311a; size =   2223616; name = CD\Data\RSC\Clueh.rsc
+    file[]: crc = 613dec9f; size =    178176; name = CD\Data\RSC\Com.rsc
+    file[]: crc = b4e38fa7; size =    309760; name = CD\Data\RSC\ComPA.rsc
+    file[]: crc = 65e99fab; size =    965632; name = CD\Data\RSC\ComSpch.rsc
+    file[]: crc = 81428311; size =    479232; name = CD\Data\RSC\CS1.rsc
+    file[]: crc = 858c54c8; size =     60928; name = CD\Data\RSC\CS1o1.rsc
+    file[]: crc = 994a6c57; size =     61952; name = CD\Data\RSC\CS1o2.rsc
+    file[]: crc = 656d70f5; size =    228352; name = CD\Data\RSC\CS1Pre.rsc
+    file[]: crc = 7319a186; size =   4413952; name = CD\Data\RSC\CS1Spch.rsc
+    file[]: crc = 9c8f8661; size =    426496; name = CD\Data\RSC\CS2.rsc
+    file[]: crc = 70704137; size =     61440; name = CD\Data\RSC\CS2o1.rsc
+    file[]: crc = b57c526f; size =     69120; name = CD\Data\RSC\CS2o2.rsc
+    file[]: crc = 0fc91bec; size =    218624; name = CD\Data\RSC\CS2Pre.rsc
+    file[]: crc = 80840269; size =   2810368; name = CD\Data\RSC\CS2Spch.rsc
+    file[]: crc = 00cc42ca; size =    431616; name = CD\Data\RSC\CS3.rsc
+    file[]: crc = 72de7a56; size =     58880; name = CD\Data\RSC\CS3o1.rsc
+    file[]: crc = ce4dd511; size =     59904; name = CD\Data\RSC\CS3o2.rsc
+    file[]: crc = 54c53050; size =     64000; name = CD\Data\RSC\CS3o3.rsc
+    file[]: crc = 6fec2062; size =    211456; name = CD\Data\RSC\CS3Pre.rsc
+    file[]: crc = 229b4efe; size =   3800064; name = CD\Data\RSC\CS3Spch.rsc
+    file[]: crc = a28dfd82; size =    451584; name = CD\Data\RSC\CS4.rsc
+    file[]: crc = 2e398b6d; size =     60928; name = CD\Data\RSC\CS4o1.rsc
+    file[]: crc = 15ec6ec3; size =     61952; name = CD\Data\RSC\CS4o3.rsc
+    file[]: crc = f8e98d50; size =     65536; name = CD\Data\RSC\CS4o4.rsc
+    file[]: crc = 1943fd9b; size =    461312; name = CD\Data\RSC\CS4Pre.rsc
+    file[]: crc = 8b901d48; size =    100352; name = CD\Data\RSC\CS4s1p.rsc
+    file[]: crc = 181f0aa3; size =    100352; name = CD\Data\RSC\CS4s2p.rsc
+    file[]: crc = 7ef0697c; size =    100352; name = CD\Data\RSC\CS4s3p.rsc
+    file[]: crc = 0b061750; size =   4009472; name = CD\Data\RSC\CS4Spch.rsc
+    file[]: crc = 88dbf294; size =   2204672; name = CD\Data\RSC\EPA.rsc
+    file[]: crc = a8b15221; size =   1846784; name = CD\Data\RSC\EPAI.rsc
+    file[]: crc = 7851b634; size =  10776576; name = CD\Data\RSC\EPASpch.rsc
+    file[]: crc = 139dea5c; size =    186368; name = CD\Data\RSC\Epatext.rsc
+    file[]: crc = 1e228019; size =   3120128; name = CD\Data\RSC\Grow.rsc
+    file[]: crc = 4a616d80; size =     85504; name = CD\Data\RSC\GROWDATA.rsc
+    file[]: crc = 157892ec; size =   2023936; name = CD\Data\RSC\GrowI.rsc
+    file[]: crc = 8d629898; size =  12637184; name = CD\Data\RSC\GrowSpch.rsc
+    file[]: crc = b87cc663; size =     44544; name = CD\Data\RSC\GROWTEXT.rsc
+    file[]: crc = f9a1150c; size =    538112; name = CD\Data\RSC\Help.rsc
+    file[]: crc = d0e57d13; size =   1625600; name = CD\Data\RSC\KO.rsc
+    file[]: crc = 4fa87dc4; size =    113664; name = CD\Data\RSC\KO1Pre.rsc
+    file[]: crc = 935961a6; size =    112640; name = CD\Data\RSC\KO2Pre.rsc
+    file[]: crc = 8aeffb9b; size =   1382912; name = CD\Data\RSC\KOh.rsc
+    file[]: crc = d9b50a66; size =     75776; name = CD\Data\RSC\KOo1.rsc
+    file[]: crc = fba7ed1a; size =     75264; name = CD\Data\RSC\KOo2.rsc
+    file[]: crc = dcf2c574; size =     76800; name = CD\Data\RSC\KOo3.rsc
+    file[]: crc = 6a83a014; size =    515584; name = CD\Data\RSC\KOPre.rsc
+    file[]: crc = 99f46155; size =   9417216; name = CD\Data\RSC\KOSpch.rsc
+    file[]: crc = 62ea34cf; size =   2931200; name = CD\Data\RSC\Lock.rsc
+    file[]: crc = 2852b699; size =    104960; name = CD\Data\RSC\lockdata.rsc
+    file[]: crc = 272b5100; size =    596480; name = CD\Data\RSC\Locki.rsc
+    file[]: crc = 26eaba9f; size =    196608; name = CD\Data\RSC\LockScn1.rsc
+    file[]: crc = 6f64a907; size =    200704; name = CD\Data\RSC\LockScn2.rsc
+    file[]: crc = bf9dbf29; size =    255488; name = CD\Data\RSC\LockScn3.rsc
+    file[]: crc = 20e17136; size =    212992; name = CD\Data\RSC\LockScn4.rsc
+    file[]: crc = 311fbfcb; size =    172544; name = CD\Data\RSC\LockScn5.rsc
+    file[]: crc = 15fec310; size =    172032; name = CD\Data\RSC\LockScn6.rsc
+    file[]: crc = 06f31aa2; size =    169984; name = CD\Data\RSC\LockSfx.rsc
+    file[]: crc = 19816678; size =   4951552; name = CD\Data\RSC\LockSpch.rsc
+    file[]: crc = 261c273f; size =    138752; name = CD\Data\RSC\LockV1.rsc
+    file[]: crc = 90bb595b; size =    138240; name = CD\Data\RSC\LockV2.rsc
+    file[]: crc = cf942a9c; size =    110080; name = CD\Data\RSC\LockV3.rsc
+    file[]: crc = fcd263b2; size =    136704; name = CD\Data\RSC\LockV4.rsc
+    file[]: crc = b7f0b164; size =    131072; name = CD\Data\RSC\LockV5.rsc
+    file[]: crc = b9128559; size =    132096; name = CD\Data\RSC\LockV6.rsc
+    file[]: crc = 072bb56d; size =   1814528; name = CD\Data\RSC\LT.rsc
+    file[]: crc = cdf5045e; size =    100864; name = CD\Data\RSC\LTRef.rsc
+    file[]: crc = d9b48683; size =   1088512; name = CD\Data\RSC\LTSpch.rsc
+    file[]: crc = 7072f63b; size =   2107392; name = CD\Data\RSC\Nest.rsc
+    file[]: crc = 26d33710; size =     50688; name = CD\Data\RSC\Nest2.rsc
+    file[]: crc = f7440b77; size =     97792; name = CD\Data\RSC\Nest3.rsc
+    file[]: crc = 10c04b20; size =     55296; name = CD\Data\RSC\NestData.rsc
+    file[]: crc = c84700bc; size =   8318976; name = CD\Data\RSC\NESTSpch.rsc
+    file[]: crc = 8de959c4; size =    889856; name = CD\Data\RSC\NestSpch1.rsc
+    file[]: crc = 8dd84cd2; size =    152576; name = CD\Data\RSC\NestSpch2.rsc
+    file[]: crc = 7e749619; size =    442880; name = CD\Data\RSC\NestSpch3.rsc
+    file[]: crc = 5ef010a1; size =    294912; name = CD\Data\RSC\NestSpch4.rsc
+    file[]: crc = ee7b36c5; size =    889344; name = CD\Data\RSC\NestSpch5.rsc
+    file[]: crc = 7ab10f53; size =   1221632; name = CD\Data\RSC\NestSpch6.rsc
+    file[]: crc = 00f9fa78; size =     69632; name = CD\Data\RSC\RefText.rsc
+    file[]: crc = dfe2c3bf; size =    314368; name = CD\Data\RSC\SI.rsc
+    file[]: crc = fa529b77; size =    242176; name = CD\Data\RSC\SISpch.rsc
+    file[]: crc = 20fa177b; size =    478208; name = CD\Data\RSC\SITunz.rsc
+    file[]: crc = a7e05846; size =     13824; name = CD\Data\RSC\SixPack.rsc
+    file[]: crc = 163f75f1; size =   2443776; name = CD\Data\RSC\Step.rsc
+    file[]: crc = d02dfcf8; size =     42496; name = CD\Data\RSC\STEPDATA.rsc
+    file[]: crc = ae28e7ad; size =    803840; name = CD\Data\RSC\Stepi.rsc
+    file[]: crc = 3606ad90; size =    248832; name = CD\Data\RSC\StepSfx.rsc
+    file[]: crc = aee5d2be; size =   4793856; name = CD\Data\RSC\StepSpch.rsc
+    file[]: crc = 30f03e8e; size =   2196480; name = CD\Data\RSC\Trt.rsc
+    file[]: crc = b9a7e6f7; size =    832512; name = CD\Data\RSC\Trth.rsc
+    file[]: crc = 53c7c06b; size =     41984; name = CD\Data\RSC\Trto1.rsc
+    file[]: crc = 19407dba; size =     41472; name = CD\Data\RSC\Trto2.rsc
+    file[]: crc = 954ba480; size =    599552; name = CD\Data\RSC\TrtPre.rsc
+    file[]: crc = c6b657a9; size =  15693312; name = CD\Data\RSC\TrtSpch.rsc
+    file[]: crc = 76a20661; size =     75776; name = CD\Data\RSC\TrtWFull.rsc
+    file[]: crc = cf3d73ca; size =    261120; name = CD\Data\RSC\TrtWIn.rsc
+    file[]: crc = be19b7c1; size =    274944; name = CD\Data\RSC\TrtWOut.rsc
+    file[]: crc = 80cbacf3; size =     92035; name = CD\Data\SCRIPTS\BRIDGE.mps
+    file[]: crc = 58a364ba; size =    108705; name = CD\Data\SCRIPTS\CLIFFS.mps
+    file[]: crc = 651cee55; size =     80991; name = CD\Data\SCRIPTS\CLUE1.mps
+    file[]: crc = dc79b020; size =     78144; name = CD\Data\SCRIPTS\CLUE2.mps
+    file[]: crc = cbe6b0ea; size =     79548; name = CD\Data\SCRIPTS\CLUE3.mps
+    file[]: crc = f035c07f; size =     82722; name = CD\Data\SCRIPTS\CLUE4.mps
+    file[]: crc = 7bcf14fa; size =     25044; name = CD\Data\SCRIPTS\DATASET.mps
+    file[]: crc = 96c07954; size =    101716; name = CD\Data\SCRIPTS\DOOR.mps
+    file[]: crc = 0eb07efc; size =    116379; name = CD\Data\SCRIPTS\EPA.mps
+    file[]: crc = 054bc814; size =    138510; name = CD\Data\SCRIPTS\GROWTH.mps
+    file[]: crc = d91a2f3f; size =    150391; name = CD\Data\SCRIPTS\KO.mps
+    file[]: crc = 6dda1b08; size =     23276; name = CD\Data\SCRIPTS\KOData1.txt
+    file[]: crc = 76db251c; size =     16884; name = CD\Data\SCRIPTS\KOData2.txt
+    file[]: crc = 08019b30; size =     17559; name = CD\Data\SCRIPTS\KOData3.txt
+    file[]: crc = 7552ed9a; size =     22174; name = CD\Data\SCRIPTS\KOData4.txt
+    file[]: crc = b35bfe1e; size =      9370; name = CD\Data\SCRIPTS\MAIN.MPS
+    file[]: crc = fc522f9a; size =    127078; name = CD\Data\SCRIPTS\NEST.mps
+    file[]: crc = 89c817a4; size =    132871; name = CD\Data\SCRIPTS\PLANT.mps
+    file[]: crc = ff20570b; size =     20000; name = CD\Data\SCRIPTS\PlantData.txt
+    file[]: crc = 6dd0b762; size =     63884; name = CD\Data\SCRIPTS\SIGNIN.mps
+    file[]: crc = 2517def3; size =     12094; name = CD\Data\SCRIPTS\STARTUP.mps
+    file[]: crc = b67473e8; size =     83482; name = CD\Data\SCRIPTS\STEPS.mps
+    file[]: crc = 00000000; size =         0; name = CD\INSTALL\TLC\CFS744AE.CD
+    
+    CDLABEL = ""
+    CF6_CONTENTS = [[[$(CRLF)
+[ClueFinders 6th Grade - CD]
+CDDrive=D:\DATA\
+UseDirectDraw=1
+DisplayFullScreen=1
+]]]
+    REGISTRY = [[[$(CRLF)
+REGEDIT4
+
+[HKEY_LOCAL_MACHINE\Software\The Learning Company\The ClueFinders 6th Grade Adventures]
+
+[HKEY_LOCAL_MACHINE\Software\The Learning Company\The ClueFinders 6th Grade Adventures\1.0]
+
+[HKEY_LOCAL_MACHINE\Software\The Learning Company\The ClueFinders 6th Grade Adventures\DataFile]
+@="$$(rootpath)\\USERS\\CF6.DAT"
+
+[HKEY_LOCAL_MACHINE\Software\The Learning Company\The ClueFinders 6th Grade Adventures\InstalledFile]
+@="$$(rootpath)\\CF6.EXE"
+
+[HKEY_LOCAL_MACHINE\Software\The Learning Company\The ClueFinders 6th Grade Adventures\Version]
+@="1.0"
+
+[HKEY_LOCAL_MACHINE\Software\The Learning Company\The ClueFinders 6th Grade Adventures\MainExe]
+@="$$(rootpath)\\CF6.EXE"
+
+[HKEY_LOCAL_MACHINE\Software\The Learning Company\The ClueFinders 6th Grade Adventures\InstalledPath]
+@="$$(rootpath)"
+
+
+
+]]]
+
+end
+
+end

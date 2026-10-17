@@ -1,0 +1,180 @@
+desc[tlc-rrta]:
+
+name = Reader Rabbit Thinking Adventures, Ages 4-6
+icon = tlc-rrta.png
+machine = pc
+rootpath = C:\Program Files\The Learning Company\Reader Rabbit Thinking Adventures Ages 4-6
+launch = "$(rootpath)\rrta32.exe"
+osenv = windows 98
+winres = 640x480x8
+
+//
+// filesystem
+//
+mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD
+
+mount[cdw]: vpath = D:\; srcpath = ram
+
+//
+// initialization script
+//
+script[cd-init]:
+	code = [[[$(CRLF)
+	    // set the volume label on the CD
+        drive_set_label("D", "$$(CDLABEL)");
+        file_save("$$(rootpath)\\TRABBIT.INI", "$$(TRABBIT_CONTENTS)");
+	
+        
+    ]]]
+end
+
+REGISTRY = [[[$(CRLF)
+    REGEDIT4
+   [HKEY_LOCAL_MACHINE\SOFTWARE\The Learning Company]
+   
+   [HKEY_LOCAL_MACHINE\SOFTWARE\The Learning Company\Products]
+   
+   [HKEY_LOCAL_MACHINE\SOFTWARE\The Learning Company\Products\RTG3744AE]
+   "Data"=hex:0c,00,01,00,ef,e0,b9,6a,ef,e0,b9,6a
+   
+   [HKEY_LOCAL_MACHINE\SOFTWARE\The Learning Company\Reader Rabbit's Thinking Adventures]
+
+   [HKEY_LOCAL_MACHINE\SOFTWARE\The Learning Company\Reader Rabbit's Thinking Adventures\1.0]
+
+   [HKEY_LOCAL_MACHINE\SOFTWARE\The Learning Company\Reader Rabbit's Thinking Adventures\DataFile]
+   @="$(rootpath)\\trabbit.DAT"
+
+   [HKEY_LOCAL_MACHINE\SOFTWARE\The Learning Company\Reader Rabbit's Thinking Adventures\DatFile]
+   @="$(rootpath)\\trabbit.DAT"
+
+   [HKEY_LOCAL_MACHINE\SOFTWARE\The Learning Company\Reader Rabbit's Thinking Adventures\InstalledFile]
+   @="$$(rootpath)\\rrta32.exe"
+
+   [HKEY_LOCAL_MACHINE\SOFTWARE\The Learning Company\Reader Rabbit's Thinking Adventures\InstalledPath]
+   @="$$(rootpath)"
+
+   [HKEY_LOCAL_MACHINE\SOFTWARE\The Learning Company\Reader Rabbit's Thinking Adventures\MainExe]
+   @="$$(rootpath)\\rrta32.exe"
+
+   [HKEY_LOCAL_MACHINE\SOFTWARE\The Learning Company\Reader Rabbit's Thinking Adventures\PreassesDir]
+   @="D:\\Install\\Pls\\Preasses"
+
+   [HKEY_LOCAL_MACHINE\SOFTWARE\The Learning Company\Reader Rabbit's Thinking Adventures\PreassesExe]
+   @="$$(rootpath)\\PreAssess.exe"
+
+   [HKEY_LOCAL_MACHINE\SOFTWARE\The Learning Company\Reader Rabbit's Thinking Adventures\Version]
+   @="1.0"
+    ]]]
+
+script[init]:
+    code = [[[$(CRLF)
+    if (is_windows()) {
+        winregistry_import_raw("$$(REGISTRY)");
+    }
+    ]]]
+end
+
+//
+// 
+//
+game[pc-en-990825]:
+    name = English 1999-08-25
+    anchorfile = rrta32.exe
+    anchordepth = 4
+    
+    file[]: crc = ed768002; size =      2371; name = PLSDescriptor.txt
+    file[]: crc = bb071b07; size =   1159168; name = PreAssess.exe
+    file[]: crc = 46cfe091; size =    804864; name = rrta32.exe
+    file[]: crc = d8bd604e; size =     71680; name = SMACKW32.DLL
+
+    file[]: crc = e8a07ed8; size =   5790221; name = rsc\ACOLRPAT.RSC
+    file[]: crc = f995f480; size =   4336653; name = rsc\ACOOKIES.RSC
+    file[]: crc = 5799c23e; size =   6190605; name = rsc\ADANCE.RSC
+    file[]: crc = 69bbfcd4; size =    415644; name = rsc\adaptin.smk
+    file[]: crc = d44f5295; size =     71060; name = rsc\ADPTOUT.SMK
+    file[]: crc = 74e5b5db; size =   8188429; name = rsc\AFOLODIR.RSC
+    file[]: crc = 262770c2; size =   9342989; name = rsc\ALINEDIF.RSC
+    file[]: crc = 5d0ac605; size =  20368909; name = rsc\AMAIN.RSC
+    file[]: crc = d104b296; size =   9103373; name = rsc\ANAMES.RSC
+    file[]: crc = 132de23e; size =    728589; name = rsc\APOP.RSC
+    file[]: crc = 11789f6d; size =  12695053; name = rsc\APRESENT.RSC
+    file[]: crc = 55d59367; size =   1251341; name = rsc\ASIGNIN.RSC
+    file[]: crc = ae93fb4e; size =  12127245; name = rsc\ATREATS.RSC
+    file[]: crc = cdf88618; size =  13616141; name = rsc\AVENN.RSC
+    file[]: crc = 7258aee9; size =   8537120; name = rsc\closing.smk
+    file[]: crc = d2922eb7; size =   2849805; name = rsc\COLORPAT.RSC
+    file[]: crc = 657eb469; size =    155612; name = rsc\comet.smk
+    file[]: crc = 3cec6a42; size =   2203661; name = rsc\COOKIES.RSC
+    file[]: crc = 4315a1c9; size =   1473492; name = rsc\cscene1.smk
+    file[]: crc = 45e39bde; size =   2058524; name = rsc\cscene2.smk
+    file[]: crc = 9f61a658; size =   2038412; name = rsc\cscene3.smk
+    file[]: crc = 0dda670a; size =   2362893; name = rsc\DANCE.RSC
+    file[]: crc = 86391165; size =   3805709; name = rsc\FOLODIR.RSC
+    file[]: crc = 7e32db13; size =   3075597; name = rsc\LINESDIF.RSC
+    file[]: crc = 73b867d2; size =   8903693; name = rsc\MAIN.RSC
+    file[]: crc = 39f8b813; size =   9461372; name = rsc\Opening.smk
+    file[]: crc = 66a8a1fa; size =   2167821; name = rsc\POP.RSC
+    file[]: crc = f074a1de; size =   6899213; name = rsc\PRESENT.RSC
+    file[]: crc = 8f932351; size =    489924; name = rsc\RRfromBabs.smk
+    file[]: crc = f07bb1a6; size =    340556; name = rsc\RRfromOwl.smk
+    file[]: crc = ea67c6cb; size =    399008; name = rsc\RRfromPapa.smk
+    file[]: crc = 0f4cca44; size =    295588; name = rsc\RRfromPierre.smk
+    file[]: crc = cd4c292e; size =    474224; name = rsc\RRtoBabs.smk
+    file[]: crc = 3d68c7a3; size =    335428; name = rsc\RRtoOwl.smk
+    file[]: crc = 01347433; size =    401436; name = rsc\RRtoPapa.smk
+    file[]: crc = ef4c7aa1; size =    286252; name = rsc\RRtoPierre.smk
+    file[]: crc = 3baf50c3; size =    748045; name = rsc\SIGNIN.RSC
+    file[]: crc = 52a104ed; size =   1599900; name = rsc\tlcin.smk
+    file[]: crc = b1fd382f; size =   2149901; name = rsc\TREATS.RSC
+    file[]: crc = b0a46030; size =   7091725; name = rsc\VENN.RSC
+    file[]: crc = 5095231e; size =     23109; name = scripts\adptout.mps
+    file[]: crc = 555a879d; size =     32498; name = scripts\babsbaky.mps
+    file[]: crc = ee6c20bf; size =     23666; name = scripts\babtrans.mps
+    file[]: crc = 6b2ca059; size =     29926; name = scripts\close.mps
+    file[]: crc = b02b0b95; size =     76285; name = scripts\color.mps
+    file[]: crc = 94de07ea; size =       310; name = scripts\config.mps
+    file[]: crc = c7a12f5e; size =     82243; name = scripts\cookie.mps
+    file[]: crc = cccb0104; size =     85673; name = scripts\dance.mps
+    file[]: crc = 65b6b410; size =     87254; name = scripts\dance1.mps
+    file[]: crc = d4e11074; size =    111623; name = scripts\follow.mps
+    file[]: crc = 90b78281; size =    101848; name = scripts\lines.mps
+    file[]: crc = 87a667ee; size =     46548; name = scripts\menu.mps
+    file[]: crc = 59da16e9; size =     27075; name = scripts\museum.mps
+    file[]: crc = 81aff035; size =      2128; name = scripts\open.mps
+    file[]: crc = 7b445414; size =     23663; name = scripts\owltrans.mps
+    file[]: crc = 43c7a585; size =     34507; name = scripts\owltree.mps
+    file[]: crc = 79012ad0; size =     33202; name = scripts\papastor.mps
+    file[]: crc = 4a7202a0; size =     23666; name = scripts\pbtrans.mps
+    file[]: crc = 673eb9ef; size =     32489; name = scripts\pierstud.mps
+    file[]: crc = 252e8376; size =     32298; name = scripts\printstr.mps
+    file[]: crc = 452f5191; size =     23670; name = scripts\pstrans.mps
+    file[]: crc = 6c56c6c6; size =     52117; name = scripts\signin.mps
+    file[]: crc = 379823df; size =      2013; name = scripts\startup.mps
+    file[]: crc = 170eb909; size =     94504; name = scripts\treat.mps
+    file[]: crc = 063a8665; size =    116656; name = scripts\venn.mps
+    file[]: crc = 7efca891; size =     91917; name = scripts\wrap.mps
+    
+    file[]: crc = 226b2ed5; size =     95744; name = CD\Install\PLS\PLUGIN\rrtg.pls
+    file[]: crc = 3655543e; size =   2395661; name = CD\Install\PLS\Preasses\PRsc\AASSESS.RSC
+    file[]: crc = 92cbe620; size =   2701837; name = CD\Install\PLS\Preasses\PRsc\ZASSESS.RSC
+    file[]: crc = df25bca7; size =      2131; name = CD\Install\PLS\Preasses\PScripts\constant.inc
+    file[]: crc = 77e398bb; size =       623; name = CD\Install\PLS\Preasses\PScripts\exit.mps
+    file[]: crc = 315fcc9b; size =      2169; name = CD\Install\PLS\Preasses\PScripts\mthRacer.inc
+    file[]: crc = 5e8e8c34; size =       941; name = CD\Install\PLS\Preasses\PScripts\mthRacer.mps
+    file[]: crc = a4da71ec; size =       218; name = CD\Install\PLS\Preasses\PScripts\rconfirm.mps
+    file[]: crc = 00000000; size =         0; name = CD\Install\TLC\RTG744AE.CD1
+    
+    CDLABEL = RRTA
+    TRABBIT_CONTENTS = [[[(CRLF)
+[Thinker Rabbit - CD]
+CDDrive=D:\
+UseDirectDraw=1
+DisplayFullScreen=1
+altDance=1
+]]]
+
+end
+
+end

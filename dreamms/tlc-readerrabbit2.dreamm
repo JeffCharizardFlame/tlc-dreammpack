@@ -1,0 +1,299 @@
+desc[tlc-readerrabbit2]:
+
+name = Reader Rabbit 2 / Reader Rabbit's Reading 2
+icon = tlc-readerrabbit2.png
+machine = pc
+osenv = windows 98
+launch = ""
+
+config[display]:
+    condition = is_dos()
+    title = Display Adapter
+    option[vga]: name = VGA; videohw = vga;
+    option[ega]: name = EGA; videohw = ega;
+    option[cga]: name = CGA; videohw = cga;
+    option[tandy]: name = Tandy; machine = tandy; videohw = cga;
+end
+
+config[ossel]:
+    condition = is_windows() && file_exists("$$(rootpath)\\rrr232.exe")
+    title = OS Select
+    option[win9x]: name = Windows 9x; launch = "$(rootpath)\rrr232.exe"; osenv = windows 98
+    option[win31]: name = Windows 3.1; launch = "$(rootpath)\rrr216.exe"; osenv = windows 3.11.002
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+
+//
+// English MS-DOS
+//
+game[pc-dos-en]:
+    name = English MS-DOS
+    rootpath = C:\TLC\RR2
+    launch = "$(rootpath)\RR2.EXE"
+    osenv = dos
+    fixdivover = true
+    mips = $(MIPS_386SX_20)
+    ramkb = 1024
+    audiohw = sb16
+    anchorfile = RR2.EXE
+    
+    file[]: crc = 99caade8; size =      6041; name = ADSFX.ADL
+    file[]: crc = f409da50; size =      1390; name = ADSFX.IBM
+    file[]: crc = 11f81f69; size =      6985; name = ADSFX.ROL
+    file[]: crc = b885aa39; size =      3166; name = ADSFX.TAN
+    file[]: crc = df18f2e1; size =     21279; name = ADSPRT0.PAK
+    file[]: crc = d866927d; size =     21947; name = ADSPRT1.PAK
+    file[]: crc = 5182027e; size =     20435; name = ADSPRT2.PAK
+    file[]: crc = 09f85cbb; size =      2904; name = BEZZSPRT.PAK
+    file[]: crc = 74143573; size =      3245; name = DANCE.DAT
+    file[]: crc = c0153ffc; size =      9539; name = HELP.DAT
+    file[]: crc = 10b48761; size =      2018; name = MATPAT.DAT
+    file[]: crc = e9413760; size =      3163; name = MCPSFX.ADL
+    file[]: crc = 61571af5; size =       816; name = MCPSFX.IBM
+    file[]: crc = 1a3da03f; size =      2457; name = MCPSFX.ROL
+    file[]: crc = c89deda6; size =      2377; name = MCPSFX.TAN
+    file[]: crc = 1c68a3e4; size =     25154; name = MCPSPRT.PAK
+    file[]: crc = 050a5e98; size =      8497; name = MINE.DAT
+    file[]: crc = ae7e5051; size =     31033; name = MINSPRT1.PAK
+    file[]: crc = 001ae2f3; size =     25502; name = MINSPRT2.PAK
+    file[]: crc = fc90f33a; size =     17358; name = MINSPRT3.PAK
+    file[]: crc = 07e67ecb; size =      2347; name = MPSFX.ADL
+    file[]: crc = 0add33aa; size =      1406; name = MPSFX.IBM
+    file[]: crc = be737d36; size =      1816; name = MPSFX.ROL
+    file[]: crc = f86b2d8b; size =      1869; name = MPSFX.TAN
+    file[]: crc = e7b34892; size =     27910; name = MPSPRT0.PAK
+    file[]: crc = 3b2b88d1; size =     15830; name = MPSPRT1.PAK
+    file[]: crc = 0d439de4; size =     31500; name = MPSPRT2.PAK
+    file[]: crc = 7d08572c; size =      2688; name = POND.DAT
+    file[]: crc = 5ca141cc; size =     37579; name = PONSPRT1.PAK
+    file[]: crc = c37cb6bc; size =     26788; name = PONSPRT2.PAK
+    file[]: crc = 21f30b87; size =     23898; name = PONSPRT3.PAK
+    file[]: crc = 046174bf; size =    105061; name = RR2.EXE
+    file[]: crc = 74da7aca; size =      4875; name = SIGNSPRT.PAK
+    file[]: crc = e6b560be; size =     34258; name = TITLSPRT.PAK
+    file[]: crc = 3167dba6; size =      2478; name = VPSFX.ADL
+    file[]: crc = 5f73455a; size =      1478; name = VPSFX.IBM
+    file[]: crc = fe003138; size =      1721; name = VPSFX.ROL
+    file[]: crc = 384cff4a; size =      1913; name = VPSFX.TAN
+    file[]: crc = 97240310; size =      4150; name = WMSFX.ADL
+    file[]: crc = 5224db23; size =      2062; name = WMSFX.IBM
+    file[]: crc = 16484a49; size =      4094; name = WMSFX.ROL
+    file[]: crc = 75968ffc; size =      2901; name = WMSFX.TAN
+
+end
+
+//
+// English Windows Version 1.01
+//
+game[pc-win-en-1.01]:
+    name = English Windows Version 1.01
+    anchorfile = rr2cd.exe
+    anchordepth = 3
+    rootpath = C:\TLCWIN\RR2
+    launch = "$(rootpath)\rr2cd.exe"
+    osenv = windows 3.11.002
+    winres = 640x480x8
+    
+    file[]: crc = 0f261778; size =   1718192; name = AD16.DLL
+    file[]: crc = 20d50e32; size =    212480; name = BC40RTL.DLL
+    file[]: crc = 6f309d34; size =    152304; name = BWCC.DLL
+    file[]: crc = beec5b0a; size =       999; name = CHKLIST.MS
+    file[]: crc = 84c79046; size =   1497381; name = DANCE.DLL
+    file[]: crc = e6cc2d5e; size =   4689198; name = DANCESFX.DLL
+    file[]: crc = 849989d4; size =   7964974; name = DANCESND.DLL
+    file[]: crc = 3d6ad349; size =     59072; name = DIBDLL.DLL
+    file[]: crc = 954e281d; size =    891169; name = MAINMENU.DLL
+    file[]: crc = 517d2e3f; size =   2062117; name = MATCH.DLL
+    file[]: crc = 6f9676bf; size =    656174; name = MATCHSFX.DLL
+    file[]: crc = fa78cb33; size =   9369902; name = MATCHSND.DLL
+    file[]: crc = 6ec1dc21; size =    568752; name = MM16.DLL
+    file[]: crc = d41af988; size =   2201008; name = MP16.DLL
+    file[]: crc = 34417a1e; size =    460061; name = POPRR2.DLL
+    file[]: crc = 93312a9f; size =   2027375; name = POPUP.DLL
+    file[]: crc = abbf0f65; size =    912239; name = POPUP16.DLL
+    file[]: crc = a5fe5b96; size =    574319; name = POPUP256.DLL
+    file[]: crc = 0edc6e46; size =   2570095; name = RR2_16.DLL
+    file[]: crc = 1f3bec2e; size =   2784111; name = RR2_256.DLL
+    file[]: crc = 44d172f4; size =  10975087; name = RR2_SND.DLL
+    file[]: crc = a48bd96a; size =    610046; name = RR2CD.EXE
+    file[]: crc = 4298ed8c; size =   1569559; name = RR2DLL.DLL
+    file[]: crc = 621a5b92; size =   1108920; name = RR2DLL16.DLL
+    file[]: crc = 84a5d174; size =    885537; name = RR2POP.DLL
+    file[]: crc = 298120ce; size =    879032; name = RR2POP16.DLL
+    file[]: crc = 9dee6b07; size =   2276641; name = RR2SOUND.DLL
+    file[]: crc = 83ee10d4; size =     99101; name = SIGNIN.DLL
+    file[]: crc = 25ff2eb3; size =     62392; name = SIGNIN16.DLL
+    file[]: crc = 9da3cceb; size =    751428; name = TITLESND.DLL
+    file[]: crc = 34f1adc5; size =     17785; name = TLCTIMER.DLL
+    file[]: crc = a16d04bd; size =   2488597; name = VP.DLL
+    file[]: crc = 75f0fbee; size =   2502064; name = VP16.DLL
+    file[]: crc = 40df17ab; size =  15000351; name = VPSOUND.DLL
+    file[]: crc = 5028950c; size =   2487573; name = WM.DLL
+    file[]: crc = c1085007; size =   2934704; name = WM16.DLL
+    file[]: crc = 058ea324; size =  21652635; name = WMSOUND.DLL
+    file[]: crc = 5243272f; size =  10517279; name = WMSOUND1.DLL
+    file[]: crc = 549524d8; size =  11147551; name = WMSOUND2.DLL
+    
+end
+
+//
+// English Windows Version 1.1
+//
+game[pc-win-en-1.1]:
+    name = English Windows Version 1.1
+    anchorfile = rr2_32.exe
+    anchordepth = 3
+    osenv = windows 98
+    rootpath = C:\TLCWIN\RR2
+    launch = "$(rootpath)\RR2_32.exe"
+    winres = 640x480x8
+    
+    file[]: crc = 0f261778; size =   1718192; name = AD16.DLL
+    file[]: crc = c0ad10fb; size =    219648; name = BC402RTL.DLL
+    file[]: crc = 20d50e32; size =    212480; name = BC40RTL.DLL
+    file[]: crc = 6f309d34; size =    152304; name = BWCC.DLL
+    file[]: crc = 84c79046; size =   1497381; name = DANCE.DLL
+    file[]: crc = e6cc2d5e; size =   4689198; name = DANCESFX.DLL
+    file[]: crc = 849989d4; size =   7964974; name = DANCESND.DLL
+    file[]: crc = 3d6ad349; size =     59072; name = DIBDLL.DLL
+    file[]: crc = fbe06a0b; size =     19629; name = FONT.DAT
+    file[]: crc = 954e281d; size =    891169; name = MAINMENU.DLL
+    file[]: crc = 517d2e3f; size =   2062117; name = MATCH.DLL
+    file[]: crc = 6f9676bf; size =    656174; name = MATCHSFX.DLL
+    file[]: crc = fa78cb33; size =   9369902; name = MATCHSND.DLL
+    file[]: crc = 6ec1dc21; size =    568752; name = MM16.DLL
+    file[]: crc = d41af988; size =   2201008; name = MP16.DLL
+    file[]: crc = 34417a1e; size =    460061; name = POPRR2.DLL
+    file[]: crc = 93312a9f; size =   2027375; name = POPUP.DLL
+    file[]: crc = abbf0f65; size =    912239; name = POPUP16.DLL
+    file[]: crc = a5fe5b96; size =    574319; name = POPUP256.DLL
+    file[]: crc = 0edc6e46; size =   2570095; name = RR2_16.DLL
+    file[]: crc = 1f3bec2e; size =   2784111; name = RR2_256.DLL
+    file[]: crc = 85cd5009; size =    209952; name = RR2_32.EXE
+    file[]: crc = 44d172f4; size =  10975087; name = RR2_SND.DLL
+    file[]: crc = 4298ed8c; size =   1569559; name = RR2DLL.DLL
+    file[]: crc = 621a5b92; size =   1108920; name = RR2DLL16.DLL
+    file[]: crc = 84a5d174; size =    885537; name = RR2POP.DLL
+    file[]: crc = 298120ce; size =    879032; name = RR2POP16.DLL
+    file[]: crc = 9dee6b07; size =   2276641; name = RR2SOUND.DLL
+    file[]: crc = 83ee10d4; size =     99101; name = SIGNIN.DLL
+    file[]: crc = 25ff2eb3; size =     62392; name = SIGNIN16.DLL
+    file[]: crc = 9da3cceb; size =    751428; name = TITLESND.DLL
+    file[]: crc = 34f1adc5; size =     17785; name = TLCTIMER.DLL
+    file[]: crc = a16d04bd; size =   2488597; name = VP.DLL
+    file[]: crc = 75f0fbee; size =   2502064; name = VP16.DLL
+    file[]: crc = 40df17ab; size =  15000351; name = VPSOUND.DLL
+    file[]: crc = 5028950c; size =   2487573; name = WM.DLL
+    file[]: crc = c1085007; size =   2934704; name = WM16.DLL
+    file[]: crc = 058ea324; size =  21652635; name = WMSOUND.DLL
+    file[]: crc = 5243272f; size =  10517279; name = WMSOUND1.DLL
+    file[]: crc = 549524d8; size =  11147551; name = WMSOUND2.DLL
+
+end
+
+//
+// English Windows Reading 2
+//
+game[pc-win-en-reading2]:
+    name = English Windows - Reader Rabbit's Reading 2
+    anchorfile = rrr216.exe
+    anchordepth = 3
+    rootpath = C:\TLCWIN\RRR2
+    winres = 640x480x8
+    
+    file[]: crc = 30acc026; size =      1078; name = RR2CD16.ICO
+    file[]: crc = 30acc026; size =      1078; name = RR2CD32.ICO
+    file[]: crc = 3c857f49; size =   1048064; name = RRR216.EXE
+    file[]: crc = aaffb578; size =    820224; name = RRR232.EXE
+    file[]: crc = 8b860aac; size =     89760; name = SMACKE16.DLL
+    file[]: crc = f458fd5c; size =     18454; name = SMACKW16.DLL
+    file[]: crc = d8bd604e; size =     71680; name = SMACKW32.DLL
+    file[]: crc = 787b8f8a; size =    181248; name = RSC\ADCAT.RSC
+    file[]: crc = ec97c10d; size =      9216; name = RSC\ADDB.RSC
+    file[]: crc = 4ac9e2b5; size =    729360; name = RSC\ADDEMO1.SMK
+    file[]: crc = dbb0181f; size =    732728; name = RSC\ADDEMO2.SMK
+    file[]: crc = d66a303e; size =    729644; name = RSC\ADDEMO3.SMK
+    file[]: crc = 5a92bedd; size =    724988; name = RSC\ADDEMO4.SMK
+    file[]: crc = 831d4cd4; size =    169984; name = RSC\ADDOG.RSC
+    file[]: crc = ccf37bcd; size =    262144; name = RSC\ADGOOSE.RSC
+    file[]: crc = 4709c791; size =    146432; name = RSC\ADGOPHER.RSC
+    file[]: crc = 614ab16f; size =    233472; name = RSC\ADMEM.RSC
+    file[]: crc = 18398817; size =    212992; name = RSC\ADMOLE.RSC
+    file[]: crc = 0251b26a; size =  17504256; name = RSC\ADRSRC.RSC
+    file[]: crc = 99292860; size =    214016; name = RSC\ADSKUNK.RSC
+    file[]: crc = 08b91b61; size =    237500; name = RSC\ADTRANS.SMK
+    file[]: crc = 5dffa780; size =   2617060; name = RSC\CLOSING.SMK
+    file[]: crc = c236f4c5; size =    172032; name = RSC\CLOSRSRC.RSC
+    file[]: crc = e60675a5; size =    104448; name = RSC\EXITRSRC.RSC
+    file[]: crc = be5b2a0c; size =    356550; name = RSC\LOGORSRC.RSC
+    file[]: crc = 6b978546; size =    209020; name = RSC\LVLTR1.SMK
+    file[]: crc = b71019c2; size =    209100; name = RSC\LVLTR2.SMK
+    file[]: crc = dce32978; size =    209108; name = RSC\LVLTR3.SMK
+    file[]: crc = fce96022; size =    209052; name = RSC\LVLTR4.SMK
+    file[]: crc = faebfdec; size =    208800; name = RSC\LVLTRRR.SMK
+    file[]: crc = 747a05fa; size =   1454624; name = RSC\MAINMENU.SMK
+    file[]: crc = d690f77a; size =    296576; name = RSC\MMEXIT.SMK
+    file[]: crc = b72124a9; size =   1017856; name = RSC\MMPREL.RSC
+    file[]: crc = 203a3bf0; size =   4079616; name = RSC\MMRSRC.RSC
+    file[]: crc = c66796b3; size =   1943552; name = RSC\MMSOUND.RSC
+    file[]: crc = 2b0b1fde; size =    693672; name = RSC\MPDEMO1.SMK
+    file[]: crc = a4fa34d8; size =    781688; name = RSC\MPDEMO2.SMK
+    file[]: crc = be8ebf26; size =    693108; name = RSC\MPDEMO3.SMK
+    file[]: crc = 5c5f6d4e; size =    775684; name = RSC\MPDEMO4.SMK
+    file[]: crc = ab3fb7a4; size =  12041216; name = RSC\MPRSRC.RSC
+    file[]: crc = e3d17814; size =    182196; name = RSC\MPTRANS.SMK
+    file[]: crc = 0f8b1bb9; size =   2124704; name = RSC\OPENING.SMK
+    file[]: crc = 932f6a33; size =    961536; name = RSC\POPRSRC.RSC
+    file[]: crc = 3d914775; size =    666125; name = RSC\READER_R.AB1
+    file[]: crc = 00000000; size =         0; name = RSC\READER_R.ABB
+    file[]: crc = 1f1f3ba6; size =    166912; name = RSC\RESOURCE.RSC
+    file[]: crc = 30acc026; size =      1078; name = RSC\RR2CD16.ICO
+    file[]: crc = 30acc026; size =      1078; name = RSC\RR2CD32.ICO
+    file[]: crc = 729ce3ca; size =     65536; name = RSC\RR2SYS.RSC
+    file[]: crc = 00000000; size =         0; name = RSC\RRR2.INI
+    file[]: crc = b35071f1; size =   1045504; name = RSC\RRR216.EXE
+    file[]: crc = aaffb578; size =    820224; name = RSC\RRR232.EXE
+    file[]: crc = 90118921; size =   8670208; name = RSC\SCORRSRC.RSC
+    file[]: crc = 21773535; size =    660480; name = RSC\SIGNRSRC.RSC
+    file[]: crc = 8b860aac; size =     89760; name = RSC\SMACKE16.DLL
+    file[]: crc = f458fd5c; size =     18454; name = RSC\SMACKW16.DLL
+    file[]: crc = d8bd604e; size =     71680; name = RSC\SMACKW32.DLL
+    file[]: crc = 420c671b; size =     19629; name = RSC\VPDB.RSC
+    file[]: crc = b28ce5a4; size =   1120712; name = RSC\VPDEMO1.SMK
+    file[]: crc = 6f0b8cad; size =   1149656; name = RSC\VPDEMO2.SMK
+    file[]: crc = 960373c4; size =   1231540; name = RSC\VPDEMO3.SMK
+    file[]: crc = a3bf8efd; size =    700188; name = RSC\VPDEMO4.SMK
+    file[]: crc = fe316e6f; size =    841728; name = RSC\VPFISH.RSC
+    file[]: crc = 7f1146ad; size =    208896; name = RSC\VPFISHSD.RSC
+    file[]: crc = 235b5948; size =    649216; name = RSC\VPNET.RSC
+    file[]: crc = 7457224a; size =    312320; name = RSC\VPPREL.RSC
+    file[]: crc = 610c36da; size =    585728; name = RSC\VPRRFACE.RSC
+    file[]: crc = 2d5eb14b; size =   4575232; name = RSC\VPRRWORD.RSC
+    file[]: crc = 60f9a1e1; size =  10270720; name = RSC\VPRSRC.RSC
+    file[]: crc = c2b5eb41; size =    375604; name = RSC\VPTRANS.SMK
+    file[]: crc = 5ad602a4; size =     49152; name = RSC\WMDB.RSC
+    file[]: crc = 504ecec1; size =    768236; name = RSC\WMDEMO1.SMK
+    file[]: crc = ce7f1bdf; size =    725976; name = RSC\WMDEMO2.SMK
+    file[]: crc = 7a864e14; size =    721232; name = RSC\WMDEMO3.SMK
+    file[]: crc = 8f1c6323; size =    750900; name = RSC\WMDEMO4.SMK
+    file[]: crc = 6a2f2abc; size =    225280; name = RSC\WMGEM1.RSC
+    file[]: crc = a8ed576c; size =    294912; name = RSC\WMGEM2.RSC
+    file[]: crc = df134d9e; size =    490496; name = RSC\WMGEM3.RSC
+    file[]: crc = ad7a4fae; size =    239616; name = RSC\WMGEM4.RSC
+    file[]: crc = e36a676a; size =    236544; name = RSC\WMGEM41.RSC
+    file[]: crc = 8fe2698e; size =    340992; name = RSC\WMGEM42.RSC
+    file[]: crc = 584e38c3; size =    202752; name = RSC\WMGEM43.RSC
+    file[]: crc = 1fe3e3eb; size =    227328; name = RSC\WMGEM5.RSC
+    file[]: crc = f2fa0856; size =    276480; name = RSC\WMGEM6.RSC
+    file[]: crc = e0f76b4d; size =    814080; name = RSC\WMMEM.RSC
+    file[]: crc = 086fc888; size =  26369024; name = RSC\WMRSRC.RSC
+    file[]: crc = a558d95f; size =    196476; name = RSC\WMTRANS.SMK
+
+end
+
+end

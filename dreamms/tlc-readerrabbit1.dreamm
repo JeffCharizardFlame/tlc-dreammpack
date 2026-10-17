@@ -1,0 +1,436 @@
+desc[tlc-readerrabbit1]:
+
+name = Reader Rabbit 1 / Reader Rabbit's Reading 1
+icon = tlc-readerrabbit1.png
+machine = pc
+osenv = windows 98
+launch = ""
+
+config[display-4.1]:
+    condition = is_dos() && file_exists("$$(rootpath)\\menu")
+    title = Display Adapter
+    option[ega]: name = EGA; videohw = ega;
+    option[cga]: name = CGA; videohw = cga;
+    option[hercules]: name = Hercules; videohw = hercules;
+end
+
+config[display-5.01]:
+    condition = is_dos() && file_exists("$$(rootpath)\\RR000.DAT")
+    title = Display Adapter
+    option[vga]: name = VGA; videohw = vga;
+    option[ega]: name = EGA; videohw = ega;
+    option[cga]: name = CGA; videohw = cga;
+    option[tandy]: name = Tandy; machine = tandy; videohw = cga;
+end
+
+config[ossel]:
+    condition = is_windows() && file_exists("$$(rootpath)\\rr1cd32.exe")
+    title = OS Select
+    option[win9x]: name = Windows 9x; launch = "$(rootpath)\rr1cd32.exe"; osenv = windows 98
+    option[win31]: name = Windows 3.1; launch = "$(rootpath)\rr1cd16.exe"; osenv = windows 3.11.002
+end
+
+config[ossel-2]:
+    condition = is_windows() && file_exists("$$(rootpath)\\rrr132.exe")
+    title = OS Select
+    option[win9x]: name = Windows 9x; launch = "$(rootpath)\rrr132.exe"; osenv = windows 98
+    option[win31]: name = Windows 3.1; launch = "$(rootpath)\rrr116.exe"; osenv = windows 3.11.002
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+
+//
+// English MS-DOS Version 4.1
+//
+game[pc-dos-en-4.1]:
+    name = English MS-DOS Version 4.1
+    rootpath = C:\TLC\RR
+    launch = "$(rootpath)\RR.EXE"
+    osenv = dos
+    fixdivover = true
+    mips = $(MIPS_286_10)
+    ramkb = 640
+    audiohw = speaker
+    videohw = ega
+    anchorfile = RR.EXE
+    
+    file[]: crc = 4b0bbe37; size =         1; name = GACARD.DTA
+    file[]: crc = c2dc89e6; size =      2546; name = GRAPHSET.EXE
+    file[]: crc = 2c456b38; size =        29; name = HRSHAPES.IND
+    file[]: crc = ddd29dcb; size =      5742; name = HRSHAPES.REL
+    file[]: crc = e98a5e67; size =      5513; name = LABELER
+    file[]: crc = cf50538b; size =     14212; name = MENU
+    file[]: crc = 597027fd; size =        29; name = RASHAPES.IND
+    file[]: crc = 8d7e1b9b; size =      4772; name = RASHAPES.REL
+    file[]: crc = 8c569b18; size =        29; name = RBSHAPES.IND
+    file[]: crc = be6cb026; size =      5127; name = RBSHAPES.REL
+    file[]: crc = b7270332; size =        29; name = RCSHAPES.IND
+    file[]: crc = 5fcd7a1e; size =      4068; name = RCSHAPES.REL
+    file[]: crc = 73222dca; size =        29; name = RDSHAPES.IND
+    file[]: crc = 5fc98a43; size =      5326; name = RDSHAPES.REL
+    file[]: crc = 2ff648a5; size =        29; name = RESHAPES.IND
+    file[]: crc = b9ede98d; size =      7971; name = RESHAPES.REL
+    file[]: crc = 75784148; size =        29; name = RFSHAPES.IND
+    file[]: crc = 6f137649; size =      6018; name = RFSHAPES.REL
+    file[]: crc = ea71435d; size =        29; name = RGSHAPES.IND
+    file[]: crc = 7da9a0ff; size =      4082; name = RGSHAPES.REL
+    file[]: crc = 39d2874b; size =        29; name = RHSHAPES.IND
+    file[]: crc = 29681232; size =      5743; name = RHSHAPES.REL
+    file[]: crc = 21c9e744; size =        29; name = RISHAPES.IND
+    file[]: crc = 311a410b; size =      4471; name = RISHAPES.REL
+    file[]: crc = 4c31f3a3; size =        32; name = RPSHAPES.IND
+    file[]: crc = 2b087965; size =      2638; name = RPSHAPES.REL
+    file[]: crc = 42a85cff; size =     80956; name = RR.EXE
+    file[]: crc = 2a7d5967; size =       398; name = RRSHAPES.IND
+    file[]: crc = 8ef08d1e; size =     25559; name = RRSHAPES.REL
+    file[]: crc = aa38f008; size =     22172; name = RRTITLE
+    file[]: crc = fd767f45; size =        14; name = RWSHAPES.IND
+    file[]: crc = 96e72f16; size =       698; name = RWSHAPES.REL
+    file[]: crc = a59ada5d; size =      9221; name = SORTER
+    file[]: crc = fc19a44b; size =     11088; name = TRAIN
+end
+
+//
+// English MS-DOS Version 5.01
+//
+game[pc-dos-en-5.01]:
+    name = English MS-DOS Version 5.01
+    rootpath = C:\TLC\RR1
+    launch = "$(rootpath)\RR1.EXE"
+    osenv = dos
+    fixdivover = true
+    mips = $(MIPS_386SX_20)
+    ramkb = 1024
+    audiohw = sb16
+    anchorfile = RR1.EXE
+    
+    file[]: crc = 1abc2558; size =    218531; name = RR000.DAT
+    file[]: crc = b5ce26a3; size =     87852; name = RR1.EXE
+end
+
+//
+// English Windows Version 1.2 - Deluxe!
+//
+game[pc-win-cd-en-1.2]:
+    name = English Windows Version 1.2 - Reader Rabbit 1 Deluxe!
+    rootpath = C:\TLCWIN\RR1CDWIN
+    launch = "$(rootpath)\RR32.EXE"
+    anchordepth = 1
+    osenv = windows 3.11.002
+    anchorfile = RR32.EXE
+    
+    file[]: crc = c6d977da; size =     21165; name = FONT.DAT
+    file[]: crc = adf0ef2f; size =   3186543; name = LABEL.DLL
+    file[]: crc = 49f6fa04; size =   1920879; name = LABEL16.DLL
+    file[]: crc = 9100e079; size =   1954671; name = LABEL256.DLL
+    file[]: crc = 17d7d2e1; size =   2674543; name = MATCH.DLL
+    file[]: crc = 325a9400; size =    750447; name = MATCH16.DLL
+    file[]: crc = 0c99adbe; size =    810863; name = MATCH256.DLL
+    file[]: crc = 93312a9f; size =   2027375; name = POPUP.DLL
+    file[]: crc = abbf0f65; size =    912239; name = POPUP16.DLL
+    file[]: crc = a5fe5b96; size =    574319; name = POPUP256.DLL
+    file[]: crc = 0edc6e46; size =   2570095; name = RR1_16.DLL
+    file[]: crc = 1f3bec2e; size =   2784111; name = RR1_256.DLL
+    file[]: crc = 44d172f4; size =  10975087; name = RR1_SND.DLL
+    file[]: crc = de71cf86; size =    189472; name = RR32.EXE
+    file[]: crc = 227499f6; size =   5091695; name = SORT.DLL
+    file[]: crc = 909569e5; size =   1148783; name = SORT16.DLL
+    file[]: crc = 32742061; size =   1046895; name = SORT256.DLL
+    file[]: crc = 7abd094b; size =   4281199; name = TRAIN.DLL
+    file[]: crc = c822a059; size =   2923887; name = TRAIN16.DLL
+    file[]: crc = bc288aa8; size =   2638191; name = TRAIN256.DLL
+
+end
+
+//
+// English Windows Version 2.01
+//
+game[pc-win-cd-en-2.01]:
+    name = English Windows Version 2.01
+    anchorfile = rr1cd16.exe
+    anchordepth = 3
+    rootpath = C:\TLCWIN\RR1
+    winres = 640x480x8
+    
+    file[]: crc = 8c9db779; size =   1020416; name = RR1CD16.EXE
+    file[]: crc = dff3d5bb; size =    786432; name = RR1CD32.EXE
+    file[]: crc = c8671b9d; size =   1782784; name = RSC\CLOSRSRC.RSC
+    file[]: crc = 1922e8e7; size =    866304; name = RSC\LABLPREL.RSC
+    file[]: crc = 82b0767f; size =  24584192; name = RSC\LABLRSRC.RSC
+    file[]: crc = 60315df3; size =    355014; name = RSC\LOGORSRC.RSC
+    file[]: crc = 00fad3fd; size =    333824; name = RSC\MMCLOSNG.RSC
+    file[]: crc = 5f9deee3; size =   1631232; name = RSC\MMRSRC.RSC
+    file[]: crc = 6315b693; size =    340992; name = RSC\MMSTD.RSC
+    file[]: crc = 0fed3bf5; size =   1461248; name = RSC\MMWELCOM.RSC
+    file[]: crc = ba752425; size =    211968; name = RSC\MUBKGD.RSC
+    file[]: crc = 130f6598; size =    979968; name = RSC\MUCATG0.RSC
+    file[]: crc = c0a3c1d7; size =    886784; name = RSC\MUCATG1.RSC
+    file[]: crc = 478d907f; size =    856576; name = RSC\MUCATG2.RSC
+    file[]: crc = 9a31ad05; size =    549888; name = RSC\MUCATG3.RSC
+    file[]: crc = 064cc649; size =    658944; name = RSC\MUCATG4.RSC
+    file[]: crc = 6d9c1154; size =    929792; name = RSC\MUCATG5.RSC
+    file[]: crc = e2137f24; size =    662016; name = RSC\MUCATG6.RSC
+    file[]: crc = c1285c2a; size =    577536; name = RSC\MUCATG7.RSC
+    file[]: crc = c026d10e; size =    950272; name = RSC\MUCATG8.RSC
+    file[]: crc = f836bdad; size =    164864; name = RSC\MUCNGRD0.RSC
+    file[]: crc = a5525d4b; size =    204800; name = RSC\MUCNGRD1.RSC
+    file[]: crc = 66fc235b; size =    158720; name = RSC\MUCNGRD2.RSC
+    file[]: crc = c94419b6; size =    153088; name = RSC\MUCOMMON.RSC
+    file[]: crc = a7949307; size =    414720; name = RSC\MUDEMO0.RSC
+    file[]: crc = 3b53c474; size =    303616; name = RSC\MUDEMO1.RSC
+    file[]: crc = 415537bc; size =    305664; name = RSC\MUDEMO2.RSC
+    file[]: crc = 6fc29d8e; size =    349184; name = RSC\MUDEMO3.RSC
+    file[]: crc = 3fcf6152; size =    332800; name = RSC\MUDEMO4.RSC
+    file[]: crc = 67bf3315; size =    397824; name = RSC\MUDEMO5.RSC
+    file[]: crc = ae422f82; size =    706048; name = RSC\MUENTR0.RSC
+    file[]: crc = 2cda5692; size =    702464; name = RSC\MUENTR1.RSC
+    file[]: crc = 49b66292; size =    748544; name = RSC\MUENTR2.RSC
+    file[]: crc = 25196e2a; size =    746496; name = RSC\MUENTR3.RSC
+    file[]: crc = 11625e8e; size =    216576; name = RSC\MUHINT0.RSC
+    file[]: crc = 58b7d302; size =    182272; name = RSC\MUHINT1.RSC
+    file[]: crc = 4dd690a4; size =    179200; name = RSC\MUHINT2.RSC
+    file[]: crc = cf91b31e; size =    207360; name = RSC\MUHINT3.RSC
+    file[]: crc = 50cf1051; size =    228352; name = RSC\MUHINT4.RSC
+    file[]: crc = 77040f15; size =    215040; name = RSC\MUHINT5.RSC
+    file[]: crc = 798ad7b1; size =    267264; name = RSC\MULTRSND.RSC
+    file[]: crc = b54c54ed; size =   1472512; name = RSC\MURWDMJ0.RSC
+    file[]: crc = 48226136; size =   1166848; name = RSC\MURWDMJ1.RSC
+    file[]: crc = 7dd8ebc7; size =   1405952; name = RSC\MURWDMJ2.RSC
+    file[]: crc = 73df893c; size =   1606656; name = RSC\MURWDMJ3.RSC
+    file[]: crc = 3aaa382d; size =    519168; name = RSC\MURWDMN0.RSC
+    file[]: crc = 0b025049; size =    438272; name = RSC\MURWDMN1.RSC
+    file[]: crc = e296cfdb; size =    829952; name = RSC\MURWDMN2.RSC
+    file[]: crc = 1bacc05e; size =    443904; name = RSC\MUSAMTKL.RSC
+    file[]: crc = 3e559b9d; size =   1666048; name = RSC\OPENPREL.RSC
+    file[]: crc = 4e67a960; size =   2000896; name = RSC\OPENRSRC.RSC
+    file[]: crc = 2d5ff62a; size =    131072; name = RSC\POPL.RSC
+    file[]: crc = 477e0b36; size =     53248; name = RSC\POPMM.RSC
+    file[]: crc = 2d5ff62a; size =    131072; name = RSC\POPMU.RSC
+    file[]: crc = 3dc6e22f; size =   2206720; name = RSC\POPRSRC.RSC
+    file[]: crc = 0b102d59; size =    115712; name = RSC\POPS.RSC
+    file[]: crc = 899fb296; size =     61440; name = RSC\POPWT.RSC
+    file[]: crc = 07f9fcae; size =    224256; name = RSC\RESOURCE.RSC
+    file[]: crc = eaadf560; size =        24; name = RSC\RR1.INI
+    file[]: crc = a6684e30; size =     79021; name = RSC\RR1SYS.RSC
+    file[]: crc = 89f5d507; size =     57344; name = RSC\SCORPREL.RSC
+    file[]: crc = 90118921; size =   8670208; name = RSC\SCORRSRC.RSC
+    file[]: crc = 353c9c18; size =   3554304; name = RSC\SHARRSRC.RSC
+    file[]: crc = b3fa3ffa; size =    648731; name = RSC\SIGNRSRC.RSC
+    file[]: crc = 86834a75; size =    698560; name = RSC\SRTDEMO1.RSC
+    file[]: crc = fa92d34e; size =    669888; name = RSC\SRTDEMO2.RSC
+    file[]: crc = 56007cd3; size =    663744; name = RSC\SRTDEMO3.RSC
+    file[]: crc = f2c3de77; size =    708288; name = RSC\SRTDEMO4.RSC
+    file[]: crc = ff9a9325; size =    241344; name = RSC\SRTJUMP.RSC
+    file[]: crc = 170ffd21; size =  17553408; name = RSC\SRTRSRC.RSC
+    file[]: crc = 6b30523e; size =   1068736; name = RSC\SRTRWRD1.RSC
+    file[]: crc = ac9fec89; size =    788160; name = RSC\SRTRWRD2.RSC
+    file[]: crc = 2f2fe69a; size =    928960; name = RSC\SRTRWRD3.RSC
+    file[]: crc = ffcfbe58; size =    998080; name = RSC\SRTRWRD4.RSC
+    file[]: crc = d5d7a21e; size =   1281728; name = RSC\SRTRWRD5.RSC
+    file[]: crc = cae650f6; size =    809664; name = RSC\SRTRWRD6.RSC
+    file[]: crc = c0ed40b9; size =    935616; name = RSC\SRTRWRD7.RSC
+    file[]: crc = fa4b5c56; size =    651968; name = RSC\SRTSTEAM.RSC
+    file[]: crc = 3568186f; size =    876544; name = RSC\TITLPREL.RSC
+    file[]: crc = d68fe2a8; size =    369664; name = RSC\TITLRSRC.RSC
+    file[]: crc = 0b146fdc; size =   2341888; name = RSC\TRANRSRC.RSC
+    file[]: crc = 1b9f0e44; size =    529408; name = RSC\WTPREL.RSC
+    file[]: crc = f5dfe8a0; size =  14461952; name = RSC\WTRSRC.RSC
+end
+
+//
+// UK English Windows Version 2.01
+//
+game[pc-win-cd-en-uk-2.01]:
+    name = UK English Windows Version 2.01
+    anchorfile = rr1cd16.exe
+    rootpath = C:\TLCWIN\RR1
+    winres = 640x480x8
+    
+    file[]: crc = 09757d88; size =   1018880; name = RR1CD16.EXE
+    file[]: crc = 2df38a1a; size =    782336; name = RR1CD32.EXE
+    file[]: crc = 4f8ef042; size =   1789952; name = RSC\CLOSRSRC.RSC
+    file[]: crc = 61885963; size =    859136; name = RSC\LABLPREL.RSC
+    file[]: crc = 94513e88; size =  24558592; name = RSC\LABLRSRC.RSC
+    file[]: crc = d2e48d3a; size =    348160; name = RSC\LOGORSRC.RSC
+    file[]: crc = 7f8a05d4; size =    335872; name = RSC\MMCLOSNG.RSC
+    file[]: crc = 5f9deee3; size =   1631232; name = RSC\MMRSRC.RSC
+    file[]: crc = 972ebde7; size =    340992; name = RSC\MMSTD.RSC
+    file[]: crc = 424ba157; size =   1444864; name = RSC\MMWELCOM.RSC
+    file[]: crc = ba752425; size =    211968; name = RSC\MUBKGD.RSC
+    file[]: crc = 5eebd9ae; size =    984064; name = RSC\MUCATG0.RSC
+    file[]: crc = 857c70bc; size =    872448; name = RSC\MUCATG1.RSC
+    file[]: crc = 14c4c39e; size =    854016; name = RSC\MUCATG2.RSC
+    file[]: crc = c6f1cb59; size =    549888; name = RSC\MUCATG3.RSC
+    file[]: crc = 28dac69b; size =    646144; name = RSC\MUCATG4.RSC
+    file[]: crc = 098929d2; size =    926720; name = RSC\MUCATG5.RSC
+    file[]: crc = 2d9dc0a3; size =    659456; name = RSC\MUCATG6.RSC
+    file[]: crc = 1d6383ce; size =    576512; name = RSC\MUCATG7.RSC
+    file[]: crc = 1502a52c; size =    952320; name = RSC\MUCATG8.RSC
+    file[]: crc = 56e63f81; size =    168960; name = RSC\MUCNGRD0.RSC
+    file[]: crc = ef3af1b6; size =    200704; name = RSC\MUCNGRD1.RSC
+    file[]: crc = bbf9d383; size =    163840; name = RSC\MUCNGRD2.RSC
+    file[]: crc = c94419b6; size =    153088; name = RSC\MUCOMMON.RSC
+    file[]: crc = 1a9f62b8; size =    406528; name = RSC\MUDEMO0.RSC
+    file[]: crc = 4c84ac75; size =    306176; name = RSC\MUDEMO1.RSC
+    file[]: crc = 5c794c78; size =    303104; name = RSC\MUDEMO2.RSC
+    file[]: crc = 501ece53; size =    345088; name = RSC\MUDEMO3.RSC
+    file[]: crc = e741194e; size =    327680; name = RSC\MUDEMO4.RSC
+    file[]: crc = ad6023ac; size =    391168; name = RSC\MUDEMO5.RSC
+    file[]: crc = c5a11b1b; size =    710656; name = RSC\MUENTR0.RSC
+    file[]: crc = d2ccbb47; size =    703488; name = RSC\MUENTR1.RSC
+    file[]: crc = 0fbdfa9b; size =    755712; name = RSC\MUENTR2.RSC
+    file[]: crc = db00fa86; size =    749568; name = RSC\MUENTR3.RSC
+    file[]: crc = 54fec123; size =    217088; name = RSC\MUHINT0.RSC
+    file[]: crc = eb380645; size =    174080; name = RSC\MUHINT1.RSC
+    file[]: crc = e6dfa6cf; size =    173056; name = RSC\MUHINT2.RSC
+    file[]: crc = 784d4eac; size =    206848; name = RSC\MUHINT3.RSC
+    file[]: crc = aab1475a; size =    229376; name = RSC\MUHINT4.RSC
+    file[]: crc = 4e721a7d; size =    218112; name = RSC\MUHINT5.RSC
+    file[]: crc = 798ad7b1; size =    267264; name = RSC\MULTRSND.RSC
+    file[]: crc = b54c54ed; size =   1472512; name = RSC\MURWDMJ0.RSC
+    file[]: crc = 48226136; size =   1166848; name = RSC\MURWDMJ1.RSC
+    file[]: crc = cc7f66af; size =   1410048; name = RSC\MURWDMJ2.RSC
+    file[]: crc = 73df893c; size =   1606656; name = RSC\MURWDMJ3.RSC
+    file[]: crc = 3aaa382d; size =    519168; name = RSC\MURWDMN0.RSC
+    file[]: crc = 0b025049; size =    438272; name = RSC\MURWDMN1.RSC
+    file[]: crc = c5fb7771; size =    832512; name = RSC\MURWDMN2.RSC
+    file[]: crc = 0a5cbf9d; size =    461824; name = RSC\MUSAMTKL.RSC
+    file[]: crc = f76f0d9d; size =   1667072; name = RSC\OPENPREL.RSC
+    file[]: crc = dff08ed6; size =   2002944; name = RSC\OPENRSRC.RSC
+    file[]: crc = 6dcab98e; size =    191488; name = RSC\POPL.RSC
+    file[]: crc = 91fde76d; size =     52224; name = RSC\POPMM.RSC
+    file[]: crc = 6dcab98e; size =    191488; name = RSC\POPMU.RSC
+    file[]: crc = 0521179c; size =   2057216; name = RSC\POPRSRC.RSC
+    file[]: crc = 67545a61; size =    112640; name = RSC\POPS.RSC
+    file[]: crc = 7f27881a; size =     60416; name = RSC\POPWT.RSC
+    file[]: crc = 07f9fcae; size =    224256; name = RSC\RESOURCE.RSC
+    file[]: crc = 25061580; size =     77824; name = RSC\RR1SYS.RSC
+    file[]: crc = 89f5d507; size =     57344; name = RSC\SCORPREL.RSC
+    file[]: crc = f3ea7e58; size =   8670208; name = RSC\SCORRSRC.RSC
+    file[]: crc = 5e89b4ba; size =   2887680; name = RSC\SHARRSRC.RSC
+    file[]: crc = 89324cdc; size =    505856; name = RSC\SIGNRSRC.RSC
+    file[]: crc = 09553929; size =    687104; name = RSC\SRTDEMO1.RSC
+    file[]: crc = 729b7061; size =    655360; name = RSC\SRTDEMO2.RSC
+    file[]: crc = bb34894c; size =    653312; name = RSC\SRTDEMO3.RSC
+    file[]: crc = 1d17b040; size =    708608; name = RSC\SRTDEMO4.RSC
+    file[]: crc = 9e5334f8; size =    234496; name = RSC\SRTJUMP.RSC
+    file[]: crc = 1177cc04; size =  16744448; name = RSC\SRTRSRC.RSC
+    file[]: crc = 6b30523e; size =   1068736; name = RSC\SRTRWRD1.RSC
+    file[]: crc = ac9fec89; size =    788160; name = RSC\SRTRWRD2.RSC
+    file[]: crc = aff8d64e; size =    919552; name = RSC\SRTRWRD3.RSC
+    file[]: crc = f426152d; size =    991232; name = RSC\SRTRWRD4.RSC
+    file[]: crc = d5d7a21e; size =   1281728; name = RSC\SRTRWRD5.RSC
+    file[]: crc = cae650f6; size =    809664; name = RSC\SRTRWRD6.RSC
+    file[]: crc = c0ed40b9; size =    935616; name = RSC\SRTRWRD7.RSC
+    file[]: crc = fa4b5c56; size =    651968; name = RSC\SRTSTEAM.RSC
+    file[]: crc = 3568186f; size =    876544; name = RSC\TITLPREL.RSC
+    file[]: crc = 208e8550; size =    393216; name = RSC\TITLRSRC.RSC
+    file[]: crc = 0b146fdc; size =   2341888; name = RSC\TRANRSRC.RSC
+    file[]: crc = 1b9f0e44; size =    529408; name = RSC\WTPREL.RSC
+    file[]: crc = e1d107cd; size =  14139392; name = RSC\WTRSRC.RSC
+end
+
+//
+// English Windows Version 2.04
+//
+game[pc-win-cd-en-2.04]:
+    name = English Windows Version 2.04 - Reader Rabbit's Reading 1
+    anchorfile = rrr116.exe
+    anchordepth = 3
+    rootpath = C:\TLCWIN\RRR1
+    winres = 640x480x8
+    
+    file[]: crc = 122888c9; size =   1018368; name = RRR116.EXE
+    file[]: crc = a7ced2fb; size =    788480; name = RRR132.EXE
+    file[]: crc = c8671b9d; size =   1782784; name = RSC\CLOSRSRC.RSC
+    file[]: crc = 1922e8e7; size =    866304; name = RSC\LABLPREL.RSC
+    file[]: crc = 82b0767f; size =  24584192; name = RSC\LABLRSRC.RSC
+    file[]: crc = 60315df3; size =    355014; name = RSC\LOGORSRC.RSC
+    file[]: crc = 00fad3fd; size =    333824; name = RSC\MMCLOSNG.RSC
+    file[]: crc = 5f9deee3; size =   1631232; name = RSC\MMRSRC.RSC
+    file[]: crc = 6315b693; size =    340992; name = RSC\MMSTD.RSC
+    file[]: crc = 0fed3bf5; size =   1461248; name = RSC\MMWELCOM.RSC
+    file[]: crc = ba752425; size =    211968; name = RSC\MUBKGD.RSC
+    file[]: crc = 130f6598; size =    979968; name = RSC\MUCATG0.RSC
+    file[]: crc = c0a3c1d7; size =    886784; name = RSC\MUCATG1.RSC
+    file[]: crc = 478d907f; size =    856576; name = RSC\MUCATG2.RSC
+    file[]: crc = 9a31ad05; size =    549888; name = RSC\MUCATG3.RSC
+    file[]: crc = 064cc649; size =    658944; name = RSC\MUCATG4.RSC
+    file[]: crc = 6d9c1154; size =    929792; name = RSC\MUCATG5.RSC
+    file[]: crc = e2137f24; size =    662016; name = RSC\MUCATG6.RSC
+    file[]: crc = c1285c2a; size =    577536; name = RSC\MUCATG7.RSC
+    file[]: crc = c026d10e; size =    950272; name = RSC\MUCATG8.RSC
+    file[]: crc = f836bdad; size =    164864; name = RSC\MUCNGRD0.RSC
+    file[]: crc = a5525d4b; size =    204800; name = RSC\MUCNGRD1.RSC
+    file[]: crc = 66fc235b; size =    158720; name = RSC\MUCNGRD2.RSC
+    file[]: crc = c94419b6; size =    153088; name = RSC\MUCOMMON.RSC
+    file[]: crc = a7949307; size =    414720; name = RSC\MUDEMO0.RSC
+    file[]: crc = 3b53c474; size =    303616; name = RSC\MUDEMO1.RSC
+    file[]: crc = 415537bc; size =    305664; name = RSC\MUDEMO2.RSC
+    file[]: crc = 6fc29d8e; size =    349184; name = RSC\MUDEMO3.RSC
+    file[]: crc = 3fcf6152; size =    332800; name = RSC\MUDEMO4.RSC
+    file[]: crc = 67bf3315; size =    397824; name = RSC\MUDEMO5.RSC
+    file[]: crc = ae422f82; size =    706048; name = RSC\MUENTR0.RSC
+    file[]: crc = 2cda5692; size =    702464; name = RSC\MUENTR1.RSC
+    file[]: crc = 49b66292; size =    748544; name = RSC\MUENTR2.RSC
+    file[]: crc = 25196e2a; size =    746496; name = RSC\MUENTR3.RSC
+    file[]: crc = 11625e8e; size =    216576; name = RSC\MUHINT0.RSC
+    file[]: crc = 58b7d302; size =    182272; name = RSC\MUHINT1.RSC
+    file[]: crc = 4dd690a4; size =    179200; name = RSC\MUHINT2.RSC
+    file[]: crc = cf91b31e; size =    207360; name = RSC\MUHINT3.RSC
+    file[]: crc = 50cf1051; size =    228352; name = RSC\MUHINT4.RSC
+    file[]: crc = 77040f15; size =    215040; name = RSC\MUHINT5.RSC
+    file[]: crc = 798ad7b1; size =    267264; name = RSC\MULTRSND.RSC
+    file[]: crc = b54c54ed; size =   1472512; name = RSC\MURWDMJ0.RSC
+    file[]: crc = 48226136; size =   1166848; name = RSC\MURWDMJ1.RSC
+    file[]: crc = 7dd8ebc7; size =   1405952; name = RSC\MURWDMJ2.RSC
+    file[]: crc = 73df893c; size =   1606656; name = RSC\MURWDMJ3.RSC
+    file[]: crc = 3aaa382d; size =    519168; name = RSC\MURWDMN0.RSC
+    file[]: crc = 0b025049; size =    438272; name = RSC\MURWDMN1.RSC
+    file[]: crc = e296cfdb; size =    829952; name = RSC\MURWDMN2.RSC
+    file[]: crc = 1bacc05e; size =    443904; name = RSC\MUSAMTKL.RSC
+    file[]: crc = 3e559b9d; size =   1666048; name = RSC\OPENPREL.RSC
+    file[]: crc = 4e67a960; size =   2000896; name = RSC\OPENRSRC.RSC
+    file[]: crc = 887eb5cf; size =    131072; name = RSC\POPL.RSC
+    file[]: crc = a11cf8b5; size =     53248; name = RSC\POPMM.RSC
+    file[]: crc = 887eb5cf; size =    131072; name = RSC\POPMU.RSC
+    file[]: crc = 7750ee2d; size =   2192384; name = RSC\POPRSRC.RSC
+    file[]: crc = f7384a64; size =    115712; name = RSC\POPS.RSC
+    file[]: crc = dbe27dd3; size =     61440; name = RSC\POPWT.RSC
+    file[]: crc = 33043eb9; size =    670603; name = RSC\READER_R.AB1
+    file[]: crc = 00000000; size =         0; name = RSC\READER_R.AB2
+    file[]: crc = 33043eb9; size =    670603; name = RSC\READER_R.AB3
+    file[]: crc = 00000000; size =         0; name = RSC\READER_R.ABB
+    file[]: crc = 1a88a269; size =    224256; name = RSC\RESOURCE.RSC
+    file[]: crc = 3069ccb1; size =     79021; name = RSC\RR1SYS.RSC
+    file[]: crc = 00000000; size =         0; name = RSC\RRR1.INI
+    file[]: crc = 89f5d507; size =     57344; name = RSC\SCORPREL.RSC
+    file[]: crc = 09deb9ee; size =   8670208; name = RSC\SCORRSRC.RSC
+    file[]: crc = 353c9c18; size =   3554304; name = RSC\SHARRSRC.RSC
+    file[]: crc = b3fa3ffa; size =    648731; name = RSC\SIGNRSRC.RSC
+    file[]: crc = 86834a75; size =    698560; name = RSC\SRTDEMO1.RSC
+    file[]: crc = fa92d34e; size =    669888; name = RSC\SRTDEMO2.RSC
+    file[]: crc = 56007cd3; size =    663744; name = RSC\SRTDEMO3.RSC
+    file[]: crc = f2c3de77; size =    708288; name = RSC\SRTDEMO4.RSC
+    file[]: crc = ff9a9325; size =    241344; name = RSC\SRTJUMP.RSC
+    file[]: crc = 170ffd21; size =  17553408; name = RSC\SRTRSRC.RSC
+    file[]: crc = 6b30523e; size =   1068736; name = RSC\SRTRWRD1.RSC
+    file[]: crc = ac9fec89; size =    788160; name = RSC\SRTRWRD2.RSC
+    file[]: crc = 2f2fe69a; size =    928960; name = RSC\SRTRWRD3.RSC
+    file[]: crc = ffcfbe58; size =    998080; name = RSC\SRTRWRD4.RSC
+    file[]: crc = d5d7a21e; size =   1281728; name = RSC\SRTRWRD5.RSC
+    file[]: crc = cae650f6; size =    809664; name = RSC\SRTRWRD6.RSC
+    file[]: crc = c0ed40b9; size =    935616; name = RSC\SRTRWRD7.RSC
+    file[]: crc = fa4b5c56; size =    651968; name = RSC\SRTSTEAM.RSC
+    file[]: crc = 1c2caa81; size =    910336; name = RSC\TITLPREL.RSC
+    file[]: crc = d68fe2a8; size =    369664; name = RSC\TITLRSRC.RSC
+    file[]: crc = 0b146fdc; size =   2341888; name = RSC\TRANRSRC.RSC
+    file[]: crc = 1b9f0e44; size =    529408; name = RSC\WTPREL.RSC
+    file[]: crc = f5dfe8a0; size =  14461952; name = RSC\WTRSRC.RSC
+end
+
+end

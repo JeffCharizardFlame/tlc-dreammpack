@@ -1,0 +1,154 @@
+desc[tlc-spellbound]:
+
+name = Super Solvers: Spellbound!
+icon = tlc-spellbound.png
+machine = pc
+osenv = windows 98
+launch = ""
+audiohw = gmidi
+winres = 640x480x8
+
+config[ossel]:
+    condition = is_windows() 
+    title = OS Select
+    option[win31]: name = Windows 3.1; launch = "$(rootpath)\ssbcd.exe"; osenv = windows 3.11.002;
+    option[win9x]: name = Windows 9x; launch = "$(rootpath)\ssbwin32.exe"; osenv = windows 98;
+	
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD; condition = is_windows()
+
+mount[cdw]: vpath = D:\; srcpath = ram
+
+//
+// initialization script
+//
+script[cd-init]:
+    condition = is_windows()
+	code = [[[$(CRLF)
+	    // set the volume label on the CD
+        drive_set_label("D", "$$(CDLABEL)");
+        file_save("$$(rootpath)\\SSBWINCD.INI", "$$(SSBWINCD_CONTENTS)");
+        file_save("C:\\WINDOWS\\TLCAPPS.INI", "$$(TLCAPPS16_CONTENTS)"); condition = is_windows("windows 3.11.002");
+        file_save("C:\\WINDOWS\\TLCAPPS.INI", "$$(TLCAPPS32_CONTENTS)"); condition = is_windows("windows 98");
+    ]]]
+end
+
+//
+// English MS-DOS
+//
+game[pc-dos-en]:
+    name = English MS-DOS
+    osenv = dos
+    fixdivover = true
+    mips = $(MIPS_386SX_20)
+    ramkb = 1024
+    audiohw = sb16
+    rootpath = C:\TLC\SSB
+    launch = "$(rootpath)\ssbprog.exe"
+    anchorfile = ssbprog.exe
+    
+    file[]: crc = f1f75cd5; size =    241593; name = ssb000.dat
+    file[]: crc = 21ffc76f; size =    361710; name = ssb001.dat
+    file[]: crc = 568f6706; size =    361182; name = ssb002.dat
+    file[]: crc = 4840f26f; size =    359401; name = ssb003.dat
+    file[]: crc = 2534e33b; size =    357452; name = ssb004.dat
+    file[]: crc = 0794d264; size =    359970; name = ssb005.dat
+    file[]: crc = 33571fa1; size =    102647; name = ssbprog.exe
+    
+    CDLABEL = ""
+    SSBWINCD_CONTENTS = ""
+    TLCAPPS16_CONTENTS = ""
+    TLCAPPS32_CONTENTS = ""
+end
+
+//
+// English Windows
+//
+game[pc-win-en]:
+    name = English Windows
+    anchorfile = SSBCD.EXE
+    anchordepth = 2
+    
+    file[]: crc = 552d4490; size =    174608; name = SSBCD.EXE
+    file[]: crc = 6b68e0d5; size =    172544; name = SSBWIN32.EXE
+    file[]: crc = b535d5a0; size =       766; name = SSBWINCD.ICO
+    file[]: crc = 94714ac7; size =       410; name = USERS.DAT
+    file[]: crc = 7ea4b5c2; size =     32000; name = WORDLIST.DAT
+    file[]: crc = e9ec8084; size =   1468944; name = CD\SSBWINCD\SS2SOUND.DLL
+    file[]: crc = 57d27064; size =  10758672; name = CD\SSBWINCD\SS3SOUND.DLL
+    file[]: crc = e589f881; size =     62480; name = CD\SSBWINCD\SSB.DLL
+    file[]: crc = 47fc58cb; size =   1669136; name = CD\SSBWINCD\SSB16.DLL
+    file[]: crc = e7da5610; size =   3266039; name = CD\SSBWINCD\SSB256.DLL
+    file[]: crc = 552d4490; size =    174608; name = CD\SSBWINCD\SSBCD.EXE
+    file[]: crc = 810010f3; size =  13230096; name = CD\SSBWINCD\SSBSOUND.DLL
+    file[]: crc = 6b68e0d5; size =    172544; name = CD\SSBWINCD\SSBWIN32.EXE
+    file[]: crc = b535d5a0; size =       766; name = CD\SSBWINCD\SSBWINCD.ICO
+    file[]: crc = b984179e; size =        33; name = CD\SSBWINCD\SSBWINCD.INI
+    file[]: crc = a12ae228; size =   4605968; name = CD\SSBWINCD\SSFSOUND.DLL
+    file[]: crc = 94714ac7; size =       410; name = CD\SSBWINCD\USERS.DAT
+    file[]: crc = 7ea4b5c2; size =     32000; name = CD\SSBWINCD\WORDLIST.DAT
+    file[]: crc = 443999e4; size =      1083; name = CD\SSBWINCD\SOUNDS\BBUFFO.MID
+    file[]: crc = f1c985c9; size =       730; name = CD\SSBWINCD\SOUNDS\BBUFFO2.MID
+    file[]: crc = 0d719466; size =      2066; name = CD\SSBWINCD\SOUNDS\BCHIEF.MID
+    file[]: crc = 76721e5a; size =      1547; name = CD\SSBWINCD\SOUNDS\BLECTRO.MID
+    file[]: crc = 33332cf4; size =       960; name = CD\SSBWINCD\SOUNDS\BLECTRO2.MID
+    file[]: crc = d897581f; size =       801; name = CD\SSBWINCD\SOUNDS\BMAIN.MID
+    file[]: crc = affff9ff; size =      2062; name = CD\SSBWINCD\SOUNDS\BMORTY.MID
+    file[]: crc = 89f9fb84; size =      1108; name = CD\SSBWINCD\SOUNDS\BMORTY2.MID
+    file[]: crc = c825993e; size =      1619; name = CD\SSBWINCD\SOUNDS\BPOGO.MID
+    file[]: crc = 31406885; size =      1174; name = CD\SSBWINCD\SOUNDS\BPOGO2.MID
+    file[]: crc = bc1202b0; size =      1863; name = CD\SSBWINCD\SOUNDS\BROLLO.MID
+    file[]: crc = d0b5772c; size =      1117; name = CD\SSBWINCD\SOUNDS\BROLLO2.MID
+    file[]: crc = eba1174c; size =      1650; name = CD\SSBWINCD\SOUNDS\BSSOLVR.MID
+    file[]: crc = 4d33070d; size =       984; name = CD\SSBWINCD\SOUNDS\BSSOLVR2.MID
+    file[]: crc = a7f41245; size =      2465; name = CD\SSBWINCD\SOUNDS\BTELE.MID
+    file[]: crc = 54e7fb4c; size =      1241; name = CD\SSBWINCD\SOUNDS\BTELE2.MID
+    file[]: crc = c73b782c; size =      1655; name = CD\SSBWINCD\SOUNDS\BTITLE.MID
+    file[]: crc = a3d13653; size =      1821; name = CD\SSBWINCD\SOUNDS\BTURBO.MID
+    file[]: crc = 41120201; size =       912; name = CD\SSBWINCD\SOUNDS\BTURBO2.MID
+    file[]: crc = 500ac42c; size =      1104; name = CD\SSBWINCD\SOUNDS\EBUFFO.MID
+    file[]: crc = 515a2f1d; size =       730; name = CD\SSBWINCD\SOUNDS\EBUFFO2.MID
+    file[]: crc = 127147c0; size =      2581; name = CD\SSBWINCD\SOUNDS\ECHIEF.MID
+    file[]: crc = a88c9cd9; size =      1594; name = CD\SSBWINCD\SOUNDS\ELECTRO.MID
+    file[]: crc = 8583c1f3; size =       973; name = CD\SSBWINCD\SOUNDS\ELECTRO2.MID
+    file[]: crc = 6d1d1f65; size =       801; name = CD\SSBWINCD\SOUNDS\EMAIN.MID
+    file[]: crc = dec0ae1b; size =      2111; name = CD\SSBWINCD\SOUNDS\EMORTY.MID
+    file[]: crc = dc2e8f5d; size =      1108; name = CD\SSBWINCD\SOUNDS\EMORTY2.MID
+    file[]: crc = 1252d5b8; size =      1678; name = CD\SSBWINCD\SOUNDS\EPOGO.MID
+    file[]: crc = 8fdce6fa; size =      1174; name = CD\SSBWINCD\SOUNDS\EPOGO2.MID
+    file[]: crc = 8d5cced7; size =      1899; name = CD\SSBWINCD\SOUNDS\EROLLO.MID
+    file[]: crc = d715d720; size =      1130; name = CD\SSBWINCD\SOUNDS\EROLLO2.MID
+    file[]: crc = 5babe4a3; size =      1749; name = CD\SSBWINCD\SOUNDS\ESSOLVR.MID
+    file[]: crc = 4164805a; size =      1176; name = CD\SSBWINCD\SOUNDS\ESSOLVR2.MID
+    file[]: crc = d16f125c; size =      2565; name = CD\SSBWINCD\SOUNDS\ETELE.MID
+    file[]: crc = ef8bd1c8; size =      1341; name = CD\SSBWINCD\SOUNDS\ETELE2.MID
+    file[]: crc = 8333eec5; size =      1731; name = CD\SSBWINCD\SOUNDS\ETITLE.MID
+    file[]: crc = 2f8208ef; size =      1821; name = CD\SSBWINCD\SOUNDS\ETURBO.MID
+    file[]: crc = 9cda6c36; size =       912; name = CD\SSBWINCD\SOUNDS\ETURBO2.MID
+    
+    rootpath = C:\TLCWIN\SSBCD
+    CDLABEL = SSSWINCD
+    SSBWINCD_CONTENTS =  [[[$(CRLF)
+[SSBWINCD]
+Win40VersionNum=858
+CDDrive=D:\ssbwincd\
+
+
+]]]
+    TLCAPPS16_CONTENTS = [[[$(CRLF)
+[Spellbound!]
+Path=C:\Tlcwin\Ssbcd\ssbcd.exe
+]]]
+    TLCAPPS32_CONTENTS = [[[$(CRLF)
+[Spellbound!]
+Path=C:\Tlcwin\Ssbcd\ssbwin32.exe
+]]]
+end
+
+end

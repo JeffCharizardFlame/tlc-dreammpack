@@ -1,0 +1,349 @@
+desc[tlc-gizmos]:
+
+name = Super Solvers: Gizmos & Gadgets!
+icon = tlc-gizmos.png
+machine = pc
+launch = ""
+osenv = windows 98
+audiohw = gmidi
+winres = 640x480x8
+
+config[ossel]:
+    condition = is_windows() && file_exists("$$(rootpath)\\ssgwincd.exe");
+    title = OS Select
+    option[win31]: name = Windows 3.1; launch = "$(rootpath)\ssgwincd.exe"; osenv = windows 3.11.002;
+    option[win9x]: name = Windows 9x; launch = "$(rootpath)\ssgwin32.exe"; osenv = windows 98;
+	
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD; optional = true
+
+mount[cdw]: vpath = D:\; srcpath = ram
+
+//
+// initialization script
+//
+script[cd-init]:
+	code = [[[$(CRLF)
+	    // set the volume label on the CD
+        drive_set_label("D", "$$(CDLABEL)");
+        file_save("$$(rootpath)\\SSGWINCD.INI", "$$(SSGWINCD_CONTENTS)"); condition = is_windows();
+        file_save("C:\\WINDOWS\\TLCAPPS.INI", "$$(TLCAPPS16_CONTENTS)"); condition = is_windows("windows 3.11.002");
+        file_save("C:\\WINDOWS\\TLCAPPS.INI", "$$(TLCAPPS32_CONTENTS)"); condition = is_windows("windows 98");
+    ]]]
+end
+
+//
+// English Windows
+//
+game[pc-win-en]:
+    name = English Windows
+    anchorfile = SSGWINCD.EXE
+    anchordepth = 2
+    file[]: crc = c6706d40; size =    596109; name = SSGWIN.DAT
+    file[]: crc = 4cc0c481; size =    354304; name = SSGWIN32.EXE
+    file[]: crc = 91be50db; size =    516624; name = SSGWINCD.EXE
+    file[]: crc = d7ad05b8; size =      2238; name = SSGWINCD.ICO
+    file[]: crc = 8f0f1f22; size =     12984; name = TLCDLL.DLL
+    
+    file[]: crc = 12e1cce9; size =     50543; name = CD\SSGWINCD\AE.DAT
+    file[]: crc = 20e15cab; size =    480046; name = CD\SSGWINCD\AE16.DAT
+    file[]: crc = 6f0deaf5; size =    590703; name = CD\SSGWINCD\AE256.DAT
+    file[]: crc = 5c2070af; size =   7910767; name = CD\SSGWINCD\AESPCH.DAT
+    file[]: crc = f83ed1ae; size =     81263; name = CD\SSGWINCD\AUTO.DAT
+    file[]: crc = fdab67a2; size =    656174; name = CD\SSGWINCD\AUTO16.DAT
+    file[]: crc = fcced317; size =    672623; name = CD\SSGWINCD\AUTO256.DAT
+    file[]: crc = 55b1dcc9; size =   6274927; name = CD\SSGWINCD\AUTOSPCH.DAT
+    file[]: crc = 0d58d10c; size =     32941; name = CD\SSGWINCD\FONT.DAT
+    file[]: crc = eff9d689; size =   4446063; name = CD\SSGWINCD\GIZMO.DAT
+    file[]: crc = 02f66428; size =   3065199; name = CD\SSGWINCD\GIZMO16.DAT
+    file[]: crc = 90820d19; size =   3821935; name = CD\SSGWINCD\GIZMO256.DAT
+    file[]: crc = 71b0d1bb; size =   7557487; name = CD\SSGWINCD\GIZSPCH.DAT
+    file[]: crc = f04d2c72; size =     19311; name = CD\SSGWINCD\HELP.DAT
+    file[]: crc = 34c39e32; size =    201583; name = CD\SSGWINCD\PLANE.DAT
+    file[]: crc = 49cca9b5; size =    969006; name = CD\SSGWINCD\PLANE16.DAT
+    file[]: crc = 5346af0a; size =   1011055; name = CD\SSGWINCD\PLANE256.DAT
+    file[]: crc = af06050d; size =  13272943; name = CD\SSGWINCD\PLNESP1.DAT
+    file[]: crc = 0e2888e4; size =   4867951; name = CD\SSGWINCD\PLNESP2.DAT
+    file[]: crc = 6c6ffdb8; size =   3472751; name = CD\SSGWINCD\PUZ16.DAT
+    file[]: crc = 0d4c02e5; size =   3909999; name = CD\SSGWINCD\PUZ256.DAT
+    file[]: crc = 977afbb0; size =   9915759; name = CD\SSGWINCD\PUZSPCH1.DAT
+    file[]: crc = 99c5049a; size =   9930095; name = CD\SSGWINCD\PUZSPCH2.DAT
+    file[]: crc = ab3abdbc; size =  10505071; name = CD\SSGWINCD\PUZSPCH3.DAT
+    file[]: crc = 95dd4198; size =    264047; name = CD\SSGWINCD\PUZZLE.DAT
+    file[]: crc = c6706d40; size =    596109; name = CD\SSGWINCD\SSGWIN.DAT
+    file[]: crc = 5e106023; size =     14559; name = CD\SSGWINCD\MIDI\BAEROPLY.MID
+    file[]: crc = aa875d2b; size =      1666; name = CD\SSGWINCD\MIDI\BAERRCE1.MID
+    file[]: crc = f577e080; size =      1719; name = CD\SSGWINCD\MIDI\BAERRCE2.MID
+    file[]: crc = 8b31f54d; size =       861; name = CD\SSGWINCD\MIDI\BALTRCE1.MID
+    file[]: crc = b3ad467e; size =       981; name = CD\SSGWINCD\MIDI\BALTRCE2.MID
+    file[]: crc = 1d57eea1; size =     14359; name = CD\SSGWINCD\MIDI\BALTRPLY.MID
+    file[]: crc = 8e5f53d4; size =      8427; name = CD\SSGWINCD\MIDI\BAUTOPLY.MID
+    file[]: crc = 57eb7e46; size =      2214; name = CD\SSGWINCD\MIDI\BAUTRCE1.MID
+    file[]: crc = 9d42373c; size =      1412; name = CD\SSGWINCD\MIDI\BAUTRCE2.MID
+    file[]: crc = f4fd55c8; size =      1765; name = CD\SSGWINCD\MIDI\BCLOSE.MID
+    file[]: crc = 25bdd8e3; size =      6037; name = CD\SSGWINCD\MIDI\BOPEN.MID
+    file[]: crc = 6ae18cea; size =      1119; name = CD\SSGWINCD\MIDI\BRACELOS.MID
+    file[]: crc = a70e8fd7; size =      1243; name = CD\SSGWINCD\MIDI\BRACEWIN.MID
+    file[]: crc = 9fec1a1f; size =       223; name = CD\SSGWINCD\MIDI\BWIN1.MID
+    file[]: crc = 78eb4ec4; size =       563; name = CD\SSGWINCD\MIDI\BWIN2.MID
+    file[]: crc = a9fb7c36; size =      1056; name = CD\SSGWINCD\MIDI\BWIN3.MID
+    file[]: crc = 20670cd4; size =       388; name = CD\SSGWINCD\MIDI\BWIN4.MID
+    file[]: crc = 650b92e4; size =      3498; name = CD\SSGWINCD\MIDI\BWRKSHP.MID
+    file[]: crc = eaf4558f; size =     22775; name = CD\SSGWINCD\MIDI\EAEROPLY.MID
+    file[]: crc = e05779d0; size =      1666; name = CD\SSGWINCD\MIDI\EAERRCE1.MID
+    file[]: crc = 8e0394ab; size =      1719; name = CD\SSGWINCD\MIDI\EAERRCE2.MID
+    file[]: crc = 9cb889aa; size =      1008; name = CD\SSGWINCD\MIDI\EALTRCE1.MID
+    file[]: crc = 76101c65; size =       981; name = CD\SSGWINCD\MIDI\EALTRCE2.MID
+    file[]: crc = e0e096dc; size =     15731; name = CD\SSGWINCD\MIDI\EALTRPLY.MID
+    file[]: crc = f00904cf; size =      8629; name = CD\SSGWINCD\MIDI\EAUTOPLY.MID
+    file[]: crc = 64ef80fe; size =      2229; name = CD\SSGWINCD\MIDI\EAUTRCE1.MID
+    file[]: crc = 917bb379; size =      1412; name = CD\SSGWINCD\MIDI\EAUTRCE2.MID
+    file[]: crc = 9bb85fdd; size =      1785; name = CD\SSGWINCD\MIDI\ECLOSE.MID
+    file[]: crc = 92526560; size =      6806; name = CD\SSGWINCD\MIDI\EOPEN.MID
+    file[]: crc = 1165b0c7; size =      1125; name = CD\SSGWINCD\MIDI\ERACELOS.MID
+    file[]: crc = e77bd1fb; size =      1249; name = CD\SSGWINCD\MIDI\ERACEWIN.MID
+    file[]: crc = b1e89143; size =       223; name = CD\SSGWINCD\MIDI\EWIN1.MID
+    file[]: crc = 1bde752a; size =       634; name = CD\SSGWINCD\MIDI\EWIN2.MID
+    file[]: crc = 2bc04c5e; size =      1079; name = CD\SSGWINCD\MIDI\EWIN3.MID
+    file[]: crc = ffc263da; size =       400; name = CD\SSGWINCD\MIDI\EWIN4.MID
+    file[]: crc = d020316e; size =      3498; name = CD\SSGWINCD\MIDI\EWRKSHP.MID
+    
+    rootpath = C:\TLCWIN\SSGWINCD
+    CDLABEL = SSGWINCD
+    SSGWINCD_CONTENTS =  [[[$(CRLF)
+[Gizmos & Gadgets! CD]
+CDDrive=D:\ssgwincd\
+
+[Gizmos & Gadgets!]
+CDDrive=D:\ssgwincd\
+
+
+
+
+]]]
+    TLCAPPS16_CONTENTS = [[[$(CRLF)
+[Gizmos and Gadgets!]
+Path=$(rootpath)\ssgwincd.exe
+]]]
+    TLCAPPS32_CONTENTS = [[[$(CRLF)
+[Gizmos and Gadgets!]
+Path=$(rootpath)\ssgwin32.exe
+]]]
+end
+
+//
+// German Windows
+//
+game[pc-win-de]:
+    name = German Windows
+    anchorfile = GIZSPCH.DAT
+    anchordepth = 2
+
+    file[]: crc = 54d53994; size =    596109; name = SSGWIN.DAT
+    file[]: crc = 6b61a194; size =    421376; name = Ssgwin32.exe
+    file[]: crc = d7ad05b8; size =      2238; name = SSGWINCD.ICO
+    file[]: crc = 8f0f1f22; size =     12984; name = TLCDLL.DLL
+    file[]: crc = ffc7762f; size =     26112; name = WAVEMIX.DLL
+    file[]: crc = 5541ad86; size =      2971; name = WAVEMIX.INI
+    file[]: crc = 90b08cb7; size =    128173; name = CD\SSGWINCD\AE.DAT
+    file[]: crc = 98de2610; size =    595629; name = CD\SSGWINCD\AE256.DAT
+    file[]: crc = 95e41aac; size =   7758509; name = CD\SSGWINCD\AESPCH.DAT
+    file[]: crc = 299fc3bd; size =     87213; name = CD\SSGWINCD\AUTO.DAT
+    file[]: crc = c2e2e97a; size =    678061; name = CD\SSGWINCD\AUTO256.DAT
+    file[]: crc = 318bce16; size =   5956269; name = CD\SSGWINCD\AUTOSPCH.DAT
+    file[]: crc = bf1094c0; size =     32941; name = CD\SSGWINCD\FONT.DAT
+    file[]: crc = d7ad05b8; size =      2238; name = CD\SSGWINCD\GIZ256.ICO
+    file[]: crc = 19393b47; size =   4449965; name = CD\SSGWINCD\GIZMO.DAT
+    file[]: crc = 4bd2bbb8; size =   3809453; name = CD\SSGWINCD\GIZMO256.DAT
+    file[]: crc = b3ab0d04; size =   7950509; name = CD\SSGWINCD\GIZSPCH.DAT
+    file[]: crc = 54a8a310; size =     24749; name = CD\SSGWINCD\HELP.DAT
+    file[]: crc = 1a0d9229; size =  19992749; name = CD\SSGWINCD\PLANE.DAT
+    file[]: crc = 21b074ff; size =   1018541; name = CD\SSGWINCD\PLANE256.DAT
+    file[]: crc = fa6ccec1; size =   3890349; name = CD\SSGWINCD\PUZ256.DAT
+    file[]: crc = 85b570c5; size =  10690221; name = CD\SSGWINCD\PUZSPCH1.DAT
+    file[]: crc = ba6e9576; size =  11424429; name = CD\SSGWINCD\PUZSPCH2.DAT
+    file[]: crc = 1d39a880; size =  11459757; name = CD\SSGWINCD\PUZSPCH3.DAT
+    file[]: crc = ec0839a5; size =    269485; name = CD\SSGWINCD\PUZZLE.DAT
+    file[]: crc = 61e3c8f6; size =      1406; name = CD\SSGWINCD\SMGIZMO.ICO
+    file[]: crc = 6b61a194; size =    421376; name = CD\SSGWINCD\SSGWIN32.EXE
+    file[]: crc = 6b61a194; size =    421376; name = CD\SSGWINCD\SSGWINCD.EXE
+    file[]: crc = d7ad05b8; size =      2238; name = CD\SSGWINCD\SSGWINCD.ICO
+    file[]: crc = 8f0f1f22; size =     12984; name = CD\SSGWINCD\TLCDLL.DLL
+    file[]: crc = 5e106023; size =     14559; name = CD\SSGWINCD\MIDI\BAEROPLY.MID
+    file[]: crc = aa875d2b; size =      1666; name = CD\SSGWINCD\MIDI\BAERRCE1.MID
+    file[]: crc = f577e080; size =      1719; name = CD\SSGWINCD\MIDI\BAERRCE2.MID
+    file[]: crc = 8b31f54d; size =       861; name = CD\SSGWINCD\MIDI\BALTRCE1.MID
+    file[]: crc = b3ad467e; size =       981; name = CD\SSGWINCD\MIDI\BALTRCE2.MID
+    file[]: crc = 1d57eea1; size =     14359; name = CD\SSGWINCD\MIDI\BALTRPLY.MID
+    file[]: crc = 8e5f53d4; size =      8427; name = CD\SSGWINCD\MIDI\BAUTOPLY.MID
+    file[]: crc = 57eb7e46; size =      2214; name = CD\SSGWINCD\MIDI\BAUTRCE1.MID
+    file[]: crc = 9d42373c; size =      1412; name = CD\SSGWINCD\MIDI\BAUTRCE2.MID
+    file[]: crc = f4fd55c8; size =      1765; name = CD\SSGWINCD\MIDI\BCLOSE.MID
+    file[]: crc = 25bdd8e3; size =      6037; name = CD\SSGWINCD\MIDI\BOPEN.MID
+    file[]: crc = 6ae18cea; size =      1119; name = CD\SSGWINCD\MIDI\BRACELOS.MID
+    file[]: crc = a70e8fd7; size =      1243; name = CD\SSGWINCD\MIDI\BRACEWIN.MID
+    file[]: crc = 9fec1a1f; size =       223; name = CD\SSGWINCD\MIDI\BWIN1.MID
+    file[]: crc = 78eb4ec4; size =       563; name = CD\SSGWINCD\MIDI\BWIN2.MID
+    file[]: crc = a9fb7c36; size =      1056; name = CD\SSGWINCD\MIDI\BWIN3.MID
+    file[]: crc = 20670cd4; size =       388; name = CD\SSGWINCD\MIDI\BWIN4.MID
+    file[]: crc = 650b92e4; size =      3498; name = CD\SSGWINCD\MIDI\BWRKSHP.MID
+    file[]: crc = eaf4558f; size =     22775; name = CD\SSGWINCD\MIDI\EAEROPLY.MID
+    file[]: crc = e05779d0; size =      1666; name = CD\SSGWINCD\MIDI\EAERRCE1.MID
+    file[]: crc = 8e0394ab; size =      1719; name = CD\SSGWINCD\MIDI\EAERRCE2.MID
+    file[]: crc = 9cb889aa; size =      1008; name = CD\SSGWINCD\MIDI\EALTRCE1.MID
+    file[]: crc = 76101c65; size =       981; name = CD\SSGWINCD\MIDI\EALTRCE2.MID
+    file[]: crc = e0e096dc; size =     15731; name = CD\SSGWINCD\MIDI\EALTRPLY.MID
+    file[]: crc = f00904cf; size =      8629; name = CD\SSGWINCD\MIDI\EAUTOPLY.MID
+    file[]: crc = 64ef80fe; size =      2229; name = CD\SSGWINCD\MIDI\EAUTRCE1.MID
+    file[]: crc = 917bb379; size =      1412; name = CD\SSGWINCD\MIDI\EAUTRCE2.MID
+    file[]: crc = 9bb85fdd; size =      1785; name = CD\SSGWINCD\MIDI\ECLOSE.MID
+    file[]: crc = 92526560; size =      6806; name = CD\SSGWINCD\MIDI\EOPEN.MID
+    file[]: crc = 1165b0c7; size =      1125; name = CD\SSGWINCD\MIDI\ERACELOS.MID
+    file[]: crc = e77bd1fb; size =      1249; name = CD\SSGWINCD\MIDI\ERACEWIN.MID
+    file[]: crc = b1e89143; size =       223; name = CD\SSGWINCD\MIDI\EWIN1.MID
+    file[]: crc = 1bde752a; size =       634; name = CD\SSGWINCD\MIDI\EWIN2.MID
+    file[]: crc = 2bc04c5e; size =      1079; name = CD\SSGWINCD\MIDI\EWIN3.MID
+    file[]: crc = ffc263da; size =       400; name = CD\SSGWINCD\MIDI\EWIN4.MID
+    file[]: crc = d020316e; size =      3498; name = CD\SSGWINCD\MIDI\EWRKSHP.MID
+    
+    rootpath = C:\TLCWIN\SSGWINCD
+    launch = "$(rootpath)\SSGWIN32.EXE"
+    CDLABEL = PHYSIK
+    SSGWINCD_CONTENTS =  [[[$(CRLF)
+[CD Technik & Tempo]
+CDDrive=D:\ssgwincd\
+WaveMix=0
+Graphics=3
+
+]]]
+    TLCAPPS16_CONTENTS = ""
+    TLCAPPS32_CONTENTS = ""
+end
+
+//
+// Dutch Windows
+//
+game[pc-win-nl]:
+    name = Dutch Windows
+    anchorfile = GIZSPCH.DAT
+    anchordepth = 2
+    
+    file[]: crc = 54d53994; size =    596109; name = SSGWIN.DAT
+    file[]: crc = 00d13c43; size =    421376; name = Ssgwin32.exe
+    file[]: crc = d7ad05b8; size =      2238; name = SSGWINCD.ICO
+    file[]: crc = 8f0f1f22; size =     12984; name = TLCDLL.DLL
+    file[]: crc = ffc7762f; size =     26112; name = WAVEMIX.DLL
+    file[]: crc = 5541ad86; size =      2971; name = WAVEMIX.INI
+    file[]: crc = ec6e0f53; size =    128173; name = CD\SSGWINCD\AE.DAT
+    file[]: crc = 9cf64789; size =    594605; name = CD\SSGWINCD\AE256.DAT
+    file[]: crc = 1363dd25; size =   9307309; name = CD\SSGWINCD\AESPCH.DAT
+    file[]: crc = f99bcc78; size =     87213; name = CD\SSGWINCD\AUTO.DAT
+    file[]: crc = c136b333; size =    676013; name = CD\SSGWINCD\AUTO256.DAT
+    file[]: crc = 6a825443; size =   7419565; name = CD\SSGWINCD\AUTOSPCH.DAT
+    file[]: crc = 0a5cff11; size =     32941; name = CD\SSGWINCD\FONT.DAT
+    file[]: crc = d7ad05b8; size =      2238; name = CD\SSGWINCD\GIZ256.ICO
+    file[]: crc = 7675ac39; size =   4450477; name = CD\SSGWINCD\GIZMO.DAT
+    file[]: crc = 21741ac4; size =   3815085; name = CD\SSGWINCD\GIZMO256.DAT
+    file[]: crc = 4975c0d6; size =   8858797; name = CD\SSGWINCD\GIZSPCH.DAT
+    file[]: crc = 05c9d68e; size =     24749; name = CD\SSGWINCD\HELP.DAT
+    file[]: crc = 978a7a17; size =  21650093; name = CD\SSGWINCD\PLANE.DAT
+    file[]: crc = 546c1f1c; size =   1019053; name = CD\SSGWINCD\PLANE256.DAT
+    file[]: crc = 6c60fb57; size =   3891373; name = CD\SSGWINCD\PUZ256.DAT
+    file[]: crc = b0003688; size =  11671213; name = CD\SSGWINCD\PUZSPCH1.DAT
+    file[]: crc = f3cadb5c; size =  11974829; name = CD\SSGWINCD\PUZSPCH2.DAT
+    file[]: crc = 02cd9ffb; size =  12295853; name = CD\SSGWINCD\PUZSPCH3.DAT
+    file[]: crc = 1be35cf5; size =    269485; name = CD\SSGWINCD\PUZZLE.DAT
+    file[]: crc = 61e3c8f6; size =      1406; name = CD\SSGWINCD\SMGIZMO.ICO
+    file[]: crc = 00d13c43; size =    421376; name = CD\SSGWINCD\SSGWIN32.EXE
+    file[]: crc = 00d13c43; size =    421376; name = CD\SSGWINCD\SSGWINCD.EXE
+    file[]: crc = d7ad05b8; size =      2238; name = CD\SSGWINCD\SSGWINCD.ICO
+    file[]: crc = 8f0f1f22; size =     12984; name = CD\SSGWINCD\TLCDLL.DLL
+    file[]: crc = 5e106023; size =     14559; name = CD\SSGWINCD\MIDI\BAEROPLY.MID
+    file[]: crc = aa875d2b; size =      1666; name = CD\SSGWINCD\MIDI\BAERRCE1.MID
+    file[]: crc = f577e080; size =      1719; name = CD\SSGWINCD\MIDI\BAERRCE2.MID
+    file[]: crc = 8b31f54d; size =       861; name = CD\SSGWINCD\MIDI\BALTRCE1.MID
+    file[]: crc = b3ad467e; size =       981; name = CD\SSGWINCD\MIDI\BALTRCE2.MID
+    file[]: crc = 1d57eea1; size =     14359; name = CD\SSGWINCD\MIDI\BALTRPLY.MID
+    file[]: crc = 8e5f53d4; size =      8427; name = CD\SSGWINCD\MIDI\BAUTOPLY.MID
+    file[]: crc = 57eb7e46; size =      2214; name = CD\SSGWINCD\MIDI\BAUTRCE1.MID
+    file[]: crc = 9d42373c; size =      1412; name = CD\SSGWINCD\MIDI\BAUTRCE2.MID
+    file[]: crc = f4fd55c8; size =      1765; name = CD\SSGWINCD\MIDI\BCLOSE.MID
+    file[]: crc = 25bdd8e3; size =      6037; name = CD\SSGWINCD\MIDI\BOPEN.MID
+    file[]: crc = 6ae18cea; size =      1119; name = CD\SSGWINCD\MIDI\BRACELOS.MID
+    file[]: crc = a70e8fd7; size =      1243; name = CD\SSGWINCD\MIDI\BRACEWIN.MID
+    file[]: crc = 9fec1a1f; size =       223; name = CD\SSGWINCD\MIDI\BWIN1.MID
+    file[]: crc = 78eb4ec4; size =       563; name = CD\SSGWINCD\MIDI\BWIN2.MID
+    file[]: crc = a9fb7c36; size =      1056; name = CD\SSGWINCD\MIDI\BWIN3.MID
+    file[]: crc = 20670cd4; size =       388; name = CD\SSGWINCD\MIDI\BWIN4.MID
+    file[]: crc = 650b92e4; size =      3498; name = CD\SSGWINCD\MIDI\BWRKSHP.MID
+    file[]: crc = eaf4558f; size =     22775; name = CD\SSGWINCD\MIDI\EAEROPLY.MID
+    file[]: crc = e05779d0; size =      1666; name = CD\SSGWINCD\MIDI\EAERRCE1.MID
+    file[]: crc = 8e0394ab; size =      1719; name = CD\SSGWINCD\MIDI\EAERRCE2.MID
+    file[]: crc = 9cb889aa; size =      1008; name = CD\SSGWINCD\MIDI\EALTRCE1.MID
+    file[]: crc = 76101c65; size =       981; name = CD\SSGWINCD\MIDI\EALTRCE2.MID
+    file[]: crc = e0e096dc; size =     15731; name = CD\SSGWINCD\MIDI\EALTRPLY.MID
+    file[]: crc = f00904cf; size =      8629; name = CD\SSGWINCD\MIDI\EAUTOPLY.MID
+    file[]: crc = 64ef80fe; size =      2229; name = CD\SSGWINCD\MIDI\EAUTRCE1.MID
+    file[]: crc = 917bb379; size =      1412; name = CD\SSGWINCD\MIDI\EAUTRCE2.MID
+    file[]: crc = 9bb85fdd; size =      1785; name = CD\SSGWINCD\MIDI\ECLOSE.MID
+    file[]: crc = 92526560; size =      6806; name = CD\SSGWINCD\MIDI\EOPEN.MID
+    file[]: crc = 1165b0c7; size =      1125; name = CD\SSGWINCD\MIDI\ERACELOS.MID
+    file[]: crc = e77bd1fb; size =      1249; name = CD\SSGWINCD\MIDI\ERACEWIN.MID
+    file[]: crc = b1e89143; size =       223; name = CD\SSGWINCD\MIDI\EWIN1.MID
+    file[]: crc = 1bde752a; size =       634; name = CD\SSGWINCD\MIDI\EWIN2.MID
+    file[]: crc = 2bc04c5e; size =      1079; name = CD\SSGWINCD\MIDI\EWIN3.MID
+    file[]: crc = ffc263da; size =       400; name = CD\SSGWINCD\MIDI\EWIN4.MID
+    file[]: crc = d020316e; size =      3498; name = CD\SSGWINCD\MIDI\EWRKSHP.MID
+
+    
+    rootpath = C:\TLCWIN\SSGWINCD
+    launch = "$(rootpath)\SSGWIN32.EXE"
+    CDLABEL = NIEUW
+    SSGWINCD_CONTENTS =  [[[$(CRLF)
+[Racespectakel! CD]
+CDDrive=D:\ssgwincd\
+WaveMix=0
+Graphics=3
+
+]]]
+    TLCAPPS16_CONTENTS = ""
+    TLCAPPS32_CONTENTS = ""
+end
+
+//
+// English DOS
+//
+game[pc-dos-en]:
+    name = English MS-DOS
+    osenv = dos
+    fixdivover = true
+    mips = $(MIPS_386DX_33)
+    ramkb = 2048
+    audiohw = sb16
+    videohw = vga
+    anchorfile = SSG.EXE
+    file[]: crc = 99e9c99e; size =    337881; name = gizmo000.dat
+    file[]: crc = ca6a486c; size =    349371; name = gizmo001.dat
+    file[]: crc = 92a5cd48; size =    280359; name = gizmo002.dat
+    file[]: crc = 2aa657aa; size =    259149; name = gizmo003.dat
+    file[]: crc = f95d91b2; size =     45644; name = gizmo004.dat
+    file[]: crc = 2276f4c9; size =    578487; name = PLAYERS.DAT
+    file[]: crc = 7e3b16bc; size =       219; name = ssg.bat
+    file[]: crc = c138629d; size =    213200; name = ssg.exe
+    file[]: crc = 03b852c1; size =       766; name = ssg.ico
+    
+    rootpath = C:\TLC\SSG
+    launch = "$(rootpath)\SSG.bat"
+    CDLABEL = ""
+    SSGWINCD_CONTENTS = ""
+    TLCAPPS16_CONTENTS = ""
+    TLCAPPS32_CONTENTS = ""
+end
+
+end

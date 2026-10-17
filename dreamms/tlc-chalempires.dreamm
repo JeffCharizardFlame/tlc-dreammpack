@@ -1,0 +1,32 @@
+desc[tlc-chalempires]:
+
+name = Super Solvers: Challenge of the Ancient Empires!
+icon = tlc-chalempires.png
+machine = pc
+rootpath = C:\TLC\SSA
+launch = $(rootpath)\SSAPROG.EXE
+osenv = dos
+fixdivover = true
+mips = $(MIPS_386DX_33)
+ramkb = 2048
+audiohw = sb16
+videohw = svga
+
+//
+// filesystem
+//
+mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+
+//
+// English MS-DOS
+//
+game[pc-dos-en]:
+    name = English MS-DOS
+    anchorfile = SSAPROG.EXE
+    file[]: crc = b6f06043; size =    228727; name = SSA000.DAT
+    file[]: crc = 1e6f7967; size =    360674; name = SSA001.DAT
+    file[]: crc = 94854799; size =     79190; name = SSAPROG.EXE
+end
+
+end

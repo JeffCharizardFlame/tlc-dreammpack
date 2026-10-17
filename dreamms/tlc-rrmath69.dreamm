@@ -1,0 +1,694 @@
+desc[tlc-rrmath69]:
+
+name = Reader Rabbit's Math Ages 6-9
+icon = tlc-rrmath69.png
+machine = pc
+rootpath = C:\TLCWIN\MATH6-9
+launch = ""
+osenv = windows 98
+audiohw = gmidi
+winres = 800x600x16
+
+config[ossel]:
+    condition = file_exists("$$(rootpath)\\rrm69_16.exe");
+    title = OS Select
+    option[win31]: name = Windows 3.1; launch = "$(rootpath)\rrm69_16.exe"; osenv = windows 3.11.002;
+    option[win9x]: name = Windows 9x; launch = "$(rootpath)\rrm69_32.exe"; osenv = windows 98;
+	
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD
+
+mount[cdw]: vpath = D:\; srcpath = ram
+
+//
+// initialization script
+//
+script[cd-init]:
+	code = [[[$(CRLF)
+	    // set the volume label on the CD
+        drive_set_label("D", "$$(CDLABEL)");
+        file_save("$$(rootpath)\\MATH6-9.INI", "$$(MATH69_CONTENTS)");
+        file_save("C:\\WINDOWS\\TLCAPPS.INI", "$$(TLCAPPS16_CONTENTS)"); condition = is_windows("windows 3.11.002");
+        file_save("C:\\WINDOWS\\TLCAPPS.INI", "$$(TLCAPPS32_CONTENTS)"); condition = is_windows("windows 98");
+    ]]]
+end
+
+//
+// English CD (1998)
+//
+game[pc-cd-en]:
+    name = English (US) CD, Version 1.0
+    anchorfile = RRM69_32.EXE
+    anchordepth = 3
+    file[]: crc = 3864edd2; size =   1603072; name = RRM69_16.EXE
+    file[]: crc = 46ddd905; size =    799744; name = RRM69_32.EXE
+    file[]: crc = d34c15d2; size =    114012; name = SMACKE16.DLL
+    file[]: crc = b2edd2a9; size =     25088; name = SMACKW16.DLL
+    file[]: crc = d8bd604e; size =     71680; name = SMACKW32.DLL
+    file[]: crc = d8a3282c; size =       550; name = CD\_
+    file[]: crc = e561fd06; size =   2121216; name = CD\DATA\HDDATA\RSC\AA1.RSC
+    file[]: crc = f70b8e92; size =    920576; name = CD\DATA\HDDATA\RSC\COM.RSC
+    file[]: crc = 8cb9b46a; size =   2726912; name = CD\DATA\HDDATA\RSC\COMSPCH.RSC
+    file[]: crc = 8f914b69; size =    626176; name = CD\DATA\HDDATA\RSC\COMTUNZ.RSC
+    file[]: crc = 3d1b5c0d; size =    519168; name = CD\DATA\HDDATA\RSC\MS.RSC
+    file[]: crc = 4904f7ad; size =   4941824; name = CD\DATA\HDDATA\RSC\MSSPCH.RSC
+    file[]: crc = d7026c4a; size =   2437632; name = CD\DATA\HDDATA\RSC\PENSPCH.RSC
+    file[]: crc = c7e6869a; size =    475648; name = CD\DATA\HDDATA\RSC\POP.RSC
+    file[]: crc = 98113bf2; size =    425472; name = CD\DATA\HDDATA\RSC\POPSPCH.RSC
+    file[]: crc = 2e32f79b; size =     84824; name = CD\DATA\HDDATA\SCRIPTS\AA1.MPS
+    file[]: crc = d7b7ae48; size =     90906; name = CD\DATA\HDDATA\SCRIPTS\AA2.MPS
+    file[]: crc = 60962d8b; size =     83143; name = CD\DATA\HDDATA\SCRIPTS\COOKOUT.MPS
+    file[]: crc = 64e2ec74; size =     53868; name = CD\DATA\HDDATA\SCRIPTS\CS.MPS
+    file[]: crc = bf8e3504; size =     58613; name = CD\DATA\HDDATA\SCRIPTS\FISHING.MPS
+    file[]: crc = bcc50017; size =    126315; name = CD\DATA\HDDATA\SCRIPTS\GA1.MPS
+    file[]: crc = 6f79e987; size =     92586; name = CD\DATA\HDDATA\SCRIPTS\GA2.MPS
+    file[]: crc = e4940996; size =    113717; name = CD\DATA\HDDATA\SCRIPTS\MA1.MPS
+    file[]: crc = 0623f934; size =    206924; name = CD\DATA\HDDATA\SCRIPTS\MA3.MPS
+    file[]: crc = e3430425; size =     65571; name = CD\DATA\HDDATA\SCRIPTS\MAIN.MPS
+    file[]: crc = 38bd598e; size =     22862; name = CD\DATA\HDDATA\SCRIPTS\SCORE.MPS
+    file[]: crc = 0932d833; size =     22146; name = CD\DATA\HDDATA\SCRIPTS\SIGNIN.MPS
+    file[]: crc = 4dd6e50f; size =     56247; name = CD\DATA\HDDATA\SCRIPTS\SONG.MPS
+    file[]: crc = 78119c9e; size =      8612; name = CD\DATA\HDDATA\SCRIPTS\STARTUP.MPS
+    file[]: crc = 47f759d8; size =     75438; name = CD\DATA\HDDATA\SCRIPTS\TIMEKEEP.MPS
+    file[]: crc = 283b674f; size =   2550256; name = CD\DATA\MOVIES\AA1INT.SMK
+    file[]: crc = 06b24c6e; size =   1427652; name = CD\DATA\MOVIES\AA1RET1.SMK
+    file[]: crc = dde52160; size =    592408; name = CD\DATA\MOVIES\AA1RET2.SMK
+    file[]: crc = 52c53261; size =   2276820; name = CD\DATA\MOVIES\AA1RET3.SMK
+    file[]: crc = ea45678f; size =   2377860; name = CD\DATA\MOVIES\AA2INT.SMK
+    file[]: crc = cea8ff1b; size =    318448; name = CD\DATA\MOVIES\AA2RET1.SMK
+    file[]: crc = 64373f68; size =    520960; name = CD\DATA\MOVIES\AA2RET2.SMK
+    file[]: crc = aac52c1f; size =    716252; name = CD\DATA\MOVIES\AA2RET3.SMK
+    file[]: crc = 84301c7e; size =   2170516; name = CD\DATA\MOVIES\AA3INT.SMK
+    file[]: crc = 9a7bf208; size =   1011676; name = CD\DATA\MOVIES\AA3RET1.SMK
+    file[]: crc = c900695e; size =    752572; name = CD\DATA\MOVIES\AA3RET2.SMK
+    file[]: crc = eeaa6c22; size =   1003504; name = CD\DATA\MOVIES\AA3RET3.SMK
+    file[]: crc = f06bf3b6; size =   5095744; name = CD\DATA\MOVIES\GA1INT.SMK
+    file[]: crc = 692caa16; size =   4136892; name = CD\DATA\MOVIES\GA1RET1.SMK
+    file[]: crc = 9ac0ae0b; size =   4209628; name = CD\DATA\MOVIES\GA1RET2.SMK
+    file[]: crc = 274c477a; size =   6903544; name = CD\DATA\MOVIES\GA1RET3.SMK
+    file[]: crc = a35a0c3e; size =   6755544; name = CD\DATA\MOVIES\GA2INT.SMK
+    file[]: crc = 17ffa6bf; size =   1341244; name = CD\DATA\MOVIES\GA2RET1.SMK
+    file[]: crc = 0eecdec7; size =   1695308; name = CD\DATA\MOVIES\GA2RET2.SMK
+    file[]: crc = 07c9c0fe; size =   3069552; name = CD\DATA\MOVIES\GA2RET3.SMK
+    file[]: crc = 7783be28; size =    968404; name = CD\DATA\MOVIES\GA3INT.SMK
+    file[]: crc = 4c835d94; size =    474036; name = CD\DATA\MOVIES\GA3RET1.SMK
+    file[]: crc = bf9cc940; size =    515364; name = CD\DATA\MOVIES\GA3RET2.SMK
+    file[]: crc = 39ee6b15; size =   1514852; name = CD\DATA\MOVIES\GA3RET3.SMK
+    file[]: crc = 9afeb663; size =   1884384; name = CD\DATA\MOVIES\MA1INT.SMK
+    file[]: crc = f02df222; size =    653840; name = CD\DATA\MOVIES\MA1RET1.SMK
+    file[]: crc = 8986d373; size =    602216; name = CD\DATA\MOVIES\MA1RET2.SMK
+    file[]: crc = f591ee1b; size =    777440; name = CD\DATA\MOVIES\MA1RET3.SMK
+    file[]: crc = 9042461c; size =   1664592; name = CD\DATA\MOVIES\MA2INT.SMK
+    file[]: crc = fa798590; size =    559016; name = CD\DATA\MOVIES\MA2RET1.SMK
+    file[]: crc = d5ecbaba; size =    888668; name = CD\DATA\MOVIES\MA2RET2.SMK
+    file[]: crc = 96c61ee6; size =    370808; name = CD\DATA\MOVIES\MA2RET3.SMK
+    file[]: crc = 027819b3; size =   2772548; name = CD\DATA\MOVIES\MA3INT.SMK
+    file[]: crc = 8c89e534; size =   1217648; name = CD\DATA\MOVIES\MA3RET1.SMK
+    file[]: crc = 11d5783c; size =    199804; name = CD\DATA\MOVIES\MA3RET2.SMK
+    file[]: crc = fa13c25b; size =   1663768; name = CD\DATA\MOVIES\MA3RET3.SMK
+    file[]: crc = a4ed3224; size =  28413852; name = CD\DATA\MOVIES\MVCLOSE1.SMK
+    file[]: crc = 64346374; size =  28573668; name = CD\DATA\MOVIES\MVCLOSE2.SMK
+    file[]: crc = de61b339; size =  28571700; name = CD\DATA\MOVIES\MVCLOSE3.SMK
+    file[]: crc = d3a05437; size =   3296408; name = CD\DATA\MOVIES\MVCUT1.SMK
+    file[]: crc = bde6fed2; size =   2549552; name = CD\DATA\MOVIES\MVCUT10.SMK
+    file[]: crc = 70ff585e; size =   3541872; name = CD\DATA\MOVIES\MVCUT11.SMK
+    file[]: crc = 79c23df4; size =   5034660; name = CD\DATA\MOVIES\MVCUT2.SMK
+    file[]: crc = 68c22f1c; size =   3736132; name = CD\DATA\MOVIES\MVCUT3.SMK
+    file[]: crc = 07b90657; size =   1584548; name = CD\DATA\MOVIES\MVCUT4.SMK
+    file[]: crc = a0c5f03c; size =   2555816; name = CD\DATA\MOVIES\MVCUT5.SMK
+    file[]: crc = 826fae66; size =   2763876; name = CD\DATA\MOVIES\MVCUT6.SMK
+    file[]: crc = 2a235f97; size =   3469040; name = CD\DATA\MOVIES\MVCUT7.SMK
+    file[]: crc = e42b8dcc; size =   3012236; name = CD\DATA\MOVIES\MVCUT8.SMK
+    file[]: crc = ecf5aa59; size =   2958188; name = CD\DATA\MOVIES\MVCUT9.SMK
+    file[]: crc = ff65518a; size =   9973756; name = CD\DATA\MOVIES\OPENING.SMK
+    file[]: crc = da3febd4; size =  10667252; name = CD\DATA\MOVIES\OPENING2.SMK
+    file[]: crc = 08c50106; size =   1682008; name = CD\DATA\MOVIES\PRODLOGO.SMK
+    file[]: crc = 5a59ff87; size =   2505536; name = CD\DATA\MOVIES\SONGCHEE.SMK
+    file[]: crc = 264f9758; size =   1896268; name = CD\DATA\MOVIES\SONGPEAR.SMK
+    file[]: crc = 11cfd472; size =   1783160; name = CD\DATA\MOVIES\SONGRATB.SMK
+    file[]: crc = c0cf5b6b; size =   2144232; name = CD\DATA\MOVIES\SONGRILE.SMK
+    file[]: crc = 6ebfd757; size =   2529844; name = CD\DATA\MOVIES\SONGVERM.SMK
+    file[]: crc = f61f6614; size =    152596; name = CD\DATA\MOVIES\TLCLOGO.SMK
+    file[]: crc = e561fd06; size =   2121216; name = CD\DATA\RSC\AA1.RSC
+    file[]: crc = e047fe7c; size =    138752; name = CD\DATA\RSC\AA1LIPS.RSC
+    file[]: crc = 94fa9713; size =  11185664; name = CD\DATA\RSC\AA1SPCH.RSC
+    file[]: crc = 21b75c3a; size =    589312; name = CD\DATA\RSC\AA1TUNZ1.RSC
+    file[]: crc = 485e4a9b; size =    663040; name = CD\DATA\RSC\AA1TUNZ2.RSC
+    file[]: crc = bb90b2dc; size =    724992; name = CD\DATA\RSC\AA1TUNZ3.RSC
+    file[]: crc = b2245a7a; size =   1105408; name = CD\DATA\RSC\AA2.RSC
+    file[]: crc = f2ed02ca; size =     98816; name = CD\DATA\RSC\AA2LIPS.RSC
+    file[]: crc = 723ef502; size =   5458432; name = CD\DATA\RSC\AA2SPCH.RSC
+    file[]: crc = 97cefcc5; size =    662528; name = CD\DATA\RSC\AA2TUNZ1.RSC
+    file[]: crc = 596d5513; size =    530432; name = CD\DATA\RSC\AA2TUNZ2.RSC
+    file[]: crc = 4b57484d; size =    642560; name = CD\DATA\RSC\AA2TUNZ3.RSC
+    file[]: crc = 10394c6d; size =   1391616; name = CD\DATA\RSC\AA3.RSC
+    file[]: crc = fcaa3090; size =     69632; name = CD\DATA\RSC\AA3LIPS.RSC
+    file[]: crc = 0db57f17; size =   4406272; name = CD\DATA\RSC\AA3SPCH.RSC
+    file[]: crc = 6f103dfc; size =    684032; name = CD\DATA\RSC\AA3TUNZ1.RSC
+    file[]: crc = 6832d75b; size =    599040; name = CD\DATA\RSC\AA3TUNZ2.RSC
+    file[]: crc = 50fe5d4d; size =    678912; name = CD\DATA\RSC\AA3TUNZ3.RSC
+    file[]: crc = f70b8e92; size =    920576; name = CD\DATA\RSC\COM.RSC
+    file[]: crc = 9d063d52; size =    179200; name = CD\DATA\RSC\COMLIPS.RSC
+    file[]: crc = 8cb9b46a; size =   2726912; name = CD\DATA\RSC\COMSPCH.RSC
+    file[]: crc = 8f914b69; size =    626176; name = CD\DATA\RSC\COMTUNZ.RSC
+    file[]: crc = 0dffd18a; size =   1286656; name = CD\DATA\RSC\CS.RSC
+    file[]: crc = 4737b79d; size =     61440; name = CD\DATA\RSC\CSLIPS.RSC
+    file[]: crc = 3713466d; size =  12873216; name = CD\DATA\RSC\CSSPCH.RSC
+    file[]: crc = 607b482a; size =     46442; name = CD\DATA\RSC\CURSORS.RSC
+    file[]: crc = 7342cb20; size =   2187776; name = CD\DATA\RSC\GA1.RSC
+    file[]: crc = f260e3ab; size =     79360; name = CD\DATA\RSC\GA1LIPS.RSC
+    file[]: crc = 9d248566; size =   4784128; name = CD\DATA\RSC\GA1SPCH.RSC
+    file[]: crc = 189c92f7; size =    589312; name = CD\DATA\RSC\GA1TUNZ1.RSC
+    file[]: crc = 82f5e670; size =    618496; name = CD\DATA\RSC\GA1TUNZ2.RSC
+    file[]: crc = 0385cc07; size =    714240; name = CD\DATA\RSC\GA1TUNZ3.RSC
+    file[]: crc = 94bd90b7; size =   3064320; name = CD\DATA\RSC\GA2.RSC
+    file[]: crc = b5b692f6; size =     72192; name = CD\DATA\RSC\GA2LIPS.RSC
+    file[]: crc = 40e16b07; size =   3470848; name = CD\DATA\RSC\GA2SPCH.RSC
+    file[]: crc = 670daec9; size =    541184; name = CD\DATA\RSC\GA2TUNZ1.RSC
+    file[]: crc = 9076e3cb; size =    619008; name = CD\DATA\RSC\GA2TUNZ2.RSC
+    file[]: crc = 8e04e14a; size =    707072; name = CD\DATA\RSC\GA2TUNZ3.RSC
+    file[]: crc = a37a3fe3; size =   2271232; name = CD\DATA\RSC\GA3.RSC
+    file[]: crc = 397f3a00; size =    356352; name = CD\DATA\RSC\GA3LIPS.RSC
+    file[]: crc = 0f29ede2; size =  11245568; name = CD\DATA\RSC\GA3SPCH1.RSC
+    file[]: crc = 1373bb23; size =   8444928; name = CD\DATA\RSC\GA3SPCH2.RSC
+    file[]: crc = 020cde79; size =    707072; name = CD\DATA\RSC\GA3TUNZ1.RSC
+    file[]: crc = 18b56fbc; size =    663040; name = CD\DATA\RSC\GA3TUNZ2.RSC
+    file[]: crc = 39bfde13; size =    624640; name = CD\DATA\RSC\GA3TUNZ3.RSC
+    file[]: crc = 27c8185f; size =    841728; name = CD\DATA\RSC\HO.RSC
+    file[]: crc = 43fa461e; size =     60416; name = CD\DATA\RSC\HOLIPS.RSC
+    file[]: crc = e4caef44; size =   3006464; name = CD\DATA\RSC\HOSPCH.RSC
+    file[]: crc = ff4dc900; size =   2749440; name = CD\DATA\RSC\MA1.RSC
+    file[]: crc = 9ad50826; size =     98816; name = CD\DATA\RSC\MA1LIPS.RSC
+    file[]: crc = b8547a50; size =   6167552; name = CD\DATA\RSC\MA1SPCH.RSC
+    file[]: crc = 917f853c; size =    697856; name = CD\DATA\RSC\MA1TUNZ1.RSC
+    file[]: crc = e6415a58; size =    663040; name = CD\DATA\RSC\MA1TUNZ2.RSC
+    file[]: crc = 2fc0de86; size =    741888; name = CD\DATA\RSC\MA1TUNZ3.RSC
+    file[]: crc = 7bc98354; size =   3681792; name = CD\DATA\RSC\MA2.RSC
+    file[]: crc = 6bb3727e; size =     86528; name = CD\DATA\RSC\MA2LIPS.RSC
+    file[]: crc = b1d917dc; size =   8646656; name = CD\DATA\RSC\MA2SPCH.RSC
+    file[]: crc = 24e3e7d2; size =    623616; name = CD\DATA\RSC\MA2TUNZ1.RSC
+    file[]: crc = 4019cf57; size =    663040; name = CD\DATA\RSC\MA2TUNZ2.RSC
+    file[]: crc = 53d94926; size =    869888; name = CD\DATA\RSC\MA2TUNZ3.RSC
+    file[]: crc = 814cc821; size =   1707520; name = CD\DATA\RSC\MA3.RSC
+    file[]: crc = d6b2fdaa; size =    212992; name = CD\DATA\RSC\MA3LIPS.RSC
+    file[]: crc = aef5ed38; size =   8987136; name = CD\DATA\RSC\MA3SPCH.RSC
+    file[]: crc = 739562ea; size =    731648; name = CD\DATA\RSC\MA3TUNZ1.RSC
+    file[]: crc = 794c55a8; size =    737792; name = CD\DATA\RSC\MA3TUNZ2.RSC
+    file[]: crc = 0afc4368; size =    731648; name = CD\DATA\RSC\MA3TUNZ3.RSC
+    file[]: crc = 3d1b5c0d; size =    519168; name = CD\DATA\RSC\MS.RSC
+    file[]: crc = 4904f7ad; size =   4941824; name = CD\DATA\RSC\MSSPCH.RSC
+    file[]: crc = 9f9928d3; size =    568320; name = CD\DATA\RSC\MSTUNZ1.RSC
+    file[]: crc = 088ff2b7; size =    664064; name = CD\DATA\RSC\MSTUNZ2.RSC
+    file[]: crc = a0f87917; size =    678912; name = CD\DATA\RSC\MSTUNZ3.RSC
+    file[]: crc = d358ff28; size =    636928; name = CD\DATA\RSC\MSTUNZ4.RSC
+    file[]: crc = fd2c7e44; size =    636416; name = CD\DATA\RSC\MSTUNZ5.RSC
+    file[]: crc = 8e7dad4e; size =    707072; name = CD\DATA\RSC\MSTUNZ6.RSC
+    file[]: crc = e8b73a27; size =    212992; name = CD\DATA\RSC\OLDFSH.RSC
+    file[]: crc = 1d4bd503; size =    165888; name = CD\DATA\RSC\PEN.RSC
+    file[]: crc = 81f3c50a; size =    214528; name = CD\DATA\RSC\PENLIPS.RSC
+    file[]: crc = d7026c4a; size =   2437632; name = CD\DATA\RSC\PENSPCH.RSC
+    file[]: crc = c7e6869a; size =    475648; name = CD\DATA\RSC\POP.RSC
+    file[]: crc = 98113bf2; size =    425472; name = CD\DATA\RSC\POPSPCH.RSC
+    file[]: crc = 296e54e8; size =    366080; name = CD\DATA\RSC\SI.RSC
+    file[]: crc = ff2cbf67; size =    645120; name = CD\DATA\RSC\SISPCH.RSC
+    file[]: crc = 2e32f79b; size =     84824; name = CD\DATA\SCRIPTS\AA1.MPS
+    file[]: crc = d7b7ae48; size =     90906; name = CD\DATA\SCRIPTS\AA2.MPS
+    file[]: crc = 60962d8b; size =     83143; name = CD\DATA\SCRIPTS\COOKOUT.MPS
+    file[]: crc = 64e2ec74; size =     53868; name = CD\DATA\SCRIPTS\CS.MPS
+    file[]: crc = bf8e3504; size =     58613; name = CD\DATA\SCRIPTS\FISHING.MPS
+    file[]: crc = bcc50017; size =    126315; name = CD\DATA\SCRIPTS\GA1.MPS
+    file[]: crc = 6f79e987; size =     92586; name = CD\DATA\SCRIPTS\GA2.MPS
+    file[]: crc = e4940996; size =    113717; name = CD\DATA\SCRIPTS\MA1.MPS
+    file[]: crc = 0623f934; size =    206924; name = CD\DATA\SCRIPTS\MA3.MPS
+    file[]: crc = e3430425; size =     65571; name = CD\DATA\SCRIPTS\MAIN.MPS
+    file[]: crc = 38bd598e; size =     22862; name = CD\DATA\SCRIPTS\SCORE.MPS
+    file[]: crc = 0932d833; size =     22146; name = CD\DATA\SCRIPTS\SIGNIN.MPS
+    file[]: crc = 4dd6e50f; size =     56247; name = CD\DATA\SCRIPTS\SONG.MPS
+    file[]: crc = 78119c9e; size =      8612; name = CD\DATA\SCRIPTS\STARTUP.MPS
+    file[]: crc = 47f759d8; size =     75438; name = CD\DATA\SCRIPTS\TIMEKEEP.MPS
+    file[]: crc = e561fd06; size =   2121216; name = RSC\AA1.RSC
+    file[]: crc = f70b8e92; size =    920576; name = RSC\COM.RSC
+    file[]: crc = 8cb9b46a; size =   2726912; name = RSC\COMSPCH.RSC
+    file[]: crc = 8f914b69; size =    626176; name = RSC\COMTUNZ.RSC
+    file[]: crc = 3d1b5c0d; size =    519168; name = RSC\MS.RSC
+    file[]: crc = 4904f7ad; size =   4941824; name = RSC\MSSPCH.RSC
+    file[]: crc = d7026c4a; size =   2437632; name = RSC\PENSPCH.RSC
+    file[]: crc = c7e6869a; size =    475648; name = RSC\POP.RSC
+    file[]: crc = 98113bf2; size =    425472; name = RSC\POPSPCH.RSC
+    file[]: crc = 2e32f79b; size =     84824; name = SCRIPTS\AA1.MPS
+    file[]: crc = d7b7ae48; size =     90906; name = SCRIPTS\AA2.MPS
+    file[]: crc = 60962d8b; size =     83143; name = SCRIPTS\COOKOUT.MPS
+    file[]: crc = 64e2ec74; size =     53868; name = SCRIPTS\CS.MPS
+    file[]: crc = bf8e3504; size =     58613; name = SCRIPTS\FISHING.MPS
+    file[]: crc = bcc50017; size =    126315; name = SCRIPTS\GA1.MPS
+    file[]: crc = 6f79e987; size =     92586; name = SCRIPTS\GA2.MPS
+    file[]: crc = e4940996; size =    113717; name = SCRIPTS\MA1.MPS
+    file[]: crc = 0623f934; size =    206924; name = SCRIPTS\MA3.MPS
+    file[]: crc = e3430425; size =     65571; name = SCRIPTS\MAIN.MPS
+    file[]: crc = 38bd598e; size =     22862; name = SCRIPTS\SCORE.MPS
+    file[]: crc = 0932d833; size =     22146; name = SCRIPTS\SIGNIN.MPS
+    file[]: crc = 4dd6e50f; size =     56247; name = SCRIPTS\SONG.MPS
+    file[]: crc = 78119c9e; size =      8612; name = SCRIPTS\STARTUP.MPS
+    file[]: crc = 47f759d8; size =     75438; name = SCRIPTS\TIMEKEEP.MPS
+    
+    CDLABEL = RRM6_9CD
+    MATH69_CONTENTS =  [[[$(CRLF)
+[Reader Rabbit's Math 6-9 - CD]
+CDDrive=D:\Data\
+UseDirectDraw=1
+DisplayFullScreen=1
+]]]
+    TLCAPPS16_CONTENTS = [[[$(CRLF)
+[Reader Rabbit's Math Ages 6-9]
+Path=$(rootpath)\rrm69_16.exe
+]]]
+    TLCAPPS32_CONTENTS = [[[$(CRLF)
+[Reader Rabbit's Math Ages 6-9]
+Path=$(rootpath)\rrm69_32.exe
+]]]
+end
+
+//
+// English CD, Personalized Math 6-9 (1999)
+//
+game[pc-cd-en-2.0]:
+    name = English (US) CD, Version 2.0
+    anchorfile = RRM69_32.EXE
+    anchordepth = 3
+    rootpath = C:\Program Files\The Learning Company\Reader Rabbit Math Ages 6-9
+    launch = "$(rootpath)\rrm69_32.exe"
+    
+    file[]: crc = 8175363e; size =    577536; name = Assess.exe
+    file[]: crc = 3e7b3db7; size =      3659; name = PLSDescriptor.txt
+    file[]: crc = 59bfcafa; size =    757760; name = RRM69_32.exe
+    file[]: crc = d8bd604e; size =     71680; name = SMACKW32.DLL
+    file[]: crc = 283b674f; size =   2550256; name = CD\Data\Movies\AA1INT.SMK
+    file[]: crc = 06b24c6e; size =   1427652; name = CD\Data\Movies\AA1RET1.SMK
+    file[]: crc = dde52160; size =    592408; name = CD\Data\Movies\AA1RET2.SMK
+    file[]: crc = 52c53261; size =   2276820; name = CD\Data\Movies\AA1RET3.SMK
+    file[]: crc = ea45678f; size =   2377860; name = CD\Data\Movies\AA2INT.SMK
+    file[]: crc = cea8ff1b; size =    318448; name = CD\Data\Movies\AA2RET1.SMK
+    file[]: crc = 64373f68; size =    520960; name = CD\Data\Movies\AA2RET2.SMK
+    file[]: crc = aac52c1f; size =    716252; name = CD\Data\Movies\AA2RET3.SMK
+    file[]: crc = 84301c7e; size =   2170516; name = CD\Data\Movies\AA3INT.SMK
+    file[]: crc = 9a7bf208; size =   1011676; name = CD\Data\Movies\AA3RET1.SMK
+    file[]: crc = c900695e; size =    752572; name = CD\Data\Movies\AA3RET2.SMK
+    file[]: crc = eeaa6c22; size =   1003504; name = CD\Data\Movies\AA3RET3.SMK
+    file[]: crc = f06bf3b6; size =   5095744; name = CD\Data\Movies\GA1INT.SMK
+    file[]: crc = 692caa16; size =   4136892; name = CD\Data\Movies\GA1RET1.SMK
+    file[]: crc = 9ac0ae0b; size =   4209628; name = CD\Data\Movies\GA1RET2.SMK
+    file[]: crc = 274c477a; size =   6903544; name = CD\Data\Movies\GA1RET3.SMK
+    file[]: crc = a35a0c3e; size =   6755544; name = CD\Data\Movies\GA2INT.SMK
+    file[]: crc = 17ffa6bf; size =   1341244; name = CD\Data\Movies\GA2RET1.SMK
+    file[]: crc = 0eecdec7; size =   1695308; name = CD\Data\Movies\GA2RET2.SMK
+    file[]: crc = 07c9c0fe; size =   3069552; name = CD\Data\Movies\GA2RET3.SMK
+    file[]: crc = 7783be28; size =    968404; name = CD\Data\Movies\GA3INT.SMK
+    file[]: crc = 4c835d94; size =    474036; name = CD\Data\Movies\GA3RET1.SMK
+    file[]: crc = bf9cc940; size =    515364; name = CD\Data\Movies\GA3RET2.SMK
+    file[]: crc = 39ee6b15; size =   1514852; name = CD\Data\Movies\GA3RET3.SMK
+    file[]: crc = 9afeb663; size =   1884384; name = CD\Data\Movies\MA1INT.SMK
+    file[]: crc = f02df222; size =    653840; name = CD\Data\Movies\MA1RET1.SMK
+    file[]: crc = 8986d373; size =    602216; name = CD\Data\Movies\MA1RET2.SMK
+    file[]: crc = f591ee1b; size =    777440; name = CD\Data\Movies\MA1RET3.SMK
+    file[]: crc = 9042461c; size =   1664592; name = CD\Data\Movies\MA2INT.SMK
+    file[]: crc = fa798590; size =    559016; name = CD\Data\Movies\MA2RET1.SMK
+    file[]: crc = d5ecbaba; size =    888668; name = CD\Data\Movies\MA2RET2.SMK
+    file[]: crc = 96c61ee6; size =    370808; name = CD\Data\Movies\MA2RET3.SMK
+    file[]: crc = 027819b3; size =   2772548; name = CD\Data\Movies\MA3INT.SMK
+    file[]: crc = 8c89e534; size =   1217648; name = CD\Data\Movies\MA3RET1.SMK
+    file[]: crc = 11d5783c; size =    199804; name = CD\Data\Movies\MA3RET2.SMK
+    file[]: crc = fa13c25b; size =   1663768; name = CD\Data\Movies\MA3RET3.SMK
+    file[]: crc = 0e2b6c7c; size =    428628; name = CD\Data\Movies\MvAdapt.smk
+    file[]: crc = a4ed3224; size =  28413852; name = CD\Data\Movies\MVCLOSE1.SMK
+    file[]: crc = 64346374; size =  28573668; name = CD\Data\Movies\MVCLOSE2.SMK
+    file[]: crc = de61b339; size =  28571700; name = CD\Data\Movies\MVCLOSE3.SMK
+    file[]: crc = d3a05437; size =   3296408; name = CD\Data\Movies\MVCUT1.SMK
+    file[]: crc = bde6fed2; size =   2549552; name = CD\Data\Movies\MVCUT10.SMK
+    file[]: crc = 70ff585e; size =   3541872; name = CD\Data\Movies\MVCUT11.SMK
+    file[]: crc = 79c23df4; size =   5034660; name = CD\Data\Movies\MVCUT2.SMK
+    file[]: crc = 68c22f1c; size =   3736132; name = CD\Data\Movies\MVCUT3.SMK
+    file[]: crc = 07b90657; size =   1584548; name = CD\Data\Movies\MVCUT4.SMK
+    file[]: crc = a0c5f03c; size =   2555816; name = CD\Data\Movies\MVCUT5.SMK
+    file[]: crc = 826fae66; size =   2763876; name = CD\Data\Movies\MVCUT6.SMK
+    file[]: crc = 2a235f97; size =   3469040; name = CD\Data\Movies\MVCUT7.SMK
+    file[]: crc = e42b8dcc; size =   3012236; name = CD\Data\Movies\MVCUT8.SMK
+    file[]: crc = ecf5aa59; size =   2958188; name = CD\Data\Movies\MVCUT9.SMK
+    file[]: crc = d44f5295; size =     71060; name = CD\Data\Movies\MVFade.smk
+    file[]: crc = ff65518a; size =   9973756; name = CD\Data\Movies\OPENING.SMK
+    file[]: crc = da3febd4; size =  10667252; name = CD\Data\Movies\OPENING2.SMK
+    file[]: crc = a541799f; size =   1490616; name = CD\Data\Movies\Prodlogo.smk
+    file[]: crc = 5a59ff87; size =   2505536; name = CD\Data\Movies\SONGCHEE.SMK
+    file[]: crc = 264f9758; size =   1896268; name = CD\Data\Movies\SONGPEAR.SMK
+    file[]: crc = 11cfd472; size =   1783160; name = CD\Data\Movies\SONGRATB.SMK
+    file[]: crc = c0cf5b6b; size =   2144232; name = CD\Data\Movies\SONGRILE.SMK
+    file[]: crc = 6ebfd757; size =   2529844; name = CD\Data\Movies\SONGVERM.SMK
+    file[]: crc = f61f6614; size =    152596; name = CD\Data\Movies\TLCLOGO.SMK
+    file[]: crc = 69bbfcd4; size =    415644; name = CD\Data\PRsc\adaptin.smk
+    file[]: crc = 03efb0ec; size =   4816640; name = CD\Data\PRsc\RRM2PAA.rsc
+    file[]: crc = 0ecd1894; size =   3818624; name = CD\Data\PRsc\RRM2PAZ.rsc
+    file[]: crc = 00000000; size =         0; name = CD\Data\PRsrc\RRM2PAA.rsrc
+    file[]: crc = 00000000; size =         0; name = CD\Data\PRsrc\RRM2PAZ.rsrc
+    file[]: crc = 190c08f7; size =      3192; name = CD\Data\PScripts\exit.mps
+    file[]: crc = f0abba2f; size =       750; name = CD\Data\PScripts\mthRacer.mps
+    file[]: crc = 4a8439db; size =     25004; name = CD\Data\PScripts\PSIGNIN.MPS
+    file[]: crc = f539d9ea; size =      3617; name = CD\Data\PScripts\rconfirm.mps
+    file[]: crc = 89df0a7e; size =      1368; name = CD\Data\PScripts\start.mps
+    file[]: crc = c3b2b294; size =      1693; name = CD\Data\PScripts\welcome.mps
+    file[]: crc = e561fd06; size =   2121216; name = CD\Data\RSC\AA1.RSC
+    file[]: crc = e047fe7c; size =    138752; name = CD\Data\RSC\AA1LIPS.RSC
+    file[]: crc = 94fa9713; size =  11185664; name = CD\Data\RSC\AA1SPCH.RSC
+    file[]: crc = 21b75c3a; size =    589312; name = CD\Data\RSC\AA1TUNZ1.RSC
+    file[]: crc = 485e4a9b; size =    663040; name = CD\Data\RSC\AA1TUNZ2.RSC
+    file[]: crc = bb90b2dc; size =    724992; name = CD\Data\RSC\AA1TUNZ3.RSC
+    file[]: crc = b2245a7a; size =   1105408; name = CD\Data\RSC\AA2.RSC
+    file[]: crc = f2ed02ca; size =     98816; name = CD\Data\RSC\AA2LIPS.RSC
+    file[]: crc = 723ef502; size =   5458432; name = CD\Data\RSC\AA2SPCH.RSC
+    file[]: crc = 97cefcc5; size =    662528; name = CD\Data\RSC\AA2TUNZ1.RSC
+    file[]: crc = 596d5513; size =    530432; name = CD\Data\RSC\AA2TUNZ2.RSC
+    file[]: crc = 4b57484d; size =    642560; name = CD\Data\RSC\AA2TUNZ3.RSC
+    file[]: crc = 10394c6d; size =   1391616; name = CD\Data\RSC\Aa3.rsc
+    file[]: crc = fcaa3090; size =     69632; name = CD\Data\RSC\Aa3lips.rsc
+    file[]: crc = 0db57f17; size =   4406272; name = CD\Data\RSC\Aa3spch.rsc
+    file[]: crc = 6f103dfc; size =    684032; name = CD\Data\RSC\AA3TUNZ1.RSC
+    file[]: crc = 6832d75b; size =    599040; name = CD\Data\RSC\AA3TUNZ2.RSC
+    file[]: crc = 50fe5d4d; size =    678912; name = CD\Data\RSC\AA3TUNZ3.RSC
+    file[]: crc = f70b8e92; size =    920576; name = CD\Data\RSC\COM.RSC
+    file[]: crc = 9d063d52; size =    179200; name = CD\Data\RSC\COMLIPS.RSC
+    file[]: crc = 8cb9b46a; size =   2726912; name = CD\Data\RSC\COMSPCH.RSC
+    file[]: crc = 8f914b69; size =    626176; name = CD\Data\RSC\COMTUNZ.RSC
+    file[]: crc = 0dffd18a; size =   1286656; name = CD\Data\RSC\CS.RSC
+    file[]: crc = 4737b79d; size =     61440; name = CD\Data\RSC\CSLIPS.RSC
+    file[]: crc = 3713466d; size =  12873216; name = CD\Data\RSC\CSSPCH.RSC
+    file[]: crc = 607b482a; size =     46442; name = CD\Data\RSC\CURSORS.RSC
+    file[]: crc = 7342cb20; size =   2187776; name = CD\Data\RSC\GA1.RSC
+    file[]: crc = f260e3ab; size =     79360; name = CD\Data\RSC\GA1LIPS.RSC
+    file[]: crc = 9d248566; size =   4784128; name = CD\Data\RSC\GA1SPCH.RSC
+    file[]: crc = 189c92f7; size =    589312; name = CD\Data\RSC\GA1TUNZ1.RSC
+    file[]: crc = 82f5e670; size =    618496; name = CD\Data\RSC\GA1TUNZ2.RSC
+    file[]: crc = 0385cc07; size =    714240; name = CD\Data\RSC\GA1TUNZ3.RSC
+    file[]: crc = 94bd90b7; size =   3064320; name = CD\Data\RSC\GA2.RSC
+    file[]: crc = b5b692f6; size =     72192; name = CD\Data\RSC\GA2LIPS.RSC
+    file[]: crc = 40e16b07; size =   3470848; name = CD\Data\RSC\GA2SPCH.RSC
+    file[]: crc = 670daec9; size =    541184; name = CD\Data\RSC\GA2TUNZ1.RSC
+    file[]: crc = 9076e3cb; size =    619008; name = CD\Data\RSC\GA2TUNZ2.RSC
+    file[]: crc = 8e04e14a; size =    707072; name = CD\Data\RSC\GA2TUNZ3.RSC
+    file[]: crc = a37a3fe3; size =   2271232; name = CD\Data\RSC\GA3.RSC
+    file[]: crc = 397f3a00; size =    356352; name = CD\Data\RSC\GA3LIPS.RSC
+    file[]: crc = 0f29ede2; size =  11245568; name = CD\Data\RSC\GA3SPCH1.RSC
+    file[]: crc = 1373bb23; size =   8444928; name = CD\Data\RSC\GA3SPCH2.RSC
+    file[]: crc = 020cde79; size =    707072; name = CD\Data\RSC\GA3TUNZ1.RSC
+    file[]: crc = 18b56fbc; size =    663040; name = CD\Data\RSC\GA3TUNZ2.RSC
+    file[]: crc = 39bfde13; size =    624640; name = CD\Data\RSC\GA3TUNZ3.RSC
+    file[]: crc = 27c8185f; size =    841728; name = CD\Data\RSC\HO.RSC
+    file[]: crc = 43fa461e; size =     60416; name = CD\Data\RSC\HOLIPS.RSC
+    file[]: crc = e4caef44; size =   3006464; name = CD\Data\RSC\HOSPCH.RSC
+    file[]: crc = ff4dc900; size =   2749440; name = CD\Data\RSC\MA1.RSC
+    file[]: crc = 9ad50826; size =     98816; name = CD\Data\RSC\MA1LIPS.RSC
+    file[]: crc = b8547a50; size =   6167552; name = CD\Data\RSC\MA1SPCH.RSC
+    file[]: crc = 917f853c; size =    697856; name = CD\Data\RSC\MA1TUNZ1.RSC
+    file[]: crc = e6415a58; size =    663040; name = CD\Data\RSC\MA1TUNZ2.RSC
+    file[]: crc = 2fc0de86; size =    741888; name = CD\Data\RSC\MA1TUNZ3.RSC
+    file[]: crc = 7bc98354; size =   3681792; name = CD\Data\RSC\MA2.RSC
+    file[]: crc = 6bb3727e; size =     86528; name = CD\Data\RSC\MA2LIPS.RSC
+    file[]: crc = b1d917dc; size =   8646656; name = CD\Data\RSC\MA2SPCH.RSC
+    file[]: crc = 24e3e7d2; size =    623616; name = CD\Data\RSC\MA2TUNZ1.RSC
+    file[]: crc = 4019cf57; size =    663040; name = CD\Data\RSC\MA2TUNZ2.RSC
+    file[]: crc = 53d94926; size =    869888; name = CD\Data\RSC\MA2TUNZ3.RSC
+    file[]: crc = 814cc821; size =   1707520; name = CD\Data\RSC\MA3.RSC
+    file[]: crc = d6b2fdaa; size =    212992; name = CD\Data\RSC\MA3LIPS.RSC
+    file[]: crc = aef5ed38; size =   8987136; name = CD\Data\RSC\MA3SPCH.RSC
+    file[]: crc = 739562ea; size =    731648; name = CD\Data\RSC\MA3TUNZ1.RSC
+    file[]: crc = 794c55a8; size =    737792; name = CD\Data\RSC\MA3TUNZ2.RSC
+    file[]: crc = 0afc4368; size =    731648; name = CD\Data\RSC\MA3TUNZ3.RSC
+    file[]: crc = 3d1b5c0d; size =    519168; name = CD\Data\RSC\MS.RSC
+    file[]: crc = 4904f7ad; size =   4941824; name = CD\Data\RSC\MSSPCH.RSC
+    file[]: crc = 9f9928d3; size =    568320; name = CD\Data\RSC\MSTUNZ1.RSC
+    file[]: crc = 088ff2b7; size =    664064; name = CD\Data\RSC\MSTUNZ2.RSC
+    file[]: crc = a0f87917; size =    678912; name = CD\Data\RSC\MSTUNZ3.RSC
+    file[]: crc = d358ff28; size =    636928; name = CD\Data\RSC\MSTUNZ4.RSC
+    file[]: crc = fd2c7e44; size =    636416; name = CD\Data\RSC\MSTUNZ5.RSC
+    file[]: crc = 8e7dad4e; size =    707072; name = CD\Data\RSC\MSTUNZ6.RSC
+    file[]: crc = e8b73a27; size =    212992; name = CD\Data\RSC\OLDFSH.RSC
+    file[]: crc = 1d4bd503; size =    165888; name = CD\Data\RSC\PEN.RSC
+    file[]: crc = 81f3c50a; size =    214528; name = CD\Data\RSC\PENLIPS.RSC
+    file[]: crc = d7026c4a; size =   2437632; name = CD\Data\RSC\PENSPCH.RSC
+    file[]: crc = 47a7ff15; size =    496512; name = CD\Data\RSC\POP.rsc
+    file[]: crc = 98113bf2; size =    425472; name = CD\Data\RSC\POPSPCH.RSC
+    file[]: crc = 296e54e8; size =    366080; name = CD\Data\RSC\SI.RSC
+    file[]: crc = ff2cbf67; size =    645120; name = CD\Data\RSC\SISPCH.RSC
+    file[]: crc = 123f43f2; size =     86664; name = CD\Data\Scripts\Aa1.mps
+    file[]: crc = 01918627; size =     92469; name = CD\Data\Scripts\Aa2.mps
+    file[]: crc = e6e97a29; size =     86843; name = CD\Data\Scripts\Cookout.mps
+    file[]: crc = 36e38f53; size =     55468; name = CD\Data\Scripts\CS.MPS
+    file[]: crc = f4ae760a; size =     62261; name = CD\Data\Scripts\Fishing.mps
+    file[]: crc = 9544528c; size =    127869; name = CD\Data\Scripts\GA1.MPS
+    file[]: crc = de0667e3; size =     94226; name = CD\Data\Scripts\GA2.MPS
+    file[]: crc = 2e400a66; size =    115315; name = CD\Data\Scripts\MA1.MPS
+    file[]: crc = afc87f5f; size =    208563; name = CD\Data\Scripts\Ma3.mps
+    file[]: crc = 14bfb273; size =     67169; name = CD\Data\Scripts\Main.mps
+    file[]: crc = 5463d6e9; size =     23408; name = CD\Data\Scripts\SCORE.MPS
+    file[]: crc = b27dd4e4; size =     22476; name = CD\Data\Scripts\Signin.mps
+    file[]: crc = 68d35368; size =     57840; name = CD\Data\Scripts\SONG.MPS
+    file[]: crc = 61cc9594; size =     12010; name = CD\Data\Scripts\Startup.mps
+    file[]: crc = 36665a5c; size =     79088; name = CD\Data\Scripts\Timekeep.mps
+    file[]: crc = 8c266942; size =    147456; name = CD\Install\PLS\PLUGIN\RRM69.pls
+    file[]: crc = 00000000; size =         0; name = CD\Install\TLC\378475.CD1
+    
+    CDLABEL = RRMath69
+    MATH69_CONTENTS =  [[[$(CRLF)
+[Reader Rabbit's Math 6-9 - CD]
+CDDrive=D:\Data\
+UseDirectDraw=1
+DisplayFullScreen=1
+]]]
+    TLCAPPS16_CONTENTS = ""
+    TLCAPPS32_CONTENTS = [[[$(CRLF)
+[Reader Rabbit's Math Ages 6-9]
+Path=$(rootpath)\rrm69_32.exe
+]]]
+end
+
+//
+// English (UK) CD, Version 1.0
+//
+game[pc-cd-en-uk]:
+    name = English (UK) CD, Version 1.0
+    anchorfile = RRM69_32.EXE
+    anchordepth = 3
+    launch = "$(rootpath)\RRM69_32.exe"
+    
+    file[]: crc = a61c1c05; size =       766; name = Rrm6-9.ico
+    file[]: crc = e90c1fec; size =    799744; name = RRM69_32.EXE
+    file[]: crc = a61c1c05; size =       766; name = RRM6_9.ICO
+    file[]: crc = a61c1c05; size =       766; name = RRMaths.ico
+    file[]: crc = d8bd604e; size =     71680; name = Smackw32.dll
+    file[]: crc = 68cf34d6; size =   2992156; name = CD\DATA\MOVIES\AA1INT.SMK
+    file[]: crc = 9f128c06; size =   2588172; name = CD\DATA\MOVIES\AA1RET1.SMK
+    file[]: crc = 93c00d62; size =    779004; name = CD\DATA\MOVIES\AA1RET2.SMK
+    file[]: crc = d850277c; size =   2638976; name = CD\DATA\MOVIES\AA1RET3.SMK
+    file[]: crc = 54a478cd; size =   2921236; name = CD\DATA\MOVIES\AA2INT.SMK
+    file[]: crc = 52e9366a; size =    599216; name = CD\DATA\MOVIES\AA2RET1.SMK
+    file[]: crc = 26676a84; size =    779316; name = CD\DATA\MOVIES\AA2RET2.SMK
+    file[]: crc = 922e46da; size =    968368; name = CD\DATA\MOVIES\AA2RET3.SMK
+    file[]: crc = 5a915415; size =   2620880; name = CD\DATA\MOVIES\AA3INT.SMK
+    file[]: crc = 11a9370b; size =   1380408; name = CD\DATA\MOVIES\AA3RET1.SMK
+    file[]: crc = 5922af20; size =    999520; name = CD\DATA\MOVIES\AA3RET2.SMK
+    file[]: crc = f32b4750; size =   1361392; name = CD\DATA\MOVIES\AA3RET3.SMK
+    file[]: crc = fe26a02f; size =  19895412; name = CD\DATA\MOVIES\Bmm.smk
+    file[]: crc = f6288fd1; size =      5612; name = CD\DATA\MOVIES\FINDER.DAT
+    file[]: crc = c80accd1; size =   4249836; name = CD\DATA\MOVIES\GA1INT.SMK
+    file[]: crc = caffeffb; size =   3412868; name = CD\DATA\MOVIES\GA1RET1.SMK
+    file[]: crc = db82dbc0; size =   3574944; name = CD\DATA\MOVIES\GA1RET2.SMK
+    file[]: crc = 58e9f53e; size =   4516864; name = CD\DATA\MOVIES\GA1RET3.SMK
+    file[]: crc = 47198f11; size =   6371084; name = CD\DATA\MOVIES\GA2INT.SMK
+    file[]: crc = b1ae77dd; size =   1719800; name = CD\DATA\MOVIES\GA2RET1.SMK
+    file[]: crc = ec9735e9; size =   1388316; name = CD\DATA\MOVIES\GA2RET2.SMK
+    file[]: crc = fd57d5f9; size =   2470044; name = CD\DATA\MOVIES\GA2RET3.SMK
+    file[]: crc = d17d2a86; size =   1884828; name = CD\DATA\MOVIES\GA3INT.SMK
+    file[]: crc = 5116dce8; size =    700648; name = CD\DATA\MOVIES\GA3RET1.SMK
+    file[]: crc = 67df0d9c; size =    847816; name = CD\DATA\MOVIES\GA3RET2.SMK
+    file[]: crc = 6676f6a4; size =   2346236; name = CD\DATA\MOVIES\GA3RET3.SMK
+    file[]: crc = 2afef616; size =   2210232; name = CD\DATA\MOVIES\MA1INT.SMK
+    file[]: crc = 3facd20e; size =    850308; name = CD\DATA\MOVIES\MA1RET1.SMK
+    file[]: crc = f2f32690; size =    828592; name = CD\DATA\MOVIES\MA1RET2.SMK
+    file[]: crc = 6a42e1bd; size =   1035820; name = CD\DATA\MOVIES\MA1RET3.SMK
+    file[]: crc = 5c934b63; size =   1716716; name = CD\DATA\MOVIES\MA2INT.SMK
+    file[]: crc = fa798590; size =    559016; name = CD\DATA\MOVIES\MA2RET1.SMK
+    file[]: crc = 326ec9ae; size =    935264; name = CD\DATA\MOVIES\MA2RET2.SMK
+    file[]: crc = 0aab8a6c; size =   1184312; name = CD\DATA\MOVIES\MA2RET3.SMK
+    file[]: crc = 1b2a527b; size =   3561552; name = CD\DATA\MOVIES\MA3INT.SMK
+    file[]: crc = e3258bc3; size =   1484024; name = CD\DATA\MOVIES\MA3RET1.SMK
+    file[]: crc = 0ed47ce9; size =    454924; name = CD\DATA\MOVIES\MA3RET2.SMK
+    file[]: crc = 00dd0001; size =   2036800; name = CD\DATA\MOVIES\MA3RET3.SMK
+    file[]: crc = 59a5ec37; size =  30230956; name = CD\DATA\MOVIES\MVCLOSE1.SMK
+    file[]: crc = 82d372ec; size =  30224580; name = CD\DATA\MOVIES\MVCLOSE2.SMK
+    file[]: crc = d0d8123a; size =  30227452; name = CD\DATA\MOVIES\MVCLOSE3.SMK
+    file[]: crc = adae9439; size =   4660464; name = CD\DATA\MOVIES\MVCUT1.SMK
+    file[]: crc = b586d77d; size =   3642812; name = CD\DATA\MOVIES\MVCUT10.SMK
+    file[]: crc = fb126428; size =   4734324; name = CD\DATA\MOVIES\MVCUT11.SMK
+    file[]: crc = ceb10828; size =   5053464; name = CD\DATA\MOVIES\MVCUT2.SMK
+    file[]: crc = 32567de8; size =   5524276; name = CD\DATA\MOVIES\MVCUT3.SMK
+    file[]: crc = e48724b2; size =   2138568; name = CD\DATA\MOVIES\MVCUT4.SMK
+    file[]: crc = a1c7a125; size =   3835260; name = CD\DATA\MOVIES\MVCUT5.SMK
+    file[]: crc = 3c0c71c7; size =   3766164; name = CD\DATA\MOVIES\MVCUT6.SMK
+    file[]: crc = 13c0094c; size =   4381532; name = CD\DATA\MOVIES\MVCUT7.SMK
+    file[]: crc = 798b7762; size =   5543496; name = CD\DATA\MOVIES\MVCUT8.SMK
+    file[]: crc = 810356e4; size =   4392524; name = CD\DATA\MOVIES\MVCUT9.SMK
+    file[]: crc = 80292510; size =  10687272; name = CD\DATA\MOVIES\OPENING.SMK
+    file[]: crc = e34b80ca; size =   9685432; name = CD\DATA\MOVIES\OPENING2.SMK
+    file[]: crc = 83dde86c; size =   1376200; name = CD\DATA\MOVIES\PRODLOGO.SMK
+    file[]: crc = d14a0571; size =   6822496; name = CD\DATA\MOVIES\SONGCHEE.SMK
+    file[]: crc = 55ab3c78; size =   5282976; name = CD\DATA\MOVIES\SONGPEAR.SMK
+    file[]: crc = 48760205; size =   6082176; name = CD\DATA\MOVIES\SONGRATB.SMK
+    file[]: crc = 0a84b204; size =   6689808; name = CD\DATA\MOVIES\SONGRILE.SMK
+    file[]: crc = 0351e522; size =   6514316; name = CD\DATA\MOVIES\SONGVERM.SMK
+    file[]: crc = 657eb469; size =    155612; name = CD\DATA\MOVIES\TLClogo.smk
+    file[]: crc = e15be80c; size =      8834; name = CD\DATA\MOVIES\WS_FTP.LOG
+    file[]: crc = 9586cf8a; size =   2180096; name = CD\DATA\Rsc\AA1.rsc
+    file[]: crc = ef4bde15; size =    144384; name = CD\DATA\Rsc\AA1LIPS.RSC
+    file[]: crc = ed9cfc25; size =  10514944; name = CD\DATA\Rsc\AA1SPCH.RSC
+    file[]: crc = 21b75c3a; size =    589312; name = CD\DATA\Rsc\AA1TUNZ1.RSC
+    file[]: crc = 485e4a9b; size =    663040; name = CD\DATA\Rsc\AA1TUNZ2.RSC
+    file[]: crc = bb90b2dc; size =    724992; name = CD\DATA\Rsc\AA1TUNZ3.RSC
+    file[]: crc = b2245a7a; size =   1105408; name = CD\DATA\Rsc\AA2.RSC
+    file[]: crc = f288bb0d; size =     98816; name = CD\DATA\Rsc\AA2LIPS.RSC
+    file[]: crc = 706ebf7e; size =   5748224; name = CD\DATA\Rsc\AA2SPCH.rsc
+    file[]: crc = 97cefcc5; size =    662528; name = CD\DATA\Rsc\AA2TUNZ1.RSC
+    file[]: crc = 596d5513; size =    530432; name = CD\DATA\Rsc\AA2TUNZ2.RSC
+    file[]: crc = 4b57484d; size =    642560; name = CD\DATA\Rsc\AA2TUNZ3.RSC
+    file[]: crc = 10394c6d; size =   1391616; name = CD\DATA\Rsc\AA3.RSC
+    file[]: crc = 30155ec2; size =     69120; name = CD\DATA\Rsc\AA3LIPS.RSC
+    file[]: crc = 5d4d91cd; size =   4763648; name = CD\DATA\Rsc\AA3SPCH.rsc
+    file[]: crc = 6f103dfc; size =    684032; name = CD\DATA\Rsc\AA3TUNZ1.RSC
+    file[]: crc = 6832d75b; size =    599040; name = CD\DATA\Rsc\AA3TUNZ2.RSC
+    file[]: crc = 50fe5d4d; size =    678912; name = CD\DATA\Rsc\AA3TUNZ3.RSC
+    file[]: crc = 7103e57c; size =   1093632; name = CD\DATA\Rsc\COM.rsc
+    file[]: crc = 72f8cdaa; size =    179200; name = CD\DATA\Rsc\COMLIPS.RSC
+    file[]: crc = d2ef869d; size =   2600960; name = CD\DATA\Rsc\COMSPCH.RSC
+    file[]: crc = 8f914b69; size =    626176; name = CD\DATA\Rsc\COMTUNZ.RSC
+    file[]: crc = 0dffd18a; size =   1286656; name = CD\DATA\Rsc\CS.RSC
+    file[]: crc = e533e0d8; size =     61440; name = CD\DATA\Rsc\CSLIPS.RSC
+    file[]: crc = f9eb9b67; size =  12215808; name = CD\DATA\Rsc\CSSPCH.RSC
+    file[]: crc = 607b482a; size =     46442; name = CD\DATA\Rsc\CURSORS.RSC
+    file[]: crc = be0d5d33; size =      1385; name = CD\DATA\Rsc\debug.txt
+    file[]: crc = 7ab95565; size =       828; name = CD\DATA\Rsc\FINDER.DAT
+    file[]: crc = 9fdb1441; size =   2281472; name = CD\DATA\Rsc\GA1.rsc
+    file[]: crc = d3e5ea34; size =     79360; name = CD\DATA\Rsc\GA1LIPS.RSC
+    file[]: crc = 73ee1ae3; size =   5074432; name = CD\DATA\Rsc\GA1SPCH.RSC
+    file[]: crc = 189c92f7; size =    589312; name = CD\DATA\Rsc\GA1TUNZ1.RSC
+    file[]: crc = 82f5e670; size =    618496; name = CD\DATA\Rsc\GA1TUNZ2.RSC
+    file[]: crc = 0385cc07; size =    714240; name = CD\DATA\Rsc\GA1TUNZ3.RSC
+    file[]: crc = 94bd90b7; size =   3064320; name = CD\DATA\Rsc\GA2.RSC
+    file[]: crc = 9bf69a36; size =     72192; name = CD\DATA\Rsc\GA2LIPS.RSC
+    file[]: crc = 69478eca; size =   3857408; name = CD\DATA\Rsc\GA2SPCH.rsc
+    file[]: crc = 670daec9; size =    541184; name = CD\DATA\Rsc\GA2TUNZ1.RSC
+    file[]: crc = 9076e3cb; size =    619008; name = CD\DATA\Rsc\GA2TUNZ2.RSC
+    file[]: crc = 8e04e14a; size =    707072; name = CD\DATA\Rsc\GA2TUNZ3.RSC
+    file[]: crc = a37a3fe3; size =   2271232; name = CD\DATA\Rsc\GA3.RSC
+    file[]: crc = 3b902e16; size =    357888; name = CD\DATA\Rsc\GA3LIPS.RSC
+    file[]: crc = 4733a750; size =  12584448; name = CD\DATA\Rsc\GA3SPCH1.RSC
+    file[]: crc = f84b3b78; size =   9133056; name = CD\DATA\Rsc\GA3SPCH2.RSC
+    file[]: crc = 020cde79; size =    707072; name = CD\DATA\Rsc\GA3TUNZ1.RSC
+    file[]: crc = 18b56fbc; size =    663040; name = CD\DATA\Rsc\GA3TUNZ2.RSC
+    file[]: crc = 39bfde13; size =    624640; name = CD\DATA\Rsc\GA3TUNZ3.RSC
+    file[]: crc = 27c8185f; size =    841728; name = CD\DATA\Rsc\HO.RSC
+    file[]: crc = eddee6b4; size =     60416; name = CD\DATA\Rsc\HOLIPS.RSC
+    file[]: crc = 1a18aba6; size =   3000320; name = CD\DATA\Rsc\HOSPCH.rsc
+    file[]: crc = ff4dc900; size =   2749440; name = CD\DATA\Rsc\MA1.RSC
+    file[]: crc = 3dea24a4; size =     99328; name = CD\DATA\Rsc\MA1LIPS.RSC
+    file[]: crc = f1f9f938; size =   6679040; name = CD\DATA\Rsc\Ma1spch.rsc
+    file[]: crc = 917f853c; size =    697856; name = CD\DATA\Rsc\MA1TUNZ1.RSC
+    file[]: crc = e6415a58; size =    663040; name = CD\DATA\Rsc\MA1TUNZ2.RSC
+    file[]: crc = 2fc0de86; size =    741888; name = CD\DATA\Rsc\MA1TUNZ3.RSC
+    file[]: crc = 7bc98354; size =   3681792; name = CD\DATA\Rsc\MA2.RSC
+    file[]: crc = 85683321; size =     86528; name = CD\DATA\Rsc\MA2LIPS.RSC
+    file[]: crc = b394a61e; size =   8999936; name = CD\DATA\Rsc\MA2SPCH.RSC
+    file[]: crc = 24e3e7d2; size =    623616; name = CD\DATA\Rsc\MA2TUNZ1.RSC
+    file[]: crc = 4019cf57; size =    663040; name = CD\DATA\Rsc\MA2TUNZ2.RSC
+    file[]: crc = 53d94926; size =    869888; name = CD\DATA\Rsc\MA2TUNZ3.RSC
+    file[]: crc = 814cc821; size =   1707520; name = CD\DATA\Rsc\MA3.RSC
+    file[]: crc = 26127c96; size =    212992; name = CD\DATA\Rsc\MA3LIPS.RSC
+    file[]: crc = 5358b069; size =   7798272; name = CD\DATA\Rsc\MA3SPCH.rsc
+    file[]: crc = 739562ea; size =    731648; name = CD\DATA\Rsc\MA3TUNZ1.RSC
+    file[]: crc = 794c55a8; size =    737792; name = CD\DATA\Rsc\MA3TUNZ2.RSC
+    file[]: crc = 0afc4368; size =    731648; name = CD\DATA\Rsc\MA3TUNZ3.RSC
+    file[]: crc = 043b73a1; size =    603648; name = CD\DATA\Rsc\MS.rsc
+    file[]: crc = f3fd0a76; size =      1024; name = CD\DATA\Rsc\MSLIPS.rsc
+    file[]: crc = da215729; size =   4553728; name = CD\DATA\Rsc\MSSPCH.RSC
+    file[]: crc = 9f9928d3; size =    568320; name = CD\DATA\Rsc\MSTUNZ1.RSC
+    file[]: crc = 088ff2b7; size =    664064; name = CD\DATA\Rsc\MSTUNZ2.RSC
+    file[]: crc = a0f87917; size =    678912; name = CD\DATA\Rsc\MSTUNZ3.RSC
+    file[]: crc = d358ff28; size =    636928; name = CD\DATA\Rsc\MSTUNZ4.RSC
+    file[]: crc = fd2c7e44; size =    636416; name = CD\DATA\Rsc\MSTUNZ5.RSC
+    file[]: crc = 8e7dad4e; size =    707072; name = CD\DATA\Rsc\MSTUNZ6.RSC
+    file[]: crc = e8b73a27; size =    212992; name = CD\DATA\Rsc\OLDFSH.RSC
+    file[]: crc = 1d4bd503; size =    165888; name = CD\DATA\Rsc\PEN.RSC
+    file[]: crc = 1816f4cc; size =    214528; name = CD\DATA\Rsc\PENLIPS.RSC
+    file[]: crc = 3df5fea0; size =   2437632; name = CD\DATA\Rsc\Penspch.rsc
+    file[]: crc = 822f6ddf; size =    519168; name = CD\DATA\Rsc\POP.rsc
+    file[]: crc = 98113bf2; size =    425472; name = CD\DATA\Rsc\POPSPCH.RSC
+    file[]: crc = 296e54e8; size =    366080; name = CD\DATA\Rsc\Si.rsc
+    file[]: crc = 00130afe; size =    595456; name = CD\DATA\Rsc\SISPCH.RSC
+    file[]: crc = 21d0b777; size =     85001; name = CD\DATA\SCRIPTS\AA1.MPS
+    file[]: crc = 6f8efdf6; size =     91083; name = CD\DATA\SCRIPTS\AA2.MPS
+    file[]: crc = 22debcc4; size =     83144; name = CD\DATA\SCRIPTS\COOKOUT.MPS
+    file[]: crc = c3db1536; size =     54045; name = CD\DATA\SCRIPTS\CS.MPS
+    file[]: crc = 6a33fc85; size =      1472; name = CD\DATA\SCRIPTS\FINDER.DAT
+    file[]: crc = 1482f99c; size =     58614; name = CD\DATA\SCRIPTS\FISHING.MPS
+    file[]: crc = de9adf60; size =    126502; name = CD\DATA\SCRIPTS\GA1.MPS
+    file[]: crc = 5424e21a; size =     92763; name = CD\DATA\SCRIPTS\GA2.MPS
+    file[]: crc = 83d7d5aa; size =    110249; name = CD\DATA\SCRIPTS\MA1.MPS
+    file[]: crc = 203604c6; size =    207148; name = CD\DATA\SCRIPTS\MA3.MPS
+    file[]: crc = 9ea57212; size =     65748; name = CD\DATA\SCRIPTS\MAIN.MPS
+    file[]: crc = d3595f8c; size =     23044; name = CD\DATA\SCRIPTS\SCORE.MPS
+    file[]: crc = 4096c756; size =     22551; name = CD\DATA\SCRIPTS\SIGNIN.mps
+    file[]: crc = ba793954; size =     56425; name = CD\DATA\SCRIPTS\SONG.MPS
+    file[]: crc = 1cb54923; size =      8789; name = CD\DATA\SCRIPTS\STARTUP.MPS
+    file[]: crc = 97246906; size =     76951; name = CD\DATA\SCRIPTS\TIMEKEEP.MPS
+    file[]: crc = 87a8d565; size =      2206; name = CD\DATA\SCRIPTS\WS_FTP.LOG
+    file[]: crc = 00000000; size =         0; name = CD\TLC\RBB3754B.cd
+    file[]: crc = 00000000; size =         0; name = CD\TLC\RIZ3754M.cd
+    file[]: crc = 9586cf8a; size =   2180096; name = rsc\AA1.rsc
+    file[]: crc = 7103e57c; size =   1093632; name = rsc\COM.rsc
+    file[]: crc = d2ef869d; size =   2600960; name = rsc\Comspch.rsc
+    file[]: crc = 8f914b69; size =    626176; name = rsc\Comtunz.rsc
+    file[]: crc = 043b73a1; size =    603648; name = rsc\MS.rsc
+    file[]: crc = da215729; size =   4553728; name = rsc\Msspch.rsc
+    file[]: crc = 3df5fea0; size =   2437632; name = rsc\Penspch.rsc
+    file[]: crc = 822f6ddf; size =    519168; name = rsc\POP.rsc
+    file[]: crc = e380f23c; size =    385024; name = rsc\Popspch.rsc
+    file[]: crc = 46047bb2; size =     85001; name = scripts\AA1.mps
+    file[]: crc = 6f8efdf6; size =     91083; name = scripts\Aa2.mps
+    file[]: crc = 22debcc4; size =     83144; name = scripts\Cookout.mps
+    file[]: crc = c3db1536; size =     54045; name = scripts\Cs.mps
+    file[]: crc = 1482f99c; size =     58614; name = scripts\Fishing.mps
+    file[]: crc = de9adf60; size =    126502; name = scripts\Ga1.mps
+    file[]: crc = 5424e21a; size =     92763; name = scripts\Ga2.mps
+    file[]: crc = 15f54323; size =    113894; name = scripts\Ma1.mps
+    file[]: crc = 203604c6; size =    207148; name = scripts\MA3.MPS
+    file[]: crc = 9ea57212; size =     65748; name = scripts\Main.mps
+    file[]: crc = d3595f8c; size =     23044; name = scripts\Score.mps
+    file[]: crc = 4096c756; size =     22551; name = scripts\SIGNIN.mps
+    file[]: crc = ba793954; size =     56425; name = scripts\Song.mps
+    file[]: crc = 1cb54923; size =      8789; name = scripts\Startup.mps
+    file[]: crc = 97246906; size =     76951; name = scripts\Timekeep.mps
+
+    
+    CDLABEL = GSPCD1081A
+    MATH69_CONTENTS =  [[[$(CRLF)
+[Reader Rabbit's Math 6-9 - CD]
+CDDrive=D:\Data\
+UseDirectDraw=1
+DisplayFullScreen=1
+]]]
+    TLCAPPS16_CONTENTS = ""
+    TLCAPPS32_CONTENTS = ""
+end
+
+end

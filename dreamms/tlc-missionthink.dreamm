@@ -1,0 +1,219 @@
+desc[tlc-missionthink]:
+
+name = Super Solvers: Mission T.H.I.N.K.
+icon = tlc-missionthink.png
+machine = pc
+rootpath = C:\TLCWIN\SSMWINCD
+launch = ""
+osenv = windows 98
+winres = 640x480x8
+
+config[ossel]:
+    title = OS Select
+    option[win31]: name = Windows 3.1; launch = "$(rootpath)\ssmwin16.exe"; osenv = windows 3.11.002;
+    option[win9x]: name = Windows 9x; launch = "$(rootpath)\ssmwin32.exe"; osenv = windows 98;
+	
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD
+
+mount[cdw]: vpath = D:\; srcpath = ram
+
+//
+// initialization script
+//
+script[cd-init]:
+	code = [[[$(CRLF)
+	    // set the volume label on the CD
+        drive_set_label("D", "$$(CDLABEL)");
+        file_save("$$(rootpath)\\SSMWINCD.INI", "$$(SSMWINCD_CONTENTS)");
+        file_save("C:\\WINDOWS\\TLCAPPS.INI", "$$(TLCAPPS16_CONTENTS)"); condition = is_windows("windows 3.11.002");
+        file_save("C:\\WINDOWS\\TLCAPPS.INI", "$$(TLCAPPS32_CONTENTS)"); condition = is_windows("windows 98");
+    ]]]
+end
+
+//
+// English CD
+//
+game[pc-cd-en]:
+    name = English CD
+    anchorfile = SSMWIN16.EXE
+    file[]: crc = 4927183f; size =      5404; name = LICENSE.TXT
+    file[]: crc = 15bf6cac; size =     19529; name = MISSION.DAT
+    file[]: crc = 8b860aac; size =     89760; name = SMACKE16.DLL
+    file[]: crc = f458fd5c; size =     18454; name = SMACKW16.DLL
+    file[]: crc = d8bd604e; size =     71680; name = SMACKW32.DLL
+    file[]: crc = 6ea9518a; size =   1930545; name = SSMWIN16.EXE
+    file[]: crc = f37cddae; size =   1617607; name = SSMWIN32.EXE
+    
+    file[]: crc = 3d3c8a33; size =     29495; name = CD\DATA\BB.MPS
+    file[]: crc = 0152edda; size =    141312; name = CD\DATA\BB.RSC
+    file[]: crc = c48b4210; size =    629760; name = CD\DATA\BBPREL.RSC
+    file[]: crc = cdbbdf93; size =     95809; name = CD\DATA\BL06.MPS
+    file[]: crc = 424fb8d1; size =   4716544; name = CD\DATA\BL06.RSC
+    file[]: crc = 91a3fd81; size =     54272; name = CD\DATA\BL06DEVS.RSC
+    file[]: crc = 9d746222; size =   1956864; name = CD\DATA\BL06LVL1.RSC
+    file[]: crc = efd903c6; size =   2837504; name = CD\DATA\BL06LVL2.RSC
+    file[]: crc = 252cc0e3; size =   2916352; name = CD\DATA\BL06LVL3.RSC
+    file[]: crc = 947191bd; size =   2946048; name = CD\DATA\BL06LVL4.RSC
+    file[]: crc = 1c881205; size =   2336768; name = CD\DATA\BL06LVL5.RSC
+    file[]: crc = 1098406c; size =   1243136; name = CD\DATA\BL06PREL.RSC
+    file[]: crc = 97530376; size =     28205; name = CD\DATA\CLOSING.MPS
+    file[]: crc = ae6bf77f; size =   2466388; name = CD\DATA\CLOSING.SMK
+    file[]: crc = 27784d04; size =    269312; name = CD\DATA\COMMON.RSC
+    file[]: crc = ae6bf77f; size =   2466388; name = CD\DATA\FINALE2X.SMK
+    file[]: crc = 87a29595; size =   2558404; name = CD\DATA\FINALE4X.SMK
+    file[]: crc = 82fcf0f6; size =     45524; name = CD\DATA\GB1.MPS
+    file[]: crc = 4a769801; size =   7786496; name = CD\DATA\GB1.RSC
+    file[]: crc = c3a00804; size =     46080; name = CD\DATA\GB1LVL1.RSC
+    file[]: crc = 97b24148; size =     54272; name = CD\DATA\GB1LVL2.RSC
+    file[]: crc = d59887b1; size =     72704; name = CD\DATA\GB1LVL3.RSC
+    file[]: crc = 6cbc4a44; size =     92160; name = CD\DATA\GB1LVL4.RSC
+    file[]: crc = 8467cf3d; size =     95232; name = CD\DATA\GB1LVL5.RSC
+    file[]: crc = e438e0e2; size =    806912; name = CD\DATA\GB1PREL.RSC
+    file[]: crc = 9aceab80; size =     28823; name = CD\DATA\GR.MPS
+    file[]: crc = 51a5ec72; size =   1954816; name = CD\DATA\GR.RSC
+    file[]: crc = a502ba4d; size =    890432; name = CD\DATA\GRMOV2X.SMK
+    file[]: crc = 9026684c; size =    862924; name = CD\DATA\GRMOV4X.SMK
+    file[]: crc = b89669aa; size =     29246; name = CD\DATA\GRMOVIE.MPS
+    file[]: crc = 4b36fdd7; size =     29437; name = CD\DATA\LOGO.MPS
+    file[]: crc = c3b3e93c; size =    282624; name = CD\DATA\LOGO.RSC
+    file[]: crc = 367e05a7; size =     39968; name = CD\DATA\MAINMENU.MPS
+    file[]: crc = d8403847; size =    330752; name = CD\DATA\MAINMENU.RSC
+    file[]: crc = 95397488; size =    526336; name = CD\DATA\MAINPREL.RSC
+    file[]: crc = a502ba4d; size =    890432; name = CD\DATA\MORTYGRS.SMK
+    file[]: crc = 5ef70200; size =     31706; name = CD\DATA\MP.MPS
+    file[]: crc = 70676b4f; size =    457728; name = CD\DATA\MP.RSC
+    file[]: crc = 1a687b66; size =   9695896; name = CD\DATA\OPENING.SMK
+    file[]: crc = 4bf6a75d; size =   9695896; name = CD\DATA\OPMOV1X.SMK
+    file[]: crc = 5a1c361a; size =     29509; name = CD\DATA\OPMOVIE.MPS
+    file[]: crc = f62f9180; size =     38478; name = CD\DATA\PZ01.MPS
+    file[]: crc = 9c9c4598; size =   1235968; name = CD\DATA\PZ01.RSC
+    file[]: crc = 96ceecd2; size =    803840; name = CD\DATA\PZ01PREL.RSC
+    file[]: crc = a1d9333c; size =     64145; name = CD\DATA\PZ02.MPS
+    file[]: crc = 343a6a19; size =   6518784; name = CD\DATA\PZ02.RSC
+    file[]: crc = 79680d33; size =    862208; name = CD\DATA\PZ02PREL.RSC
+    file[]: crc = bc5a2ee3; size =    150534; name = CD\DATA\PZ03.MPS
+    file[]: crc = 092fb125; size =   1702912; name = CD\DATA\PZ03.RSC
+    file[]: crc = 55fbf8e3; size =    661504; name = CD\DATA\PZ03DS01.RSC
+    file[]: crc = a3fceba6; size =    640000; name = CD\DATA\PZ03DS02.RSC
+    file[]: crc = e4feee2a; size =    643072; name = CD\DATA\PZ03DS03.RSC
+    file[]: crc = 183400a4; size =    505856; name = CD\DATA\PZ03DS04.RSC
+    file[]: crc = ba1984c6; size =    496640; name = CD\DATA\PZ03DS05.RSC
+    file[]: crc = 1ff232a7; size =    542720; name = CD\DATA\PZ03DS06.RSC
+    file[]: crc = 6fc5e48e; size =    539648; name = CD\DATA\PZ03DS07.RSC
+    file[]: crc = f772fe37; size =    583680; name = CD\DATA\PZ03DS08.RSC
+    file[]: crc = 9dae062d; size =    552960; name = CD\DATA\PZ03DS09.RSC
+    file[]: crc = 0dca7b1a; size =    531456; name = CD\DATA\PZ03DS10.RSC
+    file[]: crc = f02f28de; size =    528384; name = CD\DATA\PZ03DS11.RSC
+    file[]: crc = e416f9b5; size =    555008; name = CD\DATA\PZ03DS12.RSC
+    file[]: crc = 8f76abb7; size =    557056; name = CD\DATA\PZ03DS13.RSC
+    file[]: crc = b77631fe; size =    562176; name = CD\DATA\PZ03DS14.RSC
+    file[]: crc = 688c0c9e; size =    576512; name = CD\DATA\PZ03DS15.RSC
+    file[]: crc = fae0999e; size =    552960; name = CD\DATA\PZ03DS16.RSC
+    file[]: crc = c0cbac14; size =    611328; name = CD\DATA\PZ03DS17.RSC
+    file[]: crc = 1e6295ee; size =    534528; name = CD\DATA\PZ03DS18.RSC
+    file[]: crc = 81b3d2a0; size =    494592; name = CD\DATA\PZ03DS19.RSC
+    file[]: crc = e6be28d7; size =    504832; name = CD\DATA\PZ03DS20.RSC
+    file[]: crc = b4c1f045; size =    513024; name = CD\DATA\PZ03DS21.RSC
+    file[]: crc = b1750055; size =    472064; name = CD\DATA\PZ03DS22.RSC
+    file[]: crc = f939c545; size =    529408; name = CD\DATA\PZ03DS23.RSC
+    file[]: crc = d9ef1fbe; size =    530432; name = CD\DATA\PZ03DS24.RSC
+    file[]: crc = 45d582a4; size =    416768; name = CD\DATA\PZ03DS25.RSC
+    file[]: crc = b7108fbe; size =    406528; name = CD\DATA\PZ03DS26.RSC
+    file[]: crc = fa370cb2; size =    405504; name = CD\DATA\PZ03DS27.RSC
+    file[]: crc = 0c8dacce; size =    433152; name = CD\DATA\PZ03DS28.RSC
+    file[]: crc = 5a287bd0; size =    457728; name = CD\DATA\PZ03DS29.RSC
+    file[]: crc = ecac4e59; size =    416768; name = CD\DATA\PZ03DS30.RSC
+    file[]: crc = 1e278afb; size =    562176; name = CD\DATA\PZ03DS31.RSC
+    file[]: crc = 4bb50980; size =    547840; name = CD\DATA\PZ03DS32.RSC
+    file[]: crc = a7a7cde0; size =    580608; name = CD\DATA\PZ03DS33.RSC
+    file[]: crc = c0082f3a; size =    538624; name = CD\DATA\PZ03DS34.RSC
+    file[]: crc = 639dcecb; size =    439296; name = CD\DATA\PZ03DS35.RSC
+    file[]: crc = 32cfc90d; size =    421888; name = CD\DATA\PZ03DS36.RSC
+    file[]: crc = 35cf75a2; size =    502784; name = CD\DATA\PZ03DS37.RSC
+    file[]: crc = 90a5d99a; size =    417792; name = CD\DATA\PZ03DS38.RSC
+    file[]: crc = 09e2b7d7; size =    428032; name = CD\DATA\PZ03DS39.RSC
+    file[]: crc = 931f8d1d; size =    432128; name = CD\DATA\PZ03DS40.RSC
+    file[]: crc = 739b1b1c; size =    452608; name = CD\DATA\PZ03PREL.RSC
+    file[]: crc = 5b1317fc; size =    235971; name = CD\DATA\PZ04.MPS
+    file[]: crc = 6812caf1; size =   2282496; name = CD\DATA\PZ04.RSC
+    file[]: crc = 0dffa403; size =    556032; name = CD\DATA\PZ04DS01.RSC
+    file[]: crc = 1d1b5946; size =    558080; name = CD\DATA\PZ04DS02.RSC
+    file[]: crc = e60c4066; size =    550912; name = CD\DATA\PZ04DS03.RSC
+    file[]: crc = 0fff22a1; size =    551936; name = CD\DATA\PZ04DS04.RSC
+    file[]: crc = 218fd67d; size =    558080; name = CD\DATA\PZ04DS05.RSC
+    file[]: crc = 0136d46b; size =    557056; name = CD\DATA\PZ04DS06.RSC
+    file[]: crc = 2992543f; size =    560128; name = CD\DATA\PZ04DS07.RSC
+    file[]: crc = 5ad0d000; size =    556032; name = CD\DATA\PZ04DS08.RSC
+    file[]: crc = 5b385c1c; size =    557056; name = CD\DATA\PZ04DS09.RSC
+    file[]: crc = 05f78fe0; size =    562176; name = CD\DATA\PZ04DS10.RSC
+    file[]: crc = 19e4b4d5; size =    355328; name = CD\DATA\PZ04DS11.RSC
+    file[]: crc = eecfbc54; size =    360448; name = CD\DATA\PZ04DS12.RSC
+    file[]: crc = 29d47164; size =    361472; name = CD\DATA\PZ04DS13.RSC
+    file[]: crc = e2c94c8d; size =    361472; name = CD\DATA\PZ04DS14.RSC
+    file[]: crc = 90c4b1d1; size =    369664; name = CD\DATA\PZ04DS15.RSC
+    file[]: crc = 8318226c; size =    358400; name = CD\DATA\PZ04DS16.RSC
+    file[]: crc = c6fb6fda; size =    359424; name = CD\DATA\PZ04DS17.RSC
+    file[]: crc = fccc04a3; size =    362496; name = CD\DATA\PZ04DS18.RSC
+    file[]: crc = 6dca867d; size =    363520; name = CD\DATA\PZ04DS19.RSC
+    file[]: crc = 0e402e66; size =    367616; name = CD\DATA\PZ04DS20.RSC
+    file[]: crc = 4e603661; size =    362496; name = CD\DATA\PZ04DS21.RSC
+    file[]: crc = f02330c1; size =    362496; name = CD\DATA\PZ04DS22.RSC
+    file[]: crc = 12e4c79b; size =    368640; name = CD\DATA\PZ04DS23.RSC
+    file[]: crc = 2a22a512; size =    374784; name = CD\DATA\PZ04DS24.RSC
+    file[]: crc = 01920926; size =    362496; name = CD\DATA\PZ04DS25.RSC
+    file[]: crc = 9e5c5e67; size =    363520; name = CD\DATA\PZ04DS26.RSC
+    file[]: crc = 8904a71e; size =    363520; name = CD\DATA\PZ04DS27.RSC
+    file[]: crc = aa071ae1; size =    525312; name = CD\DATA\PZ04DS28.RSC
+    file[]: crc = 9d60c80f; size =    360448; name = CD\DATA\PZ04DS29.RSC
+    file[]: crc = 5e080145; size =    519168; name = CD\DATA\PZ04DS30.RSC
+    file[]: crc = 30999775; size =    499712; name = CD\DATA\PZ04DS31.RSC
+    file[]: crc = 24fd5166; size =    509952; name = CD\DATA\PZ04DS32.RSC
+    file[]: crc = 7f93251a; size =    522240; name = CD\DATA\PZ04DS33.RSC
+    file[]: crc = 6502ddc9; size =    505856; name = CD\DATA\PZ04DS34.RSC
+    file[]: crc = c9d91d73; size =    512000; name = CD\DATA\PZ04DS35.RSC
+    file[]: crc = c51d678d; size =    506880; name = CD\DATA\PZ04DS36.RSC
+    file[]: crc = 7eeeeeb7; size =    508928; name = CD\DATA\PZ04DS37.RSC
+    file[]: crc = fbba80be; size =    507904; name = CD\DATA\PZ04DS38.RSC
+    file[]: crc = 4dd546a6; size =    509952; name = CD\DATA\PZ04DS39.RSC
+    file[]: crc = 4513b274; size =    506880; name = CD\DATA\PZ04DS40.RSC
+    file[]: crc = 7e221476; size =    495616; name = CD\DATA\PZ04PREL.RSC
+    file[]: crc = 38e4405d; size =    172983; name = CD\DATA\PZ05.MPS
+    file[]: crc = 43b21f1f; size =   3347456; name = CD\DATA\PZ05.RSC
+    file[]: crc = 2cacacfc; size =    260096; name = CD\DATA\RESOURCE.RSC
+    file[]: crc = 69ebcce0; size =     39040; name = CD\DATA\SIGNIN.MPS
+    file[]: crc = 92cec167; size =    609280; name = CD\DATA\SIGNIN.RSC
+    file[]: crc = 7d68b2fb; size =    261120; name = CD\DATA\SIGNINPR.RSC
+    file[]: crc = 0dafff48; size =     35873; name = CD\DATA\MAC\HELPWITH.QUI
+    file[]: crc = 746858ff; size =     22605; name = CD\DATA\MAC\MISSIONT.CRE
+    file[]: crc = f87b3be5; size =    300178; name = CD\DATA\MAC\MISSIONT.HEL
+    file[]: crc = eacb4e3a; size =    845052; name = CD\DATA\MAC\QUICKHEL.5
+    file[]: crc = 4895a4a7; size =    186748; name = CD\DATA\MAC\TWOPLAYE.RHE
+    file[]: crc = 89b72812; size =      8628; name = CD\DATA\WIN\CREDITS.GID
+    file[]: crc = 869710c4; size =     11878; name = CD\DATA\WIN\CREDITS.HLP
+    file[]: crc = 41631b2a; size =    107107; name = CD\DATA\WIN\MISSION.HLP
+    file[]: crc = 59d9a82d; size =     68232; name = CD\DATA\WIN\TWOPLAY.HLP
+    
+    CDLABEL = MISSION_CD
+    SSMWINCD_CONTENTS =  [[[$(CRLF)
+[Mission: T.H.I.N.K.]
+CDDrive=D:\data
+]]]
+    TLCAPPS16_CONTENTS = [[[$(CRLF)
+[Mission: T.H.I.N.K.]
+Path=C:\Tlcwin\Ssmwincd\ssmwin16.exe
+]]]
+    TLCAPPS32_CONTENTS = [[[$(CRLF)
+[Mission: T.H.I.N.K.]
+Path=C:\Tlcwin\Ssmwincd\ssmwin32.exe
+]]]
+    
+end
+
+end

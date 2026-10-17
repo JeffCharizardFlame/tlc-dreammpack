@@ -1,0 +1,107 @@
+desc[tlc-treasmtn]:
+
+name = Super Solvers: Treasure Mountain!
+icon = tlc-treasmtn.png
+machine = pc
+osenv = windows 98
+audiohw = gmidi
+launch = ""
+
+config[display]:
+    condition = is_dos()
+    title = Display Adapter
+    option[ega]: name = EGA; videohw = ega;
+    option[cga]: name = CGA; videohw = cga;
+    option[tandy]: name = Tandy; machine = tandy; videohw = cga;
+end
+
+
+//
+// filesystem
+//
+mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+
+
+//
+// English MS-DOS
+//
+game[pc-dos-en]:
+    name = English MS-DOS
+    osenv = dos
+    fixdivover = true
+    mips = $(MIPS_386SX_20)
+    ramkb = 1024
+    audiohw = sb16
+    rootpath = C:\TLC\SST
+    launch = "$(rootpath)\SST.EXE"
+    anchorfile = SST.EXE
+    
+    file[]: crc = 9da2663d; size =     43887; name = ALL_PUZS
+    file[]: crc = 685e0463; size =     28432; name = BEGIN.PAK
+    file[]: crc = 3292d054; size =     87936; name = CLOSE.PAK
+    file[]: crc = eb07051e; size =      9623; name = CLOSE.PAN
+    file[]: crc = c4e53250; size =      3726; name = HELP.DAT
+    file[]: crc = fb598648; size =     48302; name = MOUNT2N3.PAN
+    file[]: crc = 7899594a; size =     51554; name = MOUNT3.PAN
+    file[]: crc = d8397bb4; size =     64599; name = MOUNTAIN.PAN
+    file[]: crc = 5e0067c0; size =     18421; name = OPENING.PAN
+    file[]: crc = d74cb158; size =      3328; name = PRG_DICT
+    file[]: crc = 564634ca; size =      1680; name = SFX.IBM
+    file[]: crc = f2ac8b6a; size =      1622; name = SFX.TAN
+    file[]: crc = 9e7e278f; size =     50368; name = SHACK.PAK
+    file[]: crc = 8424bb18; size =     10159; name = SHACK.PAN
+    file[]: crc = c4e30af3; size =    116240; name = SPRITES.PAK
+    file[]: crc = dc6db57a; size =    115011; name = SST.EXE
+    file[]: crc = 2da39dc7; size =      3152; name = TUNES.IBM
+    file[]: crc = 8578fbb9; size =      5000; name = TUNES.TAN
+end
+
+//
+// English Windows, version 1.01
+//
+game[pc-win-en-101]:
+    name = English Windows version 1.01
+    anchorfile = TMTWINCD.EXE
+    anchordepth = 1
+    osenv = windows 3.11.002
+    winres = 640x480x8
+    rootpath = C:\TLCWIN\TMTWINCD
+    launch = "$(rootpath)\TMTWINCD.EXE"
+    
+    file[]: crc = cadd3a8c; size =   1096720; name = TM0SOUND.DLL
+    file[]: crc = 8ae6aa9b; size =  10721296; name = TM1SOUND.DLL
+    file[]: crc = 071b523e; size =  12314128; name = TM2SOUND.DLL
+    file[]: crc = 52a5ad12; size =  12995600; name = TM3SOUND.DLL
+    file[]: crc = 0c375cc4; size =  14230544; name = TM4SOUND.DLL
+    file[]: crc = 88599567; size =  14271504; name = TM5SOUND.DLL
+    file[]: crc = 72bf119c; size =  15011856; name = TM6SOUND.DLL
+    file[]: crc = 9a12ab4b; size =  15006224; name = TM7SOUND.DLL
+    file[]: crc = 69f19443; size =   8464912; name = TM8SOUND.DLL
+    file[]: crc = 9d350a81; size =    397840; name = TMT.DLL
+    file[]: crc = f788f4fc; size =   7759376; name = TMT16.DLL
+    file[]: crc = c861785f; size =   6466064; name = TMT256.DLL
+    file[]: crc = 948d1c31; size =    184336; name = TMTWINCD.EXE
+    file[]: crc = dc4e65fe; size =      9955; name = SOUNDS\BCASTLE.MID
+    file[]: crc = e42353f0; size =      5340; name = SOUNDS\BCLUBHSE.MID
+    file[]: crc = 5dcd0b0d; size =      1070; name = SOUNDS\BFINALE.MID
+    file[]: crc = 10377afa; size =     12818; name = SOUNDS\BLEVEL1.MID
+    file[]: crc = 8aff28c1; size =      6469; name = SOUNDS\BLEVEL2.MID
+    file[]: crc = a3d344ce; size =      9891; name = SOUNDS\BLEVEL3.MID
+    file[]: crc = 902b1c68; size =       711; name = SOUNDS\BOPEN1.MID
+    file[]: crc = eab5a097; size =      2446; name = SOUNDS\BOPEN2.MID
+    file[]: crc = 9f746555; size =      5460; name = SOUNDS\BTHRONE.MID
+    file[]: crc = 9fc691f5; size =      1655; name = SOUNDS\BTITLE.MID
+    file[]: crc = 6d4cbf68; size =     11092; name = SOUNDS\ECASTLE.MID
+    file[]: crc = 7052eb05; size =      5340; name = SOUNDS\ECLUBHSE.MID
+    file[]: crc = f7eeb3b9; size =      1527; name = SOUNDS\EFINALE.MID
+    file[]: crc = 1c2430c7; size =     13588; name = SOUNDS\ELEVEL1.MID
+    file[]: crc = 7ede52f5; size =      6469; name = SOUNDS\ELEVEL2.MID
+    file[]: crc = 6a53f973; size =      9891; name = SOUNDS\ELEVEL3.MID
+    file[]: crc = 105142ae; size =       759; name = SOUNDS\EOPEN1.MID
+    file[]: crc = a4c05ab9; size =      2568; name = SOUNDS\EOPEN2.MID
+    file[]: crc = 25728d03; size =      5811; name = SOUNDS\ETHRONE.MID
+    file[]: crc = c036a757; size =      1731; name = SOUNDS\ETITLE.MID
+end
+
+end

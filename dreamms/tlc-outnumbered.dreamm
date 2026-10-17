@@ -1,0 +1,276 @@
+desc[tlc-outnumbered]:
+
+name = Super Solvers: OutNumbered!
+icon = tlc-outnumbered.png
+machine = pc
+launch = ""
+osenv = windows 98
+audiohw = gmidi
+winres = 640x480x8
+
+config[ossel]:
+    condition = is_windows() && file_exists("$$(rootpath)\\SSOWINCD.EXE");
+    title = OS Select
+    option[win31]: name = Windows 3.1; launch = "$(rootpath)\ssowincd.exe"; osenv = windows 3.11.002;
+    option[win9x]: name = Windows 9x; launch = "$(rootpath)\sso32.exe"; osenv = windows 98;
+	
+end
+
+config[display]:
+    condition = is_dos()
+    title = Display Adapter
+    option[ega]: name = EGA; launch = "$(rootpath)\ssoe.bat"; videohw = ega;
+    option[cga]: name = CGA; launch = "$(rootpath)\ssoc.bat"; videohw = cga;
+    option[herc]: name = Hercules; launch = "$(rootpath)\ssoh.bat"; videohw = hercules;
+	
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD; condition = is_windows()
+
+mount[cdw]: vpath = D:\; srcpath = ram
+
+//
+// initialization script
+//
+script[cd-init]:
+    condition = is_windows()
+	code = [[[$(CRLF)
+	    // set the volume label on the CD
+        drive_set_label("D", "$$(CDLABEL)");
+        file_save("$$(rootpath)\\SSOWINCD.INI", "$$(SSOWINCD_CONTENTS)");
+        file_save("C:\\WINDOWS\\TLCAPPS.INI", "$$(TLCAPPS16_CONTENTS)"); condition = is_windows("windows 3.11.002");
+        file_save("C:\\WINDOWS\\TLCAPPS.INI", "$$(TLCAPPS32_CONTENTS)"); condition = is_windows("windows 98");
+    ]]]
+end
+
+//
+// English Windows
+//
+game[pc-win-en]:
+    name = English Windows
+    anchorfile = SSOWINCD.EXE
+    anchordepth = 2
+    
+    file[]: crc = 28ca70df; size =       150; name = HISCORE.DAT
+    file[]: crc = cc871e04; size =     32544; name = SSO.FON
+    file[]: crc = a14eab65; size =      2238; name = SSO.ICO
+    file[]: crc = eb68d8c8; size =    275456; name = SSO32.EXE
+    file[]: crc = 74b7f339; size =     18140; name = SSOWINCD.DAT
+    file[]: crc = 4ceafb31; size =    404992; name = SSOWINCD.EXE
+    file[]: crc = ffc7762f; size =     26112; name = WAVEMIX.DLL
+    file[]: crc = 57b167de; size =      3180; name = WAVEMIX.INI
+    file[]: crc = 5dc6b715; size =     81556; name = CD\SSOWINCD\FONT.DAT
+    file[]: crc = 28ca70df; size =       150; name = CD\SSOWINCD\HISCORE.DAT
+    file[]: crc = 877c0525; size =   1361044; name = CD\SSOWINCD\SND.DAT
+    file[]: crc = b8736411; size =   9348756; name = CD\SSOWINCD\SPEECH.DAT
+    file[]: crc = cc871e04; size =     32544; name = CD\SSOWINCD\SSO.FON
+    file[]: crc = a14eab65; size =      2238; name = CD\SSOWINCD\SSO.ICO
+    file[]: crc = 022a5814; size =   2637972; name = CD\SSOWINCD\SSO1.DAT
+    file[]: crc = b7241632; size =   1048994; name = CD\SSOWINCD\SSO2.DAT
+    file[]: crc = cd55196f; size =    997524; name = CD\SSOWINCD\SSO3.DAT
+    file[]: crc = eb68d8c8; size =    275456; name = CD\SSOWINCD\SSO32.EXE
+    file[]: crc = 74b7f339; size =     18140; name = CD\SSOWINCD\SSOWINCD.DAT
+    file[]: crc = 4ceafb31; size =    404992; name = CD\SSOWINCD\SSOWINCD.EXE
+    file[]: crc = 83786e11; size =        41; name = CD\SSOWINCD\SSOWINCD.INI
+    file[]: crc = ffc7762f; size =     26112; name = CD\SSOWINCD\WAVEMIX.DLL
+    file[]: crc = 57b167de; size =      3180; name = CD\SSOWINCD\WAVEMIX.INI
+    
+    rootpath = C:\TLCWIN\SSOWINCD
+    CDLABEL = SSOWINCD
+    SSOWINCD_CONTENTS =  [[[$(CRLF)
+[OutNumbered!]
+Graphics=3
+WaveMix=1
+CDDrive=D:\ssowincd\
+
+
+]]]
+    TLCAPPS16_CONTENTS = [[[$(CRLF)
+[OutNumbered!]
+Path=C:\Tlcwin\Ssowincd\ssowincd.exe
+]]]
+    TLCAPPS32_CONTENTS = [[[$(CRLF)
+[OutNumbered!]
+Path=C:\Tlcwin\Ssowincd\sso32.exe
+]]]
+end
+
+//
+// English (UK) Windows
+//
+game[pc-win-en-uk]:
+    name = English (UK) Windows
+    anchorfile = SSOWINCD.EXE
+    anchordepth = 2
+    
+    file[]: crc = e8b7be43; size =         1; name = HISCORE.DAT
+    file[]: crc = 96e1dd00; size =     32544; name = SSO.FON
+    file[]: crc = 1e51e409; size =      2238; name = SSO.ICO
+    file[]: crc = d1e4c0a6; size =    410112; name = SSO32.EXE
+    file[]: crc = d26c02c7; size =     18140; name = SSOWINCD.DAT
+    file[]: crc = d1e4c0a6; size =    410112; name = SSOWINCD.EXE
+    file[]: crc = c959ff04; size =     18140; name = SSOWINCD.VID
+    file[]: crc = ffc7762f; size =     26112; name = WAVEMIX.DLL
+    file[]: crc = 57b167de; size =      3180; name = WAVEMIX.INI
+    file[]: crc = 46adb803; size =     81556; name = CD\SSOWINCD\FONT.DAT
+    file[]: crc = e8b7be43; size =         1; name = CD\SSOWINCD\HISCORE.DAT
+    file[]: crc = 78928458; size =     38768; name = CD\SSOWINCD\PROFWING.EXE
+    file[]: crc = 877c0525; size =   1361044; name = CD\SSOWINCD\SND.DAT
+    file[]: crc = 4297198c; size =  19746452; name = CD\SSOWINCD\SPEECH.DAT
+    file[]: crc = 96e1dd00; size =     32544; name = CD\SSOWINCD\SSO.FON
+    file[]: crc = 1e51e409; size =      2238; name = CD\SSOWINCD\SSO.ICO
+    file[]: crc = eb0e6d20; size =   2709652; name = CD\SSOWINCD\SSO1.DAT
+    file[]: crc = a88d4495; size =   1052578; name = CD\SSOWINCD\SSO2.DAT
+    file[]: crc = cd55196f; size =    997524; name = CD\SSOWINCD\SSO3.DAT
+    file[]: crc = d1e4c0a6; size =    410112; name = CD\SSOWINCD\SSO32.EXE
+    file[]: crc = 5b96b769; size =   1241822; name = CD\SSOWINCD\SSODEBUG.EXE
+    file[]: crc = d26c02c7; size =     18140; name = CD\SSOWINCD\SSOWINCD.DAT
+    file[]: crc = d1e4c0a6; size =    410112; name = CD\SSOWINCD\SSOWINCD.EXE
+    file[]: crc = 60a51458; size =        51; name = CD\SSOWINCD\SSOWINCD.INI
+    file[]: crc = c959ff04; size =     18140; name = CD\SSOWINCD\SSOWINCD.VID
+    file[]: crc = ffc7762f; size =     26112; name = CD\SSOWINCD\WAVEMIX.DLL
+    file[]: crc = 57b167de; size =      3180; name = CD\SSOWINCD\WAVEMIX.INI
+    file[]: crc = 0074e7f7; size =       356; name = CD\SSOWINCD\MIDI\BENTER.MID
+    file[]: crc = 68660704; size =      7488; name = CD\SSOWINCD\MIDI\BINTRO.MID
+    file[]: crc = 011b4663; size =      4183; name = CD\SSOWINCD\MIDI\BLEVEL1.MID
+    file[]: crc = 58b38795; size =      4183; name = CD\SSOWINCD\MIDI\BLEVEL2.MID
+    file[]: crc = 0289674d; size =       675; name = CD\SSOWINCD\MIDI\BMIDNITE.MID
+    file[]: crc = ba88b830; size =      5857; name = CD\SSOWINCD\MIDI\BROOM1.MID
+    file[]: crc = 00bfbc30; size =      5857; name = CD\SSOWINCD\MIDI\BROOM2.MID
+    file[]: crc = c390a36e; size =      1430; name = CD\SSOWINCD\MIDI\BVICTORY.MID
+    file[]: crc = df8abf3a; size =       375; name = CD\SSOWINCD\MIDI\EENTER.MID
+    file[]: crc = bc2557dd; size =      8131; name = CD\SSOWINCD\MIDI\EINTRO.MID
+    file[]: crc = e83ea580; size =      5142; name = CD\SSOWINCD\MIDI\ELEVEL1.MID
+    file[]: crc = 31684036; size =      5142; name = CD\SSOWINCD\MIDI\ELEVEL2.MID
+    file[]: crc = 7f719278; size =       688; name = CD\SSOWINCD\MIDI\EMIDNITE.MID
+    file[]: crc = 669adf14; size =      8279; name = CD\SSOWINCD\MIDI\EROOM1.MID
+    file[]: crc = be92d0c9; size =      8279; name = CD\SSOWINCD\MIDI\EROOM2.MID
+    file[]: crc = 67768bae; size =      1432; name = CD\SSOWINCD\MIDI\EVICTORY.MID
+    
+    rootpath = C:\TLCWIN\SSOWINCD
+    CDLABEL = SSOWINCD
+    SSOWINCD_CONTENTS =  [[[$(CRLF)
+[OutNumbered!]
+Graphics=3
+WaveMix=1
+WhatsNew=3
+CDDrive=D:\ssowincd\
+
+
+]]]
+    TLCAPPS16_CONTENTS = [[[$(CRLF)
+[OutNumbered!]
+Path=C:\Tlcwin\Ssowincd\ssowincd.exe
+]]]
+    TLCAPPS32_CONTENTS = [[[$(CRLF)
+[OutNumbered!]
+Path=C:\Tlcwin\Ssowincd\sso32.exe
+]]]
+end
+
+//
+// Dutch Windows
+//
+game[pc-win-nl]:
+    name = Dutch Windows
+    anchorfile = SSO32.EXE
+    anchordepth = 2
+    
+    file[]: crc = e8b7be43; size =         1; name = HISCORE.DAT
+    file[]: crc = 4d5da6d2; size =     32512; name = SSO.FON
+    file[]: crc = fa0537c8; size =    410112; name = SSO32.EXE
+    file[]: crc = d26c02c7; size =     18140; name = SSOWINCD.DAT
+    file[]: crc = 60a51458; size =        51; name = SSOWINCD.INI
+    file[]: crc = 57b167de; size =      3180; name = WAVEMIX.INI
+    file[]: crc = a1d76243; size =     81556; name = CD\SSOWINCD\FONT.DAT
+    file[]: crc = e8b7be43; size =         1; name = CD\SSOWINCD\HISCORE.DAT
+    file[]: crc = 78928458; size =     38768; name = CD\SSOWINCD\PROFWING.EXE
+    file[]: crc = 877c0525; size =   1361044; name = CD\SSOWINCD\SND.DAT
+    file[]: crc = 27449ea2; size =  10387604; name = CD\SSOWINCD\SPEECH.DAT
+    file[]: crc = 4d5da6d2; size =     32512; name = CD\SSOWINCD\SSO.FON
+    file[]: crc = 1e51e409; size =      2238; name = CD\SSOWINCD\SSO.ICO
+    file[]: crc = b98c3772; size =   2764948; name = CD\SSOWINCD\SSO1.DAT
+    file[]: crc = 2d1a0899; size =   1193890; name = CD\SSOWINCD\SSO2.DAT
+    file[]: crc = b6306e79; size =   1005204; name = CD\SSOWINCD\SSO3.DAT
+    file[]: crc = fa0537c8; size =    410112; name = CD\SSOWINCD\SSO32.EXE
+    file[]: crc = d26c02c7; size =     18140; name = CD\SSOWINCD\SSOWINCD.DAT
+    file[]: crc = fa0537c8; size =    410112; name = CD\SSOWINCD\SSOWINCD.EXE
+    file[]: crc = 60a51458; size =        51; name = CD\SSOWINCD\SSOWINCD.INI
+    file[]: crc = ffc7762f; size =     26112; name = CD\SSOWINCD\WAVEMIX.DLL
+    file[]: crc = 57b167de; size =      3180; name = CD\SSOWINCD\WAVEMIX.INI
+    file[]: crc = 0074e7f7; size =       356; name = CD\SSOWINCD\MIDI\BENTER.MID
+    file[]: crc = 68660704; size =      7488; name = CD\SSOWINCD\MIDI\BINTRO.MID
+    file[]: crc = 011b4663; size =      4183; name = CD\SSOWINCD\MIDI\BLEVEL1.MID
+    file[]: crc = 58b38795; size =      4183; name = CD\SSOWINCD\MIDI\BLEVEL2.MID
+    file[]: crc = 0289674d; size =       675; name = CD\SSOWINCD\MIDI\BMIDNITE.MID
+    file[]: crc = ba88b830; size =      5857; name = CD\SSOWINCD\MIDI\BROOM1.MID
+    file[]: crc = 00bfbc30; size =      5857; name = CD\SSOWINCD\MIDI\BROOM2.MID
+    file[]: crc = c390a36e; size =      1430; name = CD\SSOWINCD\MIDI\BVICTORY.MID
+    file[]: crc = df8abf3a; size =       375; name = CD\SSOWINCD\MIDI\EENTER.MID
+    file[]: crc = bc2557dd; size =      8131; name = CD\SSOWINCD\MIDI\EINTRO.MID
+    file[]: crc = e83ea580; size =      5142; name = CD\SSOWINCD\MIDI\ELEVEL1.MID
+    file[]: crc = 31684036; size =      5142; name = CD\SSOWINCD\MIDI\ELEVEL2.MID
+    file[]: crc = 7f719278; size =       688; name = CD\SSOWINCD\MIDI\EMIDNITE.MID
+    file[]: crc = 669adf14; size =      8279; name = CD\SSOWINCD\MIDI\EROOM1.MID
+    file[]: crc = be92d0c9; size =      8279; name = CD\SSOWINCD\MIDI\EROOM2.MID
+    file[]: crc = 67768bae; size =      1432; name = CD\SSOWINCD\MIDI\EVICTORY.MID
+    
+    rootpath = C:\TLCWIN\SSOWINCD
+    launch = "$(rootpath)\SSO32.exe"
+    CDLABEL = SSO1
+    SSOWINCD_CONTENTS =  [[[$(CRLF)
+[OutNumbered!]
+Graphics=3
+WaveMix=1
+WhatsNew=3
+CDDrive=D:\ssowincd\
+
+
+]]]
+    TLCAPPS16_CONTENTS = ""
+    TLCAPPS32_CONTENTS = ""
+end
+
+//
+// English DOS
+//
+game[pc-dos-en]:
+    name = English MS-DOS
+    osenv = dos
+    fixdivover = true
+    mips = $(MIPS_386DX_33)
+    ramkb = 2048
+    audiohw = sb16
+    anchorfile = SSO.EXE
+    
+    file[]: crc = 4e90db50; size =     29848; name = CLOSE1.GRA
+    file[]: crc = fd63753e; size =      6634; name = CLOSE2.GRA
+    file[]: crc = c776fb6f; size =     51121; name = DMOCKET.GRA
+    file[]: crc = fb8db2e0; size =     15099; name = DRILL.GRA
+    file[]: crc = f859a37c; size =    143368; name = FASTLOAD.GRA
+    file[]: crc = ecc78247; size =     10951; name = HELP.DAT
+    file[]: crc = 1b901df3; size =     36140; name = MOCKET.DAT
+    file[]: crc = 1154794d; size =     36207; name = OPENING.GRA
+    file[]: crc = 15122187; size =     12880; name = ROOMS.GRA
+    file[]: crc = 24da152d; size =      4876; name = SSO.CGA
+    file[]: crc = 69d34425; size =    107277; name = SSO.EXE
+    file[]: crc = 95de63db; size =      3910; name = SSO.TGA
+    file[]: crc = 2d9f8f6b; size =         6; name = SSOC.BAT
+    file[]: crc = c4fc2a5e; size =         6; name = SSOE.BAT
+    file[]: crc = ba4d56e3; size =         6; name = SSOH.BAT
+    file[]: crc = b84ea9cd; size =    109433; name = TEMPLATE.GRA
+    file[]: crc = 60618d8d; size =      8211; name = TROPHY.GRA
+    
+    rootpath = C:\TLC\SSO
+    CDLABEL = ""
+    SSOWINCD_CONTENTS = ""
+    TLCAPPS16_CONTENTS = ""
+    TLCAPPS32_CONTENTS = ""
+end
+
+end

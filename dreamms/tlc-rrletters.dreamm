@@ -1,0 +1,68 @@
+desc[tlc-rrletters]:
+
+name = Reader Rabbit's Ready for Letters
+icon = tlc-rrletters.png
+machine = pc
+rootpath = C:\TLC\RFL
+launch = $(rootpath)\RFL.EXE
+osenv = dos
+fixdivover = true
+mips = $(MIPS_386SX_20)
+ramkb = 1024
+audiohw = sb16
+videohw = svga
+
+//
+// filesystem
+//
+mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+
+//
+// English MS-DOS
+//
+game[pc-dos-en]:
+    name = English MS-DOS
+    anchorfile = RFL.EXE
+    file[]: crc = 277a1212; size =      3353; name = BATHSFX.ADL
+    file[]: crc = 352ef310; size =      2829; name = BATHSFX.IBM
+    file[]: crc = 278aed88; size =      3367; name = BATHSFX.TAN
+    file[]: crc = bb7b9c0a; size =     16492; name = BATSPRT1.PAK
+    file[]: crc = 09e5eb5b; size =     23685; name = BATSPRT2.PAK
+    file[]: crc = 465e9df4; size =     87296; name = BAVOICE.DAT
+    file[]: crc = ba7f4194; size =      7669; name = BEDSFX.ADL
+    file[]: crc = 34fa97da; size =      4402; name = BEDSFX.IBM
+    file[]: crc = 6e30d569; size =      5974; name = BEDSFX.TAN
+    file[]: crc = aaf031a6; size =     28376; name = BEDSPRT1.PAK
+    file[]: crc = a183a0fd; size =     21671; name = BEDSPRT2.PAK
+    file[]: crc = d69c603f; size =      8491; name = BEZZSPRT.PAK
+    file[]: crc = 491c3ab1; size =      3093; name = CELSFX.ADL
+    file[]: crc = 842a0ef4; size =      2286; name = CELSFX.IBM
+    file[]: crc = 5d56bb3e; size =      2950; name = CELSFX.TAN
+    file[]: crc = 586e5a06; size =     23588; name = CELSPRT1.PAK
+    file[]: crc = a9b9ae4b; size =     11543; name = CELSPRT2.PAK
+    file[]: crc = af2f7033; size =     28752; name = CVOICE.DAT
+    file[]: crc = 9db7c3a4; size =      4454; name = KITSFX.ADL
+    file[]: crc = e0cff75e; size =      3383; name = KITSFX.IBM
+    file[]: crc = ee6ebe75; size =      3914; name = KITSFX.TAN
+    file[]: crc = dc1514fc; size =     19858; name = KITSPRT1.PAK
+    file[]: crc = 7271e751; size =     22306; name = KITSPRT2.PAK
+    file[]: crc = 1e1ea108; size =     94103; name = KVOICE.DAT
+    file[]: crc = 2fb0fd94; size =        63; name = LAUNCH.DIR
+    file[]: crc = c883499b; size =    150235; name = LIVING.DAT
+    file[]: crc = b22734da; size =     14051; name = MCPSFX.ADL
+    file[]: crc = 08a9b5f4; size =      4272; name = MCPSFX.IBM
+    file[]: crc = e36192a9; size =      8863; name = MCPSFX.TAN
+    file[]: crc = 9085127a; size =     31618; name = MCPSPRT1.PAK
+    file[]: crc = d397318d; size =     22539; name = MCPSPRT2.PAK
+    file[]: crc = b66cb723; size =     11187; name = MCPSPRT3.PAK
+    file[]: crc = 8ecce639; size =     10684; name = PONDSFX.ADL
+    file[]: crc = 83dad6dc; size =      4461; name = PONDSFX.IBM
+    file[]: crc = 3131cd4a; size =      7416; name = PONDSFX.TAN
+    file[]: crc = f9f8de31; size =     28756; name = PONSPRT1.PAK
+    file[]: crc = aebae732; size =     15301; name = PONSPRT2.PAK
+    file[]: crc = 20c0f5ce; size =    114457; name = RFL.EXE
+    file[]: crc = 73f8b3e3; size =     13344; name = TITLSPRT.PAK
+end
+
+end

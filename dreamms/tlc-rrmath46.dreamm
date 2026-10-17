@@ -1,0 +1,158 @@
+desc[tlc-rrmath46]:
+
+name = Reader Rabbit's Math Ages 4-6
+icon = tlc-rrmath46.png
+machine = pc
+rootpath = C:\TLCWIN\RRM46
+launch = ""
+osenv = windows 98
+audiohw = gmidi
+winres = 640x480x8
+
+config[ossel]:
+    title = OS Select
+    option[win31]: name = Windows 3.1; launch = "$(rootpath)\rrm46_16.exe"; osenv = windows 3.11.002;
+    option[win9x]: name = Windows 9x; launch = "$(rootpath)\rrm46_32.exe"; osenv = windows 98;
+	
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD
+
+mount[cdw]: vpath = D:\; srcpath = ram
+
+//
+// initialization script
+//
+script[cd-init]:
+	code = [[[$(CRLF)
+	    // set the volume label on the CD
+        drive_set_label("D", "$$(CDLABEL)");
+        file_save("$$(rootpath)\\RRCIR.INI", "$$(RRCIR_CONTENTS)");
+        file_save("$$(rootpath)\\RRM46.INI", "$$(RRM46_CONTENTS)");
+        file_save("C:\\WINDOWS\\TLCAPPS.INI", "$$(TLCAPPS16_CONTENTS)"); condition = is_windows("windows 3.11.002");
+        file_save("C:\\WINDOWS\\TLCAPPS.INI", "$$(TLCAPPS32_CONTENTS)"); condition = is_windows("windows 98");
+    ]]]
+end
+
+//
+// English CD (1998)
+//
+game[pc-cd-en]:
+    name = English CD (1998)
+    anchorfile = RRM46_32.EXE
+    anchordepth = 4
+    
+    file[]: crc = a230ddfd; size =    465408; name = RRCIR_16.EXE
+    file[]: crc = c37ebcda; size =    732679; name = RRCIR_32.EXE
+    file[]: crc = 18fe9c0a; size =    492263; name = RRM46.HLP
+    file[]: crc = cc8f4fda; size =       766; name = RRM46.ICO
+    file[]: crc = 58fddeb8; size =   1374720; name = RRM46_16.EXE
+    file[]: crc = 6eb1a562; size =   1101824; name = RRM46_32.EXE
+    file[]: crc = 8b860aac; size =     89760; name = SMACKE16.DLL
+    file[]: crc = f458fd5c; size =     18454; name = SMACKW16.DLL
+    file[]: crc = d8bd604e; size =     71680; name = SMACKW32.DLL
+    file[]: crc = 9f9ef19a; size =    280277; name = CD\RRM46CIR
+    file[]: crc = 6ff8b873; size =   1148042; name = CD\RRCIR\BALLOON.DLL
+    file[]: crc = 44cbb34a; size =    656522; name = CD\RRCIR\BEZEL.DLL
+    file[]: crc = 5406aef9; size =   1537162; name = CD\RRCIR\CALLIOPE.DLL
+    file[]: crc = ab7ee301; size =     26768; name = CD\RRCIR\CTL3D.DLL
+    file[]: crc = 1cea482d; size =     11776; name = CD\RRCIR\ENDUSER.DOC
+    file[]: crc = ba5bc30f; size =      3925; name = CD\RRCIR\ENDUSER.TXT
+    file[]: crc = e63296a6; size =     17424; name = CD\RRCIR\FH_BMP.DLL
+    file[]: crc = 51ab463a; size =   1076362; name = CD\RRCIR\HIPPO.DLL
+    file[]: crc = 516438ed; size =   1313930; name = CD\RRCIR\LEVELS.DLL
+    file[]: crc = ba5bc30f; size =      3925; name = CD\RRCIR\LICENSE.TXT
+    file[]: crc = 72006d0c; size =   1428106; name = CD\RRCIR\MAINMENU.DLL
+    file[]: crc = 18ca5184; size =     18570; name = CD\RRCIR\MISC.DLL
+    file[]: crc = 659d5b9d; size =   1736397; name = CD\RRCIR\MRSND0.DLL
+    file[]: crc = 0f1188b2; size =    895114; name = CD\RRCIR\MRSND1.DLL
+    file[]: crc = 75accdba; size =   1169034; name = CD\RRCIR\MRSND2.DLL
+    file[]: crc = 70dfe87c; size =    293514; name = CD\RRCIR\MRSND3.DLL
+    file[]: crc = 1ad78497; size =    787082; name = CD\RRCIR\MRSND4.DLL
+    file[]: crc = 54a1a9e6; size =   1393290; name = CD\RRCIR\MRSND5.DLL
+    file[]: crc = a4588289; size =   1881738; name = CD\RRCIR\MRSND6.DLL
+    file[]: crc = 206e7d8c; size =   1534090; name = CD\RRCIR\MRSND7.DLL
+    file[]: crc = a83d50d4; size =   1101962; name = CD\RRCIR\MRSND_.DLL
+    file[]: crc = 2efc24d6; size =  85112562; name = CD\RRCIR\MRWCDX.RPO
+    file[]: crc = 91292fcb; size =   3346570; name = CD\RRCIR\NEWSNDS.DLL
+    file[]: crc = 825ba785; size =   1656970; name = CD\RRCIR\OPENING.DLL
+    file[]: crc = d581d8a4; size =   2215050; name = CD\RRCIR\PRZCTR1.DLL
+    file[]: crc = 88147bfe; size =   1843850; name = CD\RRCIR\PRZCTR2.DLL
+    file[]: crc = 01d51508; size =      8628; name = CD\RRCIR\RRM1.GID
+    file[]: crc = 12f4bf13; size =     97717; name = CD\RRCIR\RRM1.HLP
+    file[]: crc = 30cd8076; size =       766; name = CD\RRCIR\RRM1.ICO
+    file[]: crc = 76a7401a; size =        56; name = CD\RRCIR\RRM1.INI
+    file[]: crc = 4b3448e7; size =    459792; name = CD\RRCIR\RRM1_16.EXE
+    file[]: crc = c303c5ed; size =    394272; name = CD\RRCIR\RRM1_32.EXE
+    file[]: crc = 1611d115; size =   1424522; name = CD\RRCIR\SEAL.DLL
+    file[]: crc = f1480d56; size =    345226; name = CD\RRCIR\SIGNIN.DLL
+    file[]: crc = 01370517; size =    436362; name = CD\RRCIR\SPLASH.DLL
+    file[]: crc = 18413330; size =     27041; name = CD\RRCIR\STRGRSRC.DLL
+    file[]: crc = 045faf4c; size =     18432; name = CD\RRCIR\LICENSE\ENDUSER.DOC
+    file[]: crc = 4927183f; size =      5404; name = CD\RRCIR\LICENSE\ENDUSER.TXT
+    file[]: crc = 0feb0db2; size =      9901; name = CD\RRCIR\SOUNDS\BENTRY.MID
+    file[]: crc = d5982090; size =       721; name = CD\RRCIR\SOUNDS\BGROUCHO.MID
+    file[]: crc = 22b3ff2f; size =      1111; name = CD\RRCIR\SOUNDS\BJUGGLE.MID
+    file[]: crc = 56b61864; size =      4839; name = CD\RRCIR\SOUNDS\BOVER.MID
+    file[]: crc = e2614e92; size =       442; name = CD\RRCIR\SOUNDS\BPARTY.MID
+    file[]: crc = 813a0b21; size =      5776; name = CD\RRCIR\SOUNDS\BSTARS.MID
+    file[]: crc = 78254d4c; size =       466; name = CD\RRCIR\SOUNDS\BTHUMBS.MID
+    file[]: crc = 39af4954; size =      1010; name = CD\RRCIR\SOUNDS\BTIGHTRP.MID
+    file[]: crc = 224c50ba; size =      4105; name = CD\RRCIR\SOUNDS\BTRAPEZE.MID
+    file[]: crc = dbd1cf38; size =     11465; name = CD\RRCIR\SOUNDS\EENTRY.MID
+    file[]: crc = 0d7e9a00; size =       772; name = CD\RRCIR\SOUNDS\EGROUCHO.MID
+    file[]: crc = 3d193b33; size =      1341; name = CD\RRCIR\SOUNDS\EJUGGLE.MID
+    file[]: crc = 1b453b89; size =      5316; name = CD\RRCIR\SOUNDS\EOVER.MID
+    file[]: crc = 6a361e90; size =       524; name = CD\RRCIR\SOUNDS\EPARTY.MID
+    file[]: crc = 607d5a74; size =      5981; name = CD\RRCIR\SOUNDS\ESTARS.MID
+    file[]: crc = af58045e; size =       600; name = CD\RRCIR\SOUNDS\ETHUMBS.MID
+    file[]: crc = 9f931331; size =      1021; name = CD\RRCIR\SOUNDS\ETIGHTRP.MID
+    file[]: crc = 201f66af; size =      4327; name = CD\RRCIR\SOUNDS\ETRAPEZE.MID
+    file[]: crc = 99d6b0c7; size =    193720; name = CD\RRM46\6000.SMK
+    file[]: crc = 1e905db1; size =   2012928; name = CD\RRM46\6001.SMK
+    file[]: crc = bd5d09c2; size =   3445261; name = CD\RRM46\LOGFLUME.RSC
+    file[]: crc = 6ac49682; size =   4649997; name = CD\RRM46\MTHRACER.RSC
+    file[]: crc = e5189664; size =   4786701; name = CD\RRM46\NAV.RSC
+    file[]: crc = c102c1b0; size =   6581261; name = CD\RRM46\ROLRCSTR.RSC
+    file[]: crc = a7f16221; size =  11413005; name = RSC\COMMON.RSC
+    file[]: crc = 70f79c23; size =     52736; name = RSC\FONT.RSC
+    file[]: crc = 9390f105; size =      3256; name = SCRIPTS\EXIT.MPS
+    file[]: crc = 9d0fbcef; size =     45064; name = SCRIPTS\LF.MPS
+    file[]: crc = 414c5195; size =     19762; name = SCRIPTS\MAINMENU.MPS
+    file[]: crc = ff69bd01; size =     28821; name = SCRIPTS\MTHRACER.MPS
+    file[]: crc = 8274cefe; size =    112842; name = SCRIPTS\RC.MPS
+    file[]: crc = d324e1cd; size =      3459; name = SCRIPTS\RTNMM.MPS
+    file[]: crc = 26e1c65a; size =      3457; name = SCRIPTS\RTNSI.MPS
+    file[]: crc = c94aaf75; size =      3415; name = SCRIPTS\RTNSM.MPS
+    file[]: crc = c3b67cc4; size =     14670; name = SCRIPTS\SIGNIN.MPS
+    file[]: crc = 32154321; size =      5089; name = SCRIPTS\START.MPS
+    file[]: crc = 98d1f8c5; size =     14043; name = SCRIPTS\SUPRMENU.MPS
+    
+    CDLABEL = RRMATH46
+    RRCIR_CONTENTS =  [[[$(CRLF)
+[RRCIR]
+CheckDisplay=FALSE
+UseWinG=TRUE
+CheckSound=FALSE
+CDDrive=D:\rrcir\
+]]]
+    RRM46_CONTENTS =  [[[$(CRLF)
+[RRM46]
+CDDrive=D:\
+]]]
+    TLCAPPS16_CONTENTS = [[[$(CRLF)
+[Reader Rabbit's Math Ages 4-6]
+Path=C:\Tlcwin\rrm46\rrm46_16.exe
+]]]
+    TLCAPPS32_CONTENTS = [[[$(CRLF)
+[Reader Rabbit's Math Ages 4-6]
+Path=C:\Tlcwin\rrm46\rrm46_32.exe
+]]]
+end
+
+end

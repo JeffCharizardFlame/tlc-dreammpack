@@ -1,0 +1,494 @@
+desc[tlc-mathjourney]:
+
+name = Reader Rabbit Presents: Math Journey for Grades 1-3 / Interactive Math Journey
+icon = tlc-mathjourney.png
+machine = pc
+rootpath = C:\TLCWIN\IMJ
+launch = ""
+osenv = windows 98
+winres = 640x480x8
+
+config[ossel]:
+    condition = file_exists("$$(rootpath)\\IMJ.EXE") && file_exists("$$(rootpath)\\IMJ32.EXE");
+    title = OS Select
+    option[win31]: name = Windows 3.1; launch = "$(rootpath)\IMJ.exe"; osenv = windows 3.11.002;
+    option[win9x]: name = Windows 9x; launch = "$(rootpath)\IMJ32.exe"; osenv = windows 98;
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD
+
+mount[cdw]: vpath = D:\; srcpath = ram
+
+//
+// initialization script
+//
+script[cd-init]:
+	code = [[[$(CRLF)
+	    // set the volume label on the CD
+        drive_set_label("D", "$$(CDLABEL)");
+        file_save("$$(rootpath)\\IMJ.INI", "$$(IMJ_CONTENTS)");
+        file_save("C:\\WINDOWS\\TLCAPPS.INI", "$$(TLCAPPS16_CONTENTS)"); condition = is_windows("windows 3.11.002");
+        file_save("C:\\WINDOWS\\TLCAPPS.INI", "$$(TLCAPPS32_CONTENTS)"); condition = is_windows("windows 98");
+	
+        
+    ]]]
+end
+
+//
+// English CD, Version 1.1
+//
+game[pc-cd-en-1.1]:
+    name = English CD, Version 1.1
+    anchorfile = IMJ.EXE
+    anchordepth = 1
+    
+    file[]: crc = 0bd3ae45; size =   6460129; name = BACKSND.DLL
+    file[]: crc = e42f5ef9; size =      2505; name = IGLOO.MPS
+    file[]: crc = 23334648; size =   1448976; name = IMJ.EXE
+    file[]: crc = 2a6f0db5; size =    966688; name = IMJ32.EXE
+    file[]: crc = ecf2dc6b; size =     55521; name = RESMGR.DLL
+    file[]: crc = bdcd544a; size =   3418624; name = CD\DATA\BK03.DLL
+    file[]: crc = abd1a286; size =   4427776; name = CD\DATA\BK04.DLL
+    file[]: crc = 80092555; size =   5161158; name = CD\DATA\BK05.DLL
+    file[]: crc = ab3ed5db; size =   2785990; name = CD\DATA\BK07.DLL
+    file[]: crc = 46446a64; size =   3878086; name = CD\DATA\BK13.DLL
+    file[]: crc = f0dd7d0c; size =   3422918; name = CD\DATA\CLOSING.DLL
+    file[]: crc = 45c0a59e; size =   4020934; name = CD\DATA\CREDIT.DLL
+    file[]: crc = 6c37c8b8; size =     52900; name = CD\DATA\FONT.DLL
+    file[]: crc = 9e0a7652; size =    358086; name = CD\DATA\LOGO.DLL
+    file[]: crc = 097d57bc; size =   2274502; name = CD\DATA\MAP.DLL
+    file[]: crc = 738ab5ba; size =    109793; name = CD\DATA\MM00.DLL
+    file[]: crc = 6d1e0f14; size =   7829504; name = CD\DATA\MM03.DLL
+    file[]: crc = 750621b6; size =   4768256; name = CD\DATA\MM04.DLL
+    file[]: crc = a4f31b68; size =   4264640; name = CD\DATA\MM05.DLL
+    file[]: crc = cb9866ad; size =   2821345; name = CD\DATA\MM06.DLL
+    file[]: crc = a99c1234; size =   8237568; name = CD\DATA\MM07.DLL
+    file[]: crc = eac99de0; size =   7035904; name = CD\DATA\MM10.DLL
+    file[]: crc = 7cece344; size =   5953536; name = CD\DATA\MM11.DLL
+    file[]: crc = 461d9fd5; size =   5708800; name = CD\DATA\MM12.DLL
+    file[]: crc = bac241d0; size =   8865792; name = CD\DATA\MM13.DLL
+    file[]: crc = be646fff; size =   6199494; name = CD\DATA\MM14.DLL
+    file[]: crc = 8a4ded0d; size =   1370112; name = CD\DATA\MM27.DLL
+    file[]: crc = 05b7fd4c; size =   4780902; name = CD\DATA\NL00.DLL
+    file[]: crc = edc61757; size =   4507494; name = CD\DATA\NL03.DLL
+    file[]: crc = 63b6ad16; size =      5414; name = CD\DATA\NL03.TEX
+    file[]: crc = dbfc974f; size =   3757926; name = CD\DATA\NL04.DLL
+    file[]: crc = 30d082f7; size =      5415; name = CD\DATA\NL04.TEX
+    file[]: crc = 2a02818e; size =   5384550; name = CD\DATA\NL05.DLL
+    file[]: crc = 4f17f102; size =      5441; name = CD\DATA\NL05.TEX
+    file[]: crc = da7e71c3; size =   1679206; name = CD\DATA\NL06.DLL
+    file[]: crc = 85cab982; size =      5364; name = CD\DATA\NL06.TEX
+    file[]: crc = 1534a07b; size =   3363174; name = CD\DATA\NL07.DLL
+    file[]: crc = 12084ee6; size =      5365; name = CD\DATA\NL07.TEX
+    file[]: crc = 5ed551fe; size =   1355110; name = CD\DATA\NL10.DLL
+    file[]: crc = cfc1a824; size =      5380; name = CD\DATA\NL10.TEX
+    file[]: crc = 804dc000; size =   2052966; name = CD\DATA\NL11.DLL
+    file[]: crc = a2ef1540; size =      5333; name = CD\DATA\NL11.TEX
+    file[]: crc = 88a2d185; size =   1971558; name = CD\DATA\NL12.DLL
+    file[]: crc = be00f18d; size =      5318; name = CD\DATA\NL12.TEX
+    file[]: crc = 7831b7d6; size =   4311910; name = CD\DATA\NL13.DLL
+    file[]: crc = d24c3731; size =      5400; name = CD\DATA\NL13.TEX
+    file[]: crc = 4b0aca23; size =   1662822; name = CD\DATA\NL14.DLL
+    file[]: crc = 9e0ec465; size =      5315; name = CD\DATA\NL14.TEX
+    file[]: crc = 1b0d2243; size =   9738950; name = CD\DATA\OPENING.DLL
+    file[]: crc = 558981b9; size =   1004224; name = CD\DATA\POP.DLL
+    file[]: crc = 88d76164; size =       696; name = CD\DATA\POPSTAR.TEX
+    file[]: crc = 484df0a2; size =   3729633; name = CD\DATA\SA06.DLL
+    file[]: crc = 86a064c9; size =   6307164; name = CD\DATA\SA10.DLL
+    file[]: crc = 68b04a0a; size =     18073; name = CD\DATA\SA10.TEX
+    file[]: crc = 882e222b; size =   4087132; name = CD\DATA\SA11.DLL
+    file[]: crc = a22bb50e; size =     29744; name = CD\DATA\SA11.TEX
+    file[]: crc = 9c079359; size =   7045857; name = CD\DATA\SA12.DLL
+    file[]: crc = 1b0fb50e; size =     38141; name = CD\DATA\SA12.TEX
+    file[]: crc = 99ccb382; size =   5816545; name = CD\DATA\SA14.DLL
+    file[]: crc = efb19ca2; size =     14659; name = CD\DATA\SA14.TEX
+    file[]: crc = 49e12789; size =     12724; name = CD\DATA\SA15.TEX
+    file[]: crc = 631dc8cb; size =    100038; name = CD\DATA\SIGNIN.DLL
+    
+    CDLABEL = IMJ
+    IMJ_CONTENTS = [[[$(CRLF)
+[IMJ]
+CDDrive=D:\Data\
+]]]
+    TLCAPPS16_CONTENTS = [[[$(CRLF)
+[Interactive Math Journey]
+Path=C:\Tlcwin\Imj\Imj.exe
+]]]
+    TLCAPPS32_CONTENTS = [[[$(CRLF)
+[Interactive Math Journey]
+Path=C:\Tlcwin\Imj\Imj32.exe
+]]]
+end
+
+//
+// English CD, Version 1.11
+//
+game[pc-cd-en-1.11]:
+    name = English CD, Version 1.11
+    anchorfile = IMJ.EXE
+    anchordepth = 1
+    
+    file[]: crc = 0bd3ae45; size =   6460129; name = BACKSND.DLL
+    file[]: crc = e42f5ef9; size =      2505; name = IGLOO.MPS
+    file[]: crc = 6b27c831; size =   1445888; name = IMJ.EXE
+    file[]: crc = 429fc94c; size =       766; name = IMJ.ICO
+    file[]: crc = dde6c182; size =    966656; name = IMJ32.EXE
+    file[]: crc = ecf2dc6b; size =     55521; name = RESMGR.DLL
+    file[]: crc = 0bd3ae45; size =   6460129; name = CD\DATA\BACKSND.DLL
+    file[]: crc = bdcd544a; size =   3418624; name = CD\DATA\BK03.DLL
+    file[]: crc = abd1a286; size =   4427776; name = CD\DATA\BK04.DLL
+    file[]: crc = 80092555; size =   5161158; name = CD\DATA\BK05.DLL
+    file[]: crc = ab3ed5db; size =   2785990; name = CD\DATA\BK07.DLL
+    file[]: crc = 46446a64; size =   3878086; name = CD\DATA\BK13.DLL
+    file[]: crc = f0dd7d0c; size =   3422918; name = CD\DATA\CLOSING.DLL
+    file[]: crc = 45c0a59e; size =   4020934; name = CD\DATA\CREDIT.DLL
+    file[]: crc = 6c37c8b8; size =     52900; name = CD\DATA\FONT.DLL
+    file[]: crc = e42f5ef9; size =      2505; name = CD\DATA\IGLOO.MPS
+    file[]: crc = 6b27c831; size =   1445888; name = CD\DATA\IMJ.EXE
+    file[]: crc = 429fc94c; size =       766; name = CD\DATA\IMJ.ICO
+    file[]: crc = feeb1841; size =        31; name = CD\DATA\IMJ.INI
+    file[]: crc = dde6c182; size =    966656; name = CD\DATA\IMJ32.EXE
+    file[]: crc = 9e0a7652; size =    358086; name = CD\DATA\LOGO.DLL
+    file[]: crc = 097d57bc; size =   2274502; name = CD\DATA\MAP.DLL
+    file[]: crc = 738ab5ba; size =    109793; name = CD\DATA\MM00.DLL
+    file[]: crc = 6d1e0f14; size =   7829504; name = CD\DATA\MM03.DLL
+    file[]: crc = 750621b6; size =   4768256; name = CD\DATA\MM04.DLL
+    file[]: crc = a4f31b68; size =   4264640; name = CD\DATA\MM05.DLL
+    file[]: crc = cb9866ad; size =   2821345; name = CD\DATA\MM06.DLL
+    file[]: crc = a99c1234; size =   8237568; name = CD\DATA\MM07.DLL
+    file[]: crc = eac99de0; size =   7035904; name = CD\DATA\MM10.DLL
+    file[]: crc = 7cece344; size =   5953536; name = CD\DATA\MM11.DLL
+    file[]: crc = 461d9fd5; size =   5708800; name = CD\DATA\MM12.DLL
+    file[]: crc = bac241d0; size =   8865792; name = CD\DATA\MM13.DLL
+    file[]: crc = be646fff; size =   6199494; name = CD\DATA\MM14.DLL
+    file[]: crc = 8a4ded0d; size =   1370112; name = CD\DATA\MM27.DLL
+    file[]: crc = 05b7fd4c; size =   4780902; name = CD\DATA\NL00.DLL
+    file[]: crc = edc61757; size =   4507494; name = CD\DATA\NL03.DLL
+    file[]: crc = 63b6ad16; size =      5414; name = CD\DATA\NL03.TEX
+    file[]: crc = dbfc974f; size =   3757926; name = CD\DATA\NL04.DLL
+    file[]: crc = 30d082f7; size =      5415; name = CD\DATA\NL04.TEX
+    file[]: crc = 2a02818e; size =   5384550; name = CD\DATA\NL05.DLL
+    file[]: crc = 4f17f102; size =      5441; name = CD\DATA\NL05.TEX
+    file[]: crc = da7e71c3; size =   1679206; name = CD\DATA\NL06.DLL
+    file[]: crc = 85cab982; size =      5364; name = CD\DATA\NL06.TEX
+    file[]: crc = 1534a07b; size =   3363174; name = CD\DATA\NL07.DLL
+    file[]: crc = 12084ee6; size =      5365; name = CD\DATA\NL07.TEX
+    file[]: crc = 5ed551fe; size =   1355110; name = CD\DATA\NL10.DLL
+    file[]: crc = cfc1a824; size =      5380; name = CD\DATA\NL10.TEX
+    file[]: crc = 804dc000; size =   2052966; name = CD\DATA\NL11.DLL
+    file[]: crc = a2ef1540; size =      5333; name = CD\DATA\NL11.TEX
+    file[]: crc = 88a2d185; size =   1971558; name = CD\DATA\NL12.DLL
+    file[]: crc = be00f18d; size =      5318; name = CD\DATA\NL12.TEX
+    file[]: crc = 7831b7d6; size =   4311910; name = CD\DATA\NL13.DLL
+    file[]: crc = d24c3731; size =      5400; name = CD\DATA\NL13.TEX
+    file[]: crc = 4b0aca23; size =   1662822; name = CD\DATA\NL14.DLL
+    file[]: crc = 9e0ec465; size =      5315; name = CD\DATA\NL14.TEX
+    file[]: crc = 1b0d2243; size =   9738950; name = CD\DATA\OPENING.DLL
+    file[]: crc = 558981b9; size =   1004224; name = CD\DATA\POP.DLL
+    file[]: crc = 88d76164; size =       696; name = CD\DATA\POPSTAR.TEX
+    file[]: crc = ecf2dc6b; size =     55521; name = CD\DATA\RESMGR.DLL
+    file[]: crc = 484df0a2; size =   3729633; name = CD\DATA\SA06.DLL
+    file[]: crc = 86a064c9; size =   6307164; name = CD\DATA\SA10.DLL
+    file[]: crc = 68b04a0a; size =     18073; name = CD\DATA\SA10.TEX
+    file[]: crc = 882e222b; size =   4087132; name = CD\DATA\SA11.DLL
+    file[]: crc = a22bb50e; size =     29744; name = CD\DATA\SA11.TEX
+    file[]: crc = 9c079359; size =   7045857; name = CD\DATA\SA12.DLL
+    file[]: crc = 1b0fb50e; size =     38141; name = CD\DATA\SA12.TEX
+    file[]: crc = 99ccb382; size =   5816545; name = CD\DATA\SA14.DLL
+    file[]: crc = efb19ca2; size =     14659; name = CD\DATA\SA14.TEX
+    file[]: crc = 49e12789; size =     12724; name = CD\DATA\SA15.TEX
+    file[]: crc = 631dc8cb; size =    100038; name = CD\DATA\SIGNIN.DLL
+    
+    CDLABEL = IMJ
+    IMJ_CONTENTS = [[[$(CRLF)
+[IMJ]
+CDDrive=D:\Data\
+]]]
+    TLCAPPS16_CONTENTS = [[[$(CRLF)
+[Interactive Math Journey]
+Path=C:\Tlcwin\Imj\Imj.exe
+]]]
+    TLCAPPS32_CONTENTS = [[[$(CRLF)
+[Interactive Math Journey]
+Path=C:\Tlcwin\Imj\Imj32.exe
+]]]
+    
+end
+
+//
+// English CD, Version 1.12
+//
+game[pc-cd-en-1.12]:
+    name = English CD, Version 1.12
+    anchorfile = IMJ.EXE
+    anchordepth = 1
+    
+    file[]: crc = 0bd3ae45; size =   6460129; name = BACKSND.DLL
+    file[]: crc = e42f5ef9; size =      2505; name = IGLOO.MPS
+    file[]: crc = 1fd5ba21; size =   1445888; name = IMJ.EXE
+    file[]: crc = 429fc94c; size =       766; name = IMJ.ICO
+    file[]: crc = ef5d261b; size =    966656; name = IMJ32.EXE
+    file[]: crc = ecf2dc6b; size =     55521; name = RESMGR.DLL
+    file[]: crc = 0bd3ae45; size =   6460129; name = CD\DATA\BACKSND.DLL
+    file[]: crc = bdcd544a; size =   3418624; name = CD\DATA\BK03.DLL
+    file[]: crc = abd1a286; size =   4427776; name = CD\DATA\BK04.DLL
+    file[]: crc = 80092555; size =   5161158; name = CD\DATA\BK05.DLL
+    file[]: crc = ab3ed5db; size =   2785990; name = CD\DATA\BK07.DLL
+    file[]: crc = 46446a64; size =   3878086; name = CD\DATA\BK13.DLL
+    file[]: crc = f0dd7d0c; size =   3422918; name = CD\DATA\CLOSING.DLL
+    file[]: crc = 45c0a59e; size =   4020934; name = CD\DATA\CREDIT.DLL
+    file[]: crc = 6c37c8b8; size =     52900; name = CD\DATA\FONT.DLL
+    file[]: crc = e42f5ef9; size =      2505; name = CD\DATA\IGLOO.MPS
+    file[]: crc = 1fd5ba21; size =   1445888; name = CD\DATA\IMJ.EXE
+    file[]: crc = 429fc94c; size =       766; name = CD\DATA\IMJ.ICO
+    file[]: crc = feeb1841; size =        31; name = CD\DATA\IMJ.INI
+    file[]: crc = ef5d261b; size =    966656; name = CD\DATA\IMJ32.EXE
+    file[]: crc = 9e0a7652; size =    358086; name = CD\DATA\LOGO.DLL
+    file[]: crc = 097d57bc; size =   2274502; name = CD\DATA\MAP.DLL
+    file[]: crc = 738ab5ba; size =    109793; name = CD\DATA\MM00.DLL
+    file[]: crc = 6d1e0f14; size =   7829504; name = CD\DATA\MM03.DLL
+    file[]: crc = 750621b6; size =   4768256; name = CD\DATA\MM04.DLL
+    file[]: crc = a4f31b68; size =   4264640; name = CD\DATA\MM05.DLL
+    file[]: crc = cb9866ad; size =   2821345; name = CD\DATA\MM06.DLL
+    file[]: crc = a99c1234; size =   8237568; name = CD\DATA\MM07.DLL
+    file[]: crc = eac99de0; size =   7035904; name = CD\DATA\MM10.DLL
+    file[]: crc = 7cece344; size =   5953536; name = CD\DATA\MM11.DLL
+    file[]: crc = 461d9fd5; size =   5708800; name = CD\DATA\MM12.DLL
+    file[]: crc = bac241d0; size =   8865792; name = CD\DATA\MM13.DLL
+    file[]: crc = be646fff; size =   6199494; name = CD\DATA\MM14.DLL
+    file[]: crc = 8a4ded0d; size =   1370112; name = CD\DATA\MM27.DLL
+    file[]: crc = 05b7fd4c; size =   4780902; name = CD\DATA\NL00.DLL
+    file[]: crc = edc61757; size =   4507494; name = CD\DATA\NL03.DLL
+    file[]: crc = 63b6ad16; size =      5414; name = CD\DATA\NL03.TEX
+    file[]: crc = dbfc974f; size =   3757926; name = CD\DATA\NL04.DLL
+    file[]: crc = 30d082f7; size =      5415; name = CD\DATA\NL04.TEX
+    file[]: crc = 2a02818e; size =   5384550; name = CD\DATA\NL05.DLL
+    file[]: crc = 4f17f102; size =      5441; name = CD\DATA\NL05.TEX
+    file[]: crc = da7e71c3; size =   1679206; name = CD\DATA\NL06.DLL
+    file[]: crc = 85cab982; size =      5364; name = CD\DATA\NL06.TEX
+    file[]: crc = 1534a07b; size =   3363174; name = CD\DATA\NL07.DLL
+    file[]: crc = 12084ee6; size =      5365; name = CD\DATA\NL07.TEX
+    file[]: crc = 5ed551fe; size =   1355110; name = CD\DATA\NL10.DLL
+    file[]: crc = cfc1a824; size =      5380; name = CD\DATA\NL10.TEX
+    file[]: crc = 804dc000; size =   2052966; name = CD\DATA\NL11.DLL
+    file[]: crc = a2ef1540; size =      5333; name = CD\DATA\NL11.TEX
+    file[]: crc = 88a2d185; size =   1971558; name = CD\DATA\NL12.DLL
+    file[]: crc = be00f18d; size =      5318; name = CD\DATA\NL12.TEX
+    file[]: crc = 7831b7d6; size =   4311910; name = CD\DATA\NL13.DLL
+    file[]: crc = d24c3731; size =      5400; name = CD\DATA\NL13.TEX
+    file[]: crc = 4b0aca23; size =   1662822; name = CD\DATA\NL14.DLL
+    file[]: crc = 9e0ec465; size =      5315; name = CD\DATA\NL14.TEX
+    file[]: crc = 1b0d2243; size =   9738950; name = CD\DATA\OPENING.DLL
+    file[]: crc = 558981b9; size =   1004224; name = CD\DATA\POP.DLL
+    file[]: crc = 88d76164; size =       696; name = CD\DATA\POPSTAR.TEX
+    file[]: crc = ecf2dc6b; size =     55521; name = CD\DATA\RESMGR.DLL
+    file[]: crc = 484df0a2; size =   3729633; name = CD\DATA\SA06.DLL
+    file[]: crc = 86a064c9; size =   6307164; name = CD\DATA\SA10.DLL
+    file[]: crc = 68b04a0a; size =     18073; name = CD\DATA\SA10.TEX
+    file[]: crc = 882e222b; size =   4087132; name = CD\DATA\SA11.DLL
+    file[]: crc = a22bb50e; size =     29744; name = CD\DATA\SA11.TEX
+    file[]: crc = 9c079359; size =   7045857; name = CD\DATA\SA12.DLL
+    file[]: crc = 1b0fb50e; size =     38141; name = CD\DATA\SA12.TEX
+    file[]: crc = 99ccb382; size =   5816545; name = CD\DATA\SA14.DLL
+    file[]: crc = efb19ca2; size =     14659; name = CD\DATA\SA14.TEX
+    file[]: crc = 49e12789; size =     12724; name = CD\DATA\SA15.TEX
+    file[]: crc = 631dc8cb; size =    100038; name = CD\DATA\SIGNIN.DLL
+    
+    CDLABEL = IMJ1_3
+    IMJ_CONTENTS = [[[$(CRLF)
+[IMJ]
+CDDrive=D:\Data\
+]]]
+    TLCAPPS16_CONTENTS = [[[$(CRLF)
+[Reader Rabbit presents Math Journey for Grades 1-3]
+Path=C:\Tlcwin\Imj\Imj.exe
+
+[Interactive Math Journey]
+Path=C:\Tlcwin\Imj\Imj.exe
+]]]
+    TLCAPPS32_CONTENTS = [[[$(CRLF)
+[Reader Rabbit presents Math Journey for Grades 1-3]
+Path=C:\Tlcwin\Imj\Imj32.exe
+
+[Interactive Math Journey]
+Path=C:\Tlcwin\Imj\Imj32.exe
+]]]
+end
+
+//
+// Dutch CD, Version 1.2
+//
+game[pc-cd-nl-1.2]:
+    name = Dutch CD, Version 1.2
+    anchorfile = IMJ.EXE
+    anchordepth = 2
+    
+    file[]: crc = 8c08f094; size =   6459115; name = BACKSND.DLL
+    file[]: crc = e42f5ef9; size =      2505; name = IGLOO.MPS
+    file[]: crc = 0377fbf8; size =   1482752; name = IMJ.EXE
+    file[]: crc = 8d82a3d6; size =       766; name = IMJ.ICO
+    file[]: crc = ae2aae0e; size =    983040; name = IMJ32.EXE
+    file[]: crc = ecf2dc6b; size =     55521; name = RESMGR.DLL
+    file[]: crc = 51567b3f; size =   3066880; name = CD\DATA\BK03.DLL
+    file[]: crc = 07fdf484; size =   4421632; name = CD\DATA\BK04.DLL
+    file[]: crc = 56710e9c; size =   5135872; name = CD\DATA\BK05.DLL
+    file[]: crc = 2b82d0e3; size =   2545664; name = CD\DATA\BK07.DLL
+    file[]: crc = e08aa64b; size =   3930112; name = CD\DATA\BK13.DLL
+    file[]: crc = e4151cc2; size =   3323904; name = CD\DATA\CLOSING.DLL
+    file[]: crc = 45c0a59e; size =   4020934; name = CD\DATA\CREDIT.DLL
+    file[]: crc = 6c37c8b8; size =     52900; name = CD\DATA\FONT.DLL
+    file[]: crc = b1e1b7ec; size =    358113; name = CD\DATA\LOGO.DLL
+    file[]: crc = 0a976a05; size =   2233856; name = CD\DATA\MAP.DLL
+    file[]: crc = 7b6761ed; size =    109793; name = CD\DATA\MM00.DLL
+    file[]: crc = 97fc1ace; size =   7571968; name = CD\DATA\MM03.DLL
+    file[]: crc = 70bbb457; size =   4741632; name = CD\DATA\MM04.DLL
+    file[]: crc = a725b352; size =   4175073; name = CD\DATA\MM05.DLL
+    file[]: crc = 044505e8; size =   2858904; name = CD\DATA\MM06.DLL
+    file[]: crc = 7d3da639; size =   7693312; name = CD\DATA\MM07.DLL
+    file[]: crc = 9d553ac3; size =   6368256; name = CD\DATA\MM10.DLL
+    file[]: crc = b484c90a; size =   5002752; name = CD\DATA\MM11.DLL
+    file[]: crc = 06eab39b; size =   5117440; name = CD\DATA\MM12.DLL
+    file[]: crc = 93646e7e; size =   8558592; name = CD\DATA\MM13.DLL
+    file[]: crc = 29c54556; size =   5305856; name = CD\DATA\MM14.DLL
+    file[]: crc = 4895064d; size =   1283072; name = CD\DATA\MM27.DLL
+    file[]: crc = 5a700a38; size =   4581601; name = CD\DATA\NL00.DLL
+    file[]: crc = 6269b90f; size =   4386529; name = CD\DATA\NL03.DLL
+    file[]: crc = 63b6ad16; size =      5414; name = CD\DATA\NL03.TEX
+    file[]: crc = 029d5cd4; size =   3925729; name = CD\DATA\NL04.DLL
+    file[]: crc = 30d082f7; size =      5415; name = CD\DATA\NL04.TEX
+    file[]: crc = bcf95698; size =   5272289; name = CD\DATA\NL05.DLL
+    file[]: crc = 4f17f102; size =      5441; name = CD\DATA\NL05.TEX
+    file[]: crc = a091d013; size =   1677537; name = CD\DATA\NL06.DLL
+    file[]: crc = 85cab982; size =      5364; name = CD\DATA\NL06.TEX
+    file[]: crc = a85aa5dc; size =   3322081; name = CD\DATA\NL07.DLL
+    file[]: crc = 12084ee6; size =      5365; name = CD\DATA\NL07.TEX
+    file[]: crc = c1f76165; size =   1311457; name = CD\DATA\NL10.DLL
+    file[]: crc = cfc1a824; size =      5380; name = CD\DATA\NL10.TEX
+    file[]: crc = 12a2ed92; size =   1937989; name = CD\DATA\NL11.DLL
+    file[]: crc = a2ef1540; size =      5333; name = CD\DATA\NL11.TEX
+    file[]: crc = 6f51d0eb; size =   1927393; name = CD\DATA\NL12.DLL
+    file[]: crc = be00f18d; size =      5318; name = CD\DATA\NL12.TEX
+    file[]: crc = 89476f67; size =   4180193; name = CD\DATA\NL13.DLL
+    file[]: crc = d24c3731; size =      5400; name = CD\DATA\NL13.TEX
+    file[]: crc = 07e681ad; size =   1614561; name = CD\DATA\NL14.DLL
+    file[]: crc = 9e0ec465; size =      5315; name = CD\DATA\NL14.TEX
+    file[]: crc = 6e19cd73; size =   9556193; name = CD\DATA\OPENING.DLL
+    file[]: crc = da21613d; size =   1130209; name = CD\DATA\POP.DLL
+    file[]: crc = 88d76164; size =       696; name = CD\DATA\POPSTAR.TEX
+    file[]: crc = 195beb36; size =   3940065; name = CD\DATA\SA06.DLL
+    file[]: crc = 92f0ab26; size =   6213857; name = CD\DATA\SA10.DLL
+    file[]: crc = 68b04a0a; size =     18073; name = CD\DATA\SA10.TEX
+    file[]: crc = 8c17e659; size =   3974369; name = CD\DATA\SA11.DLL
+    file[]: crc = a22bb50e; size =     29744; name = CD\DATA\SA11.TEX
+    file[]: crc = 18dd5848; size =   7104069; name = CD\DATA\SA12.DLL
+    file[]: crc = 1b0fb50e; size =     38141; name = CD\DATA\SA12.TEX
+    file[]: crc = b34e044a; size =   5768929; name = CD\DATA\SA14.DLL
+    file[]: crc = efb19ca2; size =     14659; name = CD\DATA\SA14.TEX
+    file[]: crc = 49e12789; size =     12724; name = CD\DATA\SA15.TEX
+    file[]: crc = b293d82f; size =    101376; name = CD\DATA\SIGNIN.DLL
+    
+    CDLABEL = IMJ_NL_GOLD2
+    IMJ_CONTENTS = [[[$(CRLF)
+[IMJ]
+CDDrive=D:\Data\
+]]]
+    TLCAPPS16_CONTENTS = [[[$(CRLF)
+[Interactive Math Journey]
+Path=C:\Tlcwin\Imj\Imj.exe
+]]]
+    TLCAPPS32_CONTENTS = [[[$(CRLF)
+[Interactive Math Journey]
+Path=C:\Tlcwin\Imj\Imj32.exe
+]]]
+end
+
+//
+// German CD, IRJ Bundle
+//
+game[pc-cd-de-irjbundle]:
+    name = German CD, IRJ Bundle
+    anchorfile = IMJ32.EXE
+    anchordepth = 2
+    launch = "$(rootpath)\IMJ32.EXE"
+    
+    file[]: crc = f9dd0859; size =   6423265; name = BACKSND.DLL
+    file[]: crc = e42f5ef9; size =      2505; name = IGLOO.MPS
+    file[]: crc = 8d82a3d6; size =       766; name = IMJ.ICO
+    file[]: crc = b58b9d44; size =    983552; name = IMJ32.EXE
+    file[]: crc = ecf2dc6b; size =     55521; name = RESMGR.DLL
+    file[]: crc = f9dd0859; size =   6423265; name = CD\DATA\BACKSND.DLL
+    file[]: crc = bad15a46; size =   3376128; name = CD\DATA\BK03.DLL
+    file[]: crc = 1d7342c3; size =   4111872; name = CD\DATA\BK04.DLL
+    file[]: crc = 9de523da; size =   4872704; name = CD\DATA\BK05.DLL
+    file[]: crc = 16d8d893; size =   2449920; name = CD\DATA\BK07.DLL
+    file[]: crc = 8a882086; size =   3739648; name = CD\DATA\BK13.DLL
+    file[]: crc = 3daef423; size =   3022336; name = CD\DATA\CLOSING.DLL
+    file[]: crc = 45c0a59e; size =   4020934; name = CD\DATA\CREDIT.DLL
+    file[]: crc = 6c37c8b8; size =     52900; name = CD\DATA\FONT.DLL
+    file[]: crc = e42f5ef9; size =      2505; name = CD\DATA\IGLOO.MPS
+    file[]: crc = b1e1b7ec; size =    358113; name = CD\DATA\LOGO.DLL
+    file[]: crc = 500b95fd; size =   2262016; name = CD\DATA\MAP.DLL
+    file[]: crc = 3941d451; size =   2266112; name = CD\DATA\MAPP.DLL
+    file[]: crc = f8fb9fe7; size =    108769; name = CD\DATA\MM00.DLL
+    file[]: crc = a6e3edf9; size =   7510528; name = CD\DATA\MM03.DLL
+    file[]: crc = c73293c5; size =   4653056; name = CD\DATA\MM04.DLL
+    file[]: crc = e6872245; size =   4322529; name = CD\DATA\MM05.DLL
+    file[]: crc = 2dd5d740; size =   2738072; name = CD\DATA\MM06.DLL
+    file[]: crc = d218fdbd; size =   7929344; name = CD\DATA\MM07.DLL
+    file[]: crc = 34065fbd; size =   6326272; name = CD\DATA\MM10.DLL
+    file[]: crc = 7e59a12a; size =   5276160; name = CD\DATA\MM11.DLL
+    file[]: crc = 1603365b; size =   5552128; name = CD\DATA\MM12.DLL
+    file[]: crc = 1343a549; size =   8844800; name = CD\DATA\MM13.DLL
+    file[]: crc = 1549558f; size =   5769216; name = CD\DATA\MM14.DLL
+    file[]: crc = 6e4b5ada; size =   1094144; name = CD\DATA\MM27.DLL
+    file[]: crc = 1751f596; size =   4364513; name = CD\DATA\NL00.DLL
+    file[]: crc = 913fb678; size =   4454113; name = CD\DATA\NL03.DLL
+    file[]: crc = 63b6ad16; size =      5414; name = CD\DATA\NL03.TEX
+    file[]: crc = 2ebbe090; size =   3878113; name = CD\DATA\NL04.DLL
+    file[]: crc = 30d082f7; size =      5415; name = CD\DATA\NL04.TEX
+    file[]: crc = 83cb532a; size =   5320929; name = CD\DATA\NL05.DLL
+    file[]: crc = 4f17f102; size =      5441; name = CD\DATA\NL05.TEX
+    file[]: crc = 7511b7d6; size =   1594081; name = CD\DATA\NL06.DLL
+    file[]: crc = 85cab982; size =      5364; name = CD\DATA\NL06.TEX
+    file[]: crc = 45eb8ba8; size =   3370721; name = CD\DATA\NL07.DLL
+    file[]: crc = 12084ee6; size =      5365; name = CD\DATA\NL07.TEX
+    file[]: crc = 853a194f; size =   1283297; name = CD\DATA\NL10.DLL
+    file[]: crc = cfc1a824; size =      5380; name = CD\DATA\NL10.TEX
+    file[]: crc = 44d8e04f; size =   1820229; name = CD\DATA\NL11.DLL
+    file[]: crc = a2ef1540; size =      5333; name = CD\DATA\NL11.TEX
+    file[]: crc = 3eb28189; size =   1900769; name = CD\DATA\NL12.DLL
+    file[]: crc = be00f18d; size =      5318; name = CD\DATA\NL12.TEX
+    file[]: crc = 3a9435d5; size =   4220641; name = CD\DATA\NL13.DLL
+    file[]: crc = d24c3731; size =      5400; name = CD\DATA\NL13.TEX
+    file[]: crc = 17346c8e; size =   1618657; name = CD\DATA\NL14.DLL
+    file[]: crc = 9e0ec465; size =      5315; name = CD\DATA\NL14.TEX
+    file[]: crc = 4401d707; size =   9878241; name = CD\DATA\OPENING.DLL
+    file[]: crc = 5edaf62f; size =   1202401; name = CD\DATA\POP.DLL
+    file[]: crc = 88d76164; size =       696; name = CD\DATA\POPSTAR.TEX
+    file[]: crc = aa9cd8fe; size =   3603169; name = CD\DATA\SA06.DLL
+    file[]: crc = cb8784eb; size =   6182113; name = CD\DATA\SA10.DLL
+    file[]: crc = 68b04a0a; size =     18073; name = CD\DATA\SA10.TEX
+    file[]: crc = 790fc299; size =   4071649; name = CD\DATA\SA11.DLL
+    file[]: crc = a22bb50e; size =     29744; name = CD\DATA\SA11.TEX
+    file[]: crc = 2c3b5bdb; size =   6509125; name = CD\DATA\SA12.DLL
+    file[]: crc = 1b0fb50e; size =     38141; name = CD\DATA\SA12.TEX
+    file[]: crc = e21004dd; size =   5912801; name = CD\DATA\SA14.DLL
+    file[]: crc = efb19ca2; size =     14659; name = CD\DATA\SA14.TEX
+    file[]: crc = 49e12789; size =     12724; name = CD\DATA\SA15.TEX
+    file[]: crc = fb6438c9; size =    101888; name = CD\DATA\SIGNIN.DLL
+    
+    CDLABEL = Interaktive
+    IMJ_CONTENTS = [[[$(CRLF)
+[IMJ]
+CDDrive=D:\Data\
+]]]
+    TLCAPPS16_CONTENTS = ""
+    TLCAPPS32_CONTENTS = ""
+end
+
+end

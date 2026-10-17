@@ -1,0 +1,709 @@
+desc[tlc-rr1stgrade]:
+
+name = Reader Rabbit's 1st Grade
+icon = tlc-rr1stgrade.png
+machine = pc
+rootpath = C:\TLCWIN\RRF
+launch = "$(rootpath)\RRF.EXE"
+osenv = windows 98
+audiohw = gmidi
+winres = 640x480x8
+
+//
+// filesystem
+//
+mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD
+
+mount[cdw]: vpath = D:\; srcpath = ram
+
+//
+// initialization script
+//
+script[cd-init]:
+	code = [[[$(CRLF)
+	    // set the volume label on the CD
+        drive_set_label("D", "$$(CDLABEL)");
+        file_save("$$(rootpath)\\RRF.INI", "$$(RRF_CONTENTS)");
+        file_save("C:\\WINDOWS\\TLCAPPS.INI", "$$(TLCAPPS_CONTENTS)")
+    ]]]
+end
+
+//
+// Version 1.0 - English (US)
+//
+game[pc-cd-en-1.0]:
+    name = English (US) CD, Version 1.0
+    anchorfile = RRF.EXE
+    
+    file[]: crc = f04eb07c; size =   9330857; name = EDATA_HD.DF
+    file[]: crc = 92328ed2; size =    306208; name = RRF.EXE
+    file[]: crc = d2d6e1e1; size =       766; name = RRF.ICO
+    file[]: crc = d8bd604e; size =     71680; name = SMACKW32.DLL
+    file[]: crc = 28b9bbe3; size =      1540; name = CD\_
+    file[]: crc = e1de4bc6; size = 146285974; name = CD\DATA\EDATA_CD.DF
+    file[]: crc = 43f9cddd; size =    995056; name = CD\DATA\MOVIES\CLOCKHRS\CHSP01.SMK
+    file[]: crc = b57d4362; size =    353000; name = CD\DATA\MOVIES\CLOCKHRS\CHSP02.SMK
+    file[]: crc = dab3b4bc; size =    337636; name = CD\DATA\MOVIES\CLOCKHRS\CHSP03.SMK
+    file[]: crc = 2170264e; size =    630756; name = CD\DATA\MOVIES\CLOCKHRS\CHSP04.SMK
+    file[]: crc = 073ff945; size =    441232; name = CD\DATA\MOVIES\CLOCKHRS\CHSP05.SMK
+    file[]: crc = 67110ba6; size =    587180; name = CD\DATA\MOVIES\CLOCKHRS\CHSP06.SMK
+    file[]: crc = cbc6b561; size =    482124; name = CD\DATA\MOVIES\CLOCKHRS\CHSP07.SMK
+    file[]: crc = 201f495f; size =    719588; name = CD\DATA\MOVIES\CLOCKHRS\CHSP08.SMK
+    file[]: crc = 83241aa7; size =    720780; name = CD\DATA\MOVIES\CLOCKHRS\CHSP09.SMK
+    file[]: crc = 56b47b80; size =    743724; name = CD\DATA\MOVIES\CLOCKHRS\CHSP10.SMK
+    file[]: crc = b611fd0b; size =    741836; name = CD\DATA\MOVIES\CLOCKHRS\CHSP11.SMK
+    file[]: crc = 1d636da7; size =   2318660; name = CD\DATA\MOVIES\CLOCKHRS\CHSP12.SMK
+    file[]: crc = cfa8cc30; size =    873820; name = CD\DATA\MOVIES\FINALE\FOJ2.SMK
+    file[]: crc = 39f55a4f; size =    949140; name = CD\DATA\MOVIES\FINALE\FOJ6.SMK
+    file[]: crc = 33fa7ffb; size =   1230244; name = CD\DATA\MOVIES\FINALE\TFB1.SMK
+    file[]: crc = 23cc94ad; size =   3143272; name = CD\DATA\MOVIES\FINALE\TFB2.SMK
+    file[]: crc = d4219aca; size =   1834612; name = CD\DATA\MOVIES\FINALE\TFB3.SMK
+    file[]: crc = 69687343; size =   8525672; name = CD\DATA\MOVIES\FINALE\TFINALE.SMK
+    file[]: crc = c42f555a; size =   2917144; name = CD\DATA\MOVIES\FINALE\TFMAT1.SMK
+    file[]: crc = 952da8b5; size =   1748808; name = CD\DATA\MOVIES\FINALE\TFMAT2.SMK
+    file[]: crc = 253dc6c0; size =    730596; name = CD\DATA\MOVIES\FINALE\TOJ3.SMK
+    file[]: crc = a734b072; size =    151000; name = CD\DATA\MOVIES\OPENING\COMET.SMK
+    file[]: crc = 4c67709c; size =  11147516; name = CD\DATA\MOVIES\OPENING\OPENERF.SMK
+    file[]: crc = 36210334; size =   9173212; name = CD\DATA\MOVIES\OPENING\OPENERS.SMK
+    file[]: crc = bdee7731; size =   1379460; name = CD\DATA\MOVIES\OPENING\TLCIN.SMK
+    file[]: crc = 9ac2a1ec; size =    346416; name = CD\DATA\MOVIES\TRANSIT\BTRUNIN.SMK
+    file[]: crc = b30dfc41; size =    355992; name = CD\DATA\MOVIES\TRANSIT\BTRUNOUT.SMK
+    file[]: crc = e90ac523; size =    224852; name = CD\DATA\MOVIES\TRANSIT\OTRUNIN.SMK
+    file[]: crc = f5ae4d5b; size =    229852; name = CD\DATA\MOVIES\TRANSIT\OTRUNOUT.SMK
+    file[]: crc = eb5a477f; size =    322048; name = CD\DATA\MOVIES\TRANSIT\PTRUNIN.SMK
+    file[]: crc = 790e5130; size =    318328; name = CD\DATA\MOVIES\TRANSIT\PTRUNOUT.SMK
+    file[]: crc = e38ee3bf; size =    210092; name = CD\DATA\MOVIES\TRANSIT\RTRUNINA.SMK
+    file[]: crc = 11b93f98; size =    150960; name = CD\DATA\MOVIES\TRANSIT\RTRUNINB.SMK
+    file[]: crc = 7d8467c2; size =    219272; name = CD\DATA\MOVIES\TRANSIT\RTRUNOTC.SMK
+    file[]: crc = f40080d7; size =    228408; name = CD\DATA\MOVIES\TRANSIT\RTRUNOUT.SMK
+    
+    CDLABEL = RRF
+    RRF_CONTENTS = [[[$(CRLF)
+; Reader Rabbit's 1st Grade
+
+[Hardware]
+CDDrive=D:\DATA\
+
+[Dialog]
+
+]]]
+    TLCAPPS_CONTENTS = [[[$(CRLF)
+[Reader Rabbit's 1st Grade]
+Path=C:\TLCWIN\RRF\RRF.exe
+]]]
+end
+
+//
+// Version 2.0 - English (US)
+//
+game[pc-cd-en-2.0]:
+    name = English (US) CD, Version 2.0
+    anchorfile = RRF.EXE
+    anchordepth = 3
+    
+    file[]: crc = f04eb07c; size =   9330857; name = EDATA_HD.df
+    file[]: crc = 36dbad99; size =    209203; name = edatapls.df
+    file[]: crc = 238d000f; size =      2501; name = PLSDescriptor.txt
+    file[]: crc = bb071b07; size =   1159168; name = PreAssess.exe
+    file[]: crc = 8d2bac55; size =    323616; name = RRF.EXE
+    file[]: crc = d2d6e1e1; size =       766; name = RRF.ICO
+    file[]: crc = d8bd604e; size =     71680; name = SMACKW32.DLL
+    file[]: crc = e1de4bc6; size = 146285974; name = CD\DATA\EDATA_CD.DF
+    file[]: crc = 43f9cddd; size =    995056; name = CD\DATA\MOVIES\CLOCKHRS\CHSP01.SMK
+    file[]: crc = b57d4362; size =    353000; name = CD\DATA\MOVIES\CLOCKHRS\CHSP02.SMK
+    file[]: crc = dab3b4bc; size =    337636; name = CD\DATA\MOVIES\CLOCKHRS\CHSP03.SMK
+    file[]: crc = 2170264e; size =    630756; name = CD\DATA\MOVIES\CLOCKHRS\CHSP04.SMK
+    file[]: crc = 073ff945; size =    441232; name = CD\DATA\MOVIES\CLOCKHRS\CHSP05.SMK
+    file[]: crc = 67110ba6; size =    587180; name = CD\DATA\MOVIES\CLOCKHRS\CHSP06.SMK
+    file[]: crc = cbc6b561; size =    482124; name = CD\DATA\MOVIES\CLOCKHRS\CHSP07.SMK
+    file[]: crc = 201f495f; size =    719588; name = CD\DATA\MOVIES\CLOCKHRS\CHSP08.SMK
+    file[]: crc = 83241aa7; size =    720780; name = CD\DATA\MOVIES\CLOCKHRS\CHSP09.SMK
+    file[]: crc = 56b47b80; size =    743724; name = CD\DATA\MOVIES\CLOCKHRS\CHSP10.SMK
+    file[]: crc = b611fd0b; size =    741836; name = CD\DATA\MOVIES\CLOCKHRS\CHSP11.SMK
+    file[]: crc = 1d636da7; size =   2318660; name = CD\DATA\MOVIES\CLOCKHRS\CHSP12.SMK
+    file[]: crc = cfa8cc30; size =    873820; name = CD\DATA\MOVIES\FINALE\FOJ2.SMK
+    file[]: crc = 39f55a4f; size =    949140; name = CD\DATA\MOVIES\FINALE\FOJ6.SMK
+    file[]: crc = 33fa7ffb; size =   1230244; name = CD\DATA\MOVIES\FINALE\TFB1.SMK
+    file[]: crc = e37f5044; size =   1748808; name = CD\DATA\MOVIES\FINALE\TFB2.SMK
+    file[]: crc = d4219aca; size =   1834612; name = CD\DATA\MOVIES\FINALE\TFB3.SMK
+    file[]: crc = 69687343; size =   8525672; name = CD\DATA\MOVIES\FINALE\TFINALE.SMK
+    file[]: crc = c42f555a; size =   2917144; name = CD\DATA\MOVIES\FINALE\TFMAT1.SMK
+    file[]: crc = 952da8b5; size =   1748808; name = CD\DATA\MOVIES\FINALE\TFMAT2.SMK
+    file[]: crc = 253dc6c0; size =    730596; name = CD\DATA\MOVIES\FINALE\TOJ3.SMK
+    file[]: crc = 69bbfcd4; size =    415644; name = CD\DATA\MOVIES\OPENING\adaptin.smk
+    file[]: crc = d44f5295; size =     71060; name = CD\DATA\MOVIES\OPENING\Adaptout.smk
+    file[]: crc = a734b072; size =    151000; name = CD\DATA\MOVIES\OPENING\COMET.SMK
+    file[]: crc = 4c67709c; size =  11147516; name = CD\DATA\MOVIES\OPENING\OPENERF.SMK
+    file[]: crc = 36210334; size =   9173212; name = CD\DATA\MOVIES\OPENING\OPENERS.SMK
+    file[]: crc = 4fff39b0; size =   1379444; name = CD\DATA\MOVIES\OPENING\TLCIN.SMK
+    file[]: crc = 9ac2a1ec; size =    346416; name = CD\DATA\MOVIES\TRANSIT\BTRUNIN.SMK
+    file[]: crc = b30dfc41; size =    355992; name = CD\DATA\MOVIES\TRANSIT\BTRUNOUT.SMK
+    file[]: crc = e90ac523; size =    224852; name = CD\DATA\MOVIES\TRANSIT\OTRUNIN.SMK
+    file[]: crc = f5ae4d5b; size =    229852; name = CD\DATA\MOVIES\TRANSIT\OTRUNOUT.SMK
+    file[]: crc = eb5a477f; size =    322048; name = CD\DATA\MOVIES\TRANSIT\PTRUNIN.SMK
+    file[]: crc = 790e5130; size =    318328; name = CD\DATA\MOVIES\TRANSIT\PTRUNOUT.SMK
+    file[]: crc = e38ee3bf; size =    210092; name = CD\DATA\MOVIES\TRANSIT\RTRUNINA.SMK
+    file[]: crc = f2a7f232; size =    355992; name = CD\DATA\MOVIES\TRANSIT\RTRUNINB.SMK
+    file[]: crc = 7d8467c2; size =    219272; name = CD\DATA\MOVIES\TRANSIT\RTRUNOTC.SMK
+    file[]: crc = f40080d7; size =    228408; name = CD\DATA\MOVIES\TRANSIT\RTRUNOUT.SMK
+    file[]: crc = 257e28ff; size =     42496; name = CD\Install\Pls\PLUGIN\rr1st.pls
+    file[]: crc = e262c500; size =   2447373; name = CD\Install\Pls\Preasses\PRsc\aone.rsc
+    file[]: crc = 1fe58047; size =   3267085; name = CD\Install\Pls\Preasses\PRsc\one.rsc
+    file[]: crc = df25bca7; size =      2131; name = CD\Install\Pls\Preasses\PScripts\constant.inc
+    file[]: crc = 77e398bb; size =       623; name = CD\Install\Pls\Preasses\PScripts\exit.mps
+    file[]: crc = 315fcc9b; size =      2169; name = CD\Install\Pls\Preasses\PScripts\mthRacer.inc
+    file[]: crc = 5e8e8c34; size =       941; name = CD\Install\Pls\Preasses\PScripts\mthRacer.mps
+    file[]: crc = a4da71ec; size =       218; name = CD\Install\Pls\Preasses\PScripts\rconfirm.mps
+    file[]: crc = 00000000; size =         0; name = CD\Install\TLC\RRF744BE.CD
+    
+    CDLABEL = RRF
+    RRF_CONTENTS = [[[$(CRLF)
+; Reader Rabbit's 1st Grade
+
+[Hardware]
+CDDrive=D:\DATA\
+
+[Dialog]
+
+]]]
+    TLCAPPS_CONTENTS = ""
+end
+
+//
+// Version 1.01 - English (UK)
+//
+game[pc-cd-en-uk-1.01]:
+    name = English (UK) CD, Version 1.01
+    anchorfile = RRF.EXE
+    anchordepth = 3
+    
+    file[]: crc = 514e034c; size =   9369329; name = EDATA_HD.DF
+    file[]: crc = 17e22b25; size =   1637650; name = RRF.EXE
+    file[]: crc = d2d6e1e1; size =       766; name = RRF.ICO
+    file[]: crc = d8bd604e; size =     71680; name = SMACKW32.DLL
+    file[]: crc = 847a87bf; size = 151485020; name = CD\RRF\DATA\EDATA_CD.DF
+    file[]: crc = 4f2e6bb8; size =    969172; name = CD\RRF\DATA\MOVIES\CLOCKHRS\CHSP01.SMK
+    file[]: crc = 6e13a528; size =    356128; name = CD\RRF\DATA\MOVIES\CLOCKHRS\CHSP02.SMK
+    file[]: crc = f5c8ba97; size =    337524; name = CD\RRF\DATA\MOVIES\CLOCKHRS\CHSP03.SMK
+    file[]: crc = ee075384; size =    617108; name = CD\RRF\DATA\MOVIES\CLOCKHRS\CHSP04.SMK
+    file[]: crc = 3ec1c702; size =    447008; name = CD\RRF\DATA\MOVIES\CLOCKHRS\CHSP05.SMK
+    file[]: crc = f5c8ba97; size =    337524; name = CD\RRF\DATA\MOVIES\CLOCKHRS\CHSP06.SMK
+    file[]: crc = b6dc7e3b; size =    471656; name = CD\RRF\DATA\MOVIES\CLOCKHRS\CHSP07.SMK
+    file[]: crc = e4612303; size =    712780; name = CD\RRF\DATA\MOVIES\CLOCKHRS\CHSP08.SMK
+    file[]: crc = 468d31f6; size =    714804; name = CD\RRF\DATA\MOVIES\CLOCKHRS\CHSP09.SMK
+    file[]: crc = e35c9a2e; size =    732616; name = CD\RRF\DATA\MOVIES\CLOCKHRS\CHSP10.SMK
+    file[]: crc = e35c9a2e; size =    732616; name = CD\RRF\DATA\MOVIES\CLOCKHRS\CHSP11.SMK
+    file[]: crc = 2a221d32; size =   2171324; name = CD\RRF\DATA\MOVIES\CLOCKHRS\CHSP12.SMK
+    file[]: crc = 42bdcbfc; size =    853776; name = CD\RRF\DATA\MOVIES\FINALE\FOJ2.SMK
+    file[]: crc = c59e1c7e; size =    940360; name = CD\RRF\DATA\MOVIES\FINALE\FOJ6.SMK
+    file[]: crc = d40fc2f4; size =   1194380; name = CD\RRF\DATA\MOVIES\FINALE\TFB1.SMK
+    file[]: crc = cd977788; size =   3130692; name = CD\RRF\DATA\MOVIES\FINALE\TFB2.SMK
+    file[]: crc = 8f6e259c; size =   1817312; name = CD\RRF\DATA\MOVIES\FINALE\TFB3.SMK
+    file[]: crc = b7b3fb57; size =   8698668; name = CD\RRF\DATA\MOVIES\FINALE\TFINALE.SMK
+    file[]: crc = e89007d5; size =   2976608; name = CD\RRF\DATA\MOVIES\FINALE\TFMAT1.SMK
+    file[]: crc = 5db6d559; size =   1840320; name = CD\RRF\DATA\MOVIES\FINALE\TFMAT2.SMK
+    file[]: crc = 5daaa15e; size =    730536; name = CD\RRF\DATA\MOVIES\FINALE\TOJ3.SMK
+    file[]: crc = a734b072; size =    151000; name = CD\RRF\DATA\MOVIES\OPENING\COMET.SMK
+    file[]: crc = cfac0583; size =   8219192; name = CD\RRF\DATA\MOVIES\OPENING\OPENERF.SMK
+    file[]: crc = 953419c8; size =   7301560; name = CD\RRF\DATA\MOVIES\OPENING\OPENERS.SMK
+    file[]: crc = ae00644f; size =   1320064; name = CD\RRF\DATA\MOVIES\OPENING\TLCIN.SMK
+    file[]: crc = 9ac2a1ec; size =    346416; name = CD\RRF\DATA\MOVIES\TRANSIT\BTRUNIN.SMK
+    file[]: crc = b30dfc41; size =    355992; name = CD\RRF\DATA\MOVIES\TRANSIT\BTRUNOUT.SMK
+    file[]: crc = e90ac523; size =    224852; name = CD\RRF\DATA\MOVIES\TRANSIT\OTRUNIN.SMK
+    file[]: crc = f5ae4d5b; size =    229852; name = CD\RRF\DATA\MOVIES\TRANSIT\OTRUNOUT.SMK
+    file[]: crc = eb5a477f; size =    322048; name = CD\RRF\DATA\MOVIES\TRANSIT\PTRUNIN.SMK
+    file[]: crc = 790e5130; size =    318328; name = CD\RRF\DATA\MOVIES\TRANSIT\PTRUNOUT.SMK
+    file[]: crc = e38ee3bf; size =    210092; name = CD\RRF\DATA\MOVIES\TRANSIT\RTRUNINA.SMK
+    file[]: crc = 11b93f98; size =    150960; name = CD\RRF\DATA\MOVIES\TRANSIT\RTRUNINB.SMK
+    file[]: crc = 7d8467c2; size =    219272; name = CD\RRF\DATA\MOVIES\TRANSIT\RTRUNOTC.SMK
+    file[]: crc = f40080d7; size =    228408; name = CD\RRF\DATA\MOVIES\TRANSIT\RTRUNOUT.SMK
+    
+    CDLABEL = KEYSTAGE1_YEAR1
+    RRF_CONTENTS = [[[$(CRLF)
+; Reader Rabbit's 1st Grade
+
+[Hardware]
+CDDrive=D:\RRF\DATA\
+
+[Dialog]
+
+]]]
+    TLCAPPS_CONTENTS = ""
+end
+
+//
+// Version 1.01 - French
+//
+game[pc-cd-fr-1.01]:
+    name = French CD, Version 1.01
+    anchorfile = RRF.EXE
+    anchordepth = 3
+    
+    file[]: crc = 49cbf0c2; size =  11291547; name = EDATA_HD.DF
+    file[]: crc = 43a33de6; size =   1640893; name = RRF.EXE
+    file[]: crc = d2d6e1e1; size =       766; name = RRF.ICO
+    file[]: crc = d8bd604e; size =     71680; name = SMACKW32.DLL
+    file[]: crc = 41008036; size = 144877761; name = CD\DATA\EDATA_CD.DF
+    file[]: crc = 8aeb9920; size =       582; name = CD\DATA\MOVIES\README.TXT
+    file[]: crc = d1f3c7a0; size =    997052; name = CD\DATA\MOVIES\CLOCKHRS\CHSP01.SMK
+    file[]: crc = f2c2dbbc; size =    354748; name = CD\DATA\MOVIES\CLOCKHRS\CHSP02.SMK
+    file[]: crc = 19fbf63a; size =    339928; name = CD\DATA\MOVIES\CLOCKHRS\CHSP03.SMK
+    file[]: crc = 969d3f6f; size =    639556; name = CD\DATA\MOVIES\CLOCKHRS\CHSP04.SMK
+    file[]: crc = 440bc1fc; size =    448576; name = CD\DATA\MOVIES\CLOCKHRS\CHSP05.SMK
+    file[]: crc = 08d2a5cc; size =    589892; name = CD\DATA\MOVIES\CLOCKHRS\CHSP06.SMK
+    file[]: crc = c7275a71; size =    485852; name = CD\DATA\MOVIES\CLOCKHRS\CHSP07.SMK
+    file[]: crc = 36cd3bd2; size =    727476; name = CD\DATA\MOVIES\CLOCKHRS\CHSP08.SMK
+    file[]: crc = 307c5ec9; size =    728668; name = CD\DATA\MOVIES\CLOCKHRS\CHSP09.SMK
+    file[]: crc = 39846e00; size =    747040; name = CD\DATA\MOVIES\CLOCKHRS\CHSP10.SMK
+    file[]: crc = 7b314465; size =    745152; name = CD\DATA\MOVIES\CLOCKHRS\CHSP11.SMK
+    file[]: crc = 2287bc0e; size =   2595404; name = CD\DATA\MOVIES\CLOCKHRS\CHSP12.SMK
+    file[]: crc = a942d9d8; size =    911880; name = CD\DATA\MOVIES\FINALE\FOJ2.SMK
+    file[]: crc = ffc8c811; size =    952636; name = CD\DATA\MOVIES\FINALE\FOJ6.SMK
+    file[]: crc = a6a970cc; size =   1215824; name = CD\DATA\MOVIES\FINALE\TFB1.SMK
+    file[]: crc = 26e22fbf; size =   3149320; name = CD\DATA\MOVIES\FINALE\TFB2.SMK
+    file[]: crc = faf2798b; size =   1821908; name = CD\DATA\MOVIES\FINALE\TFB3.SMK
+    file[]: crc = 37fc9250; size =   8741048; name = CD\DATA\MOVIES\FINALE\TFINALE.SMK
+    file[]: crc = f0075e88; size =   3013064; name = CD\DATA\MOVIES\FINALE\TFMAT1.SMK
+    file[]: crc = 6aa3d29e; size =   1855576; name = CD\DATA\MOVIES\FINALE\TFMAT2.SMK
+    file[]: crc = e34ecc09; size =    730156; name = CD\DATA\MOVIES\FINALE\TOJ3.SMK
+    file[]: crc = c99a4937; size =    160860; name = CD\DATA\MOVIES\OPENING\COMET.SMK
+    file[]: crc = 1bd2db17; size =   8360244; name = CD\DATA\MOVIES\OPENING\OPENERF.SMK
+    file[]: crc = 8f06afc9; size =   7238276; name = CD\DATA\MOVIES\OPENING\OPENERS.SMK
+    file[]: crc = 5f0bd6de; size =   1393768; name = CD\DATA\MOVIES\OPENING\TLCIN.SMK
+    file[]: crc = 9ac2a1ec; size =    346416; name = CD\DATA\MOVIES\TRANSIT\BTRUNIN.SMK
+    file[]: crc = b30dfc41; size =    355992; name = CD\DATA\MOVIES\TRANSIT\BTRUNOUT.SMK
+    file[]: crc = e90ac523; size =    224852; name = CD\DATA\MOVIES\TRANSIT\OTRUNIN.SMK
+    file[]: crc = f5ae4d5b; size =    229852; name = CD\DATA\MOVIES\TRANSIT\OTRUNOUT.SMK
+    file[]: crc = a833731c; size =    321964; name = CD\DATA\MOVIES\TRANSIT\PTRUNIN.SMK
+    file[]: crc = 484d3f62; size =    367512; name = CD\DATA\MOVIES\TRANSIT\PTRUNOUT.SMK
+    file[]: crc = e38ee3bf; size =    210092; name = CD\DATA\MOVIES\TRANSIT\RTRUNINA.SMK
+    file[]: crc = 11b93f98; size =    150960; name = CD\DATA\MOVIES\TRANSIT\RTRUNINB.SMK
+    file[]: crc = 7d8467c2; size =    219272; name = CD\DATA\MOVIES\TRANSIT\RTRUNOTC.SMK
+    file[]: crc = f40080d7; size =    228408; name = CD\DATA\MOVIES\TRANSIT\RTRUNOUT.SMK
+    
+    CDLABEL = LM_CP
+    RRF_CONTENTS = [[[$(CRLF)
+; Reader Rabbit's 1st Grade
+
+[Hardware]
+CDDrive=D:\DATA\
+
+[Dialog]
+
+]]]
+    TLCAPPS_CONTENTS = ""
+end
+
+//
+// Version 1.01 - Spanish
+//
+game[pc-cd-es-1.01]:
+    name = Spanish CD, Version 1.01
+    anchorfile = RRF.EXE
+    anchordepth = 3
+    
+    file[]: crc = d617aaf7; size =  11125692; name = EDATA_HD.DF
+    file[]: crc = 0cf4943c; size =   1643764; name = RRF.EXE
+    file[]: crc = d2d6e1e1; size =       766; name = RRF.ICO
+    file[]: crc = d8bd604e; size =     71680; name = SMACKW32.DLL
+    file[]: crc = 164a6c1d; size = 177474999; name = CD\RRF\DATA\EDATA_CD.DF
+    file[]: crc = 5e38d176; size =    929744; name = CD\RRF\DATA\MOVIES\CLOCKHRS\CHSP01.SMK
+    file[]: crc = 12e81bdd; size =    340516; name = CD\RRF\DATA\MOVIES\CLOCKHRS\CHSP02.SMK
+    file[]: crc = de3ebc80; size =    331888; name = CD\RRF\DATA\MOVIES\CLOCKHRS\CHSP03.SMK
+    file[]: crc = 74f231d7; size =    587804; name = CD\RRF\DATA\MOVIES\CLOCKHRS\CHSP04.SMK
+    file[]: crc = 18ad040a; size =    408732; name = CD\RRF\DATA\MOVIES\CLOCKHRS\CHSP05.SMK
+    file[]: crc = b19304a0; size =    581808; name = CD\RRF\DATA\MOVIES\CLOCKHRS\CHSP06.SMK
+    file[]: crc = 7e2c5feb; size =    442672; name = CD\RRF\DATA\MOVIES\CLOCKHRS\CHSP07.SMK
+    file[]: crc = efa2f160; size =    691216; name = CD\RRF\DATA\MOVIES\CLOCKHRS\CHSP08.SMK
+    file[]: crc = 67b4733a; size =    692208; name = CD\RRF\DATA\MOVIES\CLOCKHRS\CHSP09.SMK
+    file[]: crc = 36187d4b; size =    711028; name = CD\RRF\DATA\MOVIES\CLOCKHRS\CHSP10.SMK
+    file[]: crc = e9477f42; size =    708176; name = CD\RRF\DATA\MOVIES\CLOCKHRS\CHSP11.SMK
+    file[]: crc = a29c9edd; size =   2361064; name = CD\RRF\DATA\MOVIES\CLOCKHRS\CHSP12.SMK
+    file[]: crc = 449f874b; size =    884888; name = CD\RRF\DATA\MOVIES\FINALE\FOJ2.SMK
+    file[]: crc = 3b8c9a7e; size =    966816; name = CD\RRF\DATA\MOVIES\FINALE\FOJ6.SMK
+    file[]: crc = acbcd76c; size =   1138808; name = CD\RRF\DATA\MOVIES\FINALE\TFB1.SMK
+    file[]: crc = 6201babd; size =   3050940; name = CD\RRF\DATA\MOVIES\FINALE\TFB2.SMK
+    file[]: crc = 039a4eb1; size =   1809460; name = CD\RRF\DATA\MOVIES\FINALE\TFB3.SMK
+    file[]: crc = 4fa5ed69; size =   8623464; name = CD\RRF\DATA\MOVIES\FINALE\TFINALE.SMK
+    file[]: crc = 8f984f85; size =   2913664; name = CD\RRF\DATA\MOVIES\FINALE\TFMAT1.SMK
+    file[]: crc = e99f3512; size =   1798364; name = CD\RRF\DATA\MOVIES\FINALE\TFMAT2.SMK
+    file[]: crc = 9a9c07de; size =    737824; name = CD\RRF\DATA\MOVIES\FINALE\TOJ3.SMK
+    file[]: crc = a734b072; size =    151000; name = CD\RRF\DATA\MOVIES\OPENING\COMET.SMK
+    file[]: crc = 2b9b3de7; size =   8224088; name = CD\RRF\DATA\MOVIES\OPENING\OPENERF.SMK
+    file[]: crc = 28b673bf; size =   7329040; name = CD\RRF\DATA\MOVIES\OPENING\OPENERS.SMK
+    file[]: crc = d4e3490b; size =   1311808; name = CD\RRF\DATA\MOVIES\OPENING\TLCIN.SMK
+    file[]: crc = 9ac2a1ec; size =    346416; name = CD\RRF\DATA\MOVIES\TRANSIT\BTRUNIN.SMK
+    file[]: crc = b30dfc41; size =    355992; name = CD\RRF\DATA\MOVIES\TRANSIT\BTRUNOUT.SMK
+    file[]: crc = e90ac523; size =    224852; name = CD\RRF\DATA\MOVIES\TRANSIT\OTRUNIN.SMK
+    file[]: crc = f5ae4d5b; size =    229852; name = CD\RRF\DATA\MOVIES\TRANSIT\OTRUNOUT.SMK
+    file[]: crc = 42f7c98e; size =    364296; name = CD\RRF\DATA\MOVIES\TRANSIT\PTRUNIN.SMK
+    file[]: crc = 647e96c0; size =    368088; name = CD\RRF\DATA\MOVIES\TRANSIT\PTRUNOUT.SMK
+    file[]: crc = e38ee3bf; size =    210092; name = CD\RRF\DATA\MOVIES\TRANSIT\RTRUNINA.SMK
+    file[]: crc = 11b93f98; size =    150960; name = CD\RRF\DATA\MOVIES\TRANSIT\RTRUNINB.SMK
+    file[]: crc = 7d8467c2; size =    219272; name = CD\RRF\DATA\MOVIES\TRANSIT\RTRUNOTC.SMK
+    file[]: crc = f40080d7; size =    228408; name = CD\RRF\DATA\MOVIES\TRANSIT\RTRUNOUT.SMK
+
+    
+    CDLABEL = e
+    RRF_CONTENTS = [[[$(CRLF)
+; Reader Rabbit's 1st Grade
+
+[Hardware]
+CDDrive=D:\RRF\DATA\
+
+[Dialog]
+
+]]]
+    TLCAPPS_CONTENTS = ""
+end
+
+//
+// Version 1.01 - Dutch
+//
+game[pc-cd-nl-1.01]:
+    name = Dutch CD, Version 1.01
+    anchorfile = RRF.EXE
+    anchordepth = 3
+    
+    file[]: crc = 898959f9; size =  10192256; name = EDATA_HD.DF
+    file[]: crc = 8a0453f4; size =   1638249; name = RRF.EXE
+    file[]: crc = d2d6e1e1; size =       766; name = RRF.ICO
+    file[]: crc = d8bd604e; size =     71680; name = SMACKW32.DLL
+    file[]: crc = 1982dbdd; size = 152882801; name = CD\RRF\DATA\EDATA_CD.DF
+    file[]: crc = 87b8e1af; size =    958660; name = CD\RRF\DATA\MOVIES\CLOCKHRS\CHSP01.SMK
+    file[]: crc = d8d9176f; size =    347368; name = CD\RRF\DATA\MOVIES\CLOCKHRS\CHSP02.SMK
+    file[]: crc = 6f47aa2e; size =    334296; name = CD\RRF\DATA\MOVIES\CLOCKHRS\CHSP03.SMK
+    file[]: crc = 5a5e86d1; size =    615316; name = CD\RRF\DATA\MOVIES\CLOCKHRS\CHSP04.SMK
+    file[]: crc = 937d164e; size =    433544; name = CD\RRF\DATA\MOVIES\CLOCKHRS\CHSP05.SMK
+    file[]: crc = 3c945a93; size =    583968; name = CD\RRF\DATA\MOVIES\CLOCKHRS\CHSP06.SMK
+    file[]: crc = 659cde6d; size =    463604; name = CD\RRF\DATA\MOVIES\CLOCKHRS\CHSP07.SMK
+    file[]: crc = 01d0339b; size =    706640; name = CD\RRF\DATA\MOVIES\CLOCKHRS\CHSP08.SMK
+    file[]: crc = 9042a204; size =    707404; name = CD\RRF\DATA\MOVIES\CLOCKHRS\CHSP09.SMK
+    file[]: crc = d7aa562f; size =    727680; name = CD\RRF\DATA\MOVIES\CLOCKHRS\CHSP10.SMK
+    file[]: crc = 37c685f9; size =    725680; name = CD\RRF\DATA\MOVIES\CLOCKHRS\CHSP11.SMK
+    file[]: crc = 56286a9f; size =   2226916; name = CD\RRF\DATA\MOVIES\CLOCKHRS\CHSP12.SMK
+    file[]: crc = ad58d76d; size =    944440; name = CD\RRF\DATA\MOVIES\FINALE\FOJ2.SMK
+    file[]: crc = 1698fa92; size =   1004636; name = CD\RRF\DATA\MOVIES\FINALE\FOJ6.SMK
+    file[]: crc = 3a81db4c; size =   1225724; name = CD\RRF\DATA\MOVIES\FINALE\TFB1.SMK
+    file[]: crc = 97bbb84a; size =   3138844; name = CD\RRF\DATA\MOVIES\FINALE\TFB2.SMK
+    file[]: crc = c61851fe; size =   1827972; name = CD\RRF\DATA\MOVIES\FINALE\TFB3.SMK
+    file[]: crc = 998a6dac; size =   8593856; name = CD\RRF\DATA\MOVIES\FINALE\TFINALE.SMK
+    file[]: crc = 624207f8; size =   2831980; name = CD\RRF\DATA\MOVIES\FINALE\TFMAT1.SMK
+    file[]: crc = 0ef76c2a; size =   1662236; name = CD\RRF\DATA\MOVIES\FINALE\TFMAT2.SMK
+    file[]: crc = 0a554583; size =    839464; name = CD\RRF\DATA\MOVIES\FINALE\TOJ3.SMK
+    file[]: crc = 2e6ba90e; size =    143328; name = CD\RRF\DATA\MOVIES\OPENING\COMET.SMK
+    file[]: crc = 516ecc1e; size =   7857020; name = CD\RRF\DATA\MOVIES\OPENING\OPENERF.SMK
+    file[]: crc = f80019ce; size =   7164364; name = CD\RRF\DATA\MOVIES\OPENING\OPENERS.SMK
+    file[]: crc = 10c84bab; size =   1226596; name = CD\RRF\DATA\MOVIES\OPENING\TLCIN.SMK
+    file[]: crc = 9ac2a1ec; size =    346416; name = CD\RRF\DATA\MOVIES\TRANSIT\BTRUNIN.SMK
+    file[]: crc = b30dfc41; size =    355992; name = CD\RRF\DATA\MOVIES\TRANSIT\BTRUNOUT.SMK
+    file[]: crc = e90ac523; size =    224852; name = CD\RRF\DATA\MOVIES\TRANSIT\OTRUNIN.SMK
+    file[]: crc = f5ae4d5b; size =    229852; name = CD\RRF\DATA\MOVIES\TRANSIT\OTRUNOUT.SMK
+    file[]: crc = 74d6a59f; size =    366780; name = CD\RRF\DATA\MOVIES\TRANSIT\PTRUNIN.SMK
+    file[]: crc = 70f43dd2; size =    370088; name = CD\RRF\DATA\MOVIES\TRANSIT\PTRUNOUT.SMK
+    file[]: crc = e38ee3bf; size =    210092; name = CD\RRF\DATA\MOVIES\TRANSIT\RTRUNINA.SMK
+    file[]: crc = 11b93f98; size =    150960; name = CD\RRF\DATA\MOVIES\TRANSIT\RTRUNINB.SMK
+    file[]: crc = 7d8467c2; size =    219272; name = CD\RRF\DATA\MOVIES\TRANSIT\RTRUNOTC.SMK
+    file[]: crc = f40080d7; size =    228408; name = CD\RRF\DATA\MOVIES\TRANSIT\RTRUNOUT.SMK
+
+    
+    CDLABEL = GROEP3
+    RRF_CONTENTS = [[[$(CRLF)
+; Reader Rabbit's 1st Grade
+
+[Hardware]
+CDDrive=D:\RRF\DATA\
+
+[Dialog]
+
+]]]
+    TLCAPPS_CONTENTS = ""
+end
+
+//
+// Version 1.3 - Swedish
+//
+game[pc-cd-sv-1.3]:
+    name = Swedish CD, Version 1.3
+    anchorfile = RRF.EXE
+    anchordepth = 3
+    
+    file[]: crc = b339e1eb; size =  11059235; name = edata_hd.df
+    file[]: crc = 8d290f7d; size =    339456; name = rrf.exe
+    file[]: crc = d2d6e1e1; size =       766; name = RRF.ICO
+    file[]: crc = d8bd604e; size =     71680; name = SMACKW32.DLL
+    file[]: crc = e62ea656; size = 158647564; name = CD\Data\EDATA_CD.df
+    file[]: crc = 48679b4f; size =    937396; name = CD\Data\MOVIES\CLOCKHRS\Chsp01.smk
+    file[]: crc = 686694b1; size =    346268; name = CD\Data\MOVIES\CLOCKHRS\Chsp02.smk
+    file[]: crc = db98c066; size =    330628; name = CD\Data\MOVIES\CLOCKHRS\Chsp03.smk
+    file[]: crc = 0ba72968; size =    596832; name = CD\Data\MOVIES\CLOCKHRS\Chsp04.smk
+    file[]: crc = fbc1989d; size =    413976; name = CD\Data\MOVIES\CLOCKHRS\Chsp05.smk
+    file[]: crc = de1b38d1; size =    579800; name = CD\Data\MOVIES\CLOCKHRS\Chsp06.smk
+    file[]: crc = 50408d34; size =    447408; name = CD\Data\MOVIES\CLOCKHRS\Chsp07.smk
+    file[]: crc = 7f788dd3; size =    694612; name = CD\Data\MOVIES\CLOCKHRS\Chsp08.smk
+    file[]: crc = c1c840a8; size =    695624; name = CD\Data\MOVIES\CLOCKHRS\Chsp09.smk
+    file[]: crc = 8d7f08f6; size =    709296; name = CD\Data\MOVIES\CLOCKHRS\Chsp10.smk
+    file[]: crc = e596d77d; size =    707824; name = CD\Data\MOVIES\CLOCKHRS\Chsp11.smk
+    file[]: crc = e9aaa033; size =   2549772; name = CD\Data\MOVIES\CLOCKHRS\Chsp12.smk
+    file[]: crc = 3fa30d63; size =    872740; name = CD\Data\MOVIES\FINALE\Foj2.smk
+    file[]: crc = 623ba4a8; size =    940536; name = CD\Data\MOVIES\FINALE\Foj6.smk
+    file[]: crc = 7f9cbfe4; size =   1189844; name = CD\Data\MOVIES\FINALE\Tfb1.smk
+    file[]: crc = d0447c8f; size =   3158516; name = CD\Data\MOVIES\FINALE\Tfb2.smk
+    file[]: crc = 94a3e7fb; size =   1821344; name = CD\Data\MOVIES\FINALE\Tfb3.smk
+    file[]: crc = 6846320c; size =   8644052; name = CD\Data\MOVIES\FINALE\Tfinale.smk
+    file[]: crc = 0a8144c3; size =   2951932; name = CD\Data\MOVIES\FINALE\Tfmat1.smk
+    file[]: crc = 023691ff; size =   1805936; name = CD\Data\MOVIES\FINALE\Tfmat2.smk
+    file[]: crc = ebbbc374; size =    738084; name = CD\Data\MOVIES\FINALE\Toj3.smk
+    file[]: crc = 6de90461; size =      1284; name = CD\Data\MOVIES\OPENING\Bmm.smk
+    file[]: crc = a734b072; size =    151000; name = CD\Data\MOVIES\OPENING\COMET.SMK
+    file[]: crc = 6c8efab3; size =   8142668; name = CD\Data\MOVIES\OPENING\Openerf.smk
+    file[]: crc = 3ae5ee45; size =   7476372; name = CD\Data\MOVIES\OPENING\OPENERS.SMK
+    file[]: crc = 4061bc7e; size =   1347992; name = CD\Data\MOVIES\OPENING\Tlcin.smk
+    file[]: crc = 9ac2a1ec; size =    346416; name = CD\Data\MOVIES\TRANSIT\BTRUNIN.SMK
+    file[]: crc = b30dfc41; size =    355992; name = CD\Data\MOVIES\TRANSIT\BTRUNOUT.SMK
+    file[]: crc = e90ac523; size =    224852; name = CD\Data\MOVIES\TRANSIT\OTRUNIN.SMK
+    file[]: crc = f5ae4d5b; size =    229852; name = CD\Data\MOVIES\TRANSIT\OTRUNOUT.SMK
+    file[]: crc = 8fcfaa4e; size =    316180; name = CD\Data\MOVIES\TRANSIT\PTRUNIN.SMK
+    file[]: crc = f9490460; size =    313196; name = CD\Data\MOVIES\TRANSIT\PTRUNOUT.SMK
+    file[]: crc = e38ee3bf; size =    210092; name = CD\Data\MOVIES\TRANSIT\RTRUNINA.SMK
+    file[]: crc = 11b93f98; size =    150960; name = CD\Data\MOVIES\TRANSIT\RTRUNINB.SMK
+    file[]: crc = 7d8467c2; size =    219272; name = CD\Data\MOVIES\TRANSIT\RTRUNOTC.SMK
+    file[]: crc = f40080d7; size =    228408; name = CD\Data\MOVIES\TRANSIT\RTRUNOUT.SMK
+    file[]: crc = 00000000; size =         0; name = CD\INSTALL\TLC\Rr1swedi.cd
+    
+    CDLABEL = "KK Ettan"
+    RRF_CONTENTS = [[[$(CRLF)
+; Reader Rabbit's 1st Grade
+
+[Hardware]
+CDDrive=D:\DATA\
+
+[Dialog]
+
+]]]
+    TLCAPPS_CONTENTS = ""
+end
+
+//
+// Version 2.01 - Brazilian Portuguese
+//
+game[pc-cd-pt-br-2.01]:
+    name = Brazilian Portuguese CD, Version 2.01
+    anchorfile = RRF.EXE
+    anchordepth = 3
+    
+    file[]: crc = 5fbaf876; size =  11313566; name = EDATA_HD.DF
+    file[]: crc = b35153f3; size =    339968; name = RRF.EXE
+    file[]: crc = d2d6e1e1; size =       766; name = RRF.ICO
+    file[]: crc = d8bd604e; size =     71680; name = SMACKW32.DLL
+    file[]: crc = f3156dee; size = 142750246; name = CD\DATA\EDATA_CD.DF
+    file[]: crc = f5da9cbf; size =   1113504; name = CD\DATA\MOVIES\CLOCKHRS\CHSP01.SMK
+    file[]: crc = 170b5c77; size =    396268; name = CD\DATA\MOVIES\CLOCKHRS\CHSP02.SMK
+    file[]: crc = e41ffc4d; size =    340028; name = CD\DATA\MOVIES\CLOCKHRS\CHSP03.SMK
+    file[]: crc = e58338ca; size =    635548; name = CD\DATA\MOVIES\CLOCKHRS\CHSP04.SMK
+    file[]: crc = 2f2596bc; size =    430160; name = CD\DATA\MOVIES\CLOCKHRS\CHSP05.SMK
+    file[]: crc = e41ffc4d; size =    340028; name = CD\DATA\MOVIES\CLOCKHRS\CHSP06.SMK
+    file[]: crc = 38e9c625; size =    492312; name = CD\DATA\MOVIES\CLOCKHRS\CHSP07.SMK
+    file[]: crc = 67b7c735; size =    705032; name = CD\DATA\MOVIES\CLOCKHRS\CHSP08.SMK
+    file[]: crc = 67b7c735; size =    705032; name = CD\DATA\MOVIES\CLOCKHRS\CHSP09.SMK
+    file[]: crc = b8edd9de; size =    743688; name = CD\DATA\MOVIES\CLOCKHRS\CHSP10.SMK
+    file[]: crc = b8edd9de; size =    743688; name = CD\DATA\MOVIES\CLOCKHRS\CHSP11.SMK
+    file[]: crc = 63e43244; size =   2241252; name = CD\DATA\MOVIES\CLOCKHRS\CHSP12.SMK
+    file[]: crc = 01509726; size =    895364; name = CD\DATA\MOVIES\FINALE\FOJ2.SMK
+    file[]: crc = e2407dc7; size =    951884; name = CD\DATA\MOVIES\FINALE\FOJ6.SMK
+    file[]: crc = f47a46ea; size =   1221644; name = CD\DATA\MOVIES\FINALE\TFB1.SMK
+    file[]: crc = cb07a4a7; size =   3203632; name = CD\DATA\MOVIES\FINALE\TFB2.SMK
+    file[]: crc = 46b8b2eb; size =   1840064; name = CD\DATA\MOVIES\FINALE\TFB3.SMK
+    file[]: crc = 2e77b271; size =   8643736; name = CD\DATA\MOVIES\FINALE\TFINALE.SMK
+    file[]: crc = baf72b96; size =   2907592; name = CD\DATA\MOVIES\FINALE\TFMAT1.SMK
+    file[]: crc = 2b430681; size =   1774376; name = CD\DATA\MOVIES\FINALE\TFMAT2.SMK
+    file[]: crc = 806de9da; size =    741368; name = CD\DATA\MOVIES\FINALE\TOJ3.SMK
+    file[]: crc = a734b072; size =    151000; name = CD\DATA\MOVIES\OPENING\COMET.SMK
+    file[]: crc = d31deddb; size =   8348404; name = CD\DATA\MOVIES\OPENING\OPENERF.SMK
+    file[]: crc = d31deddb; size =   8348404; name = CD\DATA\MOVIES\OPENING\OPENERS.SMK
+    file[]: crc = 6a4d7f1e; size =   1464288; name = CD\DATA\MOVIES\OPENING\TLCIN.SMK
+    file[]: crc = 9ac2a1ec; size =    346416; name = CD\DATA\MOVIES\TRANSIT\BTRUNIN.SMK
+    file[]: crc = b30dfc41; size =    355992; name = CD\DATA\MOVIES\TRANSIT\BTRUNOUT.SMK
+    file[]: crc = e90ac523; size =    224852; name = CD\DATA\MOVIES\TRANSIT\OTRUNIN.SMK
+    file[]: crc = f5ae4d5b; size =    229852; name = CD\DATA\MOVIES\TRANSIT\OTRUNOUT.SMK
+    file[]: crc = 8a4cc61b; size =    319404; name = CD\DATA\MOVIES\TRANSIT\PTRUNIN.SMK
+    file[]: crc = 30513a8c; size =    313092; name = CD\DATA\MOVIES\TRANSIT\PTRUNOUT.SMK
+    file[]: crc = e38ee3bf; size =    210092; name = CD\DATA\MOVIES\TRANSIT\RTRUNINA.SMK
+    file[]: crc = 11b93f98; size =    150960; name = CD\DATA\MOVIES\TRANSIT\RTRUNINB.SMK
+    file[]: crc = 7d8467c2; size =    219272; name = CD\DATA\MOVIES\TRANSIT\RTRUNOTC.SMK
+    file[]: crc = f40080d7; size =    228408; name = CD\DATA\MOVIES\TRANSIT\RTRUNOUT.SMK
+    
+    CDLABEL = RRFG
+    RRF_CONTENTS = [[[$(CRLF)
+; Reader Rabbit's 1st Grade
+
+[Hardware]
+CDDrive=D:\DATA\
+
+[Dialog]
+
+]]]
+    TLCAPPS_CONTENTS = ""
+end
+
+//
+// Version 3.0 - Dutch
+//
+game[pc-cd-nl-3.0]:
+    name = Dutch CD, Version 3.0
+    anchorfile = RRF.EXE
+    anchordepth = 3
+    
+    file[]: crc = 347dacf3; size =  10192293; name = edata_hd.df
+    file[]: crc = 162e44fc; size =    172249; name = edatapls.df
+    file[]: crc = 238d000f; size =      2501; name = PLSDescriptor.txt
+    file[]: crc = bb071b07; size =   1159168; name = PreAssess.exe
+    file[]: crc = 539f848f; size =    805827; name = rrf.exe
+    file[]: crc = d2d6e1e1; size =       766; name = RRF.ICO
+    file[]: crc = d8bd604e; size =     71680; name = SMACKW32.DLL
+    file[]: crc = b45a0646; size = 152931268; name = CD\DATA\edata_cd.df
+    file[]: crc = 87b8e1af; size =    958660; name = CD\DATA\MOVIES\CLOCKHRS\CHSP01.SMK
+    file[]: crc = d8d9176f; size =    347368; name = CD\DATA\MOVIES\CLOCKHRS\CHSP02.SMK
+    file[]: crc = 6f47aa2e; size =    334296; name = CD\DATA\MOVIES\CLOCKHRS\CHSP03.SMK
+    file[]: crc = 5a5e86d1; size =    615316; name = CD\DATA\MOVIES\CLOCKHRS\CHSP04.SMK
+    file[]: crc = 937d164e; size =    433544; name = CD\DATA\MOVIES\CLOCKHRS\CHSP05.SMK
+    file[]: crc = 3c945a93; size =    583968; name = CD\DATA\MOVIES\CLOCKHRS\CHSP06.SMK
+    file[]: crc = 659cde6d; size =    463604; name = CD\DATA\MOVIES\CLOCKHRS\CHSP07.SMK
+    file[]: crc = 01d0339b; size =    706640; name = CD\DATA\MOVIES\CLOCKHRS\CHSP08.SMK
+    file[]: crc = 9042a204; size =    707404; name = CD\DATA\MOVIES\CLOCKHRS\CHSP09.SMK
+    file[]: crc = d7aa562f; size =    727680; name = CD\DATA\MOVIES\CLOCKHRS\CHSP10.SMK
+    file[]: crc = 37c685f9; size =    725680; name = CD\DATA\MOVIES\CLOCKHRS\CHSP11.SMK
+    file[]: crc = 156c85e4; size =   2257200; name = CD\DATA\MOVIES\CLOCKHRS\Chsp12.smk
+    file[]: crc = 3630495e; size =    919644; name = CD\DATA\MOVIES\FINALE\Foj2.smk
+    file[]: crc = ddff20b3; size =    970748; name = CD\DATA\MOVIES\FINALE\Foj6.smk
+    file[]: crc = 3a81db4c; size =   1225724; name = CD\DATA\MOVIES\FINALE\TFB1.SMK
+    file[]: crc = 97bbb84a; size =   3138844; name = CD\DATA\MOVIES\FINALE\TFB2.SMK
+    file[]: crc = 77358853; size =   1795844; name = CD\DATA\MOVIES\FINALE\Tfb3.smk
+    file[]: crc = 998a6dac; size =   8593856; name = CD\DATA\MOVIES\FINALE\TFINALE.SMK
+    file[]: crc = 624207f8; size =   2831980; name = CD\DATA\MOVIES\FINALE\TFMAT1.SMK
+    file[]: crc = 0ef76c2a; size =   1662236; name = CD\DATA\MOVIES\FINALE\TFMAT2.SMK
+    file[]: crc = 95c0dea4; size =    784324; name = CD\DATA\MOVIES\FINALE\Toj3.smk
+    file[]: crc = 7a388418; size =    402120; name = CD\DATA\MOVIES\OPENING\AdaptIn.smk
+    file[]: crc = b45e9d2a; size =     71444; name = CD\DATA\MOVIES\OPENING\AdaptOut.smk
+    file[]: crc = 2e6ba90e; size =    143328; name = CD\DATA\MOVIES\OPENING\COMET.SMK
+    file[]: crc = 35289c57; size =     72792; name = CD\DATA\MOVIES\OPENING\NOSOUNDC.SMK
+    file[]: crc = 3dadf399; size =   7681888; name = CD\DATA\MOVIES\OPENING\OPENER.SMK
+    file[]: crc = 516ecc1e; size =   7857020; name = CD\DATA\MOVIES\OPENING\OPENERF.SMK
+    file[]: crc = f80019ce; size =   7164364; name = CD\DATA\MOVIES\OPENING\OPENERS.SMK
+    file[]: crc = 10c84bab; size =   1226596; name = CD\DATA\MOVIES\OPENING\TLCIN.SMK
+    file[]: crc = 9ac2a1ec; size =    346416; name = CD\DATA\MOVIES\TRANSIT\BTRUNIN.SMK
+    file[]: crc = b30dfc41; size =    355992; name = CD\DATA\MOVIES\TRANSIT\BTRUNOUT.SMK
+    file[]: crc = e90ac523; size =    224852; name = CD\DATA\MOVIES\TRANSIT\OTRUNIN.SMK
+    file[]: crc = f5ae4d5b; size =    229852; name = CD\DATA\MOVIES\TRANSIT\OTRUNOUT.SMK
+    file[]: crc = 13e5d2c8; size =    352200; name = CD\DATA\MOVIES\TRANSIT\Ptrunin.smk
+    file[]: crc = 5a6d41d3; size =    355628; name = CD\DATA\MOVIES\TRANSIT\Ptrunout.smk
+    file[]: crc = e38ee3bf; size =    210092; name = CD\DATA\MOVIES\TRANSIT\RTRUNINA.SMK
+    file[]: crc = 11b93f98; size =    150960; name = CD\DATA\MOVIES\TRANSIT\RTRUNINB.SMK
+    file[]: crc = 7d8467c2; size =    219272; name = CD\DATA\MOVIES\TRANSIT\RTRUNOTC.SMK
+    file[]: crc = f40080d7; size =    228408; name = CD\DATA\MOVIES\TRANSIT\RTRUNOUT.SMK
+    file[]: crc = c9f72cf8; size =    127042; name = CD\Install\PLS\PLUGIN\rr1st.pls
+    file[]: crc = 8ac92419; size =   2180621; name = CD\Install\PLS\Preasses\PRsc\AONE.rsc
+    file[]: crc = 7a5b6a55; size =   3160589; name = CD\Install\PLS\Preasses\PRsc\ONE.rsc
+    file[]: crc = df25bca7; size =      2131; name = CD\Install\PLS\Preasses\PScripts\CONSTANT.INC
+    file[]: crc = 77e398bb; size =       623; name = CD\Install\PLS\Preasses\PScripts\EXIT.MPS
+    file[]: crc = 315fcc9b; size =      2169; name = CD\Install\PLS\Preasses\PScripts\mthRacer.inc
+    file[]: crc = 5e8e8c34; size =       941; name = CD\Install\PLS\Preasses\PScripts\mthRacer.mps
+    file[]: crc = a4da71ec; size =       218; name = CD\Install\PLS\Preasses\PScripts\RCONFIRM.MPS
+    file[]: crc = 00000000; size =         0; name = CD\Install\TLC\RRF744BE.CD
+
+    
+    CDLABEL = RK_GROEP_3
+    RRF_CONTENTS = [[[$(CRLF)
+; Reader Rabbit's 1st Grade
+
+[Hardware]
+CDDrive=D:\DATA\
+
+[Dialog]
+
+]]]
+    TLCAPPS_CONTENTS = ""
+end
+
+//
+// Version 3.0 - Dutch (Belgium)
+//
+game[pc-cd-nl-be-3.0]:
+    name = Dutch (Belgium) CD, Version 3.0
+    anchorfile = RRF.EXE
+    anchordepth = 3
+    
+    file[]: crc = ee8df569; size =  10197380; name = edata_hd.df
+    file[]: crc = 162e44fc; size =    172249; name = edatapls.df
+    file[]: crc = 238d000f; size =      2501; name = PLSDescriptor.txt
+    file[]: crc = bb071b07; size =   1159168; name = PreAssess.exe
+    file[]: crc = 9c7e9390; size =    805827; name = rrf.exe
+    file[]: crc = d2d6e1e1; size =       766; name = RRF.ICO
+    file[]: crc = d8bd604e; size =     71680; name = SMACKW32.DLL
+    file[]: crc = b45a0646; size = 152931268; name = CD\DATA\edata_cd.df
+    file[]: crc = 87b8e1af; size =    958660; name = CD\DATA\MOVIES\CLOCKHRS\CHSP01.SMK
+    file[]: crc = d8d9176f; size =    347368; name = CD\DATA\MOVIES\CLOCKHRS\CHSP02.SMK
+    file[]: crc = 6f47aa2e; size =    334296; name = CD\DATA\MOVIES\CLOCKHRS\CHSP03.SMK
+    file[]: crc = 5a5e86d1; size =    615316; name = CD\DATA\MOVIES\CLOCKHRS\CHSP04.SMK
+    file[]: crc = 937d164e; size =    433544; name = CD\DATA\MOVIES\CLOCKHRS\CHSP05.SMK
+    file[]: crc = 3c945a93; size =    583968; name = CD\DATA\MOVIES\CLOCKHRS\CHSP06.SMK
+    file[]: crc = 659cde6d; size =    463604; name = CD\DATA\MOVIES\CLOCKHRS\CHSP07.SMK
+    file[]: crc = 01d0339b; size =    706640; name = CD\DATA\MOVIES\CLOCKHRS\CHSP08.SMK
+    file[]: crc = 9042a204; size =    707404; name = CD\DATA\MOVIES\CLOCKHRS\CHSP09.SMK
+    file[]: crc = d7aa562f; size =    727680; name = CD\DATA\MOVIES\CLOCKHRS\CHSP10.SMK
+    file[]: crc = 37c685f9; size =    725680; name = CD\DATA\MOVIES\CLOCKHRS\CHSP11.SMK
+    file[]: crc = 56286a9f; size =   2226916; name = CD\DATA\MOVIES\CLOCKHRS\CHSP12.SMK
+    file[]: crc = 3630495e; size =    919644; name = CD\DATA\MOVIES\FINALE\Foj2.smk
+    file[]: crc = ddff20b3; size =    970748; name = CD\DATA\MOVIES\FINALE\Foj6.smk
+    file[]: crc = 3a81db4c; size =   1225724; name = CD\DATA\MOVIES\FINALE\TFB1.SMK
+    file[]: crc = 97bbb84a; size =   3138844; name = CD\DATA\MOVIES\FINALE\TFB2.SMK
+    file[]: crc = 77358853; size =   1795844; name = CD\DATA\MOVIES\FINALE\Tfb3.smk
+    file[]: crc = 998a6dac; size =   8593856; name = CD\DATA\MOVIES\FINALE\TFINALE.SMK
+    file[]: crc = 624207f8; size =   2831980; name = CD\DATA\MOVIES\FINALE\TFMAT1.SMK
+    file[]: crc = 0ef76c2a; size =   1662236; name = CD\DATA\MOVIES\FINALE\TFMAT2.SMK
+    file[]: crc = 95c0dea4; size =    784324; name = CD\DATA\MOVIES\FINALE\Toj3.smk
+    file[]: crc = 7a388418; size =    402120; name = CD\DATA\MOVIES\OPENING\AdaptIn.smk
+    file[]: crc = b45e9d2a; size =     71444; name = CD\DATA\MOVIES\OPENING\AdaptOut.smk
+    file[]: crc = 2e6ba90e; size =    143328; name = CD\DATA\MOVIES\OPENING\COMET.SMK
+    file[]: crc = 35289c57; size =     72792; name = CD\DATA\MOVIES\OPENING\NOSOUNDC.SMK
+    file[]: crc = 3dadf399; size =   7681888; name = CD\DATA\MOVIES\OPENING\OPENER.SMK
+    file[]: crc = 516ecc1e; size =   7857020; name = CD\DATA\MOVIES\OPENING\OPENERF.SMK
+    file[]: crc = f80019ce; size =   7164364; name = CD\DATA\MOVIES\OPENING\OPENERS.SMK
+    file[]: crc = ff050d4d; size =   1213208; name = CD\DATA\MOVIES\OPENING\TLCIN.SMK
+    file[]: crc = 9ac2a1ec; size =    346416; name = CD\DATA\MOVIES\TRANSIT\BTRUNIN.SMK
+    file[]: crc = b30dfc41; size =    355992; name = CD\DATA\MOVIES\TRANSIT\BTRUNOUT.SMK
+    file[]: crc = e90ac523; size =    224852; name = CD\DATA\MOVIES\TRANSIT\OTRUNIN.SMK
+    file[]: crc = f5ae4d5b; size =    229852; name = CD\DATA\MOVIES\TRANSIT\OTRUNOUT.SMK
+    file[]: crc = 13e5d2c8; size =    352200; name = CD\DATA\MOVIES\TRANSIT\Ptrunin.smk
+    file[]: crc = 5a6d41d3; size =    355628; name = CD\DATA\MOVIES\TRANSIT\Ptrunout.smk
+    file[]: crc = e38ee3bf; size =    210092; name = CD\DATA\MOVIES\TRANSIT\RTRUNINA.SMK
+    file[]: crc = 11b93f98; size =    150960; name = CD\DATA\MOVIES\TRANSIT\RTRUNINB.SMK
+    file[]: crc = 7d8467c2; size =    219272; name = CD\DATA\MOVIES\TRANSIT\RTRUNOTC.SMK
+    file[]: crc = f40080d7; size =    228408; name = CD\DATA\MOVIES\TRANSIT\RTRUNOUT.SMK
+    file[]: crc = 45ffb90f; size =    127042; name = CD\Install\PLS\PLUGIN\rr1st.pls
+    file[]: crc = 8ac92419; size =   2180621; name = CD\Install\PLS\Preasses\PRsc\AONE.rsc
+    file[]: crc = 7a5b6a55; size =   3160589; name = CD\Install\PLS\Preasses\PRsc\ONE.rsc
+    file[]: crc = df25bca7; size =      2131; name = CD\Install\PLS\Preasses\PScripts\CONSTANT.INC
+    file[]: crc = 77e398bb; size =       623; name = CD\Install\PLS\Preasses\PScripts\EXIT.MPS
+    file[]: crc = 315fcc9b; size =      2169; name = CD\Install\PLS\Preasses\PScripts\mthRacer.inc
+    file[]: crc = 5e8e8c34; size =       941; name = CD\Install\PLS\Preasses\PScripts\mthRacer.mps
+    file[]: crc = a4da71ec; size =       218; name = CD\Install\PLS\Preasses\PScripts\RCONFIRM.MPS
+    file[]: crc = 00000000; size =         0; name = CD\Install\TLC\RRF744BE.CD
+
+    
+    CDLABEL = RK_Eerste_leerja
+    RRF_CONTENTS = [[[$(CRLF)
+; Reader Rabbit's 1st Grade
+
+[Hardware]
+CDDrive=D:\DATA\
+
+[Dialog]
+
+]]]
+    TLCAPPS_CONTENTS = ""
+end
+
+end

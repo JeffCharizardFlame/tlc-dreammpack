@@ -1,0 +1,375 @@
+desc[tlc-mathrabbit]:
+
+name = Math Rabbit / Reader Rabbit's Math 1
+icon = tlc-mathrabbit.png
+machine = pc
+launch = ""
+osenv = windows 98
+audiohw = gmidi
+
+config[display-2.0]:
+    condition = is_dos() && file_exists("$$(rootpath)\\MR000.DAT")
+    title = Display Adapter
+    option[vga]: name = VGA; videohw = vga;
+    option[ega]: name = EGA; videohw = ega;
+    option[cga]: name = CGA; videohw = cga;
+    option[tandy]: name = Tandy; machine = tandy; videohw = cga;
+end
+
+config[ossel-mr]:
+    condition = is_windows() && file_exists("$$(rootpath)\\mrwincd.exe");
+    title = OS Select
+    option[win9x]: name = Windows 9x; launch = "$(rootpath)\mrwin32.exe"; osenv = windows 98
+    option[win31]: name = Windows 3.1; launch = "$(rootpath)\mrwincd.exe"; osenv = windows 3.11.002
+end
+
+config[ossel-mruk]:
+    condition = is_windows() && file_exists("$$(rootpath)\\mrwin16.exe");
+    title = OS Select
+    option[win9x]: name = Windows 9x; launch = "$(rootpath)\mrwin32.exe"; osenv = windows 98
+    option[win31]: name = Windows 3.1; launch = "$(rootpath)\mrwin16.exe"; osenv = windows 3.11.002
+end
+
+config[ossel-rrm1]:
+    condition = is_windows() && file_exists("$$(rootpath)\\rrm1_16.exe");
+    title = OS Select
+    option[win9x]: name = Windows 9x; launch = "$(rootpath)\rrm1_32.exe"; osenv = windows 98
+    option[win31]: name = Windows 3.1; launch = "$(rootpath)\rrm1_16.exe"; osenv = windows 3.11.002
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+
+//
+// English MS-DOS Version 1.1
+//
+game[pc-dos-en]:
+    name = English MS-DOS Version 1.1
+    rootpath = C:\TLC\MR
+    launch = "$(rootpath)\MR.EXE"
+    osenv = dos
+    fixdivover = true
+    mips = $(MIPS_286_10)
+    ramkb = 640
+    audiohw = speaker
+    videohw = cga
+    anchorfile = MR.EXE
+    file[]: crc = 5fd35a30; size =       768; name = ALTFONT
+    file[]: crc = a08d2ed7; size =      2944; name = CLOWNMEN.CMP
+    file[]: crc = 8657f57c; size =      6656; name = GYPSY.CMP
+    file[]: crc = d202ef8d; size =         1; name = HER.DAT
+    file[]: crc = 598ad53c; size =      4096; name = MAINMEN.CMP
+    file[]: crc = db3b6e3b; size =     55486; name = MR.EXE
+    file[]: crc = ed309690; size =       324; name = MRCLOWN.IND
+    file[]: crc = dce6cc70; size =      8511; name = MRCLOWN.REL
+    file[]: crc = 7a4d4dd9; size =       512; name = MRMATCH.IND
+    file[]: crc = 46ad8422; size =     11904; name = MRMATCH.REL
+    file[]: crc = 74ea0394; size =       384; name = MRSORT.IND
+    file[]: crc = 23ba99c4; size =     14464; name = MRSORT.REL
+    file[]: crc = 8169a064; size =      7936; name = MRTITLE.CMP
+    file[]: crc = 8254621c; size =       384; name = MRTRAIN.IND
+    file[]: crc = 1e085873; size =      7808; name = MRTRAIN.REL
+    file[]: crc = 05e3d58a; size =      2816; name = RABFONT
+end
+
+//
+// English MS-DOS Version 2.0
+//
+game[pc-dos-en-vga]:
+    name = English MS-DOS Version 2.0
+    rootpath = C:\TLC\MR
+    launch = "$(rootpath)\MRPROG.EXE"
+    osenv = dos
+    fixdivover = true
+    mips = $(MIPS_386SX_20)
+    ramkb = 1024
+    audiohw = sb16
+    anchorfile = MRPROG.EXE
+    file[]: crc = 94833617; size =    107147; name = MR000.DAT
+    file[]: crc = 887d5bc6; size =    119869; name = MR001.DAT
+    file[]: crc = c690bfa1; size =    182983; name = MR002.DAT
+    file[]: crc = 6d7690e0; size =    346095; name = MR003.DAT
+    file[]: crc = 50faac87; size =      8610; name = MR004.DAT
+    file[]: crc = 43f587a5; size =    160320; name = MRPROG.EXE
+end
+
+//
+// English (US) Windows Version 2.01
+//
+game[pc-win-en-us]:
+    name = English (US) Windows Version 2.01
+    rootpath = C:\TLCWIN\MRWINCD
+    anchorfile = MRWIN32.EXE
+    anchordepth = 3
+    winres = 640x480x16
+    file[]: crc = 6ff8b873; size =   1148042; name = BALLOON.DLL
+    file[]: crc = 3f11085b; size =    653450; name = BEZEL.DLL
+    file[]: crc = 5406aef9; size =   1537162; name = CALLIOPE.DLL
+    file[]: crc = ab7ee301; size =     26768; name = CTL3D.DLL
+    file[]: crc = e63296a6; size =     17424; name = FH_BMP.DLL
+    file[]: crc = 51ab463a; size =   1076362; name = HIPPO.DLL
+    file[]: crc = 516438ed; size =   1313930; name = LEVELS.DLL
+    file[]: crc = 72006d0c; size =   1428106; name = MAINMENU.DLL
+    file[]: crc = 18ca5184; size =     18570; name = MISC.DLL
+    file[]: crc = 659d5b9d; size =   1736397; name = MRSND0.DLL
+    file[]: crc = 0f1188b2; size =    895114; name = MRSND1.DLL
+    file[]: crc = 75accdba; size =   1169034; name = MRSND2.DLL
+    file[]: crc = 70dfe87c; size =    293514; name = MRSND3.DLL
+    file[]: crc = 1ad78497; size =    787082; name = MRSND4.DLL
+    file[]: crc = 54a1a9e6; size =   1393290; name = MRSND5.DLL
+    file[]: crc = a4588289; size =   1881738; name = MRSND6.DLL
+    file[]: crc = 206e7d8c; size =   1534090; name = MRSND7.DLL
+    file[]: crc = a83d50d4; size =   1101962; name = MRSND_.DLL
+    file[]: crc = 2efc24d6; size =  85112562; name = MRWCDX.RPO
+    file[]: crc = e6da049f; size =      8628; name = MRWIN.GID
+    file[]: crc = fb19f865; size =     73819; name = MRWIN.HLP
+    file[]: crc = bafb0792; size =    680960; name = MRWIN32.EXE
+    file[]: crc = 7c8743f3; size =    733696; name = MRWINCD.EXE
+    file[]: crc = 7eacd77c; size =   3011722; name = NEWSNDS.DLL
+    file[]: crc = 944b5243; size =   1591946; name = OPENING.DLL
+    file[]: crc = d581d8a4; size =   2215050; name = PRZCTR1.DLL
+    file[]: crc = 88147bfe; size =   1843850; name = PRZCTR2.DLL
+    file[]: crc = 1611d115; size =   1424522; name = SEAL.DLL
+    file[]: crc = f1480d56; size =    345226; name = SIGNIN.DLL
+    file[]: crc = 01370517; size =    436362; name = SPLASH.DLL
+    file[]: crc = 73620af4; size =     27041; name = STRGRSRC.DLL
+    file[]: crc = 0feb0db2; size =      9901; name = SOUNDS\BENTRY.MID
+    file[]: crc = d5982090; size =       721; name = SOUNDS\BGROUCHO.MID
+    file[]: crc = 22b3ff2f; size =      1111; name = SOUNDS\BJUGGLE.MID
+    file[]: crc = 56b61864; size =      4839; name = SOUNDS\BOVER.MID
+    file[]: crc = e2614e92; size =       442; name = SOUNDS\BPARTY.MID
+    file[]: crc = 813a0b21; size =      5776; name = SOUNDS\BSTARS.MID
+    file[]: crc = 78254d4c; size =       466; name = SOUNDS\BTHUMBS.MID
+    file[]: crc = 39af4954; size =      1010; name = SOUNDS\BTIGHTRP.MID
+    file[]: crc = 224c50ba; size =      4105; name = SOUNDS\BTRAPEZE.MID
+    file[]: crc = dbd1cf38; size =     11465; name = SOUNDS\EENTRY.MID
+    file[]: crc = 0d7e9a00; size =       772; name = SOUNDS\EGROUCHO.MID
+    file[]: crc = 3d193b33; size =      1341; name = SOUNDS\EJUGGLE.MID
+    file[]: crc = 1b453b89; size =      5316; name = SOUNDS\EOVER.MID
+    file[]: crc = 6a361e90; size =       524; name = SOUNDS\EPARTY.MID
+    file[]: crc = 607d5a74; size =      5981; name = SOUNDS\ESTARS.MID
+    file[]: crc = af58045e; size =       600; name = SOUNDS\ETHUMBS.MID
+    file[]: crc = 9f931331; size =      1021; name = SOUNDS\ETIGHTRP.MID
+    file[]: crc = 201f66af; size =      4327; name = SOUNDS\ETRAPEZE.MID
+end
+
+//
+// English (UK) Windows Version 2.1
+//
+game[pc-win-en-uk-2.1]:
+    name = English (UK) Windows Version 2.1
+    rootpath = C:\TLCWIN\MRWINCD
+    anchorfile = MRWIN32.EXE
+    anchordepth = 3
+    winres = 640x480x16
+    file[]: crc = 6ff8b873; size =   1148042; name = BALLOON.DLL
+    file[]: crc = 5e1ccf2d; size =    344714; name = BCAHCECK
+    file[]: crc = 3f11085b; size =    653450; name = BEZEL.DLL
+    file[]: crc = 5406aef9; size =   1537162; name = CALLIOPE.DLL
+    file[]: crc = 2955804d; size =      9043; name = DBGMONO.DLL
+    file[]: crc = 51ab463a; size =   1076362; name = HIPPO.DLL
+    file[]: crc = d8149f4b; size =   1313930; name = LEVELS.DLL
+    file[]: crc = 72006d0c; size =   1428106; name = MAINMENU.DLL
+    file[]: crc = 7d9e575d; size =     28810; name = MISC.DLL
+    file[]: crc = ed4be65a; size =   1686666; name = MRSND0.DLL
+    file[]: crc = 0f1188b2; size =    895114; name = MRSND1.DLL
+    file[]: crc = 75accdba; size =   1169034; name = MRSND2.DLL
+    file[]: crc = 70dfe87c; size =    293514; name = MRSND3.DLL
+    file[]: crc = 1ad78497; size =    787082; name = MRSND4.DLL
+    file[]: crc = 54a1a9e6; size =   1393290; name = MRSND5.DLL
+    file[]: crc = a4588289; size =   1881738; name = MRSND6.DLL
+    file[]: crc = 206e7d8c; size =   1534090; name = MRSND7.DLL
+    file[]: crc = a83d50d4; size =   1101962; name = MRSND_.DLL
+    file[]: crc = 88541158; size =        42; name = MRWCDX.RPO
+    file[]: crc = 1a1eb4da; size =      8628; name = MRWIN.GID
+    file[]: crc = d04de942; size =     42116; name = MRWIN.HLP
+    file[]: crc = a41074ff; size =    899731; name = MRWIN16.EXE
+    file[]: crc = ce758eb0; size =    676864; name = MRWIN32.EXE
+    file[]: crc = f9ac2678; size =        72; name = MRWINCD.INI
+    file[]: crc = 275cf742; size =  19533450; name = NEWSNDS.DLL
+    file[]: crc = f331114b; size =   1603722; name = OPENING.DLL
+    file[]: crc = 2cfc3a51; size =   2220170; name = PRZCTR1.DLL
+    file[]: crc = 88147bfe; size =   1843850; name = PRZCTR2.DLL
+    file[]: crc = 1611d115; size =   1424522; name = SEAL.DLL
+    file[]: crc = 7f022936; size =    345226; name = SIGNIN.DLL
+    file[]: crc = 01370517; size =    436362; name = SPLASH.DLL
+    file[]: crc = 455581e4; size =     12609; name = STRGRSRC.DLL
+    file[]: crc = 0feb0db2; size =      9901; name = SOUNDS\BENTRY.MID
+    file[]: crc = ec1495b7; size =      1246; name = SOUNDS\BENTRY1.MID
+    file[]: crc = 2b088b9c; size =      2216; name = SOUNDS\BENTRY2.MID
+    file[]: crc = 63eb9c2e; size =      2281; name = SOUNDS\BENTRY3.MID
+    file[]: crc = 8c76108a; size =      2208; name = SOUNDS\BENTRY4.MID
+    file[]: crc = d5982090; size =       721; name = SOUNDS\BGROUCHO.MID
+    file[]: crc = 22b3ff2f; size =      1111; name = SOUNDS\BJUGGLE.MID
+    file[]: crc = 56b61864; size =      4839; name = SOUNDS\BOVER.MID
+    file[]: crc = e2614e92; size =       442; name = SOUNDS\BPARTY.MID
+    file[]: crc = 813a0b21; size =      5776; name = SOUNDS\BSTARS.MID
+    file[]: crc = 78254d4c; size =       466; name = SOUNDS\BTHUMBS.MID
+    file[]: crc = 39af4954; size =      1010; name = SOUNDS\BTIGHTRP.MID
+    file[]: crc = 0943362f; size =      3917; name = SOUNDS\BTRAPEZ1.MID
+    file[]: crc = d7505142; size =       257; name = SOUNDS\BTRAPEZ2.MID
+    file[]: crc = 224c50ba; size =      4105; name = SOUNDS\BTRAPEZE.MID
+    file[]: crc = dbd1cf38; size =     11465; name = SOUNDS\EENTRY.MID
+    file[]: crc = cb516047; size =      1597; name = SOUNDS\EENTRY1.MID
+    file[]: crc = 22290374; size =      2585; name = SOUNDS\EENTRY2.MID
+    file[]: crc = 9fd36f2b; size =      2493; name = SOUNDS\EENTRY3.MID
+    file[]: crc = 123f1d2d; size =      2387; name = SOUNDS\EENTRY4.MID
+    file[]: crc = 0d7e9a00; size =       772; name = SOUNDS\EGROUCHO.MID
+    file[]: crc = 3d193b33; size =      1341; name = SOUNDS\EJUGGLE.MID
+    file[]: crc = 1b453b89; size =      5316; name = SOUNDS\EOVER.MID
+    file[]: crc = 6a361e90; size =       524; name = SOUNDS\EPARTY.MID
+    file[]: crc = 607d5a74; size =      5981; name = SOUNDS\ESTARS.MID
+    file[]: crc = af58045e; size =       600; name = SOUNDS\ETHUMBS.MID
+    file[]: crc = 9f931331; size =      1021; name = SOUNDS\ETIGHTRP.MID
+    file[]: crc = ac13a0c4; size =      4132; name = SOUNDS\ETRAPEZ1.MID
+    file[]: crc = b599cf62; size =       264; name = SOUNDS\ETRAPEZ2.MID
+    file[]: crc = 201f66af; size =      4327; name = SOUNDS\ETRAPEZE.MID
+end
+
+//
+// German Windows Version 2.1
+//
+game[pc-win-de-2.1]:
+    name = German Windows Version 2.1
+    rootpath = C:\TLCWIN\MRWINCD
+    anchorfile = MRWIN32.EXE
+    anchordepth = 3
+    winres = 640x480x16
+    file[]: crc = 6ff8b873; size =   1148042; name = BALLOON.DLL
+    file[]: crc = 947085fe; size =    653450; name = BEZEL.DLL
+    file[]: crc = a1d70673; size =   1536138; name = CALLIOPE.DLL
+    file[]: crc = 2955804d; size =      9043; name = DBGMONO.DLL
+    file[]: crc = 51ab463a; size =   1076362; name = HIPPO.DLL
+    file[]: crc = 02ad7ed7; size =   1315466; name = LEVELS.DLL
+    file[]: crc = e47777c3; size =   1429130; name = MAINMENU.DLL
+    file[]: crc = 7d9e575d; size =     28810; name = MISC.DLL
+    file[]: crc = 1cc27a23; size =       766; name = MRCD.ICO
+    file[]: crc = ed4be65a; size =   1686666; name = MRSND0.DLL
+    file[]: crc = 0f1188b2; size =    895114; name = MRSND1.DLL
+    file[]: crc = 75accdba; size =   1169034; name = MRSND2.DLL
+    file[]: crc = 70dfe87c; size =    293514; name = MRSND3.DLL
+    file[]: crc = 1ad78497; size =    787082; name = MRSND4.DLL
+    file[]: crc = 54a1a9e6; size =   1393290; name = MRSND5.DLL
+    file[]: crc = a4588289; size =   1881738; name = MRSND6.DLL
+    file[]: crc = 206e7d8c; size =   1534090; name = MRSND7.DLL
+    file[]: crc = a83d50d4; size =   1101962; name = MRSND_.DLL
+    file[]: crc = 88541158; size =        42; name = MRWCDX.RPO
+    file[]: crc = fee5395c; size =      8628; name = MRWIN.GID
+    file[]: crc = 7f98b869; size =     57207; name = MRWIN.HLP
+    file[]: crc = df080656; size =    734208; name = MRWIN16.EXE
+    file[]: crc = 5e2824f7; size =    679936; name = MRWIN32.EXE
+    file[]: crc = f9ac2678; size =        72; name = MRWINCD.INI
+    file[]: crc = 1a5d7acd; size =  17869450; name = NEWSNDS.DLL
+    file[]: crc = 1ee12df2; size =   1587850; name = OPENING.DLL
+    file[]: crc = 6fd2a1dc; size =   2035338; name = PRZCTR1.DLL
+    file[]: crc = d8ac7635; size =   1844362; name = PRZCTR2.DLL
+    file[]: crc = 1611d115; size =   1424522; name = SEAL.DLL
+    file[]: crc = 400d578b; size =    341642; name = SIGNIN.DLL
+    file[]: crc = 01370517; size =    436362; name = SPLASH.DLL
+    file[]: crc = 455581e4; size =     12609; name = STRGRSRC.DLL
+    file[]: crc = 0feb0db2; size =      9901; name = SOUNDS\BENTRY.MID
+    file[]: crc = ec1495b7; size =      1246; name = SOUNDS\BENTRY1.MID
+    file[]: crc = 2b088b9c; size =      2216; name = SOUNDS\BENTRY2.MID
+    file[]: crc = 63eb9c2e; size =      2281; name = SOUNDS\BENTRY3.MID
+    file[]: crc = 8c76108a; size =      2208; name = SOUNDS\BENTRY4.MID
+    file[]: crc = d5982090; size =       721; name = SOUNDS\BGROUCHO.MID
+    file[]: crc = 22b3ff2f; size =      1111; name = SOUNDS\BJUGGLE.MID
+    file[]: crc = 56b61864; size =      4839; name = SOUNDS\BOVER.MID
+    file[]: crc = e2614e92; size =       442; name = SOUNDS\BPARTY.MID
+    file[]: crc = 813a0b21; size =      5776; name = SOUNDS\BSTARS.MID
+    file[]: crc = 78254d4c; size =       466; name = SOUNDS\BTHUMBS.MID
+    file[]: crc = 39af4954; size =      1010; name = SOUNDS\BTIGHTRP.MID
+    file[]: crc = 0943362f; size =      3917; name = SOUNDS\BTRAPEZ1.MID
+    file[]: crc = d7505142; size =       257; name = SOUNDS\BTRAPEZ2.MID
+    file[]: crc = 224c50ba; size =      4105; name = SOUNDS\BTRAPEZE.MID
+    file[]: crc = dbd1cf38; size =     11465; name = SOUNDS\EENTRY.MID
+    file[]: crc = cb516047; size =      1597; name = SOUNDS\EENTRY1.MID
+    file[]: crc = 22290374; size =      2585; name = SOUNDS\EENTRY2.MID
+    file[]: crc = 9fd36f2b; size =      2493; name = SOUNDS\EENTRY3.MID
+    file[]: crc = 123f1d2d; size =      2387; name = SOUNDS\EENTRY4.MID
+    file[]: crc = 0d7e9a00; size =       772; name = SOUNDS\EGROUCHO.MID
+    file[]: crc = 3d193b33; size =      1341; name = SOUNDS\EJUGGLE.MID
+    file[]: crc = 1b453b89; size =      5316; name = SOUNDS\EOVER.MID
+    file[]: crc = 6a361e90; size =       524; name = SOUNDS\EPARTY.MID
+    file[]: crc = 607d5a74; size =      5981; name = SOUNDS\ESTARS.MID
+    file[]: crc = af58045e; size =       600; name = SOUNDS\ETHUMBS.MID
+    file[]: crc = 9f931331; size =      1021; name = SOUNDS\ETIGHTRP.MID
+    file[]: crc = ac13a0c4; size =      4132; name = SOUNDS\ETRAPEZ1.MID
+    file[]: crc = b599cf62; size =       264; name = SOUNDS\ETRAPEZ2.MID
+    file[]: crc = 201f66af; size =      4327; name = SOUNDS\ETRAPEZE.MID
+end
+
+//
+// English (US) Windows Version 2.02 - Math 1
+//
+game[pc-win-en-us-math1]:
+    name = English (US) Windows Version 2.02 - Reader Rabbit's Math 1
+    rootpath = C:\TLCWIN\RRM1
+    anchorfile = RRM1_32.EXE
+    anchordepth = 3
+    winres = 640x480x16
+    
+    file[]: crc = 6ff8b873; size =   1148042; name = BALLOON.DLL
+    file[]: crc = 44cbb34a; size =    656522; name = BEZEL.DLL
+    file[]: crc = 5406aef9; size =   1537162; name = CALLIOPE.DLL
+    file[]: crc = ab7ee301; size =     26768; name = CTL3D.DLL
+    file[]: crc = 1cea482d; size =     11776; name = ENDUSER.DOC
+    file[]: crc = ba5bc30f; size =      3925; name = ENDUSER.TXT
+    file[]: crc = e63296a6; size =     17424; name = FH_BMP.DLL
+    file[]: crc = 51ab463a; size =   1076362; name = HIPPO.DLL
+    file[]: crc = 516438ed; size =   1313930; name = LEVELS.DLL
+    file[]: crc = ba5bc30f; size =      3925; name = LICENSE.TXT
+    file[]: crc = 72006d0c; size =   1428106; name = MAINMENU.DLL
+    file[]: crc = 18ca5184; size =     18570; name = MISC.DLL
+    file[]: crc = 659d5b9d; size =   1736397; name = MRSND0.DLL
+    file[]: crc = 0f1188b2; size =    895114; name = MRSND1.DLL
+    file[]: crc = 75accdba; size =   1169034; name = MRSND2.DLL
+    file[]: crc = 70dfe87c; size =    293514; name = MRSND3.DLL
+    file[]: crc = 1ad78497; size =    787082; name = MRSND4.DLL
+    file[]: crc = 54a1a9e6; size =   1393290; name = MRSND5.DLL
+    file[]: crc = a4588289; size =   1881738; name = MRSND6.DLL
+    file[]: crc = 206e7d8c; size =   1534090; name = MRSND7.DLL
+    file[]: crc = a83d50d4; size =   1101962; name = MRSND_.DLL
+    file[]: crc = 2efc24d6; size =  85112562; name = MRWCDX.RPO
+    file[]: crc = 91292fcb; size =   3346570; name = NEWSNDS.DLL
+    file[]: crc = 825ba785; size =   1656970; name = OPENING.DLL
+    file[]: crc = d581d8a4; size =   2215050; name = PRZCTR1.DLL
+    file[]: crc = 88147bfe; size =   1843850; name = PRZCTR2.DLL
+    file[]: crc = 01d51508; size =      8628; name = RRM1.GID
+    file[]: crc = 12f4bf13; size =     97717; name = RRM1.HLP
+    file[]: crc = 30cd8076; size =       766; name = RRM1.ICO
+    file[]: crc = 76a7401a; size =        56; name = RRM1.INI
+    file[]: crc = 4b3448e7; size =    459792; name = RRM1_16.EXE
+    file[]: crc = c303c5ed; size =    394272; name = RRM1_32.EXE
+    file[]: crc = 1611d115; size =   1424522; name = SEAL.DLL
+    file[]: crc = f1480d56; size =    345226; name = SIGNIN.DLL
+    file[]: crc = 01370517; size =    436362; name = SPLASH.DLL
+    file[]: crc = 18413330; size =     27041; name = STRGRSRC.DLL
+    file[]: crc = 045faf4c; size =     18432; name = LICENSE\ENDUSER.DOC
+    file[]: crc = 4927183f; size =      5404; name = LICENSE\ENDUSER.TXT
+    file[]: crc = 0feb0db2; size =      9901; name = SOUNDS\BENTRY.MID
+    file[]: crc = d5982090; size =       721; name = SOUNDS\BGROUCHO.MID
+    file[]: crc = 22b3ff2f; size =      1111; name = SOUNDS\BJUGGLE.MID
+    file[]: crc = 56b61864; size =      4839; name = SOUNDS\BOVER.MID
+    file[]: crc = e2614e92; size =       442; name = SOUNDS\BPARTY.MID
+    file[]: crc = 813a0b21; size =      5776; name = SOUNDS\BSTARS.MID
+    file[]: crc = 78254d4c; size =       466; name = SOUNDS\BTHUMBS.MID
+    file[]: crc = 39af4954; size =      1010; name = SOUNDS\BTIGHTRP.MID
+    file[]: crc = 224c50ba; size =      4105; name = SOUNDS\BTRAPEZE.MID
+    file[]: crc = dbd1cf38; size =     11465; name = SOUNDS\EENTRY.MID
+    file[]: crc = 0d7e9a00; size =       772; name = SOUNDS\EGROUCHO.MID
+    file[]: crc = 3d193b33; size =      1341; name = SOUNDS\EJUGGLE.MID
+    file[]: crc = 1b453b89; size =      5316; name = SOUNDS\EOVER.MID
+    file[]: crc = 6a361e90; size =       524; name = SOUNDS\EPARTY.MID
+    file[]: crc = 607d5a74; size =      5981; name = SOUNDS\ESTARS.MID
+    file[]: crc = af58045e; size =       600; name = SOUNDS\ETHUMBS.MID
+    file[]: crc = 9f931331; size =      1021; name = SOUNDS\ETIGHTRP.MID
+    file[]: crc = 201f66af; size =      4327; name = SOUNDS\ETRAPEZE.MID
+    
+
+end
+
+end

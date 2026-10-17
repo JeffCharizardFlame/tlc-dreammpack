@@ -1,0 +1,265 @@
+desc[tlc-cfsearchsolve]:
+
+name = The ClueFinders Search & Solve Adventures: The Phantom Amusement Park
+icon = tlc-cfsearchsolve.png
+machine = pc
+launch = "$(rootpath)\cfsearch.exe"
+osenv = windows 98
+winres = 640x480x8
+
+//
+// filesystem
+//
+mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD
+
+mount[cdw]: vpath = D:\; srcpath = ram; writable = true
+
+//
+// initialization script
+//
+script[cd-init]:
+	code = [[[$(CRLF)
+        drive_set_label("D", "$$(CDLABEL)");
+        file_save("$$(rootpath)\\CFSEARCH.INI", "$$(CFSEARCH_CONTENTS)");
+    ]]]
+end
+
+script[registry-init]:
+    code = [[[$(CRLF)
+        winregistry_import_raw("$$(REGISTRY)");
+    ]]]
+end
+
+//
+// English (US) CD, Version 1.0
+//
+game[pc-cd-en-us]:
+    name = English (US) CD, Version 1.0
+    anchorfile = cfsearch.exe
+    anchordepth = 3
+    rootpath = C:\Program Files\The Learning Company\ClueFinders Search & Solve Adventures
+    
+    file[]: crc = c8ea71c3; size =       766; name = cfs.ico
+    file[]: crc = 849b2d55; size =    684032; name = cfsearch.exe
+    file[]: crc = 00000000; size =         0; name = cfsearch.ini
+    file[]: crc = 6ad6086e; size =      3140; name = PLSDescriptor.txt
+    file[]: crc = fc901602; size =   1159168; name = PreAssess.exe
+    file[]: crc = 84c8c62f; size =         9; name = SETTINGS.DAT
+    file[]: crc = 17f71c4f; size =    100864; name = Smackw32.dll
+    file[]: crc = c42329d7; size =  22473741; name = Rsc\BGTUNZ.RSC
+    file[]: crc = 776fe53d; size =    148493; name = Rsc\BP.RSC
+    file[]: crc = c5948a42; size =    313357; name = Rsc\HELPPRE.RSC
+    file[]: crc = e59fa073; size =   2926605; name = Rsc\LT.RSC
+    file[]: crc = 1bfcfbef; size =   1734669; name = Rsc\MA2BACK.RSC
+    file[]: crc = 999baf8a; size =      2137; name = Rsc\resource.map
+    file[]: crc = 407dfcdc; size =    177462; name = Scripts\ba1.mps
+    file[]: crc = c226e9f8; size =    114146; name = Scripts\BA2.mps
+    file[]: crc = cbb507cb; size =    156592; name = Scripts\ba3-1.mps
+    file[]: crc = 59800b1d; size =    155842; name = Scripts\ba3-2.mps
+    file[]: crc = 8137289c; size =    155586; name = Scripts\ba3-3.mps
+    file[]: crc = 1874f441; size =    155730; name = Scripts\ba3-4.mps
+    file[]: crc = 53cb7ab9; size =       163; name = Scripts\BA3.mps
+    file[]: crc = b8b3d282; size =     73802; name = Scripts\cheat.mps
+    file[]: crc = 5f973b24; size =     85549; name = Scripts\Clue1.mps
+    file[]: crc = 5e9b0570; size =     84358; name = Scripts\Clue2.mps
+    file[]: crc = 623864aa; size =     84418; name = Scripts\Clue3.mps
+    file[]: crc = 0a64b3b8; size =     86513; name = Scripts\Clue4.mps
+    file[]: crc = 56add76d; size =     81077; name = Scripts\Clue5.mps
+    file[]: crc = 7cf8346a; size =     84102; name = Scripts\Clue6.mps
+    file[]: crc = 70d1e90a; size =     77582; name = Scripts\End.mps
+    file[]: crc = cce1847a; size =     72882; name = Scripts\LogoMov.mps
+    file[]: crc = 44c32c07; size =    136815; name = Scripts\MA1.mps
+    file[]: crc = ff31ecbf; size =     85013; name = Scripts\MA2.mps
+    file[]: crc = 69219616; size =     83750; name = Scripts\ma2maze.mps
+    file[]: crc = 89e6416f; size =     87522; name = Scripts\Signin.mps
+    file[]: crc = 3bad0841; size =       611; name = Scripts\Startup.mps
+    file[]: crc = 148f7d06; size =    122884; name = Scripts\WS1.mps
+    file[]: crc = 3cb3ab33; size =    123694; name = Scripts\WS2.mps
+    file[]: crc = 3fea8af2; size =    119600; name = Scripts\WS3.mps
+    file[]: crc = ee84eddf; size =    124576; name = Scripts\WS4.mps
+    
+    file[]: crc = c16837bb; size =   1922573; name = CD\INSTALL\Pls\Preasses\Prsc\ACFSrch.rsc
+    file[]: crc = 2ed3f00c; size =   2819085; name = CD\INSTALL\Pls\Preasses\Prsc\CFSrch.rsc
+    file[]: crc = d63df4f9; size =      3256; name = CD\INSTALL\Pls\Preasses\PScripts\exit.mps
+    file[]: crc = 212d67b1; size =      1569; name = CD\INSTALL\Pls\Preasses\PScripts\mthRacer.mps
+    file[]: crc = 2cbbc5e4; size =       469; name = CD\INSTALL\Pls\Preasses\PScripts\rconfirm.mps
+    file[]: crc = 00000000; size =         0; name = CD\INSTALL\TLC\379443.cd1
+    file[]: crc = 68610c0b; size =   3349005; name = CD\Rsc\BA1.RSC
+    file[]: crc = 312f0ed5; size =    661517; name = CD\Rsc\BA1PRE.RSC
+    file[]: crc = 6cca1da6; size =   5937677; name = CD\Rsc\BA2.RSC
+    file[]: crc = e7d7c5f0; size =     27587; name = CD\Rsc\BA2.xml
+    file[]: crc = 3c733b36; size =    669197; name = CD\Rsc\BA2PRE.RSC
+    file[]: crc = 93fa05b1; size =  10553869; name = CD\Rsc\BA3.RSC
+    file[]: crc = 96f445c2; size =     46104; name = CD\Rsc\BA3.xml
+    file[]: crc = 94cdc7d7; size =    657421; name = CD\Rsc\BA3PRE.RSC
+    file[]: crc = c42329d7; size =  22473741; name = CD\Rsc\BGTUNZ.RSC
+    file[]: crc = 776fe53d; size =    148493; name = CD\Rsc\BP.RSC
+    file[]: crc = 54bef7af; size =   3502093; name = CD\Rsc\CLUE1.RSC
+    file[]: crc = 6b2cd66d; size =    252429; name = CD\Rsc\CLUE1I1.RSC
+    file[]: crc = 2bc9389d; size =    201229; name = CD\Rsc\CLUE1I2.RSC
+    file[]: crc = f2f2eb51; size =    206861; name = CD\Rsc\CLUE1O1.RSC
+    file[]: crc = cb97b67a; size =    226829; name = CD\Rsc\CLUE1O2.RSC
+    file[]: crc = 16e62974; size =    193037; name = CD\Rsc\CLUE1PRE.RSC
+    file[]: crc = 28a098f1; size =   3909645; name = CD\Rsc\CLUE2.RSC
+    file[]: crc = bd712637; size =    140301; name = CD\Rsc\CLUE2I1.RSC
+    file[]: crc = 2ee39db2; size =    176653; name = CD\Rsc\CLUE2I2.RSC
+    file[]: crc = 7c36a1d2; size =    109581; name = CD\Rsc\CLUE2O1.RSC
+    file[]: crc = 8f33bd80; size =    173581; name = CD\Rsc\CLUE2O2.RSC
+    file[]: crc = 4364362f; size =     96781; name = CD\Rsc\CLUE2PRE.RSC
+    file[]: crc = 60d8ebdd; size =   3117069; name = CD\Rsc\CLUE3.RSC
+    file[]: crc = c93c5064; size =    137741; name = CD\Rsc\CLUE3I1.RSC
+    file[]: crc = 32d6b659; size =    139277; name = CD\Rsc\CLUE3I2.RSC
+    file[]: crc = e4c6e2e9; size =    126989; name = CD\Rsc\CLUE3I3.RSC
+    file[]: crc = 1597ac1c; size =    142349; name = CD\Rsc\CLUE3O1.RSC
+    file[]: crc = 35627c41; size =    145933; name = CD\Rsc\CLUE3O2.RSC
+    file[]: crc = d8667ba7; size =    150541; name = CD\Rsc\CLUE3O3.RSC
+    file[]: crc = da6d667b; size =     85005; name = CD\Rsc\CLUE3PRE.RSC
+    file[]: crc = 5f41f6c1; size =   3582989; name = CD\Rsc\CLUE4.RSC
+    file[]: crc = 7dd17fcb; size =    178189; name = CD\Rsc\CLUE4I1.RSC
+    file[]: crc = 54e8f1c2; size =    122381; name = CD\Rsc\CLUE4I2.RSC
+    file[]: crc = 5d0a9f92; size =    106509; name = CD\Rsc\CLUE4O1.RSC
+    file[]: crc = bcf328c1; size =    134669; name = CD\Rsc\CLUE4O2.RSC
+    file[]: crc = 466d5ec8; size =    173581; name = CD\Rsc\CLUE4O3.RSC
+    file[]: crc = 79a2528e; size =     86029; name = CD\Rsc\CLUE4PRE.RSC
+    file[]: crc = 533f050d; size =   2230285; name = CD\Rsc\CLUE5.RSC
+    file[]: crc = 9dbf73b7; size =    109581; name = CD\Rsc\CLUE5O1.RSC
+    file[]: crc = a78bfeec; size =    173581; name = CD\Rsc\CLUE5O2.RSC
+    file[]: crc = 97b0fc95; size =    197645; name = CD\Rsc\CLUE5PRE.RSC
+    file[]: crc = 2591c509; size =   2049037; name = CD\Rsc\CLUE6.RSC
+    file[]: crc = f7ea7a88; size =    116749; name = CD\Rsc\CLUE6I1.RSC
+    file[]: crc = 64db4d46; size =    129037; name = CD\Rsc\CLUE6I2.RSC
+    file[]: crc = 5a55adde; size =    125965; name = CD\Rsc\CLUE6O1.RSC
+    file[]: crc = 7aee3ef0; size =    125965; name = CD\Rsc\CLUE6O2.RSC
+    file[]: crc = 4704e340; size =    165901; name = CD\Rsc\CLUE6PRE.RSC
+    file[]: crc = 86124e5c; size =    818701; name = CD\Rsc\COM.RSC
+    file[]: crc = 62019e25; size =    152077; name = CD\Rsc\COMPRE.RSC
+    file[]: crc = eae91604; size =    222733; name = CD\Rsc\HELP.RSC
+    file[]: crc = c5948a42; size =    313357; name = CD\Rsc\HELPPRE.RSC
+    file[]: crc = e59fa073; size =   2926605; name = CD\Rsc\LT.RSC
+    file[]: crc = f3ff3a8a; size =   7026701; name = CD\Rsc\MA1.RSC
+    file[]: crc = 09b1fc63; size =    193596; name = CD\Rsc\MA1.xml
+    file[]: crc = 17a0cdf7; size =    101389; name = CD\Rsc\Ma1out1.rsc
+    file[]: crc = 9ebf3597; size =    418829; name = CD\Rsc\MA1PRE.RSC
+    file[]: crc = 97661e3a; size =     19981; name = CD\Rsc\MA1S1PRE.RSC
+    file[]: crc = 8505118a; size =     18445; name = CD\Rsc\MA1S2PRE.RSC
+    file[]: crc = dbf82b0b; size =     17421; name = CD\Rsc\MA1S3PRE.RSC
+    file[]: crc = 1d8f2e41; size =     17421; name = CD\Rsc\MA1S4PRE.RSC
+    file[]: crc = 92647343; size =   3971085; name = CD\Rsc\MA2.RSC
+    file[]: crc = f5b257eb; size =      7794; name = CD\Rsc\MA2.xml
+    file[]: crc = 1bfcfbef; size =   1734669; name = CD\Rsc\MA2BACK.RSC
+    file[]: crc = 84e0563d; size =    520717; name = CD\Rsc\MA2BPRE.RSC
+    file[]: crc = 0c9b54ad; size =     74765; name = CD\Rsc\MA2I1.RSC
+    file[]: crc = 82d30194; size =      5777; name = CD\Rsc\ma2maze.xml
+    file[]: crc = 8eced71b; size =     65037; name = CD\Rsc\MA2O1.RSC
+    file[]: crc = ed1f17d9; size =     79885; name = CD\Rsc\MA2PRE.RSC
+    file[]: crc = 35b93679; size =   1756764; name = CD\Rsc\Mattel.smk
+    file[]: crc = 0e2b6c7c; size =    428628; name = CD\Rsc\MVAdapt.smk
+    file[]: crc = d44f5295; size =     71060; name = CD\Rsc\MVAdExit.smk
+    file[]: crc = 7224c7f2; size =  16199616; name = CD\Rsc\MVClosing.smk
+    file[]: crc = 02deaadc; size =   2956600; name = CD\Rsc\MVCut1.smk
+    file[]: crc = 5e094d5a; size =  11327480; name = CD\Rsc\MVCut2.smk
+    file[]: crc = da44ba44; size =   3567320; name = CD\Rsc\MVCut3.smk
+    file[]: crc = c406cafc; size =   7216620; name = CD\Rsc\MVCut4.smk
+    file[]: crc = ea7a243b; size =   9672724; name = CD\Rsc\MVCut5.smk
+    file[]: crc = d8c88725; size =  15247760; name = CD\Rsc\MVMA1.smk
+    file[]: crc = fb1be5d6; size =  28118732; name = CD\Rsc\MVMA2.smk
+    file[]: crc = 26e77a64; size =  15440568; name = CD\Rsc\MvOp1.smk
+    file[]: crc = 81df64a4; size =  20770420; name = CD\Rsc\mvop2.smk
+    file[]: crc = a03adefd; size =     62543; name = CD\Rsc\resource.map
+    file[]: crc = d2d2eb2e; size =    164365; name = CD\Rsc\SI.RSC
+    file[]: crc = 6e51fa8e; size =    445965; name = CD\Rsc\SIPRE.RSC
+    file[]: crc = bb226320; size =    549744; name = CD\Rsc\TITLE.SMK
+    file[]: crc = b35f5162; size =    465504; name = CD\Rsc\TLCLOGO.SMK
+    file[]: crc = b8d8b2ec; size =   8524813; name = CD\Rsc\WS1.RSC
+    file[]: crc = 8aad8233; size =     75277; name = CD\Rsc\WS1I1.RSC
+    file[]: crc = 34a335ef; size =     77837; name = CD\Rsc\WS1I2.RSC
+    file[]: crc = 80aebe3f; size =     37389; name = CD\Rsc\WS1I3.RSC
+    file[]: crc = ce2ebd48; size =     77837; name = CD\Rsc\WS1O1.RSC
+    file[]: crc = 4dd9d9ee; size =     76813; name = CD\Rsc\WS1O2.RSC
+    file[]: crc = 70709a92; size =     30221; name = CD\Rsc\WS1O3.RSC
+    file[]: crc = 82730558; size =    441869; name = CD\Rsc\WS1PRE.RSC
+    file[]: crc = fe7ec6cb; size =   7412237; name = CD\Rsc\WS2.RSC
+    file[]: crc = 2afada85; size =     98171; name = CD\Rsc\WS2.xml
+    file[]: crc = 80a6b019; size =    125453; name = CD\Rsc\WS2IN1.RSC
+    file[]: crc = da9d415f; size =    168461; name = CD\Rsc\WS2IN2.RSC
+    file[]: crc = 63368774; size =    110605; name = CD\Rsc\WS2OUT1.RSC
+    file[]: crc = 1aa762f2; size =    153613; name = CD\Rsc\WS2OUT2.RSC
+    file[]: crc = da442c86; size =     61965; name = CD\Rsc\WS2P.RSC
+    file[]: crc = 6aeb337d; size =    345101; name = CD\Rsc\WS2PRE.RSC
+    file[]: crc = 70b778e2; size =     75789; name = CD\Rsc\WS2UP.RSC
+    file[]: crc = 8be1bb07; size =   8601101; name = CD\Rsc\WS3.RSC
+    file[]: crc = 081bc22f; size =     15696; name = CD\Rsc\WS3.xml
+    file[]: crc = f98e37fc; size =    159757; name = CD\Rsc\WS3IN1.RSC
+    file[]: crc = 6190176d; size =    103437; name = CD\Rsc\WS3IN2.RSC
+    file[]: crc = a8d239db; size =    157709; name = CD\Rsc\WS3OUT1.RSC
+    file[]: crc = c15a929d; size =    105485; name = CD\Rsc\WS3OUT2.RSC
+    file[]: crc = 27e6425f; size =    228365; name = CD\Rsc\WS3PRE.RSC
+    file[]: crc = ec4a3742; size =    661517; name = CD\Rsc\WS3REW.RSC
+    file[]: crc = 8be4bed8; size =   7369229; name = CD\Rsc\WS4.RSC
+    file[]: crc = fd2a3f51; size =     87046; name = CD\Rsc\WS4.xml
+    file[]: crc = 23f37355; size =     58893; name = CD\Rsc\WS4OUT1.RSC
+    file[]: crc = 7afc270a; size =    686093; name = CD\Rsc\WS4PRE.RSC
+    file[]: crc = 407dfcdc; size =    177462; name = CD\Scripts\ba1.mps
+    file[]: crc = c226e9f8; size =    114146; name = CD\Scripts\BA2.mps
+    file[]: crc = cbb507cb; size =    156592; name = CD\Scripts\ba3-1.mps
+    file[]: crc = 59800b1d; size =    155842; name = CD\Scripts\ba3-2.mps
+    file[]: crc = 8137289c; size =    155586; name = CD\Scripts\ba3-3.mps
+    file[]: crc = 1874f441; size =    155730; name = CD\Scripts\ba3-4.mps
+    file[]: crc = 53cb7ab9; size =       163; name = CD\Scripts\BA3.mps
+    file[]: crc = b8b3d282; size =     73802; name = CD\Scripts\cheat.mps
+    file[]: crc = 5f973b24; size =     85549; name = CD\Scripts\Clue1.mps
+    file[]: crc = 5e9b0570; size =     84358; name = CD\Scripts\Clue2.mps
+    file[]: crc = 623864aa; size =     84418; name = CD\Scripts\Clue3.mps
+    file[]: crc = 0a64b3b8; size =     86513; name = CD\Scripts\Clue4.mps
+    file[]: crc = 56add76d; size =     81077; name = CD\Scripts\Clue5.mps
+    file[]: crc = 7cf8346a; size =     84102; name = CD\Scripts\Clue6.mps
+    file[]: crc = 70d1e90a; size =     77582; name = CD\Scripts\End.mps
+    file[]: crc = cce1847a; size =     72882; name = CD\Scripts\LogoMov.mps
+    file[]: crc = 44c32c07; size =    136815; name = CD\Scripts\MA1.mps
+    file[]: crc = ff31ecbf; size =     85013; name = CD\Scripts\MA2.mps
+    file[]: crc = 69219616; size =     83750; name = CD\Scripts\ma2maze.mps
+    file[]: crc = 89e6416f; size =     87522; name = CD\Scripts\Signin.mps
+    file[]: crc = 3bad0841; size =       611; name = CD\Scripts\Startup.mps
+    file[]: crc = 148f7d06; size =    122884; name = CD\Scripts\WS1.mps
+    file[]: crc = 3cb3ab33; size =    123694; name = CD\Scripts\WS2.mps
+    file[]: crc = 3fea8af2; size =    119600; name = CD\Scripts\WS3.mps
+    file[]: crc = ee84eddf; size =    124576; name = CD\Scripts\WS4.mps
+    
+    CDLABEL = CFSEARCH
+    CFSEARCH_CONTENTS = [[[$(CRLF)
+[ClueFinders Search & Solve Adventures - CD]
+CDDrive=D:\
+UseDirectDraw=1
+DisplayFullScreen=1
+]]]
+    REGISTRY = [[[$(CRLF)
+REGEDIT4
+
+[HKEY_LOCAL_MACHINE\Software\The Learning Company\ClueFinders Search & Solve Adventures]
+
+[HKEY_LOCAL_MACHINE\Software\The Learning Company\ClueFinders Search & Solve Adventures\1.0]
+
+[HKEY_LOCAL_MACHINE\Software\The Learning Company\ClueFinders Search & Solve Adventures\InstalledFile]
+@="$$(rootpath)\\cfsearch.exe"
+
+[HKEY_LOCAL_MACHINE\Software\The Learning Company\ClueFinders Search & Solve Adventures\Version]
+@="1.0"
+
+[HKEY_LOCAL_MACHINE\Software\The Learning Company\ClueFinders Search & Solve Adventures\InstalledPath]
+@="$$(rootpath)"
+
+[HKEY_LOCAL_MACHINE\Software\The Learning Company\ClueFinders Search & Solve Adventures\MainExe]
+@="$$(rootpath)\\cfsearch.exe"
+
+[HKEY_LOCAL_MACHINE\Software\The Learning Company\ClueFinders Search & Solve Adventures\PreassesExe]
+@="$$(rootpath)\\PreAssess.exe"
+
+[HKEY_LOCAL_MACHINE\Software\The Learning Company\ClueFinders Search & Solve Adventures\PreassesDir]
+@="D:\\Install\\Pls\\Preasses"
+
+]]]
+end
+
+end

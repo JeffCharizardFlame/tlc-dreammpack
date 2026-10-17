@@ -1,0 +1,1125 @@
+desc[tlc-rr2ndgrade]:
+
+name = Reader Rabbit's 2nd Grade
+icon = tlc-rr2ndgrade
+machine = pc
+rootpath = C:\TLCWIN\RR2G
+launch = "$(rootpath)\rr2gw32.exe"
+osenv = windows 98
+winres = 640x480x8
+
+config[ossel]:
+    condition = file_exists("$$(rootpath)\\RR2GW16.EXE")
+    title = OS Select
+    option[win31]: name = Windows 3.1; launch = "$(rootpath)\RR2GW16.exe"; osenv = windows 3.11.002;
+    option[win9x]: name = Windows 9x; launch = "$(rootpath)\RR2GW32.exe"; osenv = windows 98;
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD
+
+mount[cdw]: vpath = D:\; srcpath = ram
+
+//
+// initialization script
+//
+script[cd-init]:
+	code = [[[$(CRLF)
+	    // set the volume label on the CD
+        drive_set_label("D", "$$(CDLABEL)");
+        file_save("$$(rootpath)\\RR2G.INI", "$$(RR2G_CONTENTS)");
+	
+        
+    ]]]
+end
+
+//
+// English (US) CD, Version 1.1
+//
+game[pc-cd-en-us-1.1]:
+    name = English (US) CD, Version 1.1
+    anchorfile = RR2GW32.EXE
+    anchordepth = 3
+    
+    file[]: crc = d075427c; size =   2428928; name = BEZEL.RSC
+    file[]: crc = 502b9558; size =   1061888; name = RR2GW16.EXE
+    file[]: crc = 2014574c; size =    573440; name = RR2GW32.EXE
+    file[]: crc = 73549dce; size =   3558912; name = RUNWAY.RSC
+    file[]: crc = aeb33caa; size =   2279936; name = SAMANIM.RSC
+    file[]: crc = 8b860aac; size =     89760; name = SMACKE16.DLL
+    file[]: crc = f458fd5c; size =     18454; name = SMACKW16.DLL
+    file[]: crc = d8bd604e; size =     71680; name = SMACKW32.DLL
+    file[]: crc = 810c8cf4; size =   3830272; name = SWDATA.RSC
+    file[]: crc = 9602c8cd; size =   2395136; name = WORLD.RSC
+    file[]: crc = 614c8322; size =       220; name = CD\_
+    file[]: crc = d075427c; size =   2428928; name = CD\DATA\BEZEL.RSC
+    file[]: crc = f315b535; size =   5317120; name = CD\DATA\BEZSPCH.RSC
+    file[]: crc = 7aabe913; size =   5384808; name = CD\DATA\CLOSING.SMK
+    file[]: crc = 657eb469; size =    155612; name = CD\DATA\COMETS.SMK
+    file[]: crc = 607b482a; size =     46442; name = CD\DATA\CURSORS.RSC
+    file[]: crc = 5724eb59; size =  10327552; name = CD\DATA\DUNSPCH.RSC
+    file[]: crc = c6607154; size =   1652224; name = CD\DATA\EMAIL.RSC
+    file[]: crc = ed305feb; size =   5626368; name = CD\DATA\EMSPCH.RSC
+    file[]: crc = 1a67d701; size =   3034624; name = CD\DATA\JOURNAL.RSC
+    file[]: crc = faf81c8b; size =   5500928; name = CD\DATA\JPICSPCH.RSC
+    file[]: crc = 3462a9e5; size =   1672704; name = CD\DATA\LAANTE.RSC
+    file[]: crc = 9e1033ba; size =   8632832; name = CD\DATA\LLSPCH.RSC
+    file[]: crc = 5b2a8044; size =   5280768; name = CD\DATA\MMIRROR.RSC
+    file[]: crc = 96757b00; size =   2494896; name = CD\DATA\OPENS.SMK
+    file[]: crc = de79889f; size =   7095296; name = CD\DATA\PROGRESS.RSC
+    file[]: crc = b575aa51; size =        42; name = CD\DATA\RR2G.INI
+    file[]: crc = 625d9dca; size =   1241400; name = CD\DATA\RRINTR2.SMK
+    file[]: crc = 73549dce; size =   3558912; name = CD\DATA\RUNWAY.RSC
+    file[]: crc = 016dbb30; size =   4381184; name = CD\DATA\RUNWAYSP.RSC
+    file[]: crc = 18fe238a; size =   1009664; name = CD\DATA\RWANTE.RSC
+    file[]: crc = 80e49db7; size =   1756672; name = CD\DATA\RWMUSIC.RSC
+    file[]: crc = aeb33caa; size =   2279936; name = CD\DATA\SAMANIM.RSC
+    file[]: crc = 4bf58573; size =   2934784; name = CD\DATA\SAMSPCH.RSC
+    file[]: crc = 7bd00b8f; size =  13009408; name = CD\DATA\SAMSWSP.RSC
+    file[]: crc = 8e0b829d; size =   1390592; name = CD\DATA\SCANTE.RSC
+    file[]: crc = bd97601c; size =   3450368; name = CD\DATA\SCIENCE.RSC
+    file[]: crc = 73f4288b; size =  12028928; name = CD\DATA\SCSPCH.RSC
+    file[]: crc = b89903a6; size =   1033728; name = CD\DATA\SIGNIN.RSC
+    file[]: crc = 73834b44; size =  14862336; name = CD\DATA\SKLWAYSP.RSC
+    file[]: crc = da001095; size =   7745312; name = CD\DATA\SONG1.SMK
+    file[]: crc = 3ec3ea70; size =   5025488; name = CD\DATA\SONG2.SMK
+    file[]: crc = 6f099bd9; size =    734720; name = CD\DATA\SWANTE.RSC
+    file[]: crc = 810c8cf4; size =   3830272; name = CD\DATA\SWDATA.RSC
+    file[]: crc = c982a2d2; size =   6922752; name = CD\DATA\SWMUSIC.RSC
+    file[]: crc = 96c4525c; size =   1523712; name = CD\DATA\TURRET.RSC
+    file[]: crc = 9602c8cd; size =   2395136; name = CD\DATA\WORLD.RSC
+    file[]: crc = 2b1aa38d; size =   1013760; name = CD\DATA\SKILLWAY\SW01.RSC
+    file[]: crc = af1df1a1; size =    983552; name = CD\DATA\SKILLWAY\SW02.RSC
+    file[]: crc = 33143db6; size =   1459712; name = CD\DATA\SKILLWAY\SW03.RSC
+    file[]: crc = adc91cd1; size =    366080; name = CD\DATA\SKILLWAY\SW04.RSC
+    file[]: crc = 6088cbad; size =    339968; name = CD\DATA\SKILLWAY\SW05.RSC
+    file[]: crc = 3f81ddb1; size =    613888; name = CD\DATA\SKILLWAY\SW06.RSC
+    file[]: crc = b21507fb; size =    724480; name = CD\DATA\SKILLWAY\SW07.RSC
+    file[]: crc = 8c7dc1da; size =    239104; name = CD\DATA\SKILLWAY\SW08.RSC
+    file[]: crc = aa6f05d2; size =    975872; name = CD\DATA\SKILLWAY\SW09.RSC
+    file[]: crc = 901fc03a; size =    694784; name = CD\DATA\SKILLWAY\SW10.RSC
+    file[]: crc = 3ac3338c; size =   1067008; name = CD\DATA\SKILLWAY\SW11.RSC
+    file[]: crc = abc8bc60; size =   1371648; name = CD\DATA\SKILLWAY\SW12.RSC
+    file[]: crc = acd5f0c8; size =   1008640; name = CD\DATA\SKILLWAY\SW13.RSC
+    file[]: crc = b4ce0414; size =    881152; name = CD\DATA\SKILLWAY\SW14.RSC
+    file[]: crc = b9047a91; size =   1083392; name = CD\DATA\SKILLWAY\SW15.RSC
+    file[]: crc = cc8f05a7; size =    318976; name = CD\DATA\SKILLWAY\SW16.RSC
+    file[]: crc = d2cb2670; size =    311296; name = CD\DATA\SKILLWAY\SW17.RSC
+    file[]: crc = 11d7120b; size =    536576; name = CD\DATA\SKILLWAY\SW18.RSC
+    file[]: crc = 427f62d8; size =    881152; name = CD\DATA\SKILLWAY\SW19.RSC
+    file[]: crc = 7998db97; size =    587776; name = CD\DATA\SKILLWAY\SW20.RSC
+    file[]: crc = 7f6155d8; size =    990208; name = CD\DATA\SKILLWAY\SW21.RSC
+    file[]: crc = fa244955; size =    694784; name = CD\DATA\SKILLWAY\SW22.RSC
+    file[]: crc = dfaa51fd; size =   1067008; name = CD\DATA\SKILLWAY\SW23.RSC
+    file[]: crc = 66dca7f6; size =   1371648; name = CD\DATA\SKILLWAY\SW24.RSC
+    file[]: crc = 43954ea6; size =    386560; name = CD\DATA\SKILLWAY\SW25.RSC
+    file[]: crc = b8760367; size =    369664; name = CD\DATA\SKILLWAY\SW26.RSC
+    file[]: crc = b7951bd4; size =    857088; name = CD\DATA\SKILLWAY\SW27.RSC
+    file[]: crc = cf64fb56; size =    585216; name = CD\DATA\SKILLWAY\SW28.RSC
+    file[]: crc = 0828536a; size =    345088; name = CD\DATA\SKILLWAY\SW29.RSC
+    file[]: crc = 8dccb0de; size =    846848; name = CD\DATA\SKILLWAY\SW30.RSC
+    
+    CDLABEL = RR2GWINCD
+    RR2G_CONTENTS = [[[$(CRLF)
+    [Reader Rabbit's 2nd Grade]
+CDDrive=D:\
+
+]]]
+end
+
+//
+// English (US) CD, Version 2.0
+//
+game[pc-cd-en-us-2.0]:
+    name = English (US) CD, Version 2.0
+    anchorfile = RR2GW32.EXE
+    anchordepth = 3
+    
+    file[]: crc = 5290a5d6; size =   2491392; name = BEZEL.RSC
+    file[]: crc = 9cc35531; size =      2046; name = PLSDescriptor.txt
+    file[]: crc = e6a3786d; size =   1159168; name = PreAssess.exe
+    file[]: crc = c9183134; size =    974336; name = rr2gw32.exe
+    file[]: crc = 6357e623; size =       766; name = RR2GWCD.ICO
+    file[]: crc = 73549dce; size =   3558912; name = RUNWAY.RSC
+    file[]: crc = aeb33caa; size =   2279936; name = SAMANIM.RSC
+    file[]: crc = 17f71c4f; size =    100864; name = SMACKW32.DLL
+    file[]: crc = 810c8cf4; size =   3830272; name = SWDATA.RSC
+    file[]: crc = 9602c8cd; size =   2395136; name = WORLD.RSC
+    file[]: crc = 69bbfcd4; size =    415644; name = CD\DATA\adaptin.smk
+    file[]: crc = c2987b18; size =     68220; name = CD\DATA\ADPTOUT.SMK
+    file[]: crc = 5290a5d6; size =   2491392; name = CD\DATA\BEZEL.RSC
+    file[]: crc = f315b535; size =   5317120; name = CD\DATA\bezspch.rsc
+    file[]: crc = 7aabe913; size =   5384808; name = CD\DATA\CLOSING.SMK
+    file[]: crc = 657eb469; size =    155612; name = CD\DATA\COMETS.SMK
+    file[]: crc = 607b482a; size =     46442; name = CD\DATA\CURSORS.RSC
+    file[]: crc = 5724eb59; size =  10327552; name = CD\DATA\DunSpch.rsc
+    file[]: crc = c6607154; size =   1652224; name = CD\DATA\email.rsc
+    file[]: crc = ed305feb; size =   5626368; name = CD\DATA\emspch.rsc
+    file[]: crc = 1a67d701; size =   3034624; name = CD\DATA\journal.rsc
+    file[]: crc = faf81c8b; size =   5500928; name = CD\DATA\jpicspch.rsc
+    file[]: crc = 3462a9e5; size =   1672704; name = CD\DATA\laante.rsc
+    file[]: crc = 9e1033ba; size =   8632832; name = CD\DATA\llspch.rsc
+    file[]: crc = 5b2a8044; size =   5280768; name = CD\DATA\mmirror.rsc
+    file[]: crc = 96757b00; size =   2494896; name = CD\DATA\OPENS.SMK
+    file[]: crc = de79889f; size =   7095296; name = CD\DATA\progress.rsc
+    file[]: crc = b575aa51; size =        42; name = CD\DATA\RR2G.INI
+    file[]: crc = 03ebf353; size =   1381944; name = CD\DATA\RRINTR2.SMK
+    file[]: crc = 73549dce; size =   3558912; name = CD\DATA\runway.rsc
+    file[]: crc = 016dbb30; size =   4381184; name = CD\DATA\runwaysp.rsc
+    file[]: crc = 18fe238a; size =   1009664; name = CD\DATA\rwante.rsc
+    file[]: crc = 80e49db7; size =   1756672; name = CD\DATA\rwmusic.rsc
+    file[]: crc = aeb33caa; size =   2279936; name = CD\DATA\samanim.rsc
+    file[]: crc = 4bf58573; size =   2934784; name = CD\DATA\SamSpch.rsc
+    file[]: crc = 7bd00b8f; size =  13009408; name = CD\DATA\samswsp.rsc
+    file[]: crc = 8e0b829d; size =   1390592; name = CD\DATA\scante.rsc
+    file[]: crc = bd97601c; size =   3450368; name = CD\DATA\science.rsc
+    file[]: crc = 73f4288b; size =  12028928; name = CD\DATA\SCSpch.rsc
+    file[]: crc = b89903a6; size =   1033728; name = CD\DATA\signin.rsc
+    file[]: crc = 73834b44; size =  14862336; name = CD\DATA\sklwaysp.rsc
+    file[]: crc = da001095; size =   7745312; name = CD\DATA\SONG1.SMK
+    file[]: crc = 3ec3ea70; size =   5025488; name = CD\DATA\SONG2.SMK
+    file[]: crc = 6f099bd9; size =    734720; name = CD\DATA\swante.rsc
+    file[]: crc = 810c8cf4; size =   3830272; name = CD\DATA\swdata.rsc
+    file[]: crc = c982a2d2; size =   6922752; name = CD\DATA\swmusic.rsc
+    file[]: crc = 96c4525c; size =   1523712; name = CD\DATA\turret.rsc
+    file[]: crc = 9602c8cd; size =   2395136; name = CD\DATA\world.rsc
+    file[]: crc = 2b1aa38d; size =   1013760; name = CD\DATA\SKILLWAY\sw01.rsc
+    file[]: crc = af1df1a1; size =    983552; name = CD\DATA\SKILLWAY\sw02.rsc
+    file[]: crc = 33143db6; size =   1459712; name = CD\DATA\SKILLWAY\sw03.rsc
+    file[]: crc = adc91cd1; size =    366080; name = CD\DATA\SKILLWAY\sw04.rsc
+    file[]: crc = 6088cbad; size =    339968; name = CD\DATA\SKILLWAY\sw05.rsc
+    file[]: crc = 3f81ddb1; size =    613888; name = CD\DATA\SKILLWAY\sw06.rsc
+    file[]: crc = b21507fb; size =    724480; name = CD\DATA\SKILLWAY\sw07.rsc
+    file[]: crc = 8c7dc1da; size =    239104; name = CD\DATA\SKILLWAY\sw08.rsc
+    file[]: crc = aa6f05d2; size =    975872; name = CD\DATA\SKILLWAY\sw09.rsc
+    file[]: crc = 901fc03a; size =    694784; name = CD\DATA\SKILLWAY\sw10.rsc
+    file[]: crc = 3ac3338c; size =   1067008; name = CD\DATA\SKILLWAY\sw11.rsc
+    file[]: crc = abc8bc60; size =   1371648; name = CD\DATA\SKILLWAY\sw12.rsc
+    file[]: crc = acd5f0c8; size =   1008640; name = CD\DATA\SKILLWAY\sw13.rsc
+    file[]: crc = b4ce0414; size =    881152; name = CD\DATA\SKILLWAY\sw14.rsc
+    file[]: crc = b9047a91; size =   1083392; name = CD\DATA\SKILLWAY\sw15.rsc
+    file[]: crc = cc8f05a7; size =    318976; name = CD\DATA\SKILLWAY\sw16.rsc
+    file[]: crc = d2cb2670; size =    311296; name = CD\DATA\SKILLWAY\sw17.rsc
+    file[]: crc = 11d7120b; size =    536576; name = CD\DATA\SKILLWAY\sw18.rsc
+    file[]: crc = 427f62d8; size =    881152; name = CD\DATA\SKILLWAY\sw19.rsc
+    file[]: crc = 7998db97; size =    587776; name = CD\DATA\SKILLWAY\sw20.rsc
+    file[]: crc = 7f6155d8; size =    990208; name = CD\DATA\SKILLWAY\sw21.rsc
+    file[]: crc = fa244955; size =    694784; name = CD\DATA\SKILLWAY\sw22.rsc
+    file[]: crc = dfaa51fd; size =   1067008; name = CD\DATA\SKILLWAY\sw23.rsc
+    file[]: crc = 66dca7f6; size =   1371648; name = CD\DATA\SKILLWAY\sw24.rsc
+    file[]: crc = 43954ea6; size =    386560; name = CD\DATA\SKILLWAY\sw25.rsc
+    file[]: crc = b8760367; size =    369664; name = CD\DATA\SKILLWAY\sw26.rsc
+    file[]: crc = b7951bd4; size =    857088; name = CD\DATA\SKILLWAY\sw27.rsc
+    file[]: crc = cf64fb56; size =    585216; name = CD\DATA\SKILLWAY\sw28.rsc
+    file[]: crc = 0828536a; size =    345088; name = CD\DATA\SKILLWAY\sw29.rsc
+    file[]: crc = 8dccb0de; size =    846848; name = CD\DATA\SKILLWAY\sw30.rsc
+    file[]: crc = 956c7f1c; size =     42496; name = CD\INSTALL\PLS\Plugin\rr2nd.pls
+    file[]: crc = 3d4cfb9f; size =   1890829; name = CD\INSTALL\PLS\Preasses\PRsc\ATWO.RSC
+    file[]: crc = 99944567; size =   2779149; name = CD\INSTALL\PLS\Preasses\PRsc\TWO.RSC
+    file[]: crc = df25bca7; size =      2131; name = CD\INSTALL\PLS\Preasses\PScripts\CONSTANT.INC
+    file[]: crc = 77e398bb; size =       623; name = CD\INSTALL\PLS\Preasses\PScripts\exit.mps
+    file[]: crc = 315fcc9b; size =      2169; name = CD\INSTALL\PLS\Preasses\PScripts\mthRacer.inc
+    file[]: crc = 5e8e8c34; size =       941; name = CD\INSTALL\PLS\Preasses\PScripts\mthRacer.mps
+    file[]: crc = a4da71ec; size =       218; name = CD\INSTALL\PLS\Preasses\PScripts\rconfirm.mps
+    file[]: crc = 00000000; size =         0; name = CD\INSTALL\TLC\RSG744CE.CD
+    
+    CDLABEL = RR2WINCD
+    RR2G_CONTENTS = [[[$(CRLF)
+    [Reader Rabbit's 2nd Grade]
+CDDrive=D:\
+
+]]]
+end
+
+//
+// English (UK) CD, Version 1.01
+//
+game[pc-cd-en-uk-1.01]:
+    name = English (UK) CD, Version 1.01
+    anchorfile = RR2GW32.EXE
+    anchordepth = 3
+    
+    file[]: crc = 19fb0111; size =   2545856; name = BEZEL.RSC
+    file[]: crc = a6852518; size =    877568; name = RR2GW16.EXE
+    file[]: crc = e6e8ceda; size =    562688; name = RR2GW32.EXE
+    file[]: crc = 2cb5b913; size =   3574464; name = RUNWAY.RSC
+    file[]: crc = 4f95628b; size =   2292416; name = SAMANIM.RSC
+    file[]: crc = 8b860aac; size =     89760; name = SMACKE16.DLL
+    file[]: crc = f458fd5c; size =     18454; name = SMACKW16.DLL
+    file[]: crc = d8bd604e; size =     71680; name = SMACKW32.DLL
+    file[]: crc = a01e2119; size =   3851456; name = SWDATA.RSC
+    file[]: crc = 2a35af2a; size =   2410176; name = WORLD.RSC
+    file[]: crc = 19fb0111; size =   2545856; name = DATA\BEZEL.RSC
+    file[]: crc = 54855917; size =   6277312; name = DATA\BEZSPCH.RSC
+    file[]: crc = 3ea6c84b; size =   5568608; name = DATA\CLOSING.SMK
+    file[]: crc = 657eb469; size =    155612; name = DATA\COMETS.SMK
+    file[]: crc = 928d5ab8; size =  10519232; name = DATA\DUNSPCH.RSC
+    file[]: crc = ab9eea00; size =   1666752; name = DATA\EMAIL.RSC
+    file[]: crc = ea8d0c64; size =   6530752; name = DATA\EMSPCH.RSC
+    file[]: crc = c344b048; size =   3097792; name = DATA\JOURNAL.RSC
+    file[]: crc = 452c9319; size =   5783744; name = DATA\JPICSPCH.RSC
+    file[]: crc = cf5831a8; size =   1688256; name = DATA\LAANTE.RSC
+    file[]: crc = d7adfd12; size =   7624896; name = DATA\LLSPCH.RSC
+    file[]: crc = 6bb412cb; size =   5605568; name = DATA\MMIRROR.RSC
+    file[]: crc = f000ae04; size =   2629756; name = DATA\OPENS.SMK
+    file[]: crc = f2625b67; size =   6856896; name = DATA\PROGRESS.RSC
+    file[]: crc = bc5c9171; size =   1425792; name = DATA\RRINTR2.SMK
+    file[]: crc = 6357e623; size =       766; name = DATA\RRSG.ICO
+    file[]: crc = 2cb5b913; size =   3574464; name = DATA\RUNWAY.RSC
+    file[]: crc = b79b8213; size =   5809344; name = DATA\RUNWAYSP.RSC
+    file[]: crc = 1817e9e3; size =   1024704; name = DATA\RWANTE.RSC
+    file[]: crc = d8298625; size =   1771712; name = DATA\RWMUSIC.RSC
+    file[]: crc = 4f95628b; size =   2292416; name = DATA\SAMANIM.RSC
+    file[]: crc = dfd312c7; size =   3376320; name = DATA\SAMSPCH.RSC
+    file[]: crc = f3fc10b5; size =  13344448; name = DATA\SAMSWSP.RSC
+    file[]: crc = 45a63644; size =   1405632; name = DATA\SCANTE.RSC
+    file[]: crc = a7c40b1a; size =   3465408; name = DATA\SCIENCE.RSC
+    file[]: crc = d05ea47c; size =  11740352; name = DATA\SCSPCH.RSC
+    file[]: crc = 3a4e66c7; size =   1172672; name = DATA\SIGNIN.RSC
+    file[]: crc = 298a623e; size =  16648896; name = DATA\SKLWAYSP.RSC
+    file[]: crc = 28a630c5; size =   7718564; name = DATA\SONG1.SMK
+    file[]: crc = 5433a8a5; size =   4884288; name = DATA\SONG2.SMK
+    file[]: crc = fa31b8be; size =    778944; name = DATA\SWANTE.RSC
+    file[]: crc = a01e2119; size =   3851456; name = DATA\SWDATA.RSC
+    file[]: crc = 7d2f2712; size =   6937792; name = DATA\SWMUSIC.RSC
+    file[]: crc = 6df7436e; size =   1539264; name = DATA\TURRET.RSC
+    file[]: crc = 2a35af2a; size =   2410176; name = DATA\WORLD.RSC
+    file[]: crc = 2b1aa38d; size =   1013760; name = DATA\SKILLWAY\SW01.RSC
+    file[]: crc = af1df1a1; size =    983552; name = DATA\SKILLWAY\SW02.RSC
+    file[]: crc = 33143db6; size =   1459712; name = DATA\SKILLWAY\SW03.RSC
+    file[]: crc = adc91cd1; size =    366080; name = DATA\SKILLWAY\SW04.RSC
+    file[]: crc = 6088cbad; size =    339968; name = DATA\SKILLWAY\SW05.RSC
+    file[]: crc = 3f81ddb1; size =    613888; name = DATA\SKILLWAY\SW06.RSC
+    file[]: crc = b21507fb; size =    724480; name = DATA\SKILLWAY\SW07.RSC
+    file[]: crc = 8c7dc1da; size =    239104; name = DATA\SKILLWAY\SW08.RSC
+    file[]: crc = aa6f05d2; size =    975872; name = DATA\SKILLWAY\SW09.RSC
+    file[]: crc = 901fc03a; size =    694784; name = DATA\SKILLWAY\SW10.RSC
+    file[]: crc = 3ac3338c; size =   1067008; name = DATA\SKILLWAY\SW11.RSC
+    file[]: crc = abc8bc60; size =   1371648; name = DATA\SKILLWAY\SW12.RSC
+    file[]: crc = acd5f0c8; size =   1008640; name = DATA\SKILLWAY\SW13.RSC
+    file[]: crc = b4ce0414; size =    881152; name = DATA\SKILLWAY\SW14.RSC
+    file[]: crc = b9047a91; size =   1083392; name = DATA\SKILLWAY\SW15.RSC
+    file[]: crc = cc8f05a7; size =    318976; name = DATA\SKILLWAY\SW16.RSC
+    file[]: crc = d2cb2670; size =    311296; name = DATA\SKILLWAY\SW17.RSC
+    file[]: crc = 11d7120b; size =    536576; name = DATA\SKILLWAY\SW18.RSC
+    file[]: crc = 427f62d8; size =    881152; name = DATA\SKILLWAY\SW19.RSC
+    file[]: crc = 7998db97; size =    587776; name = DATA\SKILLWAY\SW20.RSC
+    file[]: crc = 7f6155d8; size =    990208; name = DATA\SKILLWAY\SW21.RSC
+    file[]: crc = fa244955; size =    694784; name = DATA\SKILLWAY\SW22.RSC
+    file[]: crc = dfaa51fd; size =   1067008; name = DATA\SKILLWAY\SW23.RSC
+    file[]: crc = 66dca7f6; size =   1371648; name = DATA\SKILLWAY\SW24.RSC
+    file[]: crc = 43954ea6; size =    386560; name = DATA\SKILLWAY\SW25.RSC
+    file[]: crc = b8760367; size =    369664; name = DATA\SKILLWAY\SW26.RSC
+    file[]: crc = b7951bd4; size =    857088; name = DATA\SKILLWAY\SW27.RSC
+    file[]: crc = cf64fb56; size =    585216; name = DATA\SKILLWAY\SW28.RSC
+    file[]: crc = 0828536a; size =    345088; name = DATA\SKILLWAY\SW29.RSC
+    file[]: crc = 8dccb0de; size =    846848; name = DATA\SKILLWAY\SW30.RSC
+    file[]: crc = 00000000; size =         0; name = CD\B5CD32.MAP
+    file[]: crc = 19fb0111; size =   2545856; name = CD\DATA\BEZEL.RSC
+    file[]: crc = 54855917; size =   6277312; name = CD\DATA\BEZSPCH.RSC
+    file[]: crc = 3ea6c84b; size =   5568608; name = CD\DATA\CLOSING.SMK
+    file[]: crc = 657eb469; size =    155612; name = CD\DATA\COMETS.SMK
+    file[]: crc = 928d5ab8; size =  10519232; name = CD\DATA\DUNSPCH.RSC
+    file[]: crc = ab9eea00; size =   1666752; name = CD\DATA\EMAIL.RSC
+    file[]: crc = ea8d0c64; size =   6530752; name = CD\DATA\EMSPCH.RSC
+    file[]: crc = c344b048; size =   3097792; name = CD\DATA\JOURNAL.RSC
+    file[]: crc = 452c9319; size =   5783744; name = CD\DATA\JPICSPCH.RSC
+    file[]: crc = cf5831a8; size =   1688256; name = CD\DATA\LAANTE.RSC
+    file[]: crc = d7adfd12; size =   7624896; name = CD\DATA\LLSPCH.RSC
+    file[]: crc = 6bb412cb; size =   5605568; name = CD\DATA\MMIRROR.RSC
+    file[]: crc = f000ae04; size =   2629756; name = CD\DATA\OPENS.SMK
+    file[]: crc = f2625b67; size =   6856896; name = CD\DATA\PROGRESS.RSC
+    file[]: crc = bc5c9171; size =   1425792; name = CD\DATA\RRINTR2.SMK
+    file[]: crc = 6357e623; size =       766; name = CD\DATA\RRSG.ICO
+    file[]: crc = 2cb5b913; size =   3574464; name = CD\DATA\RUNWAY.RSC
+    file[]: crc = b79b8213; size =   5809344; name = CD\DATA\RUNWAYSP.RSC
+    file[]: crc = 1817e9e3; size =   1024704; name = CD\DATA\RWANTE.RSC
+    file[]: crc = d8298625; size =   1771712; name = CD\DATA\RWMUSIC.RSC
+    file[]: crc = 4f95628b; size =   2292416; name = CD\DATA\SAMANIM.RSC
+    file[]: crc = dfd312c7; size =   3376320; name = CD\DATA\SAMSPCH.RSC
+    file[]: crc = f3fc10b5; size =  13344448; name = CD\DATA\SAMSWSP.RSC
+    file[]: crc = 45a63644; size =   1405632; name = CD\DATA\SCANTE.RSC
+    file[]: crc = a7c40b1a; size =   3465408; name = CD\DATA\SCIENCE.RSC
+    file[]: crc = d05ea47c; size =  11740352; name = CD\DATA\SCSPCH.RSC
+    file[]: crc = 3a4e66c7; size =   1172672; name = CD\DATA\SIGNIN.RSC
+    file[]: crc = 298a623e; size =  16648896; name = CD\DATA\SKLWAYSP.RSC
+    file[]: crc = 28a630c5; size =   7718564; name = CD\DATA\SONG1.SMK
+    file[]: crc = 5433a8a5; size =   4884288; name = CD\DATA\SONG2.SMK
+    file[]: crc = fa31b8be; size =    778944; name = CD\DATA\SWANTE.RSC
+    file[]: crc = a01e2119; size =   3851456; name = CD\DATA\SWDATA.RSC
+    file[]: crc = 7d2f2712; size =   6937792; name = CD\DATA\SWMUSIC.RSC
+    file[]: crc = 6df7436e; size =   1539264; name = CD\DATA\TURRET.RSC
+    file[]: crc = 2a35af2a; size =   2410176; name = CD\DATA\WORLD.RSC
+    file[]: crc = 2b1aa38d; size =   1013760; name = CD\DATA\SKILLWAY\SW01.RSC
+    file[]: crc = af1df1a1; size =    983552; name = CD\DATA\SKILLWAY\SW02.RSC
+    file[]: crc = 33143db6; size =   1459712; name = CD\DATA\SKILLWAY\SW03.RSC
+    file[]: crc = adc91cd1; size =    366080; name = CD\DATA\SKILLWAY\SW04.RSC
+    file[]: crc = 6088cbad; size =    339968; name = CD\DATA\SKILLWAY\SW05.RSC
+    file[]: crc = 3f81ddb1; size =    613888; name = CD\DATA\SKILLWAY\SW06.RSC
+    file[]: crc = b21507fb; size =    724480; name = CD\DATA\SKILLWAY\SW07.RSC
+    file[]: crc = 8c7dc1da; size =    239104; name = CD\DATA\SKILLWAY\SW08.RSC
+    file[]: crc = aa6f05d2; size =    975872; name = CD\DATA\SKILLWAY\SW09.RSC
+    file[]: crc = 901fc03a; size =    694784; name = CD\DATA\SKILLWAY\SW10.RSC
+    file[]: crc = 3ac3338c; size =   1067008; name = CD\DATA\SKILLWAY\SW11.RSC
+    file[]: crc = abc8bc60; size =   1371648; name = CD\DATA\SKILLWAY\SW12.RSC
+    file[]: crc = acd5f0c8; size =   1008640; name = CD\DATA\SKILLWAY\SW13.RSC
+    file[]: crc = b4ce0414; size =    881152; name = CD\DATA\SKILLWAY\SW14.RSC
+    file[]: crc = b9047a91; size =   1083392; name = CD\DATA\SKILLWAY\SW15.RSC
+    file[]: crc = cc8f05a7; size =    318976; name = CD\DATA\SKILLWAY\SW16.RSC
+    file[]: crc = d2cb2670; size =    311296; name = CD\DATA\SKILLWAY\SW17.RSC
+    file[]: crc = 11d7120b; size =    536576; name = CD\DATA\SKILLWAY\SW18.RSC
+    file[]: crc = 427f62d8; size =    881152; name = CD\DATA\SKILLWAY\SW19.RSC
+    file[]: crc = 7998db97; size =    587776; name = CD\DATA\SKILLWAY\SW20.RSC
+    file[]: crc = 7f6155d8; size =    990208; name = CD\DATA\SKILLWAY\SW21.RSC
+    file[]: crc = fa244955; size =    694784; name = CD\DATA\SKILLWAY\SW22.RSC
+    file[]: crc = dfaa51fd; size =   1067008; name = CD\DATA\SKILLWAY\SW23.RSC
+    file[]: crc = 66dca7f6; size =   1371648; name = CD\DATA\SKILLWAY\SW24.RSC
+    file[]: crc = 43954ea6; size =    386560; name = CD\DATA\SKILLWAY\SW25.RSC
+    file[]: crc = b8760367; size =    369664; name = CD\DATA\SKILLWAY\SW26.RSC
+    file[]: crc = b7951bd4; size =    857088; name = CD\DATA\SKILLWAY\SW27.RSC
+    file[]: crc = cf64fb56; size =    585216; name = CD\DATA\SKILLWAY\SW28.RSC
+    file[]: crc = 0828536a; size =    345088; name = CD\DATA\SKILLWAY\SW29.RSC
+    file[]: crc = 8dccb0de; size =    846848; name = CD\DATA\SKILLWAY\SW30.RSC
+    
+    
+    CDLABEL = RRSG_UK
+    RR2G_CONTENTS = [[[$(CRLF)
+    [Key Stage 1 - Year 2]
+CDDrive=D:\
+
+]]]
+end
+
+//
+// German CD, Version 1.01
+//
+game[pc-cd-de-1.01]:
+    name = German CD, Version 1.01
+    anchorfile = RR2GW32.EXE
+    anchordepth = 3
+    
+    file[]: crc = 26b88fef; size =   2736320; name = BEZEL.RSC
+    file[]: crc = 767d9bd5; size =   1103999; name = RR2GW16.EXE
+    file[]: crc = ce277830; size =    565248; name = RR2GW32.EXE
+    file[]: crc = 2cb5b913; size =   3574464; name = RUNWAY.RSC
+    file[]: crc = 58891ad8; size =   2292416; name = SAMANIM.RSC
+    file[]: crc = 8b860aac; size =     89760; name = SMACKE16.DLL
+    file[]: crc = f458fd5c; size =     18454; name = SMACKW16.DLL
+    file[]: crc = d8bd604e; size =     71680; name = SMACKW32.DLL
+    file[]: crc = 9a425b50; size =   3950272; name = SWDATA.RSC
+    file[]: crc = 6159ebb3; size =   2411200; name = WORLD.RSC
+    file[]: crc = 26b88fef; size =   2736320; name = DATA\BEZEL.RSC
+    file[]: crc = a603370f; size =   6536384; name = DATA\BEZSPCH.RSC
+    file[]: crc = cd673e09; size =   5572892; name = DATA\CLOSING.SMK
+    file[]: crc = 657eb469; size =    155612; name = DATA\COMETS.SMK
+    file[]: crc = 40e9c76b; size =  11299008; name = DATA\DUNSPCH.RSC
+    file[]: crc = 3afb4fbb; size =   1683136; name = DATA\EMAIL.RSC
+    file[]: crc = a1ab5d79; size =   6718144; name = DATA\EMSPCH.RSC
+    file[]: crc = 6c2a0bb0; size =   3050176; name = DATA\JOURNAL.RSC
+    file[]: crc = 72e65eb8; size =   6008512; name = DATA\JPICSPCH.RSC
+    file[]: crc = 5a025452; size =   1687744; name = DATA\LAANTE.RSC
+    file[]: crc = 2dfb8021; size =   8903360; name = DATA\LLSPCH.RSC
+    file[]: crc = 9d30661d; size =   5612224; name = DATA\MMIRROR.RSC
+    file[]: crc = aaa17de0; size =   2491932; name = DATA\OPENS.SMK
+    file[]: crc = 8f655ddc; size =   7788224; name = DATA\PROGRESS.RSC
+    file[]: crc = 9de19c18; size =        28; name = DATA\RR2G.INI
+    file[]: crc = a6806746; size =   1296196; name = DATA\RRINTR2.SMK
+    file[]: crc = 6357e623; size =       766; name = DATA\RRSG.ICO
+    file[]: crc = 2cb5b913; size =   3574464; name = DATA\RUNWAY.RSC
+    file[]: crc = 40369cc1; size =   4827840; name = DATA\RUNWAYSP.RSC
+    file[]: crc = 1817e9e3; size =   1024704; name = DATA\RWANTE.RSC
+    file[]: crc = d8298625; size =   1771712; name = DATA\RWMUSIC.RSC
+    file[]: crc = 58891ad8; size =   2292416; name = DATA\SAMANIM.RSC
+    file[]: crc = d47de360; size =   3412160; name = DATA\SAMSPCH.RSC
+    file[]: crc = 2ec96d89; size =  18032320; name = DATA\SAMSWSP.RSC
+    file[]: crc = d1dea36a; size =   1405632; name = DATA\SCANTE.RSC
+    file[]: crc = aa0ab37f; size =   3466944; name = DATA\SCIENCE.RSC
+    file[]: crc = 8f37a602; size =  13204160; name = DATA\SCSPCH.RSC
+    file[]: crc = f040e9ff; size =   1182400; name = DATA\SIGNIN.RSC
+    file[]: crc = 967e44ad; size =  15569600; name = DATA\SKLWAYSP.RSC
+    file[]: crc = 1604ff74; size =   7818596; name = DATA\SONG1.SMK
+    file[]: crc = 63883a99; size =   4770600; name = DATA\SONG2.SMK
+    file[]: crc = ca29c7f3; size =    775872; name = DATA\SWANTE.RSC
+    file[]: crc = 9a425b50; size =   3950272; name = DATA\SWDATA.RSC
+    file[]: crc = 7d2f2712; size =   6937792; name = DATA\SWMUSIC.RSC
+    file[]: crc = 6df7436e; size =   1539264; name = DATA\TURRET.RSC
+    file[]: crc = 6159ebb3; size =   2411200; name = DATA\WORLD.RSC
+    file[]: crc = 846f5b4b; size =   1028800; name = DATA\SKILLWAY\SW01.RSC
+    file[]: crc = 91c256db; size =    998592; name = DATA\SKILLWAY\SW02.RSC
+    file[]: crc = 8596ea45; size =   1474752; name = DATA\SKILLWAY\SW03.RSC
+    file[]: crc = 78c2c5ae; size =    381632; name = DATA\SKILLWAY\SW04.RSC
+    file[]: crc = cd344b35; size =    355520; name = DATA\SKILLWAY\SW05.RSC
+    file[]: crc = 41d612f8; size =    628928; name = DATA\SKILLWAY\SW06.RSC
+    file[]: crc = 87622d27; size =    739520; name = DATA\SKILLWAY\SW07.RSC
+    file[]: crc = 1fe48fe2; size =    254656; name = DATA\SKILLWAY\SW08.RSC
+    file[]: crc = 11a53e71; size =    990912; name = DATA\SKILLWAY\SW09.RSC
+    file[]: crc = 7582d9c9; size =    710336; name = DATA\SKILLWAY\SW10.RSC
+    file[]: crc = f8f17742; size =   1082048; name = DATA\SKILLWAY\SW11.RSC
+    file[]: crc = a8115696; size =   1386688; name = DATA\SKILLWAY\SW12.RSC
+    file[]: crc = 5df8bd86; size =   1023168; name = DATA\SKILLWAY\SW13.RSC
+    file[]: crc = c74cc493; size =    895680; name = DATA\SKILLWAY\SW14.RSC
+    file[]: crc = f5cf12d2; size =   1097920; name = DATA\SKILLWAY\SW15.RSC
+    file[]: crc = 6c05254d; size =    334016; name = DATA\SKILLWAY\SW16.RSC
+    file[]: crc = 0ad88594; size =    326848; name = DATA\SKILLWAY\SW17.RSC
+    file[]: crc = 6d5c4a02; size =    552128; name = DATA\SKILLWAY\SW18.RSC
+    file[]: crc = 751b67f0; size =    896192; name = DATA\SKILLWAY\SW19.RSC
+    file[]: crc = 3fb7d6ad; size =    602816; name = DATA\SKILLWAY\SW20.RSC
+    file[]: crc = 2257259d; size =   1005248; name = DATA\SKILLWAY\SW21.RSC
+    file[]: crc = f2842699; size =    710336; name = DATA\SKILLWAY\SW22.RSC
+    file[]: crc = d8117683; size =   1082048; name = DATA\SKILLWAY\SW23.RSC
+    file[]: crc = 50d267ea; size =   1386688; name = DATA\SKILLWAY\SW24.RSC
+    file[]: crc = 70499ddb; size =    402112; name = DATA\SKILLWAY\SW25.RSC
+    file[]: crc = 582c767b; size =    384704; name = DATA\SKILLWAY\SW26.RSC
+    file[]: crc = 826249d9; size =    872128; name = DATA\SKILLWAY\SW27.RSC
+    file[]: crc = 76a508e2; size =    600256; name = DATA\SKILLWAY\SW28.RSC
+    file[]: crc = 6fd5f20c; size =    360128; name = DATA\SKILLWAY\SW29.RSC
+    file[]: crc = 6e26ae2a; size =    861888; name = DATA\SKILLWAY\SW30.RSC
+    file[]: crc = 26b88fef; size =   2736320; name = CD\DATA\BEZEL.RSC
+    file[]: crc = a603370f; size =   6536384; name = CD\DATA\BEZSPCH.RSC
+    file[]: crc = cd673e09; size =   5572892; name = CD\DATA\CLOSING.SMK
+    file[]: crc = 657eb469; size =    155612; name = CD\DATA\COMETS.SMK
+    file[]: crc = 40e9c76b; size =  11299008; name = CD\DATA\DUNSPCH.RSC
+    file[]: crc = 3afb4fbb; size =   1683136; name = CD\DATA\EMAIL.RSC
+    file[]: crc = a1ab5d79; size =   6718144; name = CD\DATA\EMSPCH.RSC
+    file[]: crc = 6c2a0bb0; size =   3050176; name = CD\DATA\JOURNAL.RSC
+    file[]: crc = 72e65eb8; size =   6008512; name = CD\DATA\JPICSPCH.RSC
+    file[]: crc = 5a025452; size =   1687744; name = CD\DATA\LAANTE.RSC
+    file[]: crc = 2dfb8021; size =   8903360; name = CD\DATA\LLSPCH.RSC
+    file[]: crc = 9d30661d; size =   5612224; name = CD\DATA\MMIRROR.RSC
+    file[]: crc = aaa17de0; size =   2491932; name = CD\DATA\OPENS.SMK
+    file[]: crc = 8f655ddc; size =   7788224; name = CD\DATA\PROGRESS.RSC
+    file[]: crc = 9de19c18; size =        28; name = CD\DATA\RR2G.INI
+    file[]: crc = a6806746; size =   1296196; name = CD\DATA\RRINTR2.SMK
+    file[]: crc = 6357e623; size =       766; name = CD\DATA\RRSG.ICO
+    file[]: crc = 2cb5b913; size =   3574464; name = CD\DATA\RUNWAY.RSC
+    file[]: crc = 40369cc1; size =   4827840; name = CD\DATA\RUNWAYSP.RSC
+    file[]: crc = 1817e9e3; size =   1024704; name = CD\DATA\RWANTE.RSC
+    file[]: crc = d8298625; size =   1771712; name = CD\DATA\RWMUSIC.RSC
+    file[]: crc = 58891ad8; size =   2292416; name = CD\DATA\SAMANIM.RSC
+    file[]: crc = d47de360; size =   3412160; name = CD\DATA\SAMSPCH.RSC
+    file[]: crc = 2ec96d89; size =  18032320; name = CD\DATA\SAMSWSP.RSC
+    file[]: crc = d1dea36a; size =   1405632; name = CD\DATA\SCANTE.RSC
+    file[]: crc = aa0ab37f; size =   3466944; name = CD\DATA\SCIENCE.RSC
+    file[]: crc = 8f37a602; size =  13204160; name = CD\DATA\SCSPCH.RSC
+    file[]: crc = f040e9ff; size =   1182400; name = CD\DATA\SIGNIN.RSC
+    file[]: crc = 967e44ad; size =  15569600; name = CD\DATA\SKLWAYSP.RSC
+    file[]: crc = 1604ff74; size =   7818596; name = CD\DATA\SONG1.SMK
+    file[]: crc = 63883a99; size =   4770600; name = CD\DATA\SONG2.SMK
+    file[]: crc = ca29c7f3; size =    775872; name = CD\DATA\SWANTE.RSC
+    file[]: crc = 9a425b50; size =   3950272; name = CD\DATA\SWDATA.RSC
+    file[]: crc = 7d2f2712; size =   6937792; name = CD\DATA\SWMUSIC.RSC
+    file[]: crc = 6df7436e; size =   1539264; name = CD\DATA\TURRET.RSC
+    file[]: crc = 6159ebb3; size =   2411200; name = CD\DATA\WORLD.RSC
+    file[]: crc = 846f5b4b; size =   1028800; name = CD\DATA\SKILLWAY\SW01.RSC
+    file[]: crc = 91c256db; size =    998592; name = CD\DATA\SKILLWAY\SW02.RSC
+    file[]: crc = 8596ea45; size =   1474752; name = CD\DATA\SKILLWAY\SW03.RSC
+    file[]: crc = 78c2c5ae; size =    381632; name = CD\DATA\SKILLWAY\SW04.RSC
+    file[]: crc = cd344b35; size =    355520; name = CD\DATA\SKILLWAY\SW05.RSC
+    file[]: crc = 41d612f8; size =    628928; name = CD\DATA\SKILLWAY\SW06.RSC
+    file[]: crc = 87622d27; size =    739520; name = CD\DATA\SKILLWAY\SW07.RSC
+    file[]: crc = 1fe48fe2; size =    254656; name = CD\DATA\SKILLWAY\SW08.RSC
+    file[]: crc = 11a53e71; size =    990912; name = CD\DATA\SKILLWAY\SW09.RSC
+    file[]: crc = 7582d9c9; size =    710336; name = CD\DATA\SKILLWAY\SW10.RSC
+    file[]: crc = f8f17742; size =   1082048; name = CD\DATA\SKILLWAY\SW11.RSC
+    file[]: crc = a8115696; size =   1386688; name = CD\DATA\SKILLWAY\SW12.RSC
+    file[]: crc = 5df8bd86; size =   1023168; name = CD\DATA\SKILLWAY\SW13.RSC
+    file[]: crc = c74cc493; size =    895680; name = CD\DATA\SKILLWAY\SW14.RSC
+    file[]: crc = f5cf12d2; size =   1097920; name = CD\DATA\SKILLWAY\SW15.RSC
+    file[]: crc = 6c05254d; size =    334016; name = CD\DATA\SKILLWAY\SW16.RSC
+    file[]: crc = 0ad88594; size =    326848; name = CD\DATA\SKILLWAY\SW17.RSC
+    file[]: crc = 6d5c4a02; size =    552128; name = CD\DATA\SKILLWAY\SW18.RSC
+    file[]: crc = 751b67f0; size =    896192; name = CD\DATA\SKILLWAY\SW19.RSC
+    file[]: crc = 3fb7d6ad; size =    602816; name = CD\DATA\SKILLWAY\SW20.RSC
+    file[]: crc = 2257259d; size =   1005248; name = CD\DATA\SKILLWAY\SW21.RSC
+    file[]: crc = f2842699; size =    710336; name = CD\DATA\SKILLWAY\SW22.RSC
+    file[]: crc = d8117683; size =   1082048; name = CD\DATA\SKILLWAY\SW23.RSC
+    file[]: crc = 50d267ea; size =   1386688; name = CD\DATA\SKILLWAY\SW24.RSC
+    file[]: crc = 70499ddb; size =    402112; name = CD\DATA\SKILLWAY\SW25.RSC
+    file[]: crc = 582c767b; size =    384704; name = CD\DATA\SKILLWAY\SW26.RSC
+    file[]: crc = 826249d9; size =    872128; name = CD\DATA\SKILLWAY\SW27.RSC
+    file[]: crc = 76a508e2; size =    600256; name = CD\DATA\SKILLWAY\SW28.RSC
+    file[]: crc = 6fd5f20c; size =    360128; name = CD\DATA\SKILLWAY\SW29.RSC
+    file[]: crc = 6e26ae2a; size =    861888; name = CD\DATA\SKILLWAY\SW30.RSC
+    
+    
+    CDLABEL = ""
+    RR2G_CONTENTS = [[[$(CRLF)
+    [2. Klasse]
+CDDrive=D:\
+
+]]]
+end
+
+//
+// Dutch CD, Version 1.01
+//
+game[pc-cd-nl-1.01]:
+    name = Dutch CD, Version 1.01
+    anchorfile = RR2GW32.EXE
+    anchordepth = 3
+    
+    file[]: crc = c5cfe844; size =   2543808; name = BEZEL.RSC
+    file[]: crc = c9eed8a2; size =   1103999; name = RR2GW16.EXE
+    file[]: crc = fe2bd3ab; size =    562688; name = RR2GW32.EXE
+    file[]: crc = 2cb5b913; size =   3574464; name = RUNWAY.RSC
+    file[]: crc = 4cff0cb5; size =   2294976; name = SAMANIM.RSC
+    file[]: crc = 8b860aac; size =     89760; name = SMACKE16.DLL
+    file[]: crc = f458fd5c; size =     18454; name = SMACKW16.DLL
+    file[]: crc = d8bd604e; size =     71680; name = SMACKW32.DLL
+    file[]: crc = 7d2f2712; size =   6937792; name = SWMUSIC.RSC
+    file[]: crc = 8e9e543f; size =   2414784; name = WORLD.RSC
+    file[]: crc = c5cfe844; size =   2543808; name = DATA\BEZEL.RSC
+    file[]: crc = cbf976c6; size =   6066880; name = DATA\BEZSPCH.RSC
+    file[]: crc = 346a1071; size =   5398676; name = DATA\CLOSING.SMK
+    file[]: crc = 8140268d; size =    148392; name = DATA\COMETS.SMK
+    file[]: crc = 9df97cad; size =  11942080; name = DATA\DUNSPCH.RSC
+    file[]: crc = 6a30ba69; size =   1667264; name = DATA\EMAIL.RSC
+    file[]: crc = 4659f276; size =   7204544; name = DATA\EMSPCH.RSC
+    file[]: crc = 714035cb; size =   3046592; name = DATA\JOURNAL.RSC
+    file[]: crc = 968a95a5; size =   6110912; name = DATA\JPICSPCH.RSC
+    file[]: crc = 2a4ebd57; size =   1688256; name = DATA\LAANTE.RSC
+    file[]: crc = 45e7de5e; size =   9260736; name = DATA\LLSPCH.RSC
+    file[]: crc = 826be813; size =   5627072; name = DATA\MMIRROR.RSC
+    file[]: crc = fe02eeaf; size =   2572064; name = DATA\OPENS.SMK
+    file[]: crc = fb47f2ed; size =   6917312; name = DATA\PROGRESS.RSC
+    file[]: crc = 9de19c18; size =        28; name = DATA\RR2G.INI
+    file[]: crc = 358035b7; size =   1343724; name = DATA\RRINTR2.SMK
+    file[]: crc = 2cb5b913; size =   3574464; name = DATA\RUNWAY.RSC
+    file[]: crc = cb57964c; size =   4738240; name = DATA\RUNWAYSP.RSC
+    file[]: crc = 1817e9e3; size =   1024704; name = DATA\RWANTE.RSC
+    file[]: crc = d8298625; size =   1771712; name = DATA\RWMUSIC.RSC
+    file[]: crc = 4cff0cb5; size =   2294976; name = DATA\SAMANIM.RSC
+    file[]: crc = 8c946588; size =   3547840; name = DATA\SAMSPCH.RSC
+    file[]: crc = aba395c9; size =  11886784; name = DATA\SAMSWSP.RSC
+    file[]: crc = 5a035a22; size =   1405632; name = DATA\SCANTE.RSC
+    file[]: crc = 697d1d81; size =   3467968; name = DATA\SCIENCE.RSC
+    file[]: crc = 4ceff394; size =  13465280; name = DATA\SCSPCH.RSC
+    file[]: crc = d5e9e463; size =   1112256; name = DATA\SIGNIN.RSC
+    file[]: crc = bbcbf6da; size =  13968576; name = DATA\SKLWAYSP.RSC
+    file[]: crc = d4c32bc7; size =   7688624; name = DATA\SONG1.SMK
+    file[]: crc = 632c6a7d; size =   5032208; name = DATA\SONG2.SMK
+    file[]: crc = b3874fe4; size =    779456; name = DATA\SWANTE.RSC
+    file[]: crc = 1212755c; size =   3999424; name = DATA\SWDATA.RSC
+    file[]: crc = 7d2f2712; size =   6937792; name = DATA\SWMUSIC.RSC
+    file[]: crc = 6df7436e; size =   1539264; name = DATA\TURRET.RSC
+    file[]: crc = 8e9e543f; size =   2414784; name = DATA\WORLD.RSC
+    file[]: crc = 43e2fcc9; size =   1028800; name = DATA\SKILLWAY\SW01.RSC
+    file[]: crc = 1bde08f9; size =    998592; name = DATA\SKILLWAY\SW02.RSC
+    file[]: crc = 4347ea4b; size =   1474752; name = DATA\SKILLWAY\SW03.RSC
+    file[]: crc = 3bc5c270; size =    381120; name = DATA\SKILLWAY\SW04.RSC
+    file[]: crc = 40fe9d3e; size =    355520; name = DATA\SKILLWAY\SW05.RSC
+    file[]: crc = af3e3a2d; size =    628928; name = DATA\SKILLWAY\SW06.RSC
+    file[]: crc = 2d56b9b6; size =    739008; name = DATA\SKILLWAY\SW07.RSC
+    file[]: crc = 7f4cd873; size =    254656; name = DATA\SKILLWAY\SW08.RSC
+    file[]: crc = d3e4baaa; size =    990912; name = DATA\SKILLWAY\SW09.RSC
+    file[]: crc = 47f358f1; size =    710336; name = DATA\SKILLWAY\SW10.RSC
+    file[]: crc = d5e146ad; size =   1082048; name = DATA\SKILLWAY\SW11.RSC
+    file[]: crc = 780a37cc; size =   1386688; name = DATA\SKILLWAY\SW12.RSC
+    file[]: crc = af12bd3e; size =   1023168; name = DATA\SKILLWAY\SW13.RSC
+    file[]: crc = e636701d; size =    895680; name = DATA\SKILLWAY\SW14.RSC
+    file[]: crc = dc499e9c; size =   1097920; name = DATA\SKILLWAY\SW15.RSC
+    file[]: crc = 2af8e744; size =    334016; name = DATA\SKILLWAY\SW16.RSC
+    file[]: crc = 73e9a6f0; size =    326848; name = DATA\SKILLWAY\SW17.RSC
+    file[]: crc = 67736c0d; size =    551104; name = DATA\SKILLWAY\SW18.RSC
+    file[]: crc = fb8fa048; size =    895680; name = DATA\SKILLWAY\SW19.RSC
+    file[]: crc = 16242a51; size =    602304; name = DATA\SKILLWAY\SW20.RSC
+    file[]: crc = 3fc0d4c3; size =   1004736; name = DATA\SKILLWAY\SW21.RSC
+    file[]: crc = c0f5a7a1; size =    710336; name = DATA\SKILLWAY\SW22.RSC
+    file[]: crc = f501476c; size =   1082048; name = DATA\SKILLWAY\SW23.RSC
+    file[]: crc = 80c906b0; size =   1386688; name = DATA\SKILLWAY\SW24.RSC
+    file[]: crc = 732fbe1b; size =    402112; name = DATA\SKILLWAY\SW25.RSC
+    file[]: crc = 0fcf603a; size =    384704; name = DATA\SKILLWAY\SW26.RSC
+    file[]: crc = 5bd7c0ca; size =    872128; name = DATA\SKILLWAY\SW27.RSC
+    file[]: crc = 7ab9ebde; size =    599744; name = DATA\SKILLWAY\SW28.RSC
+    file[]: crc = 16c37342; size =    360128; name = DATA\SKILLWAY\SW29.RSC
+    file[]: crc = 1ad08ea5; size =    861888; name = DATA\SKILLWAY\SW30.RSC
+    file[]: crc = c5cfe844; size =   2543808; name = CD\DATA\BEZEL.RSC
+    file[]: crc = cbf976c6; size =   6066880; name = CD\DATA\BEZSPCH.RSC
+    file[]: crc = 346a1071; size =   5398676; name = CD\DATA\CLOSING.SMK
+    file[]: crc = 8140268d; size =    148392; name = CD\DATA\COMETS.SMK
+    file[]: crc = 9df97cad; size =  11942080; name = CD\DATA\DUNSPCH.RSC
+    file[]: crc = 6a30ba69; size =   1667264; name = CD\DATA\EMAIL.RSC
+    file[]: crc = 4659f276; size =   7204544; name = CD\DATA\EMSPCH.RSC
+    file[]: crc = 714035cb; size =   3046592; name = CD\DATA\JOURNAL.RSC
+    file[]: crc = 968a95a5; size =   6110912; name = CD\DATA\JPICSPCH.RSC
+    file[]: crc = 2a4ebd57; size =   1688256; name = CD\DATA\LAANTE.RSC
+    file[]: crc = 45e7de5e; size =   9260736; name = CD\DATA\LLSPCH.RSC
+    file[]: crc = 826be813; size =   5627072; name = CD\DATA\MMIRROR.RSC
+    file[]: crc = fe02eeaf; size =   2572064; name = CD\DATA\OPENS.SMK
+    file[]: crc = fb47f2ed; size =   6917312; name = CD\DATA\PROGRESS.RSC
+    file[]: crc = 9de19c18; size =        28; name = CD\DATA\RR2G.INI
+    file[]: crc = 358035b7; size =   1343724; name = CD\DATA\RRINTR2.SMK
+    file[]: crc = 2cb5b913; size =   3574464; name = CD\DATA\RUNWAY.RSC
+    file[]: crc = cb57964c; size =   4738240; name = CD\DATA\RUNWAYSP.RSC
+    file[]: crc = 1817e9e3; size =   1024704; name = CD\DATA\RWANTE.RSC
+    file[]: crc = d8298625; size =   1771712; name = CD\DATA\RWMUSIC.RSC
+    file[]: crc = 4cff0cb5; size =   2294976; name = CD\DATA\SAMANIM.RSC
+    file[]: crc = 8c946588; size =   3547840; name = CD\DATA\SAMSPCH.RSC
+    file[]: crc = aba395c9; size =  11886784; name = CD\DATA\SAMSWSP.RSC
+    file[]: crc = 5a035a22; size =   1405632; name = CD\DATA\SCANTE.RSC
+    file[]: crc = 697d1d81; size =   3467968; name = CD\DATA\SCIENCE.RSC
+    file[]: crc = 4ceff394; size =  13465280; name = CD\DATA\SCSPCH.RSC
+    file[]: crc = d5e9e463; size =   1112256; name = CD\DATA\SIGNIN.RSC
+    file[]: crc = bbcbf6da; size =  13968576; name = CD\DATA\SKLWAYSP.RSC
+    file[]: crc = d4c32bc7; size =   7688624; name = CD\DATA\SONG1.SMK
+    file[]: crc = 632c6a7d; size =   5032208; name = CD\DATA\SONG2.SMK
+    file[]: crc = b3874fe4; size =    779456; name = CD\DATA\SWANTE.RSC
+    file[]: crc = 1212755c; size =   3999424; name = CD\DATA\SWDATA.RSC
+    file[]: crc = 7d2f2712; size =   6937792; name = CD\DATA\SWMUSIC.RSC
+    file[]: crc = 6df7436e; size =   1539264; name = CD\DATA\TURRET.RSC
+    file[]: crc = 8e9e543f; size =   2414784; name = CD\DATA\WORLD.RSC
+    file[]: crc = 43e2fcc9; size =   1028800; name = CD\DATA\SKILLWAY\SW01.RSC
+    file[]: crc = 1bde08f9; size =    998592; name = CD\DATA\SKILLWAY\SW02.RSC
+    file[]: crc = 4347ea4b; size =   1474752; name = CD\DATA\SKILLWAY\SW03.RSC
+    file[]: crc = 3bc5c270; size =    381120; name = CD\DATA\SKILLWAY\SW04.RSC
+    file[]: crc = 40fe9d3e; size =    355520; name = CD\DATA\SKILLWAY\SW05.RSC
+    file[]: crc = af3e3a2d; size =    628928; name = CD\DATA\SKILLWAY\SW06.RSC
+    file[]: crc = 2d56b9b6; size =    739008; name = CD\DATA\SKILLWAY\SW07.RSC
+    file[]: crc = 7f4cd873; size =    254656; name = CD\DATA\SKILLWAY\SW08.RSC
+    file[]: crc = d3e4baaa; size =    990912; name = CD\DATA\SKILLWAY\SW09.RSC
+    file[]: crc = 47f358f1; size =    710336; name = CD\DATA\SKILLWAY\SW10.RSC
+    file[]: crc = d5e146ad; size =   1082048; name = CD\DATA\SKILLWAY\SW11.RSC
+    file[]: crc = 780a37cc; size =   1386688; name = CD\DATA\SKILLWAY\SW12.RSC
+    file[]: crc = af12bd3e; size =   1023168; name = CD\DATA\SKILLWAY\SW13.RSC
+    file[]: crc = e636701d; size =    895680; name = CD\DATA\SKILLWAY\SW14.RSC
+    file[]: crc = dc499e9c; size =   1097920; name = CD\DATA\SKILLWAY\SW15.RSC
+    file[]: crc = 2af8e744; size =    334016; name = CD\DATA\SKILLWAY\SW16.RSC
+    file[]: crc = 73e9a6f0; size =    326848; name = CD\DATA\SKILLWAY\SW17.RSC
+    file[]: crc = 67736c0d; size =    551104; name = CD\DATA\SKILLWAY\SW18.RSC
+    file[]: crc = fb8fa048; size =    895680; name = CD\DATA\SKILLWAY\SW19.RSC
+    file[]: crc = 16242a51; size =    602304; name = CD\DATA\SKILLWAY\SW20.RSC
+    file[]: crc = 3fc0d4c3; size =   1004736; name = CD\DATA\SKILLWAY\SW21.RSC
+    file[]: crc = c0f5a7a1; size =    710336; name = CD\DATA\SKILLWAY\SW22.RSC
+    file[]: crc = f501476c; size =   1082048; name = CD\DATA\SKILLWAY\SW23.RSC
+    file[]: crc = 80c906b0; size =   1386688; name = CD\DATA\SKILLWAY\SW24.RSC
+    file[]: crc = 732fbe1b; size =    402112; name = CD\DATA\SKILLWAY\SW25.RSC
+    file[]: crc = 0fcf603a; size =    384704; name = CD\DATA\SKILLWAY\SW26.RSC
+    file[]: crc = 5bd7c0ca; size =    872128; name = CD\DATA\SKILLWAY\SW27.RSC
+    file[]: crc = 7ab9ebde; size =    599744; name = CD\DATA\SKILLWAY\SW28.RSC
+    file[]: crc = 16c37342; size =    360128; name = CD\DATA\SKILLWAY\SW29.RSC
+    file[]: crc = 1ad08ea5; size =    861888; name = CD\DATA\SKILLWAY\SW30.RSC
+    
+    
+    CDLABEL = GROEP_4
+    RR2G_CONTENTS = [[[$(CRLF)
+    [2. Klasse]
+CDDrive=D:\
+
+]]]
+end
+
+//
+// Swedish CD, Version 1.3
+//
+game[pc-cd-sv-1.3]:
+    name = Swedish CD, Version 1.3
+    anchorfile = XP.EXE
+    anchordepth = 3
+    launch = "$(rootpath)\XP.EXE"
+    
+    file[]: crc = 9427d190; size =   2494144; name = BEZEL.RSC
+    file[]: crc = ecde26ba; size =     24576; name = RR2GW32.exe
+    file[]: crc = 2cb5b913; size =   3574464; name = RUNWAY.rsc
+    file[]: crc = 4cff0cb5; size =   2294976; name = SAMANIM.rsc
+    file[]: crc = 8b860aac; size =     89760; name = SMACKE16.dll
+    file[]: crc = f458fd5c; size =     18454; name = SMACKW16.dll
+    file[]: crc = d8bd604e; size =     71680; name = SMACKW32.dll
+    file[]: crc = 1a220db9; size =   3913408; name = SWDATA.rsc
+    file[]: crc = c467c74c; size =   2407104; name = WORLD.rsc
+    file[]: crc = 35070df9; size =    562688; name = XP.exe
+    file[]: crc = 9427d190; size =   2494144; name = DATA\BEZEL.RSC
+    file[]: crc = 474ad759; size =   6780096; name = DATA\BEZSPCH.rsc
+    file[]: crc = 186fd68d; size =   5463512; name = DATA\closing.smk
+    file[]: crc = a734b072; size =    151000; name = DATA\comets.smk
+    file[]: crc = 8f09858a; size =  11232960; name = DATA\DUNSPCH.rsc
+    file[]: crc = c0b5f975; size =   1679040; name = DATA\EMAIL.rsc
+    file[]: crc = 1fdd2f64; size =   6589120; name = DATA\EMSPCH.rsc
+    file[]: crc = a32da1c5; size =   3053760; name = DATA\JOURNAL.rsc
+    file[]: crc = 0a071da1; size =   6150336; name = DATA\JPICSPCH.rsc
+    file[]: crc = dd639579; size =   1353920; name = DATA\LAANTE.rsc
+    file[]: crc = 2828bd73; size =   8577216; name = DATA\LLSPCH.rsc
+    file[]: crc = 3f126bca; size =   5593280; name = DATA\MMIRROR.rsc
+    file[]: crc = 49d61332; size =   2629892; name = DATA\Opens.smk
+    file[]: crc = 3a260f58; size =   7143616; name = DATA\PROGRESS.rsc
+    file[]: crc = 8f0a49d2; size =        41; name = DATA\rr2g.ini
+    file[]: crc = c572a281; size =   1356016; name = DATA\Rrintr2.smk
+    file[]: crc = 6357e623; size =       766; name = DATA\RRSG.ico
+    file[]: crc = 2cb5b913; size =   3574464; name = DATA\RUNWAY.rsc
+    file[]: crc = fa3ef6ca; size =   4759744; name = DATA\RUNWAYSP.rsc
+    file[]: crc = 1817e9e3; size =   1024704; name = DATA\RWANTE.rsc
+    file[]: crc = d8298625; size =   1771712; name = DATA\RWMUSIC.rsc
+    file[]: crc = 4cff0cb5; size =   2294976; name = DATA\SAMANIM.rsc
+    file[]: crc = ae2b3d9d; size =   3526848; name = DATA\SAMSPCH.rsc
+    file[]: crc = 4ca40820; size =  16324800; name = DATA\SAMSWSP.rsc
+    file[]: crc = 7c565f6f; size =   1405632; name = DATA\SCANTE.rsc
+    file[]: crc = ee05886e; size =   3459264; name = DATA\SCIENCE.rsc
+    file[]: crc = 9876a10a; size =  12652736; name = DATA\SCSPCH.rsc
+    file[]: crc = 476214cf; size =   1111232; name = DATA\SIGNIN.rsc
+    file[]: crc = 48e481b4; size =  15624896; name = DATA\SKLWAYSP.rsc
+    file[]: crc = 7d978e3b; size =  13167408; name = DATA\Song1.smk
+    file[]: crc = 19f42bac; size =  11186376; name = DATA\Song2.smk
+    file[]: crc = 9745d1db; size =    779456; name = DATA\SWANTE.rsc
+    file[]: crc = 1a220db9; size =   3913408; name = DATA\SWDATA.rsc
+    file[]: crc = 7d2f2712; size =   6937792; name = DATA\SWMUSIC.rsc
+    file[]: crc = 6df7436e; size =   1539264; name = DATA\TURRET.rsc
+    file[]: crc = c467c74c; size =   2407104; name = DATA\WORLD.rsc
+    file[]: crc = 063f80b0; size =   1028800; name = DATA\SKILLWAY\sw01.rsc
+    file[]: crc = a53e42ec; size =    998080; name = DATA\SKILLWAY\sw02.rsc
+    file[]: crc = fa78ca52; size =   1474752; name = DATA\SKILLWAY\sw03.rsc
+    file[]: crc = ff5e3d3c; size =    381120; name = DATA\SKILLWAY\sw04.rsc
+    file[]: crc = 59720c5e; size =    355520; name = DATA\SKILLWAY\sw05.rsc
+    file[]: crc = a84cce06; size =    628928; name = DATA\SKILLWAY\sw06.rsc
+    file[]: crc = 70d7b053; size =    739008; name = DATA\SKILLWAY\sw07.rsc
+    file[]: crc = 99012790; size =    254144; name = DATA\SKILLWAY\sw08.rsc
+    file[]: crc = 99dcb3cd; size =    990912; name = DATA\SKILLWAY\sw09.rsc
+    file[]: crc = 227729a7; size =    710336; name = DATA\SKILLWAY\sw10.rsc
+    file[]: crc = 8dee9c00; size =   1082048; name = DATA\SKILLWAY\sw11.rsc
+    file[]: crc = a56893f1; size =   1386688; name = DATA\SKILLWAY\sw12.rsc
+    file[]: crc = 899ce2ea; size =   1023168; name = DATA\SKILLWAY\sw13.rsc
+    file[]: crc = 97649a4f; size =    895680; name = DATA\SKILLWAY\sw14.rsc
+    file[]: crc = 894e6572; size =   1097920; name = DATA\SKILLWAY\sw15.rsc
+    file[]: crc = 16dc72c7; size =    334016; name = DATA\SKILLWAY\sw16.rsc
+    file[]: crc = 6ee72fab; size =    326336; name = DATA\SKILLWAY\sw17.rsc
+    file[]: crc = 0cf4c80c; size =    551616; name = DATA\SKILLWAY\sw18.rsc
+    file[]: crc = 4f1cd400; size =    895680; name = DATA\SKILLWAY\sw19.rsc
+    file[]: crc = efd55ea2; size =    602304; name = DATA\SKILLWAY\sw20.rsc
+    file[]: crc = f648b65e; size =   1004736; name = DATA\SKILLWAY\sw21.rsc
+    file[]: crc = a571d6f7; size =    710336; name = DATA\SKILLWAY\sw22.rsc
+    file[]: crc = ad0e9dc1; size =   1082048; name = DATA\SKILLWAY\sw23.rsc
+    file[]: crc = 5daba28d; size =   1386688; name = DATA\SKILLWAY\sw24.rsc
+    file[]: crc = 0b797128; size =    402112; name = DATA\SKILLWAY\sw25.rsc
+    file[]: crc = 5e327cac; size =    384704; name = DATA\SKILLWAY\sw26.rsc
+    file[]: crc = fecd1cb9; size =    872128; name = DATA\SKILLWAY\sw27.rsc
+    file[]: crc = bf110996; size =    599744; name = DATA\SKILLWAY\sw28.rsc
+    file[]: crc = 43ff98a3; size =    360128; name = DATA\SKILLWAY\sw29.rsc
+    file[]: crc = 0aa18128; size =    861888; name = DATA\SKILLWAY\sw30.rsc
+    file[]: crc = 9427d190; size =   2494144; name = CD\DATA\BEZEL.RSC
+    file[]: crc = 474ad759; size =   6780096; name = CD\DATA\BEZSPCH.rsc
+    file[]: crc = 186fd68d; size =   5463512; name = CD\DATA\closing.smk
+    file[]: crc = a734b072; size =    151000; name = CD\DATA\comets.smk
+    file[]: crc = 8f09858a; size =  11232960; name = CD\DATA\DUNSPCH.rsc
+    file[]: crc = c0b5f975; size =   1679040; name = CD\DATA\EMAIL.rsc
+    file[]: crc = 1fdd2f64; size =   6589120; name = CD\DATA\EMSPCH.rsc
+    file[]: crc = a32da1c5; size =   3053760; name = CD\DATA\JOURNAL.rsc
+    file[]: crc = 0a071da1; size =   6150336; name = CD\DATA\JPICSPCH.rsc
+    file[]: crc = dd639579; size =   1353920; name = CD\DATA\LAANTE.rsc
+    file[]: crc = 2828bd73; size =   8577216; name = CD\DATA\LLSPCH.rsc
+    file[]: crc = 3f126bca; size =   5593280; name = CD\DATA\MMIRROR.rsc
+    file[]: crc = 49d61332; size =   2629892; name = CD\DATA\Opens.smk
+    file[]: crc = 3a260f58; size =   7143616; name = CD\DATA\PROGRESS.rsc
+    file[]: crc = 8f0a49d2; size =        41; name = CD\DATA\rr2g.ini
+    file[]: crc = c572a281; size =   1356016; name = CD\DATA\Rrintr2.smk
+    file[]: crc = 6357e623; size =       766; name = CD\DATA\RRSG.ico
+    file[]: crc = 2cb5b913; size =   3574464; name = CD\DATA\RUNWAY.rsc
+    file[]: crc = fa3ef6ca; size =   4759744; name = CD\DATA\RUNWAYSP.rsc
+    file[]: crc = 1817e9e3; size =   1024704; name = CD\DATA\RWANTE.rsc
+    file[]: crc = d8298625; size =   1771712; name = CD\DATA\RWMUSIC.rsc
+    file[]: crc = 4cff0cb5; size =   2294976; name = CD\DATA\SAMANIM.rsc
+    file[]: crc = ae2b3d9d; size =   3526848; name = CD\DATA\SAMSPCH.rsc
+    file[]: crc = 4ca40820; size =  16324800; name = CD\DATA\SAMSWSP.rsc
+    file[]: crc = 7c565f6f; size =   1405632; name = CD\DATA\SCANTE.rsc
+    file[]: crc = ee05886e; size =   3459264; name = CD\DATA\SCIENCE.rsc
+    file[]: crc = 9876a10a; size =  12652736; name = CD\DATA\SCSPCH.rsc
+    file[]: crc = 476214cf; size =   1111232; name = CD\DATA\SIGNIN.rsc
+    file[]: crc = 48e481b4; size =  15624896; name = CD\DATA\SKLWAYSP.rsc
+    file[]: crc = 7d978e3b; size =  13167408; name = CD\DATA\Song1.smk
+    file[]: crc = 19f42bac; size =  11186376; name = CD\DATA\Song2.smk
+    file[]: crc = 9745d1db; size =    779456; name = CD\DATA\SWANTE.rsc
+    file[]: crc = 1a220db9; size =   3913408; name = CD\DATA\SWDATA.rsc
+    file[]: crc = 7d2f2712; size =   6937792; name = CD\DATA\SWMUSIC.rsc
+    file[]: crc = 6df7436e; size =   1539264; name = CD\DATA\TURRET.rsc
+    file[]: crc = c467c74c; size =   2407104; name = CD\DATA\WORLD.rsc
+    file[]: crc = 063f80b0; size =   1028800; name = CD\DATA\SKILLWAY\sw01.rsc
+    file[]: crc = a53e42ec; size =    998080; name = CD\DATA\SKILLWAY\sw02.rsc
+    file[]: crc = fa78ca52; size =   1474752; name = CD\DATA\SKILLWAY\sw03.rsc
+    file[]: crc = ff5e3d3c; size =    381120; name = CD\DATA\SKILLWAY\sw04.rsc
+    file[]: crc = 59720c5e; size =    355520; name = CD\DATA\SKILLWAY\sw05.rsc
+    file[]: crc = a84cce06; size =    628928; name = CD\DATA\SKILLWAY\sw06.rsc
+    file[]: crc = 70d7b053; size =    739008; name = CD\DATA\SKILLWAY\sw07.rsc
+    file[]: crc = 99012790; size =    254144; name = CD\DATA\SKILLWAY\sw08.rsc
+    file[]: crc = 99dcb3cd; size =    990912; name = CD\DATA\SKILLWAY\sw09.rsc
+    file[]: crc = 227729a7; size =    710336; name = CD\DATA\SKILLWAY\sw10.rsc
+    file[]: crc = 8dee9c00; size =   1082048; name = CD\DATA\SKILLWAY\sw11.rsc
+    file[]: crc = a56893f1; size =   1386688; name = CD\DATA\SKILLWAY\sw12.rsc
+    file[]: crc = 899ce2ea; size =   1023168; name = CD\DATA\SKILLWAY\sw13.rsc
+    file[]: crc = 97649a4f; size =    895680; name = CD\DATA\SKILLWAY\sw14.rsc
+    file[]: crc = 894e6572; size =   1097920; name = CD\DATA\SKILLWAY\sw15.rsc
+    file[]: crc = 16dc72c7; size =    334016; name = CD\DATA\SKILLWAY\sw16.rsc
+    file[]: crc = 6ee72fab; size =    326336; name = CD\DATA\SKILLWAY\sw17.rsc
+    file[]: crc = 0cf4c80c; size =    551616; name = CD\DATA\SKILLWAY\sw18.rsc
+    file[]: crc = 4f1cd400; size =    895680; name = CD\DATA\SKILLWAY\sw19.rsc
+    file[]: crc = efd55ea2; size =    602304; name = CD\DATA\SKILLWAY\sw20.rsc
+    file[]: crc = f648b65e; size =   1004736; name = CD\DATA\SKILLWAY\sw21.rsc
+    file[]: crc = a571d6f7; size =    710336; name = CD\DATA\SKILLWAY\sw22.rsc
+    file[]: crc = ad0e9dc1; size =   1082048; name = CD\DATA\SKILLWAY\sw23.rsc
+    file[]: crc = 5daba28d; size =   1386688; name = CD\DATA\SKILLWAY\sw24.rsc
+    file[]: crc = 0b797128; size =    402112; name = CD\DATA\SKILLWAY\sw25.rsc
+    file[]: crc = 5e327cac; size =    384704; name = CD\DATA\SKILLWAY\sw26.rsc
+    file[]: crc = fecd1cb9; size =    872128; name = CD\DATA\SKILLWAY\sw27.rsc
+    file[]: crc = bf110996; size =    599744; name = CD\DATA\SKILLWAY\sw28.rsc
+    file[]: crc = 43ff98a3; size =    360128; name = CD\DATA\SKILLWAY\sw29.rsc
+    file[]: crc = 0aa18128; size =    861888; name = CD\DATA\SKILLWAY\sw30.rsc
+    file[]: crc = 00000000; size =         0; name = CD\INSTALL\TLC\Rr2swedi.cd
+    
+    CDLABEL = "KK Tvåan"
+    RR2G_CONTENTS = [[[$(CRLF)
+    [Reader Rabbit's 2nd Grade]
+CDDrive=D:\
+
+]]]
+end
+
+//
+// Norwegian CD, Version 1.3
+//
+game[pc-cd-no-1.3]:
+    name = Norwegian CD, Version 1.3
+    anchorfile = RR2GW32.EXE
+    anchordepth = 3
+    launch = "$(rootpath)\RR2GW32.EXE"
+    
+    file[]: crc = 65a2b7d2; size =    565248; name = rr2gw32.exe
+    file[]: crc = 6357e623; size =       766; name = RRSG.ICO
+    file[]: crc = d8bd604e; size =     71680; name = smackw32.dll
+    file[]: crc = 08f2effb; size =      1024; name = SMACKW32.LIB
+    file[]: crc = 3fd4c19e; size =   2526912; name = CD\DATA\bezel.rsc
+    file[]: crc = 9cc2565b; size =   5028032; name = CD\DATA\BEZSPCH.rsc
+    file[]: crc = 9ae2ff47; size =   5451336; name = CD\DATA\closing.smk
+    file[]: crc = a734b072; size =    151000; name = CD\DATA\Comets.smk
+    file[]: crc = c873e529; size =  10663104; name = CD\DATA\DUNSPCH.rsc
+    file[]: crc = 1f44a3aa; size =   1674432; name = CD\DATA\EMAIL.rsc
+    file[]: crc = 365543ee; size =   5671616; name = CD\DATA\EMSPCH.rsc
+    file[]: crc = 3133b582; size =   3044544; name = CD\DATA\JOURNAL.rsc
+    file[]: crc = e582e67b; size =   5394112; name = CD\DATA\JPICSPCH.rsc
+    file[]: crc = 0fb9a7e7; size =   1353408; name = CD\DATA\LAANTE.rsc
+    file[]: crc = 7c6a4915; size =   7420608; name = CD\DATA\LLSPCH.rsc
+    file[]: crc = 068eaf82; size =   5682368; name = CD\DATA\MMIRROR.rsc
+    file[]: crc = 0c5c01c2; size =   2571640; name = CD\DATA\Opens.smk
+    file[]: crc = 3cd56ad4; size =   7578816; name = CD\DATA\PROGRESS.rsc
+    file[]: crc = 670a92cb; size =   1349352; name = CD\DATA\Rrintr2.smk
+    file[]: crc = 2cb5b913; size =   3574464; name = CD\DATA\runway.rsc
+    file[]: crc = 8866648c; size =   4411584; name = CD\DATA\RUNWAYSP.rsc
+    file[]: crc = 1817e9e3; size =   1024704; name = CD\DATA\RWANTE.rsc
+    file[]: crc = d8298625; size =   1771712; name = CD\DATA\RWMUSIC.rsc
+    file[]: crc = 4cff0cb5; size =   2294976; name = CD\DATA\samanim.rsc
+    file[]: crc = da725040; size =   3016896; name = CD\DATA\SAMSPCH.rsc
+    file[]: crc = f8097872; size =  12255936; name = CD\DATA\SAMSWSP.rsc
+    file[]: crc = 6954e2d2; size =   1405632; name = CD\DATA\SCANTE.rsc
+    file[]: crc = fa013430; size =   3460288; name = CD\DATA\SCIENCE.rsc
+    file[]: crc = c01edc29; size =  11318976; name = CD\DATA\SCSPCH.rsc
+    file[]: crc = a907b37b; size =    998080; name = CD\DATA\SIGNIN.rsc
+    file[]: crc = ef75e728; size =  19799232; name = CD\DATA\SKLWAYSP.rsc
+    file[]: crc = 39e9c550; size =  13298088; name = CD\DATA\Song1.smk
+    file[]: crc = 1b9d513a; size =  11161040; name = CD\DATA\Song2.smk
+    file[]: crc = 153dd713; size =    778944; name = CD\DATA\SWANTE.rsc
+    file[]: crc = e455470a; size =   3933888; name = CD\DATA\swdata.rsc
+    file[]: crc = 7d2f2712; size =   6937792; name = CD\DATA\SWMUSIC.rsc
+    file[]: crc = 6df7436e; size =   1539264; name = CD\DATA\TURRET.rsc
+    file[]: crc = 9aba35ef; size =   2414784; name = CD\DATA\world.rsc
+    file[]: crc = 9a8f54ec; size =   1028288; name = CD\DATA\SKILLWAY\sw01.rsc
+    file[]: crc = bb7ba41b; size =    998080; name = CD\DATA\SKILLWAY\sw02.rsc
+    file[]: crc = 7b2fbb12; size =   1474752; name = CD\DATA\SKILLWAY\sw03.rsc
+    file[]: crc = 67a0f278; size =    381120; name = CD\DATA\SKILLWAY\sw04.rsc
+    file[]: crc = 0b012995; size =    355520; name = CD\DATA\SKILLWAY\sw05.rsc
+    file[]: crc = 8ad83da2; size =    628928; name = CD\DATA\SKILLWAY\sw06.rsc
+    file[]: crc = 15062af1; size =    739008; name = CD\DATA\SKILLWAY\sw07.rsc
+    file[]: crc = 57bdacb8; size =    254144; name = CD\DATA\SKILLWAY\sw08.rsc
+    file[]: crc = 07a24be3; size =    990912; name = CD\DATA\SKILLWAY\sw09.rsc
+    file[]: crc = 079cc3ae; size =    710336; name = CD\DATA\SKILLWAY\sw10.rsc
+    file[]: crc = d02c753a; size =   1082048; name = CD\DATA\SKILLWAY\sw11.rsc
+    file[]: crc = cc857ae4; size =   1386688; name = CD\DATA\SKILLWAY\sw12.rsc
+    file[]: crc = bfc89c3b; size =   1023168; name = CD\DATA\SKILLWAY\sw13.rsc
+    file[]: crc = 69ebc684; size =    895680; name = CD\DATA\SKILLWAY\sw14.rsc
+    file[]: crc = f9608556; size =   1097920; name = CD\DATA\SKILLWAY\sw15.rsc
+    file[]: crc = 49ec0581; size =    334016; name = CD\DATA\SKILLWAY\sw16.rsc
+    file[]: crc = 2cd44f4f; size =    326336; name = CD\DATA\SKILLWAY\sw17.rsc
+    file[]: crc = c8343aaf; size =    551616; name = CD\DATA\SKILLWAY\sw18.rsc
+    file[]: crc = a8edc328; size =    895680; name = CD\DATA\SKILLWAY\sw19.rsc
+    file[]: crc = 48c33f23; size =    602304; name = CD\DATA\SKILLWAY\sw20.rsc
+    file[]: crc = 4e057efc; size =   1004736; name = CD\DATA\SKILLWAY\sw21.rsc
+    file[]: crc = 809a3cfe; size =    710336; name = CD\DATA\SKILLWAY\sw22.rsc
+    file[]: crc = f0cc74fb; size =   1082048; name = CD\DATA\SKILLWAY\sw23.rsc
+    file[]: crc = 34464b98; size =   1386688; name = CD\DATA\SKILLWAY\sw24.rsc
+    file[]: crc = 6a39f60d; size =    402112; name = CD\DATA\SKILLWAY\sw25.rsc
+    file[]: crc = 30c6fd02; size =    384704; name = CD\DATA\SKILLWAY\sw26.rsc
+    file[]: crc = 2e2146b0; size =    872128; name = CD\DATA\SKILLWAY\sw27.rsc
+    file[]: crc = 7b062860; size =    599744; name = CD\DATA\SKILLWAY\sw28.rsc
+    file[]: crc = 2af8796c; size =    360128; name = CD\DATA\SKILLWAY\sw29.rsc
+    file[]: crc = dd602ed4; size =    861888; name = CD\DATA\SKILLWAY\sw30.rsc
+    file[]: crc = 00000000; size =         0; name = CD\INSTALL\TLC\Rr2norwa.cd    
+
+    
+    CDLABEL = "LL L&L 6-8"
+    RR2G_CONTENTS = [[[$(CRLF)
+    [Reader Rabbit's 2nd Grade]
+CDDrive=D:\
+
+]]]
+end
+
+//
+// Brazilian Portuguese CD, Version 2.01
+//
+game[pc-cd-pt-br-2.01]:
+    name = Brazilian Portuguese CD, Version 2.01
+    anchorfile = RR2GW32.EXE
+    anchordepth = 3
+    
+    file[]: crc = d7741ee3; size =   2452672; name = BEZEL.RSC
+    file[]: crc = 9bc32b67; size =   1104511; name = RR2GW16.EXE
+    file[]: crc = a4925e4f; size =    565248; name = RR2GW32.EXE
+    file[]: crc = 2cb5b913; size =   3574464; name = RUNWAY.RSC
+    file[]: crc = 4cff0cb5; size =   2294976; name = SAMANIM.RSC
+    file[]: crc = 8b860aac; size =     89760; name = SMACKE16.DLL
+    file[]: crc = f458fd5c; size =     18454; name = SMACKW16.DLL
+    file[]: crc = d8bd604e; size =     71680; name = SMACKW32.DLL
+    file[]: crc = 26acbdcf; size =   3982016; name = SWDATA.RSC
+    file[]: crc = c37bfc5d; size =   2414784; name = WORLD.RSC
+    file[]: crc = d7741ee3; size =   2452672; name = DATA\BEZEL.RSC
+    file[]: crc = c8d47dbd; size =   4534464; name = DATA\BEZSPCH.RSC
+    file[]: crc = c9f74e03; size =   5578320; name = DATA\CLOSING.SMK
+    file[]: crc = 657eb469; size =    155612; name = DATA\COMETS.SMK
+    file[]: crc = 0bcf0361; size =   9044672; name = DATA\DUNSPCH.RSC
+    file[]: crc = 2300f688; size =   1689792; name = DATA\EMAIL.RSC
+    file[]: crc = 6e280fbe; size =   5713600; name = DATA\EMSPCH.RSC
+    file[]: crc = 535261aa; size =   3053248; name = DATA\JOURNAL.RSC
+    file[]: crc = 19389509; size =   4687040; name = DATA\JPICSPCH.RSC
+    file[]: crc = dd691625; size =   1353920; name = DATA\LAANTE.RSC
+    file[]: crc = 6b636631; size =   6740672; name = DATA\LLSPCH.RSC
+    file[]: crc = cbc01243; size =   5551808; name = DATA\MMIRROR.RSC
+    file[]: crc = d369196e; size =   2699992; name = DATA\OPENS.SMK
+    file[]: crc = 9a132229; size =   7020736; name = DATA\PROGRESS.RSC
+    file[]: crc = 8f0a49d2; size =        41; name = DATA\RR2G.INI
+    file[]: crc = 6fed8c4f; size =   1384248; name = DATA\RRINTR2.SMK
+    file[]: crc = 6357e623; size =       766; name = DATA\RRSG.ICO
+    file[]: crc = 2cb5b913; size =   3574464; name = DATA\RUNWAY.RSC
+    file[]: crc = 7883e295; size =   4293312; name = DATA\RUNWAYSP.RSC
+    file[]: crc = 1817e9e3; size =   1024704; name = DATA\RWANTE.RSC
+    file[]: crc = d8298625; size =   1771712; name = DATA\RWMUSIC.RSC
+    file[]: crc = 4cff0cb5; size =   2294976; name = DATA\SAMANIM.RSC
+    file[]: crc = 835d9805; size =   2527424; name = DATA\SAMSPCH.RSC
+    file[]: crc = bed268a8; size =  13533888; name = DATA\SAMSWSP.RSC
+    file[]: crc = 8004122f; size =   1403584; name = DATA\SCANTE.RSC
+    file[]: crc = 30d63861; size =   3466944; name = DATA\SCIENCE.RSC
+    file[]: crc = 9e4e950c; size =  10022592; name = DATA\SCSPCH.RSC
+    file[]: crc = 49571556; size =   1010368; name = DATA\SIGNIN.RSC
+    file[]: crc = 8b69189a; size =  16207552; name = DATA\SKLWAYSP.RSC
+    file[]: crc = f704e9e3; size =   7788228; name = DATA\SONG1.SMK
+    file[]: crc = af09944a; size =   4965896; name = DATA\SONG2.SMK
+    file[]: crc = 361d561b; size =    778944; name = DATA\SWANTE.RSC
+    file[]: crc = 26acbdcf; size =   3982016; name = DATA\SWDATA.RSC
+    file[]: crc = 7d2f2712; size =   6937792; name = DATA\SWMUSIC.RSC
+    file[]: crc = 6df7436e; size =   1539264; name = DATA\TURRET.RSC
+    file[]: crc = c37bfc5d; size =   2414784; name = DATA\WORLD.RSC
+    file[]: crc = 53dac82e; size =   1028800; name = DATA\SKILLWAY\SW01.RSC
+    file[]: crc = a0b74d74; size =    998592; name = DATA\SKILLWAY\SW02.RSC
+    file[]: crc = c26714b1; size =   1475264; name = DATA\SKILLWAY\SW03.RSC
+    file[]: crc = 77713e7f; size =    381632; name = DATA\SKILLWAY\SW04.RSC
+    file[]: crc = af4cda92; size =    356032; name = DATA\SKILLWAY\SW05.RSC
+    file[]: crc = fc212d0a; size =    629440; name = DATA\SKILLWAY\SW06.RSC
+    file[]: crc = 0556963d; size =    739520; name = DATA\SKILLWAY\SW07.RSC
+    file[]: crc = 60b574ae; size =    254656; name = DATA\SKILLWAY\SW08.RSC
+    file[]: crc = e04575b3; size =    991424; name = DATA\SKILLWAY\SW09.RSC
+    file[]: crc = c168656f; size =    710848; name = DATA\SKILLWAY\SW10.RSC
+    file[]: crc = 756943e7; size =   1082560; name = DATA\SKILLWAY\SW11.RSC
+    file[]: crc = cebe2d7a; size =   1387200; name = DATA\SKILLWAY\SW12.RSC
+    file[]: crc = 1a4d1186; size =   1023680; name = DATA\SKILLWAY\SW13.RSC
+    file[]: crc = f4eedf3a; size =    896192; name = DATA\SKILLWAY\SW14.RSC
+    file[]: crc = fa33e2c9; size =   1098432; name = DATA\SKILLWAY\SW15.RSC
+    file[]: crc = 9c9a449f; size =    334528; name = DATA\SKILLWAY\SW16.RSC
+    file[]: crc = 05a4b819; size =    326848; name = DATA\SKILLWAY\SW17.RSC
+    file[]: crc = a142c60f; size =    551616; name = DATA\SKILLWAY\SW18.RSC
+    file[]: crc = c8ba39e0; size =    896192; name = DATA\SKILLWAY\SW19.RSC
+    file[]: crc = 1ec19102; size =    602816; name = DATA\SKILLWAY\SW20.RSC
+    file[]: crc = 8e32ec22; size =   1005248; name = DATA\SKILLWAY\SW21.RSC
+    file[]: crc = 5adec1bc; size =    710848; name = DATA\SKILLWAY\SW22.RSC
+    file[]: crc = 8a6dadc6; size =   1082560; name = DATA\SKILLWAY\SW23.RSC
+    file[]: crc = 31be6856; size =   1387200; name = DATA\SKILLWAY\SW24.RSC
+    file[]: crc = 10c8b086; size =    402112; name = DATA\SKILLWAY\SW25.RSC
+    file[]: crc = 3e218a86; size =    385216; name = DATA\SKILLWAY\SW26.RSC
+    file[]: crc = d6c576e3; size =    872128; name = DATA\SKILLWAY\SW27.RSC
+    file[]: crc = df76eb6e; size =    600256; name = DATA\SKILLWAY\SW28.RSC
+    file[]: crc = 1870aa82; size =    360128; name = DATA\SKILLWAY\SW29.RSC
+    file[]: crc = 05759c1c; size =    861888; name = DATA\SKILLWAY\SW30.RSC
+    
+    file[]: crc = d7741ee3; size =   2452672; name = CD\DATA\BEZEL.RSC
+    file[]: crc = c8d47dbd; size =   4534464; name = CD\DATA\BEZSPCH.RSC
+    file[]: crc = c9f74e03; size =   5578320; name = CD\DATA\CLOSING.SMK
+    file[]: crc = 657eb469; size =    155612; name = CD\DATA\COMETS.SMK
+    file[]: crc = 0bcf0361; size =   9044672; name = CD\DATA\DUNSPCH.RSC
+    file[]: crc = 2300f688; size =   1689792; name = CD\DATA\EMAIL.RSC
+    file[]: crc = 6e280fbe; size =   5713600; name = CD\DATA\EMSPCH.RSC
+    file[]: crc = 535261aa; size =   3053248; name = CD\DATA\JOURNAL.RSC
+    file[]: crc = 19389509; size =   4687040; name = CD\DATA\JPICSPCH.RSC
+    file[]: crc = dd691625; size =   1353920; name = CD\DATA\LAANTE.RSC
+    file[]: crc = 6b636631; size =   6740672; name = CD\DATA\LLSPCH.RSC
+    file[]: crc = cbc01243; size =   5551808; name = CD\DATA\MMIRROR.RSC
+    file[]: crc = d369196e; size =   2699992; name = CD\DATA\OPENS.SMK
+    file[]: crc = 9a132229; size =   7020736; name = CD\DATA\PROGRESS.RSC
+    file[]: crc = 8f0a49d2; size =        41; name = CD\DATA\RR2G.INI
+    file[]: crc = 6fed8c4f; size =   1384248; name = CD\DATA\RRINTR2.SMK
+    file[]: crc = 6357e623; size =       766; name = CD\DATA\RRSG.ICO
+    file[]: crc = 2cb5b913; size =   3574464; name = CD\DATA\RUNWAY.RSC
+    file[]: crc = 7883e295; size =   4293312; name = CD\DATA\RUNWAYSP.RSC
+    file[]: crc = 1817e9e3; size =   1024704; name = CD\DATA\RWANTE.RSC
+    file[]: crc = d8298625; size =   1771712; name = CD\DATA\RWMUSIC.RSC
+    file[]: crc = 4cff0cb5; size =   2294976; name = CD\DATA\SAMANIM.RSC
+    file[]: crc = 835d9805; size =   2527424; name = CD\DATA\SAMSPCH.RSC
+    file[]: crc = bed268a8; size =  13533888; name = CD\DATA\SAMSWSP.RSC
+    file[]: crc = 8004122f; size =   1403584; name = CD\DATA\SCANTE.RSC
+    file[]: crc = 30d63861; size =   3466944; name = CD\DATA\SCIENCE.RSC
+    file[]: crc = 9e4e950c; size =  10022592; name = CD\DATA\SCSPCH.RSC
+    file[]: crc = 49571556; size =   1010368; name = CD\DATA\SIGNIN.RSC
+    file[]: crc = 8b69189a; size =  16207552; name = CD\DATA\SKLWAYSP.RSC
+    file[]: crc = f704e9e3; size =   7788228; name = CD\DATA\SONG1.SMK
+    file[]: crc = af09944a; size =   4965896; name = CD\DATA\SONG2.SMK
+    file[]: crc = 361d561b; size =    778944; name = CD\DATA\SWANTE.RSC
+    file[]: crc = 26acbdcf; size =   3982016; name = CD\DATA\SWDATA.RSC
+    file[]: crc = 7d2f2712; size =   6937792; name = CD\DATA\SWMUSIC.RSC
+    file[]: crc = 6df7436e; size =   1539264; name = CD\DATA\TURRET.RSC
+    file[]: crc = c37bfc5d; size =   2414784; name = CD\DATA\WORLD.RSC
+    file[]: crc = 53dac82e; size =   1028800; name = CD\DATA\SKILLWAY\SW01.RSC
+    file[]: crc = a0b74d74; size =    998592; name = CD\DATA\SKILLWAY\SW02.RSC
+    file[]: crc = c26714b1; size =   1475264; name = CD\DATA\SKILLWAY\SW03.RSC
+    file[]: crc = 77713e7f; size =    381632; name = CD\DATA\SKILLWAY\SW04.RSC
+    file[]: crc = af4cda92; size =    356032; name = CD\DATA\SKILLWAY\SW05.RSC
+    file[]: crc = fc212d0a; size =    629440; name = CD\DATA\SKILLWAY\SW06.RSC
+    file[]: crc = 0556963d; size =    739520; name = CD\DATA\SKILLWAY\SW07.RSC
+    file[]: crc = 60b574ae; size =    254656; name = CD\DATA\SKILLWAY\SW08.RSC
+    file[]: crc = e04575b3; size =    991424; name = CD\DATA\SKILLWAY\SW09.RSC
+    file[]: crc = c168656f; size =    710848; name = CD\DATA\SKILLWAY\SW10.RSC
+    file[]: crc = 756943e7; size =   1082560; name = CD\DATA\SKILLWAY\SW11.RSC
+    file[]: crc = cebe2d7a; size =   1387200; name = CD\DATA\SKILLWAY\SW12.RSC
+    file[]: crc = 1a4d1186; size =   1023680; name = CD\DATA\SKILLWAY\SW13.RSC
+    file[]: crc = f4eedf3a; size =    896192; name = CD\DATA\SKILLWAY\SW14.RSC
+    file[]: crc = fa33e2c9; size =   1098432; name = CD\DATA\SKILLWAY\SW15.RSC
+    file[]: crc = 9c9a449f; size =    334528; name = CD\DATA\SKILLWAY\SW16.RSC
+    file[]: crc = 05a4b819; size =    326848; name = CD\DATA\SKILLWAY\SW17.RSC
+    file[]: crc = a142c60f; size =    551616; name = CD\DATA\SKILLWAY\SW18.RSC
+    file[]: crc = c8ba39e0; size =    896192; name = CD\DATA\SKILLWAY\SW19.RSC
+    file[]: crc = 1ec19102; size =    602816; name = CD\DATA\SKILLWAY\SW20.RSC
+    file[]: crc = 8e32ec22; size =   1005248; name = CD\DATA\SKILLWAY\SW21.RSC
+    file[]: crc = 5adec1bc; size =    710848; name = CD\DATA\SKILLWAY\SW22.RSC
+    file[]: crc = 8a6dadc6; size =   1082560; name = CD\DATA\SKILLWAY\SW23.RSC
+    file[]: crc = 31be6856; size =   1387200; name = CD\DATA\SKILLWAY\SW24.RSC
+    file[]: crc = 10c8b086; size =    402112; name = CD\DATA\SKILLWAY\SW25.RSC
+    file[]: crc = 3e218a86; size =    385216; name = CD\DATA\SKILLWAY\SW26.RSC
+    file[]: crc = d6c576e3; size =    872128; name = CD\DATA\SKILLWAY\SW27.RSC
+    file[]: crc = df76eb6e; size =    600256; name = CD\DATA\SKILLWAY\SW28.RSC
+    file[]: crc = 1870aa82; size =    360128; name = CD\DATA\SKILLWAY\SW29.RSC
+    file[]: crc = 05759c1c; size =    861888; name = CD\DATA\SKILLWAY\SW30.RSC
+    
+    
+    CDLABEL = RRS_BRZ
+    RR2G_CONTENTS = [[[$(CRLF)
+    [Reader Rabbit's 2nd Grade]
+CDDrive=D:\
+
+]]]
+end
+
+end

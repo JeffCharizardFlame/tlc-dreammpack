@@ -1,0 +1,184 @@
+desc[tlc-rrpreschool]:
+
+name = Reader Rabbit's Preschool / Let's Start Learning!
+icon = tlc-rrpreschool.png
+machine = pc
+launch = ""
+osenv = windows 98
+audiohw = gmidi
+winres = 640x480x16
+
+config[ossel]:
+    condition = is_windows()
+    title = OS Select
+    option[win9x]: name = Windows 9x; launch = "$(rootpath)\$(32EXENAME)"; osenv = windows 98
+    option[win31]: name = Windows 3.1; launch = "$(rootpath)\$(16EXENAME)"; osenv = windows 3.11.002
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+
+//
+// English CD - Let's Start Learning! (1.1)
+//
+game[pc-cd-en-1.1]:
+    name = English CD Version 1.1 - Let's Start Learning!
+    rootpath = C:\TLCWIN\LSLWIN
+    anchorfile = LSLWIN32.EXE
+    file[]: crc = 6cb84fbe; size =  21907138; name = GRAPHIC.DLL
+    file[]: crc = 1555ebf0; size =    250880; name = LSLWIN.EXE
+    file[]: crc = cef45103; size =    212992; name = LSLWIN32.EXE
+    file[]: crc = 77cb67d0; size =  18024523; name = MUSIC.DLL
+    file[]: crc = 18b52e75; size =  29775947; name = SOUNDS.DLL
+    file[]: crc = 3b03e483; size =  26938955; name = SPEECH.DLL
+    
+    16EXENAME = LSLWIN.EXE
+    32EXENAME = LSLWIN32.EXE
+end
+
+//
+// English CD Version 2.0 - Carousel
+//
+game[pc-cd-en-2.0-carousel]:
+    name = English CD Version 2.0 - Carousel
+    rootpath = C:\TLCWIN\RRP
+    anchorfile = RRPW32.EXE
+    file[]: crc = d5ec4d26; size =    317440; name = RRPW16.EXE
+    file[]: crc = 2be46f26; size =    259072; name = RRPW32.EXE
+    file[]: crc = de0dbae8; size =  49772544; name = RRPDATA\GRAPHIC.DAT
+    file[]: crc = a7316bad; size =  27558912; name = RRPDATA\MUSIC.DAT
+    file[]: crc = f7076103; size =  36424704; name = RRPDATA\SOUNDS.DAT
+    file[]: crc = c0c25404; size =  49661952; name = RRPDATA\SPEECH.DAT
+    
+    16EXENAME = RRPW16.EXE
+    32EXENAME = RRPW32.EXE
+end
+
+
+//
+// English CD Version 2.0 - Carnival
+//
+game[pc-cd-en-2.0-carn]:
+    name = English CD Version 2.0 - Carnival
+    rootpath = C:\TLCWIN\RRP20
+    anchorfile = RRPW32.EXE
+    file[]: crc = cc0400bb; size =    386560; name = RRPW16.EXE
+    file[]: crc = 33a8bb77; size =    315392; name = RRPW32.EXE
+    file[]: crc = 1da707bf; size =  55806976; name = RRPDATA\GRAPHIC.DAT
+    file[]: crc = 5a93da1d; size =  28824576; name = RRPDATA\GRAPHNEW.DAT
+    file[]: crc = c3065d4d; size =  32437760; name = RRPDATA\MOVIES.DAT
+    file[]: crc = fb6cd7e4; size =  58550272; name = RRPDATA\MUSIC.DAT
+    file[]: crc = 99c715e4; size =  50033664; name = RRPDATA\SOUNDS.DAT
+    file[]: crc = 4f03b1e7; size =  65148928; name = RRPDATA\SPEECH.DAT
+    
+    16EXENAME = RRPW16.EXE
+    32EXENAME = RRPW32.EXE
+end
+
+//
+// English UK CD Version 1.1
+//
+game[pc-cd-en-uk-1.1]:
+    name = English UK CD Version 1.1
+    rootpath = C:\TLCWIN\RRP
+    anchorfile = LSLWIN32.EXE
+    file[]: crc = 52311809; size =  23742177; name = GRAPHIC.DLL
+    file[]: crc = 1c6e13c0; size =      1024; name = GRAPHIC.LIB
+    file[]: crc = 79726da4; size =      3502; name = LSLWIN.DAT
+    file[]: crc = 59aebc56; size =    285696; name = LSLWIN.EXE
+    file[]: crc = 89cb9413; size =      1112; name = LSLWIN.TRW
+    file[]: crc = 59aebc56; size =    285696; name = LSLWIN32.EXE
+    file[]: crc = 1d27a848; size =  17917153; name = MUSIC.DLL
+    file[]: crc = a7aa2f68; size =      1024; name = MUSIC.LIB
+    file[]: crc = 65453083; size =  31210721; name = SOUNDS.DLL
+    file[]: crc = fb5c7795; size =      1024; name = SOUNDS.LIB
+    file[]: crc = ee6960ee; size =  23591137; name = SPEECH.DLL
+    file[]: crc = 7801134f; size =      1024; name = SPEECH.LIB
+    
+    16EXENAME = LSLWIN.EXE
+    32EXENAME = LSLWIN32.EXE
+end
+
+//
+// French CD Version 1.02
+//
+game[pc-cd-fr-1.02]:
+    name = French CD Version 1.02
+    rootpath = C:\TLCWIN\LMM2
+    anchorfile = RRPW32.EXE
+    file[]: crc = d6635b5f; size =    333312; name = RRPW16.EXE
+    file[]: crc = 31202c34; size =    262144; name = RRPW32.EXE
+    file[]: crc = ffdee93f; size =  50308096; name = RRPDATA\GRAPHIC.DAT
+    file[]: crc = f0cca7f9; size =  27467776; name = RRPDATA\MUSIC.DAT
+    file[]: crc = c2ed1810; size =  39054336; name = RRPDATA\SOUNDS.DAT
+    file[]: crc = 62d1c1fa; size =  49941504; name = RRPDATA\SPEECH.DAT
+    
+    16EXENAME = RRPW16.EXE
+    32EXENAME = RRPW32.EXE
+end
+
+//
+// French CD Version 2.0
+//
+game[pc-cd-fr-2.0]:
+    name = French CD Version 2.0
+    rootpath = C:\TLCWIN\LLM220
+    anchorfile = RRPW32.EXE
+    file[]: crc = 6f43ee1f; size =    378880; name = RRPW16.EXE
+    file[]: crc = 5e6ff66d; size =    302080; name = RRPW32.EXE
+    file[]: crc = 2023ce68; size =  57790464; name = RRPDATA\GRAPHIC.DAT
+    file[]: crc = 4f66e661; size =  28491264; name = RRPDATA\GRAPHNEW.DAT
+    file[]: crc = c3065d4d; size =  32437760; name = RRPDATA\MOVIES.DAT
+    file[]: crc = 2d2bafec; size =  54884352; name = RRPDATA\MUSIC.DAT
+    file[]: crc = 716be8e6; size =  49907712; name = RRPDATA\SOUNDS.DAT
+    file[]: crc = 6675f21c; size =  68403200; name = RRPDATA\SPEECH.DAT
+    
+    16EXENAME = RRPW16.EXE
+    32EXENAME = RRPW32.EXE
+end
+
+//
+// German CD Version 2.0
+//
+game[pc-cd-de-2.0]:
+    name = German CD Version 2.0
+    rootpath = C:\TLCWIN\BBK20
+    anchorfile = RRPW32.EXE
+    file[]: crc = 08beee57; size =    939710; name = RRPW16.EXE
+    file[]: crc = 3b4eada8; size =    303616; name = RRPW32.EXE
+    file[]: crc = 5e3a9f82; size =  56299520; name = RRPDATA\GRAPHIC.DAT
+    file[]: crc = a70740ea; size =  28584960; name = RRPDATA\GRAPHNEW.DAT
+    file[]: crc = c3065d4d; size =  32437760; name = RRPDATA\MOVIES.DAT
+    file[]: crc = 0dbbcc36; size =  55089152; name = RRPDATA\MUSIC.DAT
+    file[]: crc = 061cfdb9; size =  48374784; name = RRPDATA\SOUNDS.DAT
+    file[]: crc = 9356e694; size =  72361984; name = RRPDATA\SPEECH.DAT
+    
+    16EXENAME = RRPW16.EXE
+    32EXENAME = RRPW32.EXE
+end
+
+//
+// Brazilian Portuguese CD Version 2.0
+//
+game[pc-cd-pt-br-2.0]:
+    name = Brazilian Portuguese CD Version 2.0
+    rootpath = C:\TLCWIN\CSJ20
+    anchorfile = RRPW32.EXE
+    
+    file[]: crc = cdd2a2fc; size =    381440; name = RRPW16.EXE
+    file[]: crc = 68fbabeb; size =    303104; name = RRPW32.EXE
+    file[]: crc = 740e658b; size =  57964544; name = RRPDATA\GRAPHIC.DAT
+    file[]: crc = 777c47c1; size =  28924416; name = RRPDATA\GRAPHNEW.DAT
+    file[]: crc = c3065d4d; size =  32437760; name = RRPDATA\MOVIES.DAT
+    file[]: crc = db410af0; size =  53867520; name = RRPDATA\MUSIC.DAT
+    file[]: crc = a949459c; size =  49065984; name = RRPDATA\SOUNDS.DAT
+    file[]: crc = ab20f517; size =  65202176; name = RRPDATA\Speech.dat
+    
+    16EXENAME = RRPW16.EXE
+    32EXENAME = RRPW32.EXE
+end
+
+end

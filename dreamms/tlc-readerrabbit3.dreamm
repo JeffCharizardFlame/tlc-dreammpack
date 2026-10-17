@@ -1,0 +1,105 @@
+desc[tlc-readerrabbit3]:
+
+name = Reader Rabbit 3
+icon = tlc-readerrabbit3.png
+machine = pc
+osenv = windows 98
+launch = ""
+
+config[display]:
+    condition = is_dos()
+    title = Display Adapter
+    option[vga]: name = VGA; videohw = vga;
+    option[ega]: name = EGA; videohw = ega;
+    option[cga]: name = CGA; videohw = cga;
+    option[tandy]: name = Tandy; machine = tandy; videohw = cga;
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+
+//
+// English MS-DOS
+//
+game[pc-dos-en]:
+    name = English MS-DOS
+    rootpath = C:\TLC\RR3
+    launch = "$(rootpath)\READER3.EXE"
+    osenv = dos
+    fixdivover = true
+    mips = $(MIPS_386SX_20)
+    ramkb = 1024
+    audiohw = sb16
+    anchorfile = READER3.EXE
+    
+    file[]: crc = c3e60491; size =      2014; name = PLAYERS.DAT
+    file[]: crc = eebc62ce; size =    192736; name = READER3.EXE
+    file[]: crc = a20fffed; size =    317725; name = RR300.DAT
+    file[]: crc = 4e726665; size =    340101; name = RR301.DAT
+    file[]: crc = 3f10650d; size =    331669; name = RR302.DAT
+    file[]: crc = 4fc89707; size =    214669; name = RR303.DAT
+    file[]: crc = 68df361e; size =    227350; name = RR304.DAT
+    file[]: crc = c6650fa5; size =    298441; name = RR305.DAT
+    file[]: crc = 36bfab3f; size =    292889; name = RR306.DAT
+    file[]: crc = 54d4cbd5; size =    330848; name = RR307.DAT
+
+end
+
+//
+// English Windows
+//
+game[pc-win-en]:
+    name = English Windows - Reader Rabbit 3 Deluxe!
+    anchorfile = rr3win.exe
+    anchordepth = 3
+    osenv = windows 98
+    rootpath = C:\TLCWIN\RR3WIN
+    launch = "$(rootpath)\RR3WIN.exe"
+    audiohw = gmidi
+    winres = 640x480x8
+    
+    file[]: crc = 4a41f319; size =    220672; name = BC450RTL.DLL
+    file[]: crc = 3ca057be; size =      1507; name = BELESONG.MID
+    file[]: crc = 1bb969d9; size =     19040; name = BINTRO.MID
+    file[]: crc = be0357cb; size =      3161; name = BINTRO2.MID
+    file[]: crc = f6d50a11; size =      1671; name = BMENU1.MID
+    file[]: crc = e6ffebbc; size =      2450; name = BMENU2.MID
+    file[]: crc = 0cb8f8dd; size =      2204; name = BMENU3.MID
+    file[]: crc = c8cbb0c9; size =      2839; name = BSPTUNE.MID
+    file[]: crc = 6295b613; size =       798; name = BTYPING.MID
+    file[]: crc = 68390dc1; size =   4601643; name = HNDSPK1.DLL
+    file[]: crc = 24bb20b1; size =  10241835; name = HNDSPK2.DLL
+    file[]: crc = 85030b9a; size =  14569771; name = HNDSPK3.DLL
+    file[]: crc = 5a0c8dc2; size =  14848811; name = HNDSPK4.DLL
+    file[]: crc = db11174a; size =   4731691; name = LEVEL1.DLL
+    file[]: crc = 2c9821bf; size =   8193323; name = LEVEL2.DLL
+    file[]: crc = df46f524; size =  10064171; name = LEVEL3.DLL
+    file[]: crc = f255d741; size =  14881579; name = LEVEL4.DLL
+    file[]: crc = 44094cab; size =   5090603; name = OPENING.DLL
+    file[]: crc = cb256601; size =      2058; name = PLAYERS.DAT
+    file[]: crc = b8dd9cd1; size =   2869035; name = RR300.DLL
+    file[]: crc = 6d25a351; size =   2375979; name = RR301.DLL
+    file[]: crc = 5616d154; size =   2616619; name = RR302.DLL
+    file[]: crc = b3515453; size =    907051; name = RR303.DLL
+    file[]: crc = fcd7a328; size =   1099051; name = RR304.DLL
+    file[]: crc = 7ad6a01e; size =   1101099; name = RR305.DLL
+    file[]: crc = 8b627f78; size =    906539; name = RR306.DLL
+    file[]: crc = 8a12ed07; size =   1115435; name = RR307.DLL
+    file[]: crc = 08a1a53d; size =    412192; name = RR3WIN.EXE
+    file[]: crc = 540d0d11; size =        43; name = RR3WIN.INI
+    file[]: crc = f117621a; size =    412160; name = RR3WIN.~EX
+    file[]: crc = a1408ed1; size =    576512; name = RR3WINCD.EXE
+    file[]: crc = 2e8e5ec7; size =       766; name = RR3WINCD.ICO
+    file[]: crc = 335f8748; size =   1348907; name = SCOOPWHO.DLL
+    file[]: crc = 6a907c59; size =   6692651; name = SNEAK1.DLL
+    file[]: crc = b7eb7824; size =  11041067; name = SNEAK2.DLL
+    file[]: crc = 4d39c6dd; size =   8789803; name = SNEAK3.DLL
+    file[]: crc = 8708eac7; size =   3649536; name = SOUNDFX.DLL
+
+
+end
+
+end

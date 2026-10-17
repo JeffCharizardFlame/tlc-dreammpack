@@ -1,0 +1,461 @@
+desc[mecc-ot2]:
+
+name = Oregon Trail II
+icon = mecc-ot2.png
+machine = pc
+rootpath = C:\MECC\OTII
+launch = ""
+osenv = windows 98
+audiohw = gmidi
+winres = 800x600x16
+
+config[ossel]:
+    condition = file_exists("$$(rootpath)\\OTII32.EXE");
+    title = OS Select
+    option[win31]: name = Windows 3.1; launch = "$(rootpath)\OTII16.exe"; osenv = windows 3.11.002;
+    option[win9x]: name = Windows 9x; launch = "$(rootpath)\OTII32.exe"; osenv = windows 98;
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD
+
+mount[cdw]: vpath = D:\; srcpath = ram
+
+//
+// initialization script
+//
+script[cd-init]:
+	code = [[[$(CRLF)
+	    // set the volume label on the CD
+        drive_set_label("D", "$$(CDLABEL)");
+        file_save("$$(rootpath)\\OREGONII.INI", "$$(OREGONII_CONTENTS)");
+        
+    ]]]
+end
+
+//
+// Version 1.0
+//
+game[pc-cd-en-1.0]:
+    name = English Version 1.0
+    anchorfile = OTII16.EXE
+    anchordepth = 3
+    winres = 800x600x8
+    
+    file[]: crc = 1034bcb7; size =    519475; name = OREGONII.ENG
+    file[]: crc = 7578e5b6; size =  16784651; name = OREGONII.FST
+    file[]: crc = 9c385d00; size =    899034; name = OREGONII.HLP
+    file[]: crc = c2027d5e; size =    694128; name = OTII16.EXE
+    file[]: crc = fb3371db; size =       352; name = PRODUCT.PF
+    file[]: crc = cdee7c3d; size =      9089; name = README.TXT
+    file[]: crc = c25cdc0f; size =     10208; name = SNDLIB16.DLL
+    file[]: crc = a6361189; size = 245651037; name = CD\DATA\OREGONII.DAT
+    file[]: crc = 90f5fe6a; size =     16476; name = CD\DATA\AVI\100.AVI
+    file[]: crc = 225ec223; size =  24757584; name = CD\DATA\AVI\101.AVI
+    file[]: crc = 267326ca; size =    350310; name = CD\DATA\AVI\1101.AVI
+    file[]: crc = b066bba6; size =    418534; name = CD\DATA\AVI\1102.AVI
+    file[]: crc = af92b290; size =    664582; name = CD\DATA\AVI\1103.AVI
+    file[]: crc = 5b93a233; size =    438790; name = CD\DATA\AVI\1201.AVI
+    file[]: crc = b5d638b8; size =    859174; name = CD\DATA\AVI\1202.AVI
+    file[]: crc = e1773d55; size =    410502; name = CD\DATA\AVI\1203.AVI
+    file[]: crc = 5ae47d9f; size =    502150; name = CD\DATA\AVI\1204.AVI
+    file[]: crc = ae52ccba; size =    361958; name = CD\DATA\AVI\1301.AVI
+    file[]: crc = 4a6e19a9; size =    575494; name = CD\DATA\AVI\1302.AVI
+    file[]: crc = a9379f70; size =    754374; name = CD\DATA\AVI\1303.AVI
+    file[]: crc = fd2b39d8; size =    412582; name = CD\DATA\AVI\1304.AVI
+    file[]: crc = 1edc0ebd; size =    510310; name = CD\DATA\AVI\1305.AVI
+    file[]: crc = 1521e14c; size =    687718; name = CD\DATA\AVI\1306.AVI
+    file[]: crc = c717c4db; size =    606310; name = CD\DATA\AVI\1401.AVI
+    file[]: crc = 5a53ccec; size =    394086; name = CD\DATA\AVI\1402.AVI
+    file[]: crc = ece083d8; size =    412630; name = CD\DATA\AVI\1403.AVI
+    file[]: crc = c791b182; size =    383750; name = CD\DATA\AVI\1404.AVI
+    file[]: crc = 946bdd35; size =    622054; name = CD\DATA\AVI\1405.AVI
+    file[]: crc = fcb12cd1; size =    597478; name = CD\DATA\AVI\1501.AVI
+    file[]: crc = 9c7f139d; size =    691270; name = CD\DATA\AVI\1502.AVI
+    file[]: crc = c4949a36; size =    580070; name = CD\DATA\AVI\1503.AVI
+    file[]: crc = 3790cb52; size =    578790; name = CD\DATA\AVI\1601.AVI
+    file[]: crc = fe8f2a8b; size =    565190; name = CD\DATA\AVI\1602.AVI
+    file[]: crc = b13a14a9; size =    563110; name = CD\DATA\AVI\1603.AVI
+    file[]: crc = 83768d83; size =    565190; name = CD\DATA\AVI\1701.AVI
+    file[]: crc = b18c7784; size =    491254; name = CD\DATA\AVI\1702.AVI
+    file[]: crc = 0cccbd50; size =    394454; name = CD\DATA\AVI\1703.AVI
+    file[]: crc = 062474f1; size =    470438; name = CD\DATA\AVI\1801.AVI
+    file[]: crc = 227d9af6; size =    491142; name = CD\DATA\AVI\1802.AVI
+    file[]: crc = 7b139b72; size =    293318; name = CD\DATA\AVI\1803.AVI
+    file[]: crc = c68cf6bc; size =    390358; name = CD\DATA\AVI\1804.AVI
+    file[]: crc = e82af99b; size =    776678; name = CD\DATA\AVI\1901.AVI
+    file[]: crc = c287757b; size =    474726; name = CD\DATA\AVI\1902.AVI
+    file[]: crc = 9d3a0249; size =    359142; name = CD\DATA\AVI\1903.AVI
+    file[]: crc = 23312648; size =    491142; name = CD\DATA\AVI\2001.AVI
+    file[]: crc = 57355422; size =    487014; name = CD\DATA\AVI\2002.AVI
+    file[]: crc = b691d747; size =    584486; name = CD\DATA\AVI\2003.AVI
+    file[]: crc = ad742a5a; size =    462262; name = CD\DATA\AVI\2101.AVI
+    file[]: crc = 53f2fd38; size =    491142; name = CD\DATA\AVI\2102.AVI
+    file[]: crc = 827bb6b0; size =    539942; name = CD\DATA\AVI\2103.AVI
+    file[]: crc = 520c1e97; size =    768486; name = CD\DATA\AVI\2201.AVI
+    file[]: crc = 009a241a; size =    474726; name = CD\DATA\AVI\2202.AVI
+    file[]: crc = 1987a81b; size =    390358; name = CD\DATA\AVI\2203.AVI
+    file[]: crc = 23d8e6b0; size =    594726; name = CD\DATA\AVI\2204.AVI
+    file[]: crc = cf6bb3f6; size =    180710; name = CD\DATA\AVI\2301.AVI
+    file[]: crc = ac6cec1e; size =    448134; name = CD\DATA\AVI\2302.AVI
+    file[]: crc = 8591f3c7; size =    591142; name = CD\DATA\AVI\2303.AVI
+    file[]: crc = 28544fc0; size =    136166; name = CD\DATA\AVI\2401.AVI
+    file[]: crc = 008f315d; size =    232678; name = CD\DATA\AVI\2402.AVI
+    file[]: crc = 2bf59741; size =    228422; name = CD\DATA\AVI\2403.AVI
+    file[]: crc = 3c55ce50; size =    467140; name = CD\DATA\AVI\2501.AVI
+    file[]: crc = dd9c9c92; size =    474694; name = CD\DATA\AVI\2502.AVI
+    file[]: crc = 42dbe941; size =    500374; name = CD\DATA\AVI\2503.AVI
+    file[]: crc = ef66e736; size =    458948; name = CD\DATA\AVI\2601.AVI
+    file[]: crc = 25858152; size =    487014; name = CD\DATA\AVI\2602.AVI
+    file[]: crc = 33f0001b; size =    555670; name = CD\DATA\AVI\2603.AVI
+    file[]: crc = fe1808a9; size =    570198; name = CD\DATA\AVI\4000.AVI
+    file[]: crc = 2dc9a0ba; size =    517190; name = CD\DATA\AVI\4001.AVI
+    file[]: crc = c6ffdb92; size =    420372; name = CD\DATA\AVI\4002.AVI
+    file[]: crc = 096d8827; size =    490240; name = CD\DATA\AVI\4003.AVI
+    file[]: crc = 8c695e00; size =    541382; name = CD\DATA\AVI\4010.AVI
+    file[]: crc = edda0838; size =    465990; name = CD\DATA\AVI\4011.AVI
+    file[]: crc = 4952aef0; size =    484038; name = CD\DATA\AVI\4012.AVI
+    file[]: crc = 20ed8826; size =    518854; name = CD\DATA\AVI\4013.AVI
+    file[]: crc = 1acb8e25; size =    545622; name = CD\DATA\AVI\4100.AVI
+    file[]: crc = 2032961a; size =    506854; name = CD\DATA\AVI\4101.AVI
+    file[]: crc = 6a0af0fd; size =    551910; name = CD\DATA\AVI\4103.AVI
+    file[]: crc = c73cbbf9; size =    551622; name = CD\DATA\AVI\4110.AVI
+    file[]: crc = 1aff9cd2; size =    480134; name = CD\DATA\AVI\4111.AVI
+    file[]: crc = ebee3202; size =    601158; name = CD\DATA\AVI\4113.AVI
+    file[]: crc = 5f005c89; size =    559958; name = CD\DATA\AVI\4200.AVI
+    file[]: crc = 289a7753; size =    434790; name = CD\DATA\AVI\4201.AVI
+    file[]: crc = 234ba416; size =    566294; name = CD\DATA\AVI\4203.AVI
+    file[]: crc = a38ecc4e; size =    506566; name = CD\DATA\AVI\4210.AVI
+    file[]: crc = 747a083b; size =    517094; name = CD\DATA\AVI\4211.AVI
+    file[]: crc = 06ebf2f2; size =    525190; name = CD\DATA\AVI\4213.AVI
+    file[]: crc = 8aee1d12; size =    334294; name = CD\DATA\AVI\4300.AVI
+    file[]: crc = 41f1fda9; size =    350822; name = CD\DATA\AVI\4301.AVI
+    file[]: crc = 03e26a0d; size =    525046; name = CD\DATA\AVI\4400.AVI
+    file[]: crc = 0e5b1b7b; size =    562262; name = CD\DATA\AVI\4401.AVI
+    file[]: crc = 9cd8248c; size =    582726; name = CD\DATA\AVI\4403.AVI
+    file[]: crc = 41daebcd; size =    516854; name = CD\DATA\AVI\4410.AVI
+    file[]: crc = 28e78ddb; size =    560182; name = CD\DATA\AVI\4411.AVI
+    file[]: crc = 85423eb8; size =    586806; name = CD\DATA\AVI\4413.AVI
+    file[]: crc = 07db495a; size =   1220486; name = CD\DATA\AVI\4500.AVI
+    file[]: crc = 58af4754; size =   1108230; name = CD\DATA\AVI\4503.AVI
+    file[]: crc = 3128c891; size =   1083270; name = CD\DATA\AVI\4510.AVI
+    file[]: crc = e5edb0bf; size =   1120502; name = CD\DATA\AVI\4513.AVI
+    file[]: crc = d0ad1785; size =    997254; name = CD\DATA\AVI\4600.AVI
+    file[]: crc = fd00e3a7; size =    993158; name = CD\DATA\AVI\4603.AVI
+    file[]: crc = fc5a868d; size =   1085318; name = CD\DATA\AVI\4610.AVI
+    file[]: crc = 6a7db928; size =   1106358; name = CD\DATA\AVI\4613.AVI
+    file[]: crc = 2f852ae5; size =   1118086; name = CD\DATA\AVI\4700.AVI
+    file[]: crc = 0505c656; size =   1130630; name = CD\DATA\AVI\4703.AVI
+    file[]: crc = c0c69b94; size =   1075030; name = CD\DATA\AVI\4710.AVI
+    file[]: crc = dec92095; size =   1153430; name = CD\DATA\AVI\4713.AVI
+    file[]: crc = d1a66a54; size =   1171334; name = CD\DATA\AVI\4800.AVI
+    file[]: crc = f0323a6e; size =   1181958; name = CD\DATA\AVI\4803.AVI
+    file[]: crc = e62318a7; size =   1142662; name = CD\DATA\AVI\4810.AVI
+    file[]: crc = 11ef33f9; size =   1196294; name = CD\DATA\AVI\4813.AVI
+    file[]: crc = 6c0d53c0; size =   2839142; name = CD\DATA\AVI\4900.AVI
+    file[]: crc = 03c6eb00; size =   2808422; name = CD\DATA\AVI\4901.AVI
+    
+    launch = "$(rootpath)\OTII16.EXE"
+    CDLABEL = OREGONII
+    OREGONII_CONTENTS = [[[$(CRLF)
+[Sound]
+music=on
+sfx=on
+speech=on
+buffers=20,2000
+[cdrom]
+rsrcpath=D:\data\
+[game]
+intromovieid=101
+speed=1
+
+]]]
+end
+
+//
+// Version 1.3
+//
+game[pc-win-en-1.3]:
+    name = English Version 1.3
+    anchorfile = OTII32.EXE
+    anchordepth = 3
+    
+    file[]: crc = 6a5fd7e7; size =    315885; name = OREGONII.DT2
+    file[]: crc = 8bc72e51; size =    521056; name = OREGONII.ENG
+    file[]: crc = 49fc521e; size =  16794467; name = OREGONII.FST
+    file[]: crc = 9c385d00; size =    899034; name = OREGONII.HLP
+    file[]: crc = 0c5f40d1; size =    997392; name = OTII16.EXE
+    file[]: crc = 52648ad8; size =   1353216; name = OTII32.EXE
+    file[]: crc = 016f5cbb; size =    955000; name = OTIIUSER.HLP
+    file[]: crc = 918b3e6e; size =       352; name = PRODUCT.PF
+    file[]: crc = 6884b00a; size =     10400; name = SNDLIB16.DLL
+    file[]: crc = a323415a; size = 289302417; name = CD\DATA\OREGONII.DAT
+    file[]: crc = a65aca8c; size =  11812662; name = CD\DATA\MOVIES\100.MOV
+    file[]: crc = 714e1446; size =     24080; name = CD\DATA\MOVIES\101.MOV
+    file[]: crc = a0da414a; size =    138133; name = CD\DATA\MOVIES\1101.MOV
+    file[]: crc = 2b90586c; size =    126285; name = CD\DATA\MOVIES\1102.MOV
+    file[]: crc = ebc0d1a0; size =    184709; name = CD\DATA\MOVIES\1103.MOV
+    file[]: crc = ab2a66bc; size =     87697; name = CD\DATA\MOVIES\1201.MOV
+    file[]: crc = 4b40c9e4; size =    320901; name = CD\DATA\MOVIES\1202.MOV
+    file[]: crc = f7a4a05d; size =    164117; name = CD\DATA\MOVIES\1203.MOV
+    file[]: crc = 5a1f8d03; size =    122505; name = CD\DATA\MOVIES\1204.MOV
+    file[]: crc = fa1dbb7c; size =     99577; name = CD\DATA\MOVIES\1301.MOV
+    file[]: crc = fa4b6754; size =    138101; name = CD\DATA\MOVIES\1302.MOV
+    file[]: crc = 0633232c; size =    315545; name = CD\DATA\MOVIES\1303.MOV
+    file[]: crc = e981082f; size =    158405; name = CD\DATA\MOVIES\1304.MOV
+    file[]: crc = 1c79aa26; size =    133317; name = CD\DATA\MOVIES\1305.MOV
+    file[]: crc = f120e054; size =    333589; name = CD\DATA\MOVIES\1306.MOV
+    file[]: crc = 8b4acb7a; size =    163825; name = CD\DATA\MOVIES\1401.MOV
+    file[]: crc = 9becbee8; size =     96197; name = CD\DATA\MOVIES\1402.MOV
+    file[]: crc = d6ba47e6; size =    147789; name = CD\DATA\MOVIES\1403.MOV
+    file[]: crc = b82f9a52; size =    104909; name = CD\DATA\MOVIES\1404.MOV
+    file[]: crc = cb05f3e3; size =    283665; name = CD\DATA\MOVIES\1405.MOV
+    file[]: crc = e06fc0c6; size =    260749; name = CD\DATA\MOVIES\1501.MOV
+    file[]: crc = a4d48831; size =    167969; name = CD\DATA\MOVIES\1502.MOV
+    file[]: crc = 2dae67ec; size =    217709; name = CD\DATA\MOVIES\1503.MOV
+    file[]: crc = 0d57eeb5; size =    116889; name = CD\DATA\MOVIES\1601.MOV
+    file[]: crc = 2a7c682f; size =    179869; name = CD\DATA\MOVIES\1602.MOV
+    file[]: crc = 1ffbe3f1; size =    176385; name = CD\DATA\MOVIES\1603.MOV
+    file[]: crc = cff5be94; size =    179413; name = CD\DATA\MOVIES\1701.MOV
+    file[]: crc = f65e71f7; size =    106097; name = CD\DATA\MOVIES\1702.MOV
+    file[]: crc = f7a724c7; size =     96241; name = CD\DATA\MOVIES\1703.MOV
+    file[]: crc = 6fe17593; size =    140125; name = CD\DATA\MOVIES\1801.MOV
+    file[]: crc = 2c663470; size =    183997; name = CD\DATA\MOVIES\1802.MOV
+    file[]: crc = a4a606e4; size =     86533; name = CD\DATA\MOVIES\1803.MOV
+    file[]: crc = 993f56aa; size =     97925; name = CD\DATA\MOVIES\1804.MOV
+    file[]: crc = 50e4bea1; size =    229177; name = CD\DATA\MOVIES\1901.MOV
+    file[]: crc = 100bf11c; size =    174473; name = CD\DATA\MOVIES\1902.MOV
+    file[]: crc = 9357be39; size =     99953; name = CD\DATA\MOVIES\1903.MOV
+    file[]: crc = b1784d08; size =    165389; name = CD\DATA\MOVIES\2001.MOV
+    file[]: crc = e429c031; size =    178257; name = CD\DATA\MOVIES\2002.MOV
+    file[]: crc = a869739b; size =    170993; name = CD\DATA\MOVIES\2003.MOV
+    file[]: crc = a1d2f533; size =    112661; name = CD\DATA\MOVIES\2101.MOV
+    file[]: crc = 50862aba; size =    167317; name = CD\DATA\MOVIES\2102.MOV
+    file[]: crc = bca2d0cc; size =    251697; name = CD\DATA\MOVIES\2103.MOV
+    file[]: crc = b9f752c2; size =    243321; name = CD\DATA\MOVIES\2201.MOV
+    file[]: crc = a6f76ad9; size =    173485; name = CD\DATA\MOVIES\2202.MOV
+    file[]: crc = e076bd4d; size =    102389; name = CD\DATA\MOVIES\2203.MOV
+    file[]: crc = 9a241352; size =    150657; name = CD\DATA\MOVIES\2204.MOV
+    file[]: crc = 9a2ffe81; size =     84557; name = CD\DATA\MOVIES\2301.MOV
+    file[]: crc = fba511a4; size =    192205; name = CD\DATA\MOVIES\2302.MOV
+    file[]: crc = 494d6680; size =    258021; name = CD\DATA\MOVIES\2303.MOV
+    file[]: crc = 78929f9c; size =     57329; name = CD\DATA\MOVIES\2401.MOV
+    file[]: crc = 6d168e44; size =     82285; name = CD\DATA\MOVIES\2402.MOV
+    file[]: crc = c5abb404; size =    120889; name = CD\DATA\MOVIES\2403.MOV
+    file[]: crc = a3d2a2a9; size =    167801; name = CD\DATA\MOVIES\2501.MOV
+    file[]: crc = b6bb304c; size =    169937; name = CD\DATA\MOVIES\2502.MOV
+    file[]: crc = db1d79bf; size =    179325; name = CD\DATA\MOVIES\2503.MOV
+    file[]: crc = 4e1bb75b; size =    169661; name = CD\DATA\MOVIES\2601.MOV
+    file[]: crc = ea0a51d8; size =    170177; name = CD\DATA\MOVIES\2602.MOV
+    file[]: crc = eade3015; size =    190961; name = CD\DATA\MOVIES\2603.MOV
+    file[]: crc = c871f5bf; size =    449223; name = CD\DATA\MOVIES\4000.MOV
+    file[]: crc = e000f5e0; size =    286469; name = CD\DATA\MOVIES\4001.MOV
+    file[]: crc = ed748258; size =    255246; name = CD\DATA\MOVIES\4002.MOV
+    file[]: crc = d87a0644; size =    376025; name = CD\DATA\MOVIES\4003.MOV
+    file[]: crc = 1c997090; size =    411559; name = CD\DATA\MOVIES\4010.MOV
+    file[]: crc = d72bb06e; size =    272768; name = CD\DATA\MOVIES\4011.MOV
+    file[]: crc = 72fac34d; size =    260642; name = CD\DATA\MOVIES\4012.MOV
+    file[]: crc = f8635815; size =    326096; name = CD\DATA\MOVIES\4013.MOV
+    file[]: crc = 22bd2901; size =    420229; name = CD\DATA\MOVIES\4100.MOV
+    file[]: crc = 961e8ab6; size =    270960; name = CD\DATA\MOVIES\4101.MOV
+    file[]: crc = 3c9877d6; size =    360697; name = CD\DATA\MOVIES\4103.MOV
+    file[]: crc = 8eda83f9; size =    421187; name = CD\DATA\MOVIES\4110.MOV
+    file[]: crc = fcf64258; size =    292900; name = CD\DATA\MOVIES\4111.MOV
+    file[]: crc = cb795076; size =    391246; name = CD\DATA\MOVIES\4113.MOV
+    file[]: crc = 5574437d; size =    494577; name = CD\DATA\MOVIES\4200.MOV
+    file[]: crc = 094239ce; size =    229787; name = CD\DATA\MOVIES\4201.MOV
+    file[]: crc = 976b9d21; size =    384579; name = CD\DATA\MOVIES\4203.MOV
+    file[]: crc = f2773118; size =    381697; name = CD\DATA\MOVIES\4210.MOV
+    file[]: crc = 6e08503f; size =    272149; name = CD\DATA\MOVIES\4211.MOV
+    file[]: crc = e9ddbdb4; size =    313394; name = CD\DATA\MOVIES\4213.MOV
+    file[]: crc = 67a8e0c6; size =    249237; name = CD\DATA\MOVIES\4300.MOV
+    file[]: crc = aec458ef; size =    264683; name = CD\DATA\MOVIES\4301.MOV
+    file[]: crc = f91ae38c; size =    390193; name = CD\DATA\MOVIES\4400.MOV
+    file[]: crc = 280c4ab4; size =    316436; name = CD\DATA\MOVIES\4401.MOV
+    file[]: crc = a699efcb; size =    375038; name = CD\DATA\MOVIES\4403.MOV
+    file[]: crc = e37c64b4; size =    380824; name = CD\DATA\MOVIES\4410.MOV
+    file[]: crc = e3011635; size =    324126; name = CD\DATA\MOVIES\4411.MOV
+    file[]: crc = f5fe8080; size =    372774; name = CD\DATA\MOVIES\4413.MOV
+    file[]: crc = e4be3873; size =    898474; name = CD\DATA\MOVIES\4500.MOV
+    file[]: crc = 5fe34f54; size =    820720; name = CD\DATA\MOVIES\4503.MOV
+    file[]: crc = 6b31b868; size =    871063; name = CD\DATA\MOVIES\4510.MOV
+    file[]: crc = 3b8d6281; size =    851720; name = CD\DATA\MOVIES\4513.MOV
+    file[]: crc = f15ac054; size =    638354; name = CD\DATA\MOVIES\4600.MOV
+    file[]: crc = f21419ae; size =    622560; name = CD\DATA\MOVIES\4603.MOV
+    file[]: crc = 11160026; size =    749811; name = CD\DATA\MOVIES\4610.MOV
+    file[]: crc = 869530a8; size =    712888; name = CD\DATA\MOVIES\4613.MOV
+    file[]: crc = b8b50b0f; size =    747811; name = CD\DATA\MOVIES\4700.MOV
+    file[]: crc = 00cbd604; size =    707610; name = CD\DATA\MOVIES\4703.MOV
+    file[]: crc = 563db76f; size =    795264; name = CD\DATA\MOVIES\4710.MOV
+    file[]: crc = 365b11a7; size =    796573; name = CD\DATA\MOVIES\4713.MOV
+    file[]: crc = 70467041; size =    904933; name = CD\DATA\MOVIES\4800.MOV
+    file[]: crc = eb1df914; size =    875777; name = CD\DATA\MOVIES\4803.MOV
+    file[]: crc = 3227f901; size =    874181; name = CD\DATA\MOVIES\4810.MOV
+    file[]: crc = c49a7e28; size =    892937; name = CD\DATA\MOVIES\4813.MOV
+    file[]: crc = 3be32135; size =   2883365; name = CD\DATA\MOVIES\4900.MOV
+    file[]: crc = 4ff6c45a; size =   2925920; name = CD\DATA\MOVIES\4901.MOV
+    file[]: crc = 19ede999; size =   3518209; name = CD\DATA\MOVIES\99.MOV
+    file[]: crc = 3a7e8d8b; size =   2108522; name = CD\DATA\MOVIES\LOGO.MOV
+    
+    CDLABEL = OTII_V13
+    OREGONII_CONTENTS = [[[$(CRLF)
+[Sound]
+music=on
+sfx=on
+speech=on
+buffers=20,2000
+[cdrom]
+rsrcpath=D:\data\
+[game]
+intromovieid=100
+speed=1
+
+]]]
+end
+
+//
+// 25th Anniversary Edition
+//
+game[pc-win-en-25th]:
+    name = English 25th Anniversary Edition
+    anchorfile = OTII32.EXE
+    anchordepth = 3
+    
+    file[]: crc = 6a5fd7e7; size =    315885; name = OREGONII.DT2
+    file[]: crc = 8bc72e51; size =    521056; name = OREGONII.ENG
+    file[]: crc = 49fc521e; size =  16794467; name = OREGONII.FST
+    file[]: crc = 9c385d00; size =    899034; name = OREGONII.HLP
+    file[]: crc = 0c5f40d1; size =    997392; name = OTII16.EXE
+    file[]: crc = 52648ad8; size =   1353216; name = OTII32.EXE
+    file[]: crc = 016f5cbb; size =    955000; name = OTIIUSER.HLP
+    file[]: crc = 918b3e6e; size =       352; name = PRODUCT.PF
+    file[]: crc = 6884b00a; size =     10400; name = SNDLIB16.DLL
+    file[]: crc = a323415a; size = 289302417; name = CD\DATA\OREGONII.DAT
+    file[]: crc = a65aca8c; size =  11812662; name = CD\DATA\MOVIES\100.MOV
+    file[]: crc = 714e1446; size =     24080; name = CD\DATA\MOVIES\101.MOV
+    file[]: crc = a0da414a; size =    138133; name = CD\DATA\MOVIES\1101.MOV
+    file[]: crc = 2b90586c; size =    126285; name = CD\DATA\MOVIES\1102.MOV
+    file[]: crc = ebc0d1a0; size =    184709; name = CD\DATA\MOVIES\1103.MOV
+    file[]: crc = ab2a66bc; size =     87697; name = CD\DATA\MOVIES\1201.MOV
+    file[]: crc = 4b40c9e4; size =    320901; name = CD\DATA\MOVIES\1202.MOV
+    file[]: crc = f7a4a05d; size =    164117; name = CD\DATA\MOVIES\1203.MOV
+    file[]: crc = 5a1f8d03; size =    122505; name = CD\DATA\MOVIES\1204.MOV
+    file[]: crc = fa1dbb7c; size =     99577; name = CD\DATA\MOVIES\1301.MOV
+    file[]: crc = fa4b6754; size =    138101; name = CD\DATA\MOVIES\1302.MOV
+    file[]: crc = 0633232c; size =    315545; name = CD\DATA\MOVIES\1303.MOV
+    file[]: crc = e981082f; size =    158405; name = CD\DATA\MOVIES\1304.MOV
+    file[]: crc = 1c79aa26; size =    133317; name = CD\DATA\MOVIES\1305.MOV
+    file[]: crc = f120e054; size =    333589; name = CD\DATA\MOVIES\1306.MOV
+    file[]: crc = 8b4acb7a; size =    163825; name = CD\DATA\MOVIES\1401.MOV
+    file[]: crc = 9becbee8; size =     96197; name = CD\DATA\MOVIES\1402.MOV
+    file[]: crc = d6ba47e6; size =    147789; name = CD\DATA\MOVIES\1403.MOV
+    file[]: crc = b82f9a52; size =    104909; name = CD\DATA\MOVIES\1404.MOV
+    file[]: crc = cb05f3e3; size =    283665; name = CD\DATA\MOVIES\1405.MOV
+    file[]: crc = e06fc0c6; size =    260749; name = CD\DATA\MOVIES\1501.MOV
+    file[]: crc = a4d48831; size =    167969; name = CD\DATA\MOVIES\1502.MOV
+    file[]: crc = 2dae67ec; size =    217709; name = CD\DATA\MOVIES\1503.MOV
+    file[]: crc = 0d57eeb5; size =    116889; name = CD\DATA\MOVIES\1601.MOV
+    file[]: crc = 2a7c682f; size =    179869; name = CD\DATA\MOVIES\1602.MOV
+    file[]: crc = 1ffbe3f1; size =    176385; name = CD\DATA\MOVIES\1603.MOV
+    file[]: crc = cff5be94; size =    179413; name = CD\DATA\MOVIES\1701.MOV
+    file[]: crc = f65e71f7; size =    106097; name = CD\DATA\MOVIES\1702.MOV
+    file[]: crc = f7a724c7; size =     96241; name = CD\DATA\MOVIES\1703.MOV
+    file[]: crc = 6fe17593; size =    140125; name = CD\DATA\MOVIES\1801.MOV
+    file[]: crc = 2c663470; size =    183997; name = CD\DATA\MOVIES\1802.MOV
+    file[]: crc = a4a606e4; size =     86533; name = CD\DATA\MOVIES\1803.MOV
+    file[]: crc = 993f56aa; size =     97925; name = CD\DATA\MOVIES\1804.MOV
+    file[]: crc = 50e4bea1; size =    229177; name = CD\DATA\MOVIES\1901.MOV
+    file[]: crc = 100bf11c; size =    174473; name = CD\DATA\MOVIES\1902.MOV
+    file[]: crc = 9357be39; size =     99953; name = CD\DATA\MOVIES\1903.MOV
+    file[]: crc = b1784d08; size =    165389; name = CD\DATA\MOVIES\2001.MOV
+    file[]: crc = e429c031; size =    178257; name = CD\DATA\MOVIES\2002.MOV
+    file[]: crc = a869739b; size =    170993; name = CD\DATA\MOVIES\2003.MOV
+    file[]: crc = a1d2f533; size =    112661; name = CD\DATA\MOVIES\2101.MOV
+    file[]: crc = 50862aba; size =    167317; name = CD\DATA\MOVIES\2102.MOV
+    file[]: crc = bca2d0cc; size =    251697; name = CD\DATA\MOVIES\2103.MOV
+    file[]: crc = b9f752c2; size =    243321; name = CD\DATA\MOVIES\2201.MOV
+    file[]: crc = a6f76ad9; size =    173485; name = CD\DATA\MOVIES\2202.MOV
+    file[]: crc = e076bd4d; size =    102389; name = CD\DATA\MOVIES\2203.MOV
+    file[]: crc = 9a241352; size =    150657; name = CD\DATA\MOVIES\2204.MOV
+    file[]: crc = 9a2ffe81; size =     84557; name = CD\DATA\MOVIES\2301.MOV
+    file[]: crc = fba511a4; size =    192205; name = CD\DATA\MOVIES\2302.MOV
+    file[]: crc = 494d6680; size =    258021; name = CD\DATA\MOVIES\2303.MOV
+    file[]: crc = 78929f9c; size =     57329; name = CD\DATA\MOVIES\2401.MOV
+    file[]: crc = 6d168e44; size =     82285; name = CD\DATA\MOVIES\2402.MOV
+    file[]: crc = c5abb404; size =    120889; name = CD\DATA\MOVIES\2403.MOV
+    file[]: crc = a3d2a2a9; size =    167801; name = CD\DATA\MOVIES\2501.MOV
+    file[]: crc = b6bb304c; size =    169937; name = CD\DATA\MOVIES\2502.MOV
+    file[]: crc = db1d79bf; size =    179325; name = CD\DATA\MOVIES\2503.MOV
+    file[]: crc = 4e1bb75b; size =    169661; name = CD\DATA\MOVIES\2601.MOV
+    file[]: crc = ea0a51d8; size =    170177; name = CD\DATA\MOVIES\2602.MOV
+    file[]: crc = eade3015; size =    190961; name = CD\DATA\MOVIES\2603.MOV
+    file[]: crc = c871f5bf; size =    449223; name = CD\DATA\MOVIES\4000.MOV
+    file[]: crc = e000f5e0; size =    286469; name = CD\DATA\MOVIES\4001.MOV
+    file[]: crc = ed748258; size =    255246; name = CD\DATA\MOVIES\4002.MOV
+    file[]: crc = d87a0644; size =    376025; name = CD\DATA\MOVIES\4003.MOV
+    file[]: crc = 1c997090; size =    411559; name = CD\DATA\MOVIES\4010.MOV
+    file[]: crc = d72bb06e; size =    272768; name = CD\DATA\MOVIES\4011.MOV
+    file[]: crc = 72fac34d; size =    260642; name = CD\DATA\MOVIES\4012.MOV
+    file[]: crc = f8635815; size =    326096; name = CD\DATA\MOVIES\4013.MOV
+    file[]: crc = 22bd2901; size =    420229; name = CD\DATA\MOVIES\4100.MOV
+    file[]: crc = 961e8ab6; size =    270960; name = CD\DATA\MOVIES\4101.MOV
+    file[]: crc = 3c9877d6; size =    360697; name = CD\DATA\MOVIES\4103.MOV
+    file[]: crc = 8eda83f9; size =    421187; name = CD\DATA\MOVIES\4110.MOV
+    file[]: crc = fcf64258; size =    292900; name = CD\DATA\MOVIES\4111.MOV
+    file[]: crc = cb795076; size =    391246; name = CD\DATA\MOVIES\4113.MOV
+    file[]: crc = 5574437d; size =    494577; name = CD\DATA\MOVIES\4200.MOV
+    file[]: crc = 094239ce; size =    229787; name = CD\DATA\MOVIES\4201.MOV
+    file[]: crc = 976b9d21; size =    384579; name = CD\DATA\MOVIES\4203.MOV
+    file[]: crc = f2773118; size =    381697; name = CD\DATA\MOVIES\4210.MOV
+    file[]: crc = 6e08503f; size =    272149; name = CD\DATA\MOVIES\4211.MOV
+    file[]: crc = e9ddbdb4; size =    313394; name = CD\DATA\MOVIES\4213.MOV
+    file[]: crc = 67a8e0c6; size =    249237; name = CD\DATA\MOVIES\4300.MOV
+    file[]: crc = aec458ef; size =    264683; name = CD\DATA\MOVIES\4301.MOV
+    file[]: crc = f91ae38c; size =    390193; name = CD\DATA\MOVIES\4400.MOV
+    file[]: crc = 280c4ab4; size =    316436; name = CD\DATA\MOVIES\4401.MOV
+    file[]: crc = a699efcb; size =    375038; name = CD\DATA\MOVIES\4403.MOV
+    file[]: crc = e37c64b4; size =    380824; name = CD\DATA\MOVIES\4410.MOV
+    file[]: crc = e3011635; size =    324126; name = CD\DATA\MOVIES\4411.MOV
+    file[]: crc = f5fe8080; size =    372774; name = CD\DATA\MOVIES\4413.MOV
+    file[]: crc = e4be3873; size =    898474; name = CD\DATA\MOVIES\4500.MOV
+    file[]: crc = 5fe34f54; size =    820720; name = CD\DATA\MOVIES\4503.MOV
+    file[]: crc = 6b31b868; size =    871063; name = CD\DATA\MOVIES\4510.MOV
+    file[]: crc = 3b8d6281; size =    851720; name = CD\DATA\MOVIES\4513.MOV
+    file[]: crc = f15ac054; size =    638354; name = CD\DATA\MOVIES\4600.MOV
+    file[]: crc = f21419ae; size =    622560; name = CD\DATA\MOVIES\4603.MOV
+    file[]: crc = 11160026; size =    749811; name = CD\DATA\MOVIES\4610.MOV
+    file[]: crc = 869530a8; size =    712888; name = CD\DATA\MOVIES\4613.MOV
+    file[]: crc = b8b50b0f; size =    747811; name = CD\DATA\MOVIES\4700.MOV
+    file[]: crc = 00cbd604; size =    707610; name = CD\DATA\MOVIES\4703.MOV
+    file[]: crc = 563db76f; size =    795264; name = CD\DATA\MOVIES\4710.MOV
+    file[]: crc = 365b11a7; size =    796573; name = CD\DATA\MOVIES\4713.MOV
+    file[]: crc = 70467041; size =    904933; name = CD\DATA\MOVIES\4800.MOV
+    file[]: crc = eb1df914; size =    875777; name = CD\DATA\MOVIES\4803.MOV
+    file[]: crc = 3227f901; size =    874181; name = CD\DATA\MOVIES\4810.MOV
+    file[]: crc = c49a7e28; size =    892937; name = CD\DATA\MOVIES\4813.MOV
+    file[]: crc = 3be32135; size =   2883365; name = CD\DATA\MOVIES\4900.MOV
+    file[]: crc = 4ff6c45a; size =   2925920; name = CD\DATA\MOVIES\4901.MOV
+    file[]: crc = 19ede999; size =   3518209; name = CD\DATA\MOVIES\99.MOV
+    file[]: crc = 3a7e8d8b; size =   2108522; name = CD\DATA\MOVIES\LOGO.MOV
+    
+    CDLABEL = OTII_V13
+    OREGONII_CONTENTS = [[[$(CRLF)
+[Sound]
+music=on
+sfx=on
+speech=on
+buffers=20,2000
+[cdrom]
+rsrcpath=D:\data\
+[game]
+intromovieid=100
+speed=1
+
+]]]
+end
+
+end
