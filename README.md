@@ -39,7 +39,7 @@ This pack covers games developed or published by The Learning Company from the t
 | Super Solvers: Spellbound! | 🇺🇸 |  |
 | Super Seekers: Treasure MathStorm! | 🇺🇸 🇬🇧 🇪🇸 🇸🇪 🇳🇱 🇫🇮 🇨🇳 | Windows v1.x runs way too fast |
 | Super Solvers: Treasure Mountain! | 🇺🇸 |  |
-| Super Seekers: Treasure Cove! | 🇺🇸 🇬🇧 🇫🇷 🇪🇸 🇩🇪 🇳🇴 🇸🇪 🇳🇱 🇧🇷 | Visual errors in Windows version |
+| Super Seekers: Treasure Cove! | 🇺🇸 | Visual errors in Windows version v1.0 |
 | Writer Rabbit | 🇺🇸 |  |
 | Zoombinis 2 Mountain Rescue | 🇺🇸 |  |
 
