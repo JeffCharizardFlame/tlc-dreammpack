@@ -14,6 +14,7 @@ This pack covers games developed or published by The Learning Company from the t
 | The ClueFinders 6th Grade Adventures: Empire of the Plant People | 🇺🇸 |  |
 | The Oregon Trail | 🇺🇸 |  |
 | Oregon Trail II | 🇺🇸 |  |
+| Operation Neptune | 🇺🇸 🇬🇧 🇳🇱 | Windows version fails to find MIDI device but game works anyway |
 | Reader Rabbit Presents: Math Journey for Grades 1-3 / Interactive Math Journey | 🇺🇸 🇩🇪 🇳🇱 |  |
 | Math Rabbit / Reader Rabbit's Math 1 | 🇺🇸 🇬🇧 🇩🇪 |  |
 | Reader Rabbit 1 / Reader Rabbit's Reading 1 | 🇺🇸 🇬🇧 |  |
